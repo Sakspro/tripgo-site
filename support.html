@@ -27,7 +27,7 @@
         </button>
         <a href="support.html" class="topbar__link" style="color:var(--blue);font-weight:700;">Customer support</a>
         <a href="index.html" class="topbar__link">Find bookings</a>
-        <a href="index.html" class="btn btn--outline btn--sm">Sign in / register</a>
+        <a href="index.html" class="btn btn--outline btn--sm" data-signin>Sign in / register</a>
       </nav>
     </div>
   </header>
@@ -149,6 +149,7 @@
 
   <script src="i18n.js"></script>
   <script src="region.js"></script>
+  <script src="signin.js"></script>
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
     var lc = document.getElementById("currLabel");

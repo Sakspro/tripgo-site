@@ -524,6 +524,44 @@ button { font-family: inherit; cursor: pointer; }
   .topicgrid, .contactgrid { grid-template-columns: 1fr; }
 }
 
+/* ===========================================================
+   Sign-in / register modal (signin.js)
+   =========================================================== */
+.authm-overlay { align-items: center; }
+.authm { background: #fff; width: min(420px, 100%); border-radius: 16px; box-shadow: var(--shadow-lg);
+  padding: 30px 28px 26px; position: relative; animation: pop .16s ease; text-align: center; }
+.authm__close { position: absolute; right: 16px; top: 14px; background: none; border: none; font-size: 18px; color: var(--muted); cursor: pointer; }
+.authm__brand { font-weight: 800; font-size: 22px; color: var(--blue); }
+.authm__brand span { color: var(--ink); }
+.authm__title { font-size: 22px; font-weight: 800; margin-top: 16px; }
+.authm__lead { color: var(--muted); font-size: 14px; margin-top: 8px; line-height: 1.5; }
+.authm__form { margin-top: 18px; }
+.authm__field input { width: 100%; border: 1px solid var(--line); border-radius: 10px; padding: 13px 14px; font-size: 15px; text-align: left; }
+.authm__field input:focus { outline: none; border-color: var(--blue); }
+.authm__form .btn { margin-top: 12px; }
+.authm__or { position: relative; margin: 20px 0 16px; color: var(--muted); font-size: 13px; }
+.authm__or::before, .authm__or::after { content: ""; position: absolute; top: 50%; width: 33%; height: 1px; background: var(--line); }
+.authm__or::before { left: 0; } .authm__or::after { right: 0; }
+.authm__socials { display: grid; gap: 10px; }
+.socbtn2 { display: flex; align-items: center; justify-content: center; gap: 8px; border: 1px solid var(--line);
+  background: #fff; border-radius: 10px; padding: 11px; font-size: 14px; font-weight: 600; cursor: pointer; color: var(--ink); }
+.socbtn2:hover { background: #f6f8fb; }
+.authm__terms { font-size: 11.5px; color: var(--muted); margin-top: 16px; line-height: 1.5; }
+.authm__terms a { color: var(--blue); text-decoration: none; }
+.authm__back { background: none; border: none; color: var(--muted); cursor: pointer; font-size: 14px;
+  position: absolute; left: 18px; top: 16px; }
+.authm__resend { font-size: 13px; color: var(--muted); margin-top: 14px; }
+.authm__resend a { color: var(--blue); text-decoration: none; }
+.authm__success { font-size: 48px; }
+.authm__avatar { width: 60px; height: 60px; border-radius: 50%; background: linear-gradient(135deg, #2f86ff, #1763d6);
+  color: #fff; font-size: 26px; font-weight: 800; display: flex; align-items: center; justify-content: center; margin: 4px auto 0; }
+.authm__acct { display: grid; gap: 8px; margin: 18px 0; text-align: left; }
+.authm__acctlink { display: block; padding: 12px 14px; border-radius: 10px; background: #f6f8fb; color: var(--ink);
+  text-decoration: none; font-weight: 600; font-size: 14px; }
+.authm__acctlink:hover { background: #eef5ff; }
+.authm__flash { background: #fff4e5; color: #8a5a00; border: 1px solid #ffd699; border-radius: 8px;
+  padding: 9px 12px; font-size: 13px; margin-bottom: 12px; }
+
 /* ===== Topbar language flag ===== */
 .tb-flag { width: 18px; height: 18px; border-radius: 50%; object-fit: cover;
   vertical-align: middle; display: inline-block; background: #eef2f7; }
