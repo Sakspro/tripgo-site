@@ -137,14 +137,14 @@
       if (!rows.length){ list.innerHTML = '<div class="mp-none">No destinations match your search.</div>'; return; }
       list.innerHTML = rows.map(function (d){
         return ''+
-        '<button class="mp-card" data-name="' + d.name + '">'+
+        '<div class="mp-card" role="button" tabindex="0" data-name="' + d.name + '">'+
           '<img src="' + imgUrl(d.img) + '" alt="' + d.name + '" loading="lazy" />'+
           '<div class="mp-card__b">'+
             '<div class="mp-card__t">' + d.name + '</div>'+
             '<div class="mp-card__c">' + d.country + '</div>'+
             '<div class="mp-card__m">⭐ ' + d.rating + ' · from <b>US$' + d.price + '</b></div>'+
           '</div>'+
-        '</button>';
+        '</div>';
       }).join("");
     }
 
