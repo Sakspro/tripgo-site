@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="TripGo Travel Map — explore destinations around the world on an interactive map. Find hotels, attractions and tours with live prices." />
+  <title>Travel Map | TripGo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- ===== Top bar ===== -->
+  <header class="topbar">
+    <div class="topbar__inner">
+      <a href="index.html" class="brand notranslate" translate="no" aria-label="TripGo home"><span class="brand__mark">✈</span>Trip<span>Go</span>.com</a>
+      <div class="globalsearch">
+        <span class="globalsearch__icon">🔍</span>
+        <input type="text" placeholder="Destinations, attractions, hotels, and more" aria-label="Search the site" />
+      </div>
+      <nav class="topbar__links">
+        <a href="app.html" class="topbar__link"><span>📱</span> App</a>
+        <a href="index.html" class="topbar__link">List your property</a>
+        <button class="topbar__link dd-trigger" id="currTrigger" aria-haspopup="true" aria-expanded="false">
+          <span>🌐</span> <span id="currLabel">USD</span> <span class="caret">▾</span>
+        </button>
+        <a href="support.html" class="topbar__link">Customer support</a>
+        <a href="bookings.html" class="topbar__link">Find bookings</a>
+        <a href="index.html" class="btn btn--outline btn--sm" data-signin>Sign in / register</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ===== Map experience ===== -->
+  <main class="mappage">
+    <!-- Side panel -->
+    <aside class="mp-side">
+      <div class="mp-side__head">
+        <h1>Explore the map</h1>
+        <p>Discover destinations worldwide with live prices.</p>
+        <div class="mp-search">
+          <span>🔍</span>
+          <input type="text" id="mpSearch" placeholder="Search destinations or countries" />
+        </div>
+        <div class="mp-cats" id="mpCats">
+          <button class="mp-cat is-active" data-cat="all">All</button>
+          <button class="mp-cat" data-cat="hotel">🏨 Hotels</button>
+          <button class="mp-cat" data-cat="attraction">🎟️ Attractions</button>
+          <button class="mp-cat" data-cat="tour">🗺️ Tours</button>
+          <button class="mp-cat" data-cat="flight">✈️ Flights</button>
+        </div>
+      </div>
+      <div class="mp-list" id="mpList"></div>
+    </aside>
+
+    <!-- Map -->
+    <div class="mp-map" id="map"></div>
+  </main>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+          integrity="sha256-20nQCchB9co0qIjJ02bavGZWcrXEbAlD5jdAdYfDvyk=" crossorigin=""></script>
+  <script src="i18n.js"></script>
+  <script src="region.js"></script>
+  <script src="signin.js"></script>
+  <script>
+    try { var c = localStorage.getItem("tg_curr"); var lc = document.getElementById("currLabel"); if (c && lc) lc.textContent = c; } catch (e) {}
+
+    // ---- Destinations ----
+    var DESTS = [
+      { name:"Tokyo", country:"Japan", lat:35.6762, lng:139.6503, price:48, rating:4.8, cat:"hotel", img:"tokyo,japan" },
+      { name:"Bangkok", country:"Thailand", lat:13.7563, lng:100.5018, price:22, rating:4.7, cat:"hotel", img:"bangkok,thailand" },
+      { name:"Singapore", country:"Singapore", lat:1.3521, lng:103.8198, price:65, rating:4.9, cat:"attraction", img:"singapore,marina" },
+      { name:"Paris", country:"France", lat:48.8566, lng:2.3522, price:72, rating:4.8, cat:"attraction", img:"paris,eiffel" },
+      { name:"Dubai", country:"UAE", lat:25.2048, lng:55.2708, price:58, rating:4.7, cat:"tour", img:"dubai,skyline" },
+      { name:"Seoul", country:"South Korea", lat:37.5665, lng:126.9780, price:44, rating:4.6, cat:"hotel", img:"seoul,korea" },
+      { name:"Bali", country:"Indonesia", lat:-8.4095, lng:115.1889, price:31, rating:4.8, cat:"tour", img:"bali,beach" },
+      { name:"London", country:"United Kingdom", lat:51.5074, lng:-0.1278, price:88, rating:4.7, cat:"attraction", img:"london,bigben" },
+      { name:"New York", country:"USA", lat:40.7128, lng:-74.0060, price:120, rating:4.6, cat:"flight", img:"new+york,city" },
+      { name:"Istanbul", country:"Türkiye", lat:41.0082, lng:28.9784, price:35, rating:4.7, cat:"tour", img:"istanbul,turkey" },
+      { name:"Rome", country:"Italy", lat:41.9028, lng:12.4964, price:69, rating:4.8, cat:"attraction", img:"rome,colosseum" },
+      { name:"Sydney", country:"Australia", lat:-33.8688, lng:151.2093, price:95, rating:4.7, cat:"flight", img:"sydney,opera" },
+      { name:"Hanoi", country:"Vietnam", lat:21.0278, lng:105.8342, price:19, rating:4.6, cat:"hotel", img:"hanoi,vietnam" },
+      { name:"Doha", country:"Qatar", lat:25.2854, lng:51.5310, price:54, rating:4.6, cat:"flight", img:"doha,qatar" }
+    ];
+
+    var imgUrl = function (kw) { return "https://loremflickr.com/240/150/" + encodeURIComponent(kw) + "?lock=" + Math.abs(hash(kw)); };
+    function hash(s){ var h=0; for(var i=0;i<s.length;i++){ h=(h<<5)-h+s.charCodeAt(i); h|=0; } return h; }
+
+    var map = L.map("map", { zoomControl: true, worldCopyJump: true }).setView([25, 35], 2.4);
+    L.tileLayer("https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png", {
+      attribution: '&copy; OpenStreetMap &copy; CARTO',
+      maxZoom: 19
+    }).addTo(map);
+
+    var state = { cat: "all", q: "" };
+    var markers = {};
+
+    function pinHtml(d){ return '<div class="mp-pin"><b>US$' + d.price + '</b></div>'; }
+    function popupHtml(d){
+      return ''+
+      '<div class="mp-pop">'+
+        '<img src="' + imgUrl(d.img) + '" alt="' + d.name + '" />'+
+        '<div class="mp-pop__b">'+
+          '<div class="mp-pop__t">' + d.name + ', ' + d.country + '</div>'+
+          '<div class="mp-pop__m">⭐ ' + d.rating + ' · from <b>US$' + d.price + '</b></div>'+
+          '<a class="btn btn--primary btn--sm" href="explore.html?cat=private-tours&dest=' + encodeURIComponent(d.name) + '">Explore ' + d.name + '</a>'+
+        '</div>'+
+      '</div>';
+    }
+
+    DESTS.forEach(function (d) {
+      var icon = L.divIcon({ className: "mp-pinwrap", html: pinHtml(d), iconSize: [54, 28], iconAnchor: [27, 28] });
+      var m = L.marker([d.lat, d.lng], { icon: icon }).addTo(map);
+      m.bindPopup(popupHtml(d), { minWidth: 220, closeButton: true });
+      markers[d.name] = m;
+    });
+
+    function visible(d){
+      if (state.cat !== "all" && d.cat !== state.cat) return false;
+      if (state.q){
+        var hay = (d.name + " " + d.country).toLowerCase();
+        if (hay.indexOf(state.q.toLowerCase()) === -1) return false;
+      }
+      return true;
+    }
+
+    function renderList(){
+      var list = document.getElementById("mpList");
+      var rows = DESTS.filter(visible);
+      // toggle markers
+      DESTS.forEach(function (d){
+        var m = markers[d.name];
+        if (visible(d)) { if (!map.hasLayer(m)) m.addTo(map); }
+        else if (map.hasLayer(m)) map.removeLayer(m);
+      });
+      if (!rows.length){ list.innerHTML = '<div class="mp-none">No destinations match your search.</div>'; return; }
+      list.innerHTML = rows.map(function (d){
+        return ''+
+        '<button class="mp-card" data-name="' + d.name + '">'+
+          '<img src="' + imgUrl(d.img) + '" alt="' + d.name + '" loading="lazy" />'+
+          '<div class="mp-card__b">'+
+            '<div class="mp-card__t">' + d.name + '</div>'+
+            '<div class="mp-card__c">' + d.country + '</div>'+
+            '<div class="mp-card__m">⭐ ' + d.rating + ' · from <b>US$' + d.price + '</b></div>'+
+          '</div>'+
+        '</button>';
+      }).join("");
+    }
+
+    document.getElementById("mpList").addEventListener("click", function (e){
+      var card = e.target.closest(".mp-card"); if (!card) return;
+      var d = DESTS.find(function (x){ return x.name === card.dataset.name; });
+      if (!d) return;
+      map.flyTo([d.lat, d.lng], 5, { duration: 0.8 });
+      setTimeout(function (){ markers[d.name].openPopup(); }, 850);
+    });
+
+    document.getElementById("mpCats").addEventListener("click", function (e){
+      var b = e.target.closest("button"); if (!b) return;
+      this.querySelectorAll("button").forEach(function (x){ x.classList.remove("is-active"); });
+      b.classList.add("is-active");
+      state.cat = b.dataset.cat; renderList();
+    });
+    document.getElementById("mpSearch").addEventListener("input", function (){ state.q = this.value.trim(); renderList(); });
+
+    renderList();
+    setTimeout(function (){ map.invalidateSize(); }, 200);
+  </script>
+</body>
+</html>
