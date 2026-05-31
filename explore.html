@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Explore TripGo — deals, tours, rewards, travel inspiration and trip planning." />
+  <title>Explore | TripGo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- ===== Top bar ===== -->
+  <header class="topbar">
+    <div class="topbar__inner">
+      <a href="index.html" class="brand notranslate" translate="no" aria-label="TripGo home"><span class="brand__mark">✈</span>Trip<span>Go</span>.com</a>
+      <div class="globalsearch">
+        <span class="globalsearch__icon">🔍</span>
+        <input type="text" placeholder="Destinations, attractions, hotels, and more" aria-label="Search the site" />
+      </div>
+      <nav class="topbar__links">
+        <a href="app.html" class="topbar__link"><span>📱</span> App</a>
+        <a href="index.html" class="topbar__link">List your property</a>
+        <button class="topbar__link dd-trigger" id="currTrigger" aria-haspopup="true" aria-expanded="false">
+          <span>🌐</span> <span id="currLabel">USD</span> <span class="caret">▾</span>
+        </button>
+        <a href="support.html" class="topbar__link">Customer support</a>
+        <a href="index.html" class="topbar__link">Find bookings</a>
+        <a href="index.html" class="btn btn--outline btn--sm">Sign in / register</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="explore">
+    <!-- Hero -->
+    <section class="ex-hero">
+      <div class="ex-hero__bg"></div>
+      <div class="ex-hero__inner">
+        <nav class="ex-crumbs"><a href="index.html">Home</a> <span>›</span> <span id="exCrumb">Explore</span></nav>
+        <h1 id="exTitle">Explore</h1>
+        <p id="exSub">Discover more ways to travel with TripGo.</p>
+        <a id="exCta" class="btn btn--primary" href="index.html#search" style="display:none;"></a>
+      </div>
+    </section>
+
+    <div class="container" id="exContent"></div>
+  </main>
+
+  <!-- ===== Footer ===== -->
+  <footer class="footer container">
+    <div class="footer__cols">
+      <div class="footer__col">
+        <h4>Contact us</h4>
+        <a href="support.html">Customer support</a><a href="support.html">Service Guarantee</a><a href="support.html">More service info</a>
+      </div>
+      <div class="footer__col">
+        <h4>About</h4>
+        <a href="#">About TripGo</a><a href="#">News</a><a href="#">Careers</a><a href="#">Terms &amp; Conditions</a><a href="#">Privacy Statement</a>
+      </div>
+      <div class="footer__col">
+        <h4>Explore</h4>
+        <a href="explore.html?cat=deals">Deals</a><a href="explore.html?cat=rewards">TripGo Rewards</a><a href="explore.html?cat=inspiration">Travel Inspiration</a>
+      </div>
+      <div class="footer__col">
+        <h4>Get the app</h4>
+        <div class="paychips"><span>iOS</span><span>Android</span><span>Huawei</span></div>
+      </div>
+    </div>
+    <div class="footer__bottom">© <span id="year"></span> TripGo Travel. &nbsp;·&nbsp; 🌐 English (XX) · USD</div>
+  </footer>
+
+  <script src="i18n.js"></script>
+  <script src="region.js"></script>
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+    try { var c = localStorage.getItem("tg_curr"); var lc = document.getElementById("currLabel"); if (c && lc) lc.textContent = c; } catch (e) {}
+
+    var GRADS = [
+      "linear-gradient(135deg,#1c5fd0,#0a3d91)",
+      "linear-gradient(135deg,#ff7a59,#ff4e8a)",
+      "linear-gradient(135deg,#11998e,#38ef7d)",
+      "linear-gradient(135deg,#7b2ff7,#3a7bd5)",
+      "linear-gradient(135deg,#f7971e,#ffd200)",
+      "linear-gradient(135deg,#e95cff,#5a55ff)",
+      "linear-gradient(135deg,#00b4db,#0083b0)",
+      "linear-gradient(135deg,#ee0979,#ff6a00)"
+    ];
+
+    var DATA = {
+      deals: {
+        crumb: "Deals", title: "Deals & Promotions",
+        sub: "Limited-time offers on flights, hotels, trains, cars and attractions — book before they're gone.",
+        cta: { label: "Search & book now", href: "index.html#search" },
+        cards: [
+          { ic: "🏨", tag: "Up to 30% off", title: "Hotel flash sale", desc: "Save big on 50,000+ hotels worldwide this week only." },
+          { ic: "✈️", tag: "From $39", title: "Flight deals", desc: "Discounted one-way and return fares from your area." },
+          { ic: "🎟️", tag: "Buy 1 get 1", title: "Attraction passes", desc: "Bundle tickets for top attractions and save more." },
+          { ic: "🚄", tag: "10% off", title: "Rail passes", desc: "Discounted train tickets across Europe and Asia." },
+          { ic: "🚗", tag: "Free upgrade", title: "Car rental offers", desc: "Complimentary upgrades on selected rentals." },
+          { ic: "🎁", tag: "New users", title: "Welcome coupons", desc: "Up to $80 in coupons for your first booking." }
+        ]
+      },
+      "private-tours": {
+        crumb: "Private Tours", title: "Private Tours",
+        sub: "Your own guide, your own pace. Tailor-made private experiences in 100+ destinations.",
+        cta: { label: "Plan a private tour", href: "explore.html?cat=planner" },
+        cards: [
+          { ic: "🗼", tag: "Paris", title: "Private Paris highlights", desc: "Eiffel Tower, Louvre & Seine cruise with a local guide." },
+          { ic: "🏯", tag: "Kyoto", title: "Kyoto temples & geisha district", desc: "Full-day private cultural tour with transport." },
+          { ic: "🏝️", tag: "Bali", title: "Bali hidden gems", desc: "Waterfalls, rice terraces and temples, just for your group." },
+          { ic: "🕌", tag: "Istanbul", title: "Istanbul old city", desc: "Hagia Sophia, Blue Mosque & Grand Bazaar, privately guided." },
+          { ic: "🏛️", tag: "Rome", title: "Rome & Vatican private", desc: "Skip-the-line Colosseum and Vatican with your guide." },
+          { ic: "🐘", tag: "Bangkok", title: "Bangkok & beyond", desc: "Temples, markets and an ethical elephant sanctuary." }
+        ]
+      },
+      "group-tours": {
+        crumb: "Group Tours", title: "Group Tours",
+        sub: "Make friends and save more on expertly planned multi-day group adventures.",
+        cta: { label: "Browse departures", href: "index.html#search" },
+        cards: [
+          { ic: "🇯🇵", tag: "7 days", title: "Japan golden route", desc: "Tokyo, Mt. Fuji, Kyoto & Osaka with a tour leader." },
+          { ic: "🇮🇹", tag: "8 days", title: "Classic Italy", desc: "Rome, Florence, Venice & Milan in one trip." },
+          { ic: "🇹🇭", tag: "6 days", title: "Thailand discovery", desc: "Bangkok, Chiang Mai & island time." },
+          { ic: "🇨🇭", tag: "9 days", title: "Alpine Europe", desc: "Switzerland, Austria & the Dolomites by coach." },
+          { ic: "🇪🇬", tag: "10 days", title: "Egypt & the Nile", desc: "Pyramids, temples and a Nile cruise." },
+          { ic: "🇮🇸", tag: "5 days", title: "Iceland ring road", desc: "Waterfalls, geysers and the northern lights." }
+        ]
+      },
+      planner: {
+        crumb: "Trip.Planner", title: "Trip.Planner",
+        sub: "Tell us where and when — our AI builds a day-by-day itinerary in seconds.",
+        steps: [
+          { n: "1", title: "Pick a destination", desc: "Choose a city or let us suggest one based on your vibe." },
+          { n: "2", title: "Set your dates & interests", desc: "Food, culture, nature, nightlife — you decide the mix." },
+          { n: "3", title: "Get your itinerary", desc: "A smart day-by-day plan with bookable hotels & activities." }
+        ],
+        planner: true,
+        cards: [
+          { ic: "🍜", tag: "Foodie", title: "Tokyo in 3 days", desc: "Ramen, sushi and markets, perfectly routed." },
+          { ic: "🏖️", tag: "Relax", title: "Bali in 5 days", desc: "Beaches, spas and sunset dinners." },
+          { ic: "🏔️", tag: "Adventure", title: "Swiss Alps in 4 days", desc: "Hikes, trains and mountain views." }
+        ]
+      },
+      inspiration: {
+        crumb: "Travel Inspiration", title: "Travel Inspiration",
+        sub: "Travel guides, Trip Moments and Trip.Best lists to spark your next journey.",
+        cards: [
+          { ic: "📖", tag: "Guide", title: "48 hours in Singapore", desc: "What to eat, see and do on a short stay." },
+          { ic: "📸", tag: "Trip Moments", title: "Most photogenic spots 2026", desc: "Reader-submitted photos from around the world." },
+          { ic: "🏆", tag: "Trip.Best", title: "Top 10 beach escapes", desc: "The highest-rated beaches by TripGo travellers." },
+          { ic: "🍣", tag: "Food", title: "Street food capitals", desc: "Where to eat your way around the globe." },
+          { ic: "🌸", tag: "Seasonal", title: "Best places for spring", desc: "Cherry blossoms, tulips and more." },
+          { ic: "🎒", tag: "Budget", title: "Backpacking Southeast Asia", desc: "Routes, costs and must-sees." }
+        ]
+      },
+      map: {
+        crumb: "Map", title: "Explore by Map",
+        sub: "Browse destinations by region and discover where TripGo can take you.",
+        cards: [
+          { ic: "🗺️", tag: "Asia", title: "Asia", desc: "Japan, Thailand, Vietnam, Korea & more." },
+          { ic: "🗺️", tag: "Europe", title: "Europe", desc: "France, Italy, Spain, Germany & beyond." },
+          { ic: "🗺️", tag: "Americas", title: "Americas", desc: "USA, Canada, Mexico, Brazil & Peru." },
+          { ic: "🗺️", tag: "Middle East", title: "Middle East", desc: "UAE, Qatar, Jordan & Turkey." },
+          { ic: "🗺️", tag: "Africa", title: "Africa", desc: "Egypt, Morocco, Kenya & South Africa." },
+          { ic: "🗺️", tag: "Oceania", title: "Oceania", desc: "Australia, New Zealand & the Pacific." }
+        ]
+      },
+      rewards: {
+        crumb: "TripGo Rewards", title: "TripGo Rewards",
+        sub: "Earn points on every booking and unlock member-only prices, perks and upgrades.",
+        cta: { label: "Join free", href: "index.html" },
+        tiers: [
+          { name: "Silver", ic: "🥈", perks: ["Earn 1× points", "Member rates", "24/7 support"] },
+          { name: "Gold", ic: "🥇", perks: ["Earn 2× points", "Room upgrades", "Late checkout", "Priority support"] },
+          { name: "Platinum", ic: "💎", perks: ["Earn 3× points", "Free breakfast", "Lounge access", "Dedicated concierge"] }
+        ],
+        cards: [
+          { ic: "💰", tag: "Earn", title: "Points on everything", desc: "Hotels, flights, trains and activities all earn points." },
+          { ic: "🎟️", tag: "Redeem", title: "Spend points your way", desc: "Use points for discounts or free nights." },
+          { ic: "⭐", tag: "Perks", title: "Member-only rates", desc: "Unlock prices you won't find anywhere else." }
+        ]
+      }
+    };
+
+    function cardHtml(c, i) {
+      return '<article class="ex-card">' +
+        '<div class="ex-card__top" style="background:' + GRADS[i % GRADS.length] + '"><span>' + c.ic + '</span>' +
+        (c.tag ? '<em class="ex-card__tag">' + c.tag + '</em>' : "") + '</div>' +
+        '<div class="ex-card__body"><h3>' + c.title + '</h3><p>' + c.desc + '</p>' +
+        '<a class="btn btn--outline btn--sm" href="index.html#search">View</a></div></article>';
+    }
+
+    function render() {
+      var cat = (new URLSearchParams(location.search).get("cat") || "deals").toLowerCase();
+      var d = DATA[cat] || DATA.deals;
+      document.getElementById("exCrumb").textContent = d.crumb;
+      document.getElementById("exTitle").textContent = d.title;
+      document.getElementById("exSub").textContent = d.sub;
+      document.title = d.title + " | TripGo";
+      var cta = document.getElementById("exCta");
+      if (d.cta) { cta.textContent = d.cta.label; cta.href = d.cta.href; cta.style.display = "inline-flex"; }
+
+      var html = "";
+      if (d.steps) {
+        html += '<section class="ex-steps">' + d.steps.map(function (s) {
+          return '<div class="ex-step"><span class="ex-step__n">' + s.n + '</span><div><h4>' + s.title + '</h4><p>' + s.desc + '</p></div></div>';
+        }).join("") + '</section>';
+      }
+      if (d.planner) {
+        html += '<section class="ex-planner"><h3>Build your trip</h3>' +
+          '<form class="ex-planner__form" onsubmit="return false;">' +
+          '<input type="text" placeholder="Where to? e.g. Tokyo" aria-label="Destination">' +
+          '<input type="text" placeholder="How many days? e.g. 3" aria-label="Days">' +
+          '<button class="btn btn--primary" type="submit">Generate itinerary</button></form>' +
+          '<p class="ex-planner__note">Popular AI itineraries:</p></section>';
+      }
+      if (d.tiers) {
+        html += '<section class="ex-tiers">' + d.tiers.map(function (t, i) {
+          return '<div class="ex-tier"><div class="ex-tier__head" style="background:' + GRADS[i % GRADS.length] + '">' +
+            '<span>' + t.ic + '</span><strong>' + t.name + '</strong></div><ul>' +
+            t.perks.map(function (p) { return "<li>✓ " + p + "</li>"; }).join("") + "</ul></div>";
+        }).join("") + '</section>';
+      }
+      if (d.cards) {
+        html += '<h2 class="ex-sectitle">' + (d.planner ? "Popular itineraries" : d.tiers ? "How it works" : "Featured") + '</h2>' +
+          '<div class="ex-grid">' + d.cards.map(cardHtml).join("") + "</div>";
+      }
+      document.getElementById("exContent").innerHTML = html;
+    }
+    render();
+  </script>
+</body>
+</html>
