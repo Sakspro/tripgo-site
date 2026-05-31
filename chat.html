@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="TripGo live customer service chat — get instant help with your bookings." />
+  <title>Service Chat | TripGo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="chatpage">
+    <!-- Header -->
+    <header class="chat-header">
+      <a href="support.html" class="chat-back" id="chatBack" aria-label="Back">‹</a>
+      <div class="chat-id">
+        <span class="chat-avatar notranslate" translate="no">✈</span>
+        <div class="chat-id__txt">
+          <strong class="notranslate" translate="no">TripGo Assistant</strong>
+          <span class="chat-status"><i class="dot"></i> Online · replies instantly</span>
+        </div>
+      </div>
+      <button class="chat-close" id="chatClose" aria-label="Close">✕</button>
+    </header>
+
+    <!-- Conversation -->
+    <main class="chat-body" id="chatBody">
+      <div class="chat-day">Today</div>
+    </main>
+
+    <!-- Quick replies -->
+    <div class="chat-quick" id="chatQuick"></div>
+
+    <!-- Composer -->
+    <form class="chat-composer" id="chatForm" autocomplete="off">
+      <input type="text" id="chatInput" placeholder="Type your message…" aria-label="Type your message" />
+      <button type="submit" class="chat-send" aria-label="Send">➤</button>
+    </form>
+  </div>
+
+  <script src="i18n.js"></script>
+  <script>
+    (function () {
+      var body = document.getElementById("chatBody");
+      var quick = document.getElementById("chatQuick");
+      var form = document.getElementById("chatForm");
+      var input = document.getElementById("chatInput");
+
+      // Honour a backUrl param (like Trip.com's chat), default to support page.
+      try {
+        var back = new URLSearchParams(location.search).get("backUrl");
+        if (back) {
+          var dec = decodeURIComponent(back);
+          document.getElementById("chatBack").setAttribute("href", dec);
+          document.getElementById("chatClose").addEventListener("click", function () { location.href = dec; });
+        } else {
+          document.getElementById("chatClose").addEventListener("click", function () { location.href = "support.html"; });
+        }
+      } catch (e) {}
+
+      function time() {
+        var d = new Date();
+        return d.getHours().toString().padStart(2, "0") + ":" + d.getMinutes().toString().padStart(2, "0");
+      }
+      function scroll() { body.scrollTop = body.scrollHeight; }
+
+      function addMsg(who, html) {
+        var row = document.createElement("div");
+        row.className = "msg msg--" + who;
+        row.innerHTML =
+          (who === "bot" ? '<span class="msg__avatar notranslate" translate="no">✈</span>' : "") +
+          '<div class="msg__bubble">' + html + '<span class="msg__time">' + time() + "</span></div>";
+        body.appendChild(row);
+        scroll();
+        return row;
+      }
+
+      function typing(then) {
+        var row = document.createElement("div");
+        row.className = "msg msg--bot";
+        row.innerHTML = '<span class="msg__avatar notranslate" translate="no">✈</span>' +
+          '<div class="msg__bubble msg__bubble--typing"><i></i><i></i><i></i></div>';
+        body.appendChild(row);
+        scroll();
+        setTimeout(function () { row.remove(); then(); }, 850);
+      }
+
+      var QUICK = [
+        "Cancel a booking",
+        "Refund status",
+        "Change my dates",
+        "Talk to a human agent"
+      ];
+      function renderQuick() {
+        quick.innerHTML = QUICK.map(function (q) {
+          return '<button type="button" class="chip-reply">' + q + "</button>";
+        }).join("");
+      }
+
+      function reply(text) {
+        var t = text.toLowerCase();
+        if (/cancel/.test(t))
+          return "To cancel, go to <strong>Find bookings</strong>, open the booking and tap <strong>Cancel</strong>. Any refund and fees are shown before you confirm. Want me to walk you through a specific booking?";
+        if (/refund/.test(t))
+          return "Approved refunds go back to your original payment method, usually within <strong>7–14 business days</strong>. If it's been longer, share your booking ID and I'll check it for you.";
+        if (/change|date|reschedul|modif/.test(t))
+          return "You can change most bookings under <strong>Find bookings → Modify</strong>. Availability and any fare difference depend on the provider's policy. Which booking would you like to change?";
+        if (/agent|human|person|representative|call/.test(t))
+          return "Connecting you to a live agent… 🧑‍💼 Our team is available <strong>24/7</strong>. In the meantime, could you describe your issue so I can route you to the right specialist?";
+        if (/coupon|promo|discount|code/.test(t))
+          return "Enter your promo code on the payment page before confirming. App-exclusive coupons apply automatically when you're signed in. 🎁";
+        if (/booking|confirm|itinerary|reservation/.test(t))
+          return "Your confirmation is emailed instantly and is always available under <strong>Find bookings</strong> (or <em>My Trips</em> in the app).";
+        if (/hi|hello|hey|help/.test(t))
+          return "Hi there! 👋 I can help with cancellations, refunds, date changes and more. What do you need a hand with?";
+        return "Thanks for the details! A support specialist will follow up shortly. You can also check our <strong>Help Centre</strong> or <strong>Find bookings</strong> while you wait. Anything else I can help with?";
+      }
+
+      function botReply(userText) {
+        typing(function () { addMsg("bot", reply(userText)); });
+      }
+
+      function send(text) {
+        text = (text || "").trim();
+        if (!text) return;
+        addMsg("user", text.replace(/</g, "&lt;"));
+        botReply(text);
+      }
+
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        send(input.value);
+        input.value = "";
+      });
+      quick.addEventListener("click", function (e) {
+        var b = e.target.closest(".chip-reply");
+        if (b) send(b.textContent);
+      });
+
+      // Greeting
+      renderQuick();
+      addMsg("bot", "Hi! I'm TripGo's virtual assistant. 🤖 How can I help you today?");
+      setTimeout(function () { input.focus(); }, 200);
+    })();
+  </script>
+</body>
+</html>
