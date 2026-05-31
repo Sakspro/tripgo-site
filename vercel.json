@@ -16,13 +16,19 @@
       ]
     },
     {
-      "source": "/(styles.css|script.js|inspired.js)",
+      "source": "/(styles.css|script.js|inspired.js|sidebar.js)",
       "headers": [
         { "key": "Cache-Control", "value": "no-cache" }
       ]
     },
     {
       "source": "/api/inspired",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, s-maxage=3600, stale-while-revalidate=7200" }
+      ]
+    },
+    {
+      "source": "/api/sidebar",
       "headers": [
         { "key": "Cache-Control", "value": "public, s-maxage=3600, stale-while-revalidate=7200" }
       ]

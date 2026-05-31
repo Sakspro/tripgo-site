@@ -397,6 +397,25 @@ function renderChips() {
     return '<button type="button" class="chip ' + (c === inspireChip ? "is-active" : "") + '" data-dest="' + c + '">' + c + '</button>';
   }).join("");
 }
+function applySidebarCars(data) {
+  if (!data || !data.cars) return;
+  var cars = data.cars;
+  var iconEl = document.getElementById("carsNavIcon");
+  var labelEl = document.getElementById("carsNavLabel");
+  var flyout = document.getElementById("carsFlyout");
+  var navLink = document.getElementById("carsNavLink");
+  if (iconEl && cars.icon) iconEl.textContent = cars.icon;
+  if (labelEl && cars.title) labelEl.textContent = cars.title;
+  if (navLink && cars.tab) navLink.dataset.tab = cars.tab;
+  TAB_LABEL.cars = cars.title || TAB_LABEL.cars;
+  var tabBtn = document.querySelector('.tab[data-tab="cars"]');
+  if (tabBtn && cars.title) tabBtn.innerHTML = (cars.icon || "🚗") + " " + cars.title;
+  if (flyout && cars.items && cars.items.length) {
+    flyout.innerHTML = cars.items.map(function (item) {
+      return '<a href="#search" data-tab="' + item.tab + '">' + item.label + '</a>';
+    }).join("");
+  }
+}
 function applyInspiredData(data) {
   if (!data) return;
   if (data.chips && data.chips.length) CHIPS = data.chips;
@@ -542,12 +561,25 @@ document.addEventListener("DOMContentLoaded", () => {
     window.TGinspiredReady.then(applyInspiredData);
   }
   document.addEventListener("tg-inspired", function (e) { applyInspiredData(e.detail); });
+
+  if (window.TGsidebarReady) {
+    window.TGsidebarReady.then(applySidebarCars);
+  }
+  document.addEventListener("tg-sidebar", function (e) { applySidebarCars(e.detail); });
+
   /* Re-sync when user returns to tab (picks up Trip.com changes within cache TTL) */
   document.addEventListener("visibilitychange", function () {
-    if (document.visibilityState === "visible" && window.TGinspiredReady) {
+    if (document.visibilityState !== "visible") return;
+    if (window.TGinspiredReady) {
       fetch("/api/inspired", { credentials: "same-origin" })
         .then(function (r) { return r.ok ? r.json() : null; })
         .then(applyInspiredData)
+        .catch(function () {});
+    }
+    if (window.TGsidebarReady) {
+      fetch("/api/sidebar", { credentials: "same-origin" })
+        .then(function (r) { return r.ok ? r.json() : null; })
+        .then(applySidebarCars)
         .catch(function () {});
     }
   });

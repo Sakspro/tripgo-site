@@ -1,0 +1,27 @@
+{
+  "cars": {
+    "title": "Cars",
+    "icon": "🚗",
+    "tab": "cars",
+    "items": [
+      {
+        "label": "Car Rentals",
+        "tab": "cars",
+        "icon": "🚗",
+        "path": "/carhire/?channelid=14409",
+        "tripUrl": "https://www.trip.com/carhire/?channelid=14409",
+        "sharkKey": "ButtonText_Carhire"
+      },
+      {
+        "label": "Airport Transfers",
+        "tab": "transfers",
+        "icon": "🚐",
+        "path": "/airport-transfers/",
+        "tripUrl": "https://www.trip.com/airport-transfers/",
+        "sharkKey": "ButtonText_AirportTransfers"
+      }
+    ]
+  },
+  "syncedAt": "2026-05-31T12:32:21.363Z",
+  "source": "trip.com"
+}

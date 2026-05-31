@@ -1,5 +1,6 @@
-/* Vercel Cron — daily Trip.com inspired refresh (Hobby: once per day) */
-const { fetchInspiredFromTrip, contentHash } = require("../lib/trip-inspired");
+/* Vercel Cron — daily Trip.com sync (inspired + sidebar) */
+const { fetchInspiredFromTrip, contentHash: inspiredHash } = require("../lib/trip-inspired");
+const { fetchSidebarFromTrip, contentHash: sidebarHash } = require("../lib/trip-sidebar");
 
 module.exports = async function handler(req, res) {
   var auth = process.env.CRON_SECRET;
@@ -8,18 +9,33 @@ module.exports = async function handler(req, res) {
     if (hdr !== "Bearer " + auth) return res.status(401).json({ error: "Unauthorized" });
   }
 
+  var out = { ok: true, inspired: null, sidebar: null };
+
   try {
-    var data = await fetchInspiredFromTrip();
-    var hash = contentHash(data);
-    /* Warm the main API route cache by returning payload (cron logs + edge revalidation) */
-    return res.status(200).json({
-      ok: true,
-      hash: hash,
-      syncedAt: data.syncedAt,
-      chips: data.chips.length,
-      flights: data.flights.length,
-    });
+    var inspired = await fetchInspiredFromTrip();
+    out.inspired = {
+      hash: inspiredHash(inspired),
+      syncedAt: inspired.syncedAt,
+      chips: inspired.chips.length,
+      flights: inspired.flights.length,
+    };
   } catch (err) {
-    return res.status(500).json({ ok: false, error: String(err.message || err) });
+    out.inspired = { ok: false, error: String(err.message || err) };
+    out.ok = false;
   }
+
+  try {
+    var sidebar = await fetchSidebarFromTrip();
+    out.sidebar = {
+      hash: sidebarHash(sidebar),
+      syncedAt: sidebar.syncedAt,
+      title: sidebar.cars.title,
+      items: sidebar.cars.items.length,
+    };
+  } catch (err) {
+    out.sidebar = { ok: false, error: String(err.message || err) };
+    out.ok = false;
+  }
+
+  return res.status(out.ok ? 200 : 500).json(out);
 };
