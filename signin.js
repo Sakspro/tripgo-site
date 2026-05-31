@@ -197,6 +197,87 @@
     if (state.step === "done") state.step = "id";
   }
 
+  /* ---- Signed-in account dropdown (Trip.com member menu) ---- */
+  var acctEl;
+
+  function acctHtml() {
+    return (
+      '<div class="acctdd__card">' +
+        '<div class="acctdd__avatar">🧑</div>' +
+        '<div class="acctdd__who">' +
+          '<div class="acctdd__name notranslate" translate="no">TripGo Member</div>' +
+          '<div class="acctdd__sub">' +
+            '<span class="acctdd__tier">🛡 Silver</span>' +
+            '<span class="acctdd__coin">🪙 0 <em>(≈ US$0)</em></span>' +
+          '</div>' +
+        '</div>' +
+        '<span class="acctdd__chev">›</span>' +
+      '</div>' +
+      '<div class="acctdd__list">' +
+        '<a class="acctdd__item" href="index.html#search"><span>🗓️</span> My bookings</a>' +
+        '<a class="acctdd__item" href="#"><span>👤</span> Manage my account</a>' +
+      '</div>' +
+      '<div class="acctdd__list">' +
+        '<a class="acctdd__item acctdd__item--plain" href="explore.html?cat=deals">Promo codes</a>' +
+        '<a class="acctdd__item acctdd__item--plain" href="index.html">Saved</a>' +
+        '<a class="acctdd__item acctdd__item--plain" href="explore.html?cat=inspiration">My posts</a>' +
+        '<a class="acctdd__item acctdd__item--plain" href="explore.html?cat=deals">Flight price alerts</a>' +
+      '</div>' +
+      '<div class="acctdd__list">' +
+        '<a class="acctdd__item acctdd__item--plain" href="#" id="acctSignout">Sign out</a>' +
+      '</div>'
+    );
+  }
+
+  function buildAcct() {
+    acctEl = document.createElement("div");
+    acctEl.className = "acctdd";
+    document.body.appendChild(acctEl);
+    acctEl.addEventListener("click", function (e) {
+      var a = e.target.closest("a");
+      if (!a) return;
+      if (a.id === "acctSignout") { e.preventDefault(); setUser(""); updateTriggers(); closeAccount(); flash2("You've been signed out."); return; }
+      if (a.getAttribute("href") === "#") e.preventDefault();
+      closeAccount();
+    });
+  }
+
+  function flash2(msg) {
+    var n = document.createElement("div");
+    n.className = "tg-toast"; n.textContent = msg;
+    document.body.appendChild(n);
+    setTimeout(function () { n.classList.add("is-on"); }, 10);
+    setTimeout(function () { n.classList.remove("is-on"); setTimeout(function () { n.remove(); }, 250); }, 1800);
+  }
+
+  function positionAcct(anchor) {
+    var r = anchor.getBoundingClientRect();
+    acctEl.style.top = (r.bottom + 8) + "px";
+    acctEl.style.right = Math.max(12, window.innerWidth - r.right) + "px";
+    acctEl.style.left = "auto";
+  }
+
+  function onOutsideAcct(e) {
+    if (acctEl && !acctEl.contains(e.target) && !e.target.closest("[data-signin], [data-dd='ddSignin']")) closeAccount();
+  }
+  function onEscAcct(e) { if (e.key === "Escape") closeAccount(); }
+
+  function openAccount(anchor) {
+    if (!acctEl) buildAcct();
+    acctEl.innerHTML = acctHtml();
+    positionAcct(anchor);
+    acctEl.classList.add("is-open");
+    setTimeout(function () {
+      document.addEventListener("click", onOutsideAcct, true);
+      document.addEventListener("keydown", onEscAcct);
+    }, 0);
+  }
+  function closeAccount() {
+    if (acctEl) acctEl.classList.remove("is-open");
+    document.removeEventListener("click", onOutsideAcct, true);
+    document.removeEventListener("keydown", onEscAcct);
+  }
+
   /* Reflect signed-in state on every sign-in trigger. */
   function updateTriggers() {
     var u = getUser();
@@ -211,7 +292,11 @@
     updateTriggers();
     document.addEventListener("click", function (e) {
       var t = e.target.closest("[data-signin], [data-dd='ddSignin'], #doSignin");
-      if (t) { e.preventDefault(); e.stopPropagation(); open(); }
+      if (t) {
+        e.preventDefault(); e.stopPropagation();
+        if (acctEl && acctEl.classList.contains("is-open")) { closeAccount(); return; }
+        if (getUser()) openAccount(t); else open();
+      }
     }, true);
   }
 

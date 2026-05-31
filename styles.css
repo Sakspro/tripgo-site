@@ -564,6 +564,35 @@ button { font-family: inherit; cursor: pointer; }
 .authm__dev { background: #eef5ff; color: #1763d6; border: 1px dashed #9cc4ff; border-radius: 8px;
   padding: 9px 12px; font-size: 12.5px; margin: 8px 0 4px; line-height: 1.5; }
 
+/* ===== Signed-in account dropdown (Trip.com member menu) ===== */
+.acctdd { position: fixed; width: 300px; max-width: calc(100vw - 24px); background: #fff;
+  border: 1px solid var(--line); border-radius: 14px; box-shadow: var(--shadow-lg); z-index: 1200;
+  overflow: hidden; display: none; }
+.acctdd.is-open { display: block; animation: pop .14s ease; }
+.acctdd__card { display: flex; align-items: center; gap: 12px; padding: 16px 16px 14px; position: relative;
+  background: linear-gradient(135deg, #e9f2ff, #f5f9ff); }
+.acctdd__avatar { width: 42px; height: 42px; border-radius: 50%; background: #cfe4ff; display: flex;
+  align-items: center; justify-content: center; font-size: 22px; flex: none; }
+.acctdd__who { flex: 1; min-width: 0; }
+.acctdd__name { font-weight: 800; font-size: 16px; color: var(--blue); }
+.acctdd__sub { display: flex; align-items: center; gap: 10px; margin-top: 6px; font-size: 12px; color: var(--muted); }
+.acctdd__tier { background: #e3e9f2; color: #5b6577; font-weight: 700; border-radius: 6px; padding: 2px 8px; font-size: 11px; }
+.acctdd__coin em { font-style: normal; color: #9aa3b2; }
+.acctdd__chev { position: absolute; right: 14px; top: 50%; transform: translateY(-50%); color: #9aa3b2; font-size: 22px; }
+.acctdd__list { padding: 6px 0; }
+.acctdd__list + .acctdd__list { border-top: 1px solid var(--line); }
+.acctdd__item { display: flex; align-items: center; gap: 12px; padding: 11px 18px; color: var(--ink);
+  text-decoration: none; font-size: 14px; font-weight: 600; }
+.acctdd__item span { width: 18px; text-align: center; }
+.acctdd__item--plain { font-weight: 500; }
+.acctdd__item:hover { background: #f3f7ff; }
+
+/* ===== Tiny toast ===== */
+.tg-toast { position: fixed; left: 50%; bottom: 28px; transform: translateX(-50%) translateY(12px);
+  background: #1a2b49; color: #fff; padding: 10px 18px; border-radius: 999px; font-size: 13px; font-weight: 600;
+  box-shadow: var(--shadow-lg); z-index: 1300; opacity: 0; transition: opacity .2s, transform .2s; }
+.tg-toast.is-on { opacity: 1; transform: translateX(-50%) translateY(0); }
+
 /* ===== Topbar language flag ===== */
 .tb-flag { width: 18px; height: 18px; border-radius: 50%; object-fit: cover;
   vertical-align: middle; display: inline-block; background: #eef2f7; }
