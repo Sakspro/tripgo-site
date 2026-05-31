@@ -590,6 +590,7 @@ button { font-family: inherit; cursor: pointer; }
 /* ===========================================================
    My Bookings page (bookings.html)
    =========================================================== */
+[hidden] { display: none !important; }
 .ord-gate { min-height: 62vh; display: flex; align-items: center; justify-content: center; padding: 40px 16px; }
 .ord-gate__card { text-align: center; max-width: 440px; }
 .ord-gate__ic { font-size: 54px; }
