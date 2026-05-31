@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Complete your TripGo booking — choose a date, select tickets and confirm instantly." />
+  <title>Booking | TripGo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- ===== Top bar ===== -->
+  <header class="topbar">
+    <div class="topbar__inner">
+      <a href="index.html" class="brand notranslate" translate="no" aria-label="TripGo home"><span class="brand__mark">✈</span>Trip<span>Go</span>.com</a>
+      <div class="globalsearch">
+        <span class="globalsearch__icon">🔍</span>
+        <input type="text" placeholder="Destinations, attractions, hotels, and more" aria-label="Search the site" />
+      </div>
+      <nav class="topbar__links">
+        <a href="app.html" class="topbar__link"><span>📱</span> App</a>
+        <a href="index.html" class="topbar__link">List your property</a>
+        <button class="topbar__link dd-trigger" id="currTrigger" aria-haspopup="true" aria-expanded="false">
+          <span>🌐</span> <span id="currLabel">USD</span> <span class="caret">▾</span>
+        </button>
+        <a href="support.html" class="topbar__link">Customer support</a>
+        <a href="bookings.html" class="topbar__link">Find bookings</a>
+        <a href="index.html" class="btn btn--outline btn--sm" data-signin>Sign in / register</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="bkpage container">
+    <nav class="bk-crumbs" id="bkCrumbs"></nav>
+    <h1 class="bk-title" id="bkHeading">Complete your booking</h1>
+
+    <div class="bk-layout">
+      <!-- Left: booking steps -->
+      <section class="bk-main">
+        <!-- Product header -->
+        <div class="bk-product">
+          <div class="bk-product__img" id="bkImg"></div>
+          <div class="bk-product__info">
+            <h2 id="bkName">Attraction Ticket</h2>
+            <div class="bk-product__meta" id="bkMeta">⭐ 4.8 · Instant confirmation</div>
+            <div class="bk-chips">
+              <span>✅ Instant confirmation</span>
+              <span>🆓 Free cancellation</span>
+              <span>📱 Mobile voucher</span>
+              <span>⚡ Skip-the-line</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 1: date -->
+        <div class="bk-step">
+          <h3><span class="bk-step__n">1</span> Select a date</h3>
+          <div class="bk-field">
+            <input type="date" id="bkDate" />
+            <p class="bk-hint">Free cancellation up to 24 hours before your selected date.</p>
+          </div>
+        </div>
+
+        <!-- Step 2: tickets -->
+        <div class="bk-step">
+          <h3><span class="bk-step__n">2</span> Select tickets</h3>
+          <div class="bk-pkg" id="bkPkg"></div>
+        </div>
+
+        <!-- Step 3: contact -->
+        <div class="bk-step">
+          <h3><span class="bk-step__n">3</span> Contact details</h3>
+          <div class="bk-form">
+            <div class="bk-row">
+              <label>Full name<input type="text" id="bkFullname" placeholder="As shown on ID / passport" /></label>
+            </div>
+            <div class="bk-row bk-row--2">
+              <label>Email<input type="email" id="bkEmail" placeholder="you@example.com" /></label>
+              <label>Phone<input type="tel" id="bkPhone" placeholder="+1 555 000 0000" /></label>
+            </div>
+            <p class="bk-hint">Your voucher and confirmation will be sent to this email.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Right: order summary -->
+      <aside class="bk-summary">
+        <h3>Order summary</h3>
+        <div class="bk-sum__row"><span>Date</span><b id="sumDate">—</b></div>
+        <div id="sumLines"></div>
+        <div class="bk-sum__div"></div>
+        <div class="bk-sum__total"><span>Total</span><b id="sumTotal">US$0</b></div>
+        <button class="btn btn--primary btn--block" id="bkSubmit">Submit order</button>
+        <ul class="bk-trust">
+          <li>🔒 Secure payment</li>
+          <li>🆓 Free cancellation</li>
+          <li>📞 24/7 customer support</li>
+        </ul>
+      </aside>
+    </div>
+  </main>
+
+  <!-- Confirmation overlay -->
+  <div class="bk-done" id="bkDone" hidden>
+    <div class="bk-done__card">
+      <div class="bk-done__ic">🎉</div>
+      <h2>Booking confirmed!</h2>
+      <p>Your order <strong class="notranslate" translate="no" id="bkOrderNo"></strong> is confirmed. A voucher has been sent to your email.</p>
+      <div class="bk-done__actions">
+        <a class="btn btn--primary" href="bookings.html">View my bookings</a>
+        <a class="btn btn--outline" href="index.html">Back to home</a>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer container">
+    <div class="footer__bottom">© <span id="year"></span> TripGo Travel. &nbsp;·&nbsp; 🌐 English (XX) · USD</div>
+  </footer>
+
+  <script src="i18n.js"></script>
+  <script src="region.js"></script>
+  <script src="signin.js"></script>
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+    try { var c = localStorage.getItem("tg_curr"); var lc = document.getElementById("currLabel"); if (c && lc) lc.textContent = c; } catch (e) {}
+
+    function qp(k, def){ var v = new URLSearchParams(location.search).get(k); return v === null ? def : v; }
+    var P = {
+      title: qp("title", "Attraction Ticket"),
+      price: Math.max(1, Math.round(Number(qp("price", "49")))),
+      img: qp("img", ""),
+      rating: qp("rating", "4.8"),
+      city: qp("city", ""),
+      cat: qp("cat", "attraction"),
+      dur: qp("dur", "")
+    };
+
+    // Header
+    document.getElementById("bkName").textContent = P.title;
+    document.getElementById("bkHeading").textContent = P.title;
+    document.title = P.title + " | Booking · TripGo";
+    var metaBits = ["⭐ " + P.rating];
+    if (P.dur) metaBits.push("⏱ " + P.dur);
+    if (P.city) metaBits.push("📍 " + P.city);
+    document.getElementById("bkMeta").innerHTML = metaBits.join(" &nbsp;·&nbsp; ");
+    var imgSrc = P.img || ("https://loremflickr.com/480/320/" + encodeURIComponent((P.city || "travel") + "," + P.cat));
+    document.getElementById("bkImg").style.backgroundImage = "url('" + imgSrc + "')";
+    document.getElementById("bkCrumbs").innerHTML =
+      '<a href="index.html">Home</a> <span>›</span> ' +
+      (P.city ? '<a href="explore.html?cat=private-tours&dest=' + encodeURIComponent(P.city) + '">' + P.city + '</a> <span>›</span> ' : '') +
+      'Booking';
+
+    // Tickets (Adult / Child / Infant)
+    var TYPES = [
+      { key: "adult", label: "Adult", sub: "Age 12+", mult: 1, qty: 1 },
+      { key: "child", label: "Child", sub: "Age 3–11", mult: 0.7, qty: 0 },
+      { key: "infant", label: "Infant", sub: "Age 0–2", mult: 0, qty: 0 }
+    ];
+    function priceOf(t){ return Math.round(P.price * t.mult); }
+
+    function renderPkg(){
+      document.getElementById("bkPkg").innerHTML =
+        '<div class="bk-pkg__head"><b>Standard Entry</b><span class="bk-pkg__sel">Selected</span></div>' +
+        TYPES.map(function(t){
+          var unit = priceOf(t);
+          return '<div class="bk-tk" data-key="' + t.key + '">' +
+            '<div class="bk-tk__l"><div class="bk-tk__name">' + t.label + '</div><div class="bk-tk__sub">' + t.sub + '</div></div>' +
+            '<div class="bk-tk__p">' + (unit === 0 ? "Free" : "US$" + unit) + '</div>' +
+            '<div class="bk-stepper"><button type="button" class="bk-mn" data-act="dec">−</button>' +
+            '<span class="bk-qty" id="qty-' + t.key + '">' + t.qty + '</span>' +
+            '<button type="button" class="bk-mn" data-act="inc">+</button></div>' +
+          '</div>';
+        }).join("");
+    }
+
+    function recalc(){
+      var lines = "", total = 0;
+      TYPES.forEach(function(t){
+        if (t.qty > 0){
+          var unit = priceOf(t), sub = unit * t.qty;
+          total += sub;
+          lines += '<div class="bk-sum__row"><span>' + t.label + ' × ' + t.qty + '</span><b>' + (sub === 0 ? "Free" : "US$" + sub) + '</b></div>';
+        }
+      });
+      document.getElementById("sumLines").innerHTML = lines || '<div class="bk-sum__row bk-sum__row--muted"><span>No tickets selected</span></div>';
+      document.getElementById("sumTotal").textContent = "US$" + total;
+      var dv = document.getElementById("bkDate").value;
+      document.getElementById("sumDate").textContent = dv ? new Date(dv).toLocaleDateString("en-GB",{day:"2-digit",month:"short",year:"numeric"}) : "—";
+    }
+
+    renderPkg(); recalc();
+
+    document.getElementById("bkPkg").addEventListener("click", function(e){
+      var btn = e.target.closest(".bk-mn"); if (!btn) return;
+      var key = btn.closest(".bk-tk").dataset.key;
+      var t = TYPES.find(function(x){ return x.key === key; });
+      t.qty = Math.max(0, t.qty + (btn.dataset.act === "inc" ? 1 : -1));
+      document.getElementById("qty-" + key).textContent = t.qty;
+      recalc();
+    });
+
+    var dateEl = document.getElementById("bkDate");
+    dateEl.min = new Date().toISOString().split("T")[0];
+    dateEl.addEventListener("change", recalc);
+
+    document.getElementById("bkSubmit").addEventListener("click", function(){
+      var totalQty = TYPES.reduce(function(s,t){ return s + t.qty; }, 0);
+      if (!dateEl.value){ alert("Please select a date for your visit."); dateEl.focus(); return; }
+      if (totalQty < 1){ alert("Please add at least one ticket."); return; }
+      var name = document.getElementById("bkFullname").value.trim();
+      var email = document.getElementById("bkEmail").value.trim();
+      if (!name){ alert("Please enter the lead traveller's name."); return; }
+      if (!/.+@.+\..+/.test(email)){ alert("Please enter a valid email for your voucher."); return; }
+      var no = "TG" + Math.floor(2400000000 + Math.random() * 99999999);
+      document.getElementById("bkOrderNo").textContent = no;
+      document.getElementById("bkDone").hidden = false;
+      document.body.style.overflow = "hidden";
+    });
+  </script>
+</body>
+</html>

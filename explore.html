@@ -263,17 +263,24 @@
         return {
           title: city + " " + x.t,
           img: "https://loremflickr.com/640/420/" + encodeURIComponent(city + "," + x.q),
-          dur: x.d, price: x.p, rating: x.r
+          dur: x.d, price: x.p, rating: x.r, city: city
         };
       });
     }
     function tourCard(t) {
+      var bookHref = "booking.html?cat=tour" +
+        "&title=" + encodeURIComponent(t.title) +
+        "&price=" + encodeURIComponent(t.price) +
+        "&img=" + encodeURIComponent(t.img) +
+        "&dur=" + encodeURIComponent(t.dur) +
+        "&rating=" + encodeURIComponent(t.rating) +
+        "&city=" + encodeURIComponent(t.city || "");
       return '<article class="tour-card">' +
         '<div class="tour-card__img" style="background-image:url(\'' + t.img + '\')"><span class="tour-card__badge">Private</span></div>' +
         '<div class="tour-card__body"><h3>' + t.title + '</h3>' +
         '<div class="tour-card__meta">⏱ ' + t.dur + ' &nbsp;·&nbsp; ⭐ ' + t.rating + '</div>' +
         '<div class="tour-card__foot"><span class="tour-card__price">from $<b>' + t.price + '</b> /group</span>' +
-        '<a class="btn btn--primary btn--sm" href="index.html#search">Book now</a></div></div></article>';
+        '<a class="btn btn--primary btn--sm" href="' + bookHref + '">Book now</a></div></div></article>';
     }
     function renderPrivateToursDest(name) {
       document.getElementById("exCrumb").innerHTML =
