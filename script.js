@@ -386,7 +386,11 @@ document.addEventListener("DOMContentLoaded", () => {
   renderContent();
   setActiveTab("hotels");
 
-  buildOptGrid($("#langGrid"), LANGS, state.language, v => { state.language = v; });
+  if (window.TGcurrentLangLabel) state.language = window.TGcurrentLangLabel();
+  buildOptGrid($("#langGrid"), LANGS, state.language, v => {
+    state.language = v;
+    if (window.TGsetLanguage) window.TGsetLanguage(v);
+  });
   buildOptGrid($("#currGrid"), CURRS, state.currency, v => {
     state.currency = v;
     $(".dd-trigger[data-dd='ddLang']").innerHTML = `<span>🌐</span> ${v} <span class="caret">▾</span>`;

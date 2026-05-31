@@ -14,7 +14,7 @@
   <!-- ===== Top bar ===== -->
   <header class="topbar">
     <div class="topbar__inner">
-      <a href="index.html" class="brand" aria-label="TripGo home"><span class="brand__mark">✈</span>Trip<span>Go</span>.com</a>
+      <a href="index.html" class="brand notranslate" translate="no" aria-label="TripGo home"><span class="brand__mark">✈</span>Trip<span>Go</span>.com</a>
       <div class="globalsearch">
         <span class="globalsearch__icon">🔍</span>
         <input type="text" placeholder="Destinations, attractions, hotels, and more" aria-label="Search the site" />
@@ -65,7 +65,7 @@
           <div class="phone">
             <div class="phone__notch"></div>
             <div class="phone__screen">
-              <div class="phone__brand">✈ Trip<span>Go</span></div>
+              <div class="phone__brand notranslate" translate="no">✈ Trip<span>Go</span></div>
               <div class="phone__hero">Your Trip<br/>Starts Here</div>
               <div class="phone__card">
                 <span class="phone__chip is-active">🏨 Hotels</span>
@@ -144,6 +144,7 @@
     <button class="btn btn--primary btn--block popover__done" id="ddLangSave">Save</button>
   </div>
 
+  <script src="i18n.js"></script>
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
 
@@ -163,6 +164,8 @@
         for (var k in LOCALES) { if (LOCALES[k] === loc) return k; }
         return null;
       }
+
+      if (window.TGcurrentLangLabel) state.language = window.TGcurrentLangLabel();
 
       var trigger = document.getElementById("currTrigger");
       var pop = document.getElementById("ddLang");
@@ -218,6 +221,7 @@
         document.querySelector(".footer__bottom").innerHTML =
           "© " + new Date().getFullYear() + " TripGo Travel. &nbsp;·&nbsp; 🌐 " + state.language + " · " + state.currency;
         closePop();
+        if (window.TGsetLanguage) window.TGsetLanguage(state.language);
       });
     })();
   </script>

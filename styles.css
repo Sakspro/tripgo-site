@@ -318,6 +318,14 @@ button { font-family: inherit; cursor: pointer; }
   .appstats { gap: 22px; }
 }
 
+/* ===== Google Translate widget — hide chrome, keep native look ===== */
+#google_translate_element { display: none !important; }
+.goog-te-banner-frame.skiptranslate,
+iframe.skiptranslate { display: none !important; visibility: hidden !important; }
+body { top: 0 !important; position: static !important; }
+.goog-tooltip, #goog-gt-tt, .goog-te-balloon-frame { display: none !important; }
+.goog-text-highlight { background: none !important; box-shadow: none !important; }
+
 /* ===== Responsive ===== */
 @media (max-width: 1024px) {
   .claimrow { grid-template-columns: repeat(2, 1fr); }
