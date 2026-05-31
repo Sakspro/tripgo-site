@@ -214,7 +214,7 @@
         '<span class="acctdd__chev">›</span>' +
       '</div>' +
       '<div class="acctdd__list">' +
-        '<a class="acctdd__item" href="index.html#search"><span>🗓️</span> My bookings</a>' +
+        '<a class="acctdd__item" href="bookings.html"><span>🗓️</span> My bookings</a>' +
         '<a class="acctdd__item" href="#"><span>👤</span> Manage my account</a>' +
       '</div>' +
       '<div class="acctdd__list">' +

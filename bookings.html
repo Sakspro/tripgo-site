@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="My Bookings — view and manage all your TripGo orders: hotels, flights, trains, tours and more." />
+  <title>My Bookings | TripGo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- ===== Top bar ===== -->
+  <header class="topbar">
+    <div class="topbar__inner">
+      <a href="index.html" class="brand notranslate" translate="no" aria-label="TripGo home"><span class="brand__mark">✈</span>Trip<span>Go</span>.com</a>
+      <div class="globalsearch">
+        <span class="globalsearch__icon">🔍</span>
+        <input type="text" placeholder="Destinations, attractions, hotels, and more" aria-label="Search the site" />
+      </div>
+      <nav class="topbar__links">
+        <a href="app.html" class="topbar__link"><span>📱</span> App</a>
+        <a href="index.html" class="topbar__link">List your property</a>
+        <button class="topbar__link dd-trigger" id="currTrigger" aria-haspopup="true" aria-expanded="false">
+          <span>🌐</span> <span id="currLabel">USD</span> <span class="caret">▾</span>
+        </button>
+        <a href="support.html" class="topbar__link">Customer support</a>
+        <a href="bookings.html" class="topbar__link" style="color:var(--blue);font-weight:700;">Find bookings</a>
+        <a href="index.html" class="btn btn--outline btn--sm" data-signin>Sign in / register</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ===== Sign-in gate (shown when signed out) ===== -->
+  <section class="ord-gate" id="ordGate" hidden>
+    <div class="ord-gate__card">
+      <div class="ord-gate__ic">🧳</div>
+      <h1>Sign in to view your bookings</h1>
+      <p>All your trips — hotels, flights, trains, tours and more — in one place.</p>
+      <a href="index.html" class="btn btn--primary" data-signin>Sign in / register</a>
+    </div>
+  </section>
+
+  <!-- ===== Orders ===== -->
+  <main class="ordpage container" id="ordPage" hidden>
+    <h1 class="ord-title">My Bookings</h1>
+
+    <div class="ord-layout">
+      <!-- Account sidebar -->
+      <aside class="ord-side">
+        <div class="ord-side__card">
+          <div class="ord-side__avatar">🧑</div>
+          <div>
+            <div class="ord-side__name notranslate" translate="no">TripGo Member</div>
+            <div class="ord-side__tier">🛡 Silver · 🪙 0</div>
+          </div>
+        </div>
+        <nav class="ord-side__nav">
+          <a class="ord-side__link is-active" href="bookings.html"><span>🗓️</span> My Bookings</a>
+          <a class="ord-side__link" href="#"><span>👤</span> Manage my account</a>
+          <a class="ord-side__link" href="explore.html?cat=deals"><span>🏷️</span> Promo codes</a>
+          <a class="ord-side__link" href="index.html"><span>❤️</span> Saved</a>
+          <a class="ord-side__link" href="explore.html?cat=inspiration"><span>📝</span> My posts</a>
+          <a class="ord-side__link" href="explore.html?cat=deals"><span>🔔</span> Flight price alerts</a>
+        </nav>
+      </aside>
+
+      <!-- Orders panel -->
+      <section class="ord-main">
+        <!-- Status tabs -->
+        <div class="ord-tabs" id="ordTabs">
+          <button class="ord-tab is-active" data-status="all">All</button>
+          <button class="ord-tab" data-status="topay">To be paid</button>
+          <button class="ord-tab" data-status="processing">Processing</button>
+          <button class="ord-tab" data-status="completed">Completed</button>
+          <button class="ord-tab" data-status="cancelled">Cancelled</button>
+          <button class="ord-tab" data-status="refund">Refunds</button>
+        </div>
+
+        <!-- Category chips -->
+        <div class="ord-cats" id="ordCats">
+          <button class="ord-cat is-active" data-cat="all">All</button>
+          <button class="ord-cat" data-cat="hotel">Hotels</button>
+          <button class="ord-cat" data-cat="flight">Flights</button>
+          <button class="ord-cat" data-cat="train">Trains</button>
+          <button class="ord-cat" data-cat="bundle">Flight + Hotel</button>
+          <button class="ord-cat" data-cat="tour">Tours</button>
+          <button class="ord-cat" data-cat="attraction">Attractions</button>
+          <button class="ord-cat" data-cat="car">Cars</button>
+        </div>
+
+        <!-- Toolbar -->
+        <form class="ord-toolbar" id="ordToolbar" onsubmit="return false;">
+          <div class="ord-search">
+            <span>🔍</span>
+            <input type="text" id="ordSearch" placeholder="Search by order no., destination or traveller" />
+          </div>
+          <select id="ordRange" class="ord-range" aria-label="Date range">
+            <option value="all">All dates</option>
+            <option value="90">Last 90 days</option>
+            <option value="365">Last 12 months</option>
+          </select>
+        </form>
+
+        <!-- Order list -->
+        <div class="ord-list" id="ordList"></div>
+
+        <!-- Empty state -->
+        <div class="ord-empty" id="ordEmpty" hidden>
+          <div class="ord-empty__ic">📭</div>
+          <h3>No orders found</h3>
+          <p>You have no bookings that match this filter yet.</p>
+          <a class="btn btn--primary" href="index.html#search">Start booking</a>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- ===== Footer ===== -->
+  <footer class="footer container">
+    <div class="footer__cols">
+      <div class="footer__col">
+        <h4>Contact us</h4>
+        <a href="support.html">Customer support</a><a href="support.html">Service Guarantee</a><a href="support.html">More service info</a>
+      </div>
+      <div class="footer__col">
+        <h4>About</h4>
+        <a href="#">About TripGo</a><a href="#">News</a><a href="#">Careers</a><a href="#">Terms &amp; Conditions</a><a href="#">Privacy Statement</a>
+      </div>
+      <div class="footer__col">
+        <h4>Other services</h4>
+        <a href="#">TripGo Rewards</a><a href="#">Affiliate program</a><a href="index.html">Back to home</a>
+      </div>
+      <div class="footer__col">
+        <h4>Get the app</h4>
+        <div class="paychips"><span>iOS</span><span>Android</span><span>Huawei</span></div>
+      </div>
+    </div>
+    <div class="footer__bottom">© <span id="year"></span> TripGo Travel. &nbsp;·&nbsp; 🌐 English (XX) · USD</div>
+  </footer>
+
+  <script src="i18n.js"></script>
+  <script src="region.js"></script>
+  <script src="signin.js"></script>
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+    var lc = document.getElementById("currLabel");
+    try { var c = localStorage.getItem("tg_curr"); if (c && lc) lc.textContent = c; } catch (e) {}
+
+    // ---- Sample orders ----
+    var ICONS = { hotel:"🏨", flight:"✈️", train:"🚄", bundle:"🧳", tour:"🗺️", attraction:"🎟️", car:"🚗" };
+    var STATUS = {
+      topay:      { label:"To be paid",  cls:"is-topay" },
+      processing: { label:"Processing",  cls:"is-proc" },
+      completed:  { label:"Completed",   cls:"is-done" },
+      cancelled:  { label:"Cancelled",   cls:"is-cancel" },
+      refund:     { label:"Refunded",    cls:"is-refund" }
+    };
+    function daysAgo(n){ var d=new Date(); d.setDate(d.getDate()-n); return d; }
+    var ORDERS = [
+      { id:"TG2480017742", cat:"hotel", title:"The Peninsula Tokyo", sub:"Tokyo, Japan · Deluxe Room", date:daysAgo(6), info:"2 nights · 2 guests", price:642, status:"completed" },
+      { id:"TG2480013355", cat:"flight", title:"Singapore → Bangkok", sub:"Singapore Airlines · SQ712 · Economy", date:daysAgo(2), info:"1 adult · One-way", price:189, status:"processing" },
+      { id:"TG2480012001", cat:"attraction", title:"Universal Studios Singapore", sub:"1-Day Pass · Mobile voucher", date:daysAgo(1), info:"2 adults", price:118, status:"topay" },
+      { id:"TG2479998820", cat:"train", title:"Paris → Amsterdam", sub:"Eurostar · Standard Premier", date:daysAgo(40), info:"1 adult", price:96, status:"completed" },
+      { id:"TG2479990110", cat:"tour", title:"Bali Private Day Tour", sub:"Ubud · Waterfalls & Rice Terraces", date:daysAgo(120), info:"4 travellers", price:240, status:"cancelled" },
+      { id:"TG2479980004", cat:"car", title:"Compact Car Rental", sub:"Dubai Intl Airport (DXB) · Toyota Corolla", date:daysAgo(15), info:"3 days", price:135, status:"refund" },
+      { id:"TG2479970077", cat:"bundle", title:"Seoul Flight + Hotel", sub:"ICN return · Myeongdong 4★ · 3 nights", date:daysAgo(75), info:"2 adults", price:820, status:"completed" }
+    ];
+
+    var state = { status:"all", cat:"all", q:"", range:"all" };
+
+    function fmtDate(d){ return d.toLocaleDateString("en-GB",{ day:"2-digit", month:"short", year:"numeric" }); }
+
+    function actionsFor(o){
+      if (o.status === "topay") return '<button class="btn btn--primary btn--sm">Pay now</button><a class="btn btn--outline btn--sm" href="#">View details</a>';
+      if (o.status === "completed") return '<a class="btn btn--outline btn--sm" href="#">Book again</a><a class="btn btn--outline btn--sm" href="#">View details</a>';
+      if (o.status === "processing") return '<a class="btn btn--outline btn--sm" href="support.html">Contact support</a><a class="btn btn--outline btn--sm" href="#">View details</a>';
+      return '<a class="btn btn--outline btn--sm" href="#">View details</a>';
+    }
+
+    function render(){
+      var list = document.getElementById("ordList");
+      var empty = document.getElementById("ordEmpty");
+      var now = Date.now();
+      var rows = ORDERS.filter(function(o){
+        if (state.status !== "all" && o.status !== state.status) return false;
+        if (state.cat !== "all" && o.cat !== state.cat) return false;
+        if (state.range !== "all" && (now - o.date.getTime()) > Number(state.range)*86400000) return false;
+        if (state.q){
+          var hay = (o.title + " " + o.sub + " " + o.id).toLowerCase();
+          if (hay.indexOf(state.q.toLowerCase()) === -1) return false;
+        }
+        return true;
+      });
+
+      if (!rows.length){ list.innerHTML = ""; empty.hidden = false; return; }
+      empty.hidden = true;
+      list.innerHTML = rows.map(function(o){
+        var st = STATUS[o.status];
+        return ''+
+        '<article class="order">'+
+          '<div class="order__ic">'+ (ICONS[o.cat]||"📦") +'</div>'+
+          '<div class="order__main">'+
+            '<div class="order__top"><h3 class="order__title">'+ o.title +'</h3>'+
+              '<span class="order__status '+ st.cls +'">'+ st.label +'</span></div>'+
+            '<p class="order__sub">'+ o.sub +'</p>'+
+            '<p class="order__meta">'+ fmtDate(o.date) +' · '+ o.info +' · <span class="order__no">No. '+ o.id +'</span></p>'+
+          '</div>'+
+          '<div class="order__right">'+
+            '<div class="order__price">US$'+ o.price +'</div>'+
+            '<div class="order__actions">'+ actionsFor(o) +'</div>'+
+          '</div>'+
+        '</article>';
+      }).join("");
+    }
+
+    function bindTabs(wrap, key, sel){
+      document.getElementById(wrap).addEventListener("click", function(e){
+        var b = e.target.closest("button"); if(!b) return;
+        this.querySelectorAll("button").forEach(function(x){ x.classList.remove("is-active"); });
+        b.classList.add("is-active");
+        state[key] = b.dataset[sel];
+        render();
+      });
+    }
+    bindTabs("ordTabs", "status", "status");
+    bindTabs("ordCats", "cat", "cat");
+    document.getElementById("ordSearch").addEventListener("input", function(){ state.q = this.value.trim(); render(); });
+    document.getElementById("ordRange").addEventListener("change", function(){ state.range = this.value; render(); });
+
+    // ---- Sign-in gate ----
+    function signedIn(){ try { return !!localStorage.getItem("tg_user"); } catch(e){ return false; } }
+    function syncGate(){
+      var gate = document.getElementById("ordGate");
+      var page = document.getElementById("ordPage");
+      if (signedIn()){
+        gate.hidden = true; page.hidden = false;
+        var u = localStorage.getItem("tg_user") || "";
+        var nm = u.indexOf("@") > -1 ? u.split("@")[0] : u;
+        document.querySelectorAll(".ord-side__name").forEach(function(el){ el.textContent = nm ? nm : "TripGo Member"; });
+        render();
+      } else {
+        gate.hidden = false; page.hidden = true;
+      }
+    }
+    syncGate();
+    setInterval(syncGate, 600); // reveal once the user signs in via the modal
+  </script>
+</body>
+</html>
