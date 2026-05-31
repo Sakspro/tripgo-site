@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="TripGo Customer Support — get help with bookings, refunds and changes. 24/7 support, Service Guarantee, help centre and FAQs." />
+  <title>Customer Support | TripGo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- ===== Top bar ===== -->
+  <header class="topbar">
+    <div class="topbar__inner">
+      <a href="index.html" class="brand notranslate" translate="no" aria-label="TripGo home"><span class="brand__mark">✈</span>Trip<span>Go</span>.com</a>
+      <div class="globalsearch">
+        <span class="globalsearch__icon">🔍</span>
+        <input type="text" placeholder="Destinations, attractions, hotels, and more" aria-label="Search the site" />
+      </div>
+      <nav class="topbar__links">
+        <a href="app.html" class="topbar__link"><span>📱</span> App</a>
+        <a href="index.html" class="topbar__link">List your property</a>
+        <button class="topbar__link dd-trigger" id="currTrigger" aria-haspopup="true" aria-expanded="false">
+          <span>🌐</span> <span id="currLabel">USD</span> <span class="caret">▾</span>
+        </button>
+        <a href="support.html" class="topbar__link" style="color:var(--blue);font-weight:700;">Customer support</a>
+        <a href="index.html" class="topbar__link">Find bookings</a>
+        <a href="index.html" class="btn btn--outline btn--sm">Sign in / register</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="supportpage">
+    <!-- ===== Hero + help search ===== -->
+    <section class="sup-hero">
+      <div class="sup-hero__bg"></div>
+      <div class="sup-hero__inner">
+        <h1>Customer Support</h1>
+        <p>We're here for you 24/7. Search our help centre or browse the topics below.</p>
+        <form class="sup-search" id="supSearch" onsubmit="return false;">
+          <span class="sup-search__ic">🔍</span>
+          <input type="text" id="supSearchInput" placeholder="Describe your issue, e.g. “cancel my hotel booking”" aria-label="Search help" />
+          <button class="btn btn--primary" type="submit">Search</button>
+        </form>
+        <div class="sup-quick">
+          <span>Popular:</span>
+          <a href="#faq">Cancel a booking</a>
+          <a href="#faq">Refund status</a>
+          <a href="#faq">Change dates</a>
+          <a href="#contact">Contact us</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Service guarantee ===== -->
+    <section class="container sup-guarantee">
+      <div class="sup-guarantee__icon">🛡️</div>
+      <div class="sup-guarantee__txt">
+        <h2>Travel worry-free with our reliable support</h2>
+        <p>Thanks to the extensive <strong>TripGo Service Guarantee</strong>, your booking is protected against unexpected issues that might come up — from price differences to cancellations.</p>
+      </div>
+      <a href="#contact" class="btn btn--outline">Learn more</a>
+    </section>
+
+    <!-- ===== Help topics ===== -->
+    <section class="container sup-topics">
+      <h2 class="sup-h2">How can we help you?</h2>
+      <div class="topicgrid">
+        <a href="#faq" class="topic"><span class="topic__ic">✈️</span><h3>Flights</h3><p>Changes, cancellations, baggage and check-in</p></a>
+        <a href="#faq" class="topic"><span class="topic__ic">🏨</span><h3>Hotels &amp; Homes</h3><p>Bookings, modifications and special requests</p></a>
+        <a href="#faq" class="topic"><span class="topic__ic">🚄</span><h3>Trains</h3><p>Tickets, refunds and rescheduling</p></a>
+        <a href="#faq" class="topic"><span class="topic__ic">🚗</span><h3>Car rentals</h3><p>Pick-up, drop-off and driver requirements</p></a>
+        <a href="#faq" class="topic"><span class="topic__ic">🎟️</span><h3>Attractions &amp; Tours</h3><p>Vouchers, entry and availability</p></a>
+        <a href="#faq" class="topic"><span class="topic__ic">💳</span><h3>Account &amp; payment</h3><p>Sign-in, refunds, invoices and security</p></a>
+      </div>
+    </section>
+
+    <!-- ===== FAQ ===== -->
+    <section class="container sup-faq" id="faq">
+      <h2 class="sup-h2">Frequently asked questions</h2>
+      <div class="faqlist">
+        <details class="faq"><summary>How do I cancel or change my booking?</summary><div class="faq__body">Go to <em>Find bookings</em> (or <em>My Trips</em> in the app), open the booking you want to change, and choose <em>Cancel</em> or <em>Modify</em>. Eligibility and fees depend on the provider's policy, which is shown before you confirm.</div></details>
+        <details class="faq"><summary>When will I receive my refund?</summary><div class="faq__body">Approved refunds are returned to your original payment method. Most refunds arrive within 7–14 business days, though some banks may take a little longer.</div></details>
+        <details class="faq"><summary>Where can I find my booking confirmation?</summary><div class="faq__body">Confirmations are emailed to you instantly and are always available under <em>Find bookings</em>. Signed-in users can also view them in the app under <em>My Trips</em>.</div></details>
+        <details class="faq"><summary>How do I contact a hotel, airline or partner?</summary><div class="faq__body">Open your booking to see the partner's contact details, or use our 24/7 live chat below and we'll reach out on your behalf.</div></details>
+        <details class="faq"><summary>How do I use a coupon or promo code?</summary><div class="faq__body">Enter your code on the payment page before confirming. App-exclusive coupons are applied automatically when you're signed in.</div></details>
+        <details class="faq"><summary>Is my payment secure?</summary><div class="faq__body">Yes. All payments are encrypted and processed over secure connections, and we never store your full card details.</div></details>
+      </div>
+    </section>
+
+    <!-- ===== Get help in the app ===== -->
+    <section class="sup-app">
+      <div class="container sup-app__inner">
+        <div class="sup-app__text">
+          <h2>It's easy to get help in the app</h2>
+          <ul class="sup-app__list">
+            <li>⚡ Get help in one click</li>
+            <li>🧳 Effortless booking management</li>
+            <li>📞 Free in-app calls to support</li>
+            <li>🔔 Real-time travel updates</li>
+          </ul>
+          <div class="storebtns">
+            <a href="#" class="store-btn"><span class="store-btn__ic"></span><span class="store-btn__txt"><small>Download on the</small>App Store</span></a>
+            <a href="https://github.com/Sakspro/tripgo-app/releases/latest/download/app-release.apk" class="store-btn" download="TripGo.apk" rel="noopener"><span class="store-btn__ic">▶</span><span class="store-btn__txt"><small>GET IT ON</small>Google Play</span></a>
+          </div>
+        </div>
+        <div class="sup-app__qr">
+          <img alt="Scan to download the TripGo app" src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://trip-clone-mocha.vercel.app/app" />
+          <span>Scan to download</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Contact ===== -->
+    <section class="container sup-contact" id="contact">
+      <h2 class="sup-h2">Still need help? Contact us</h2>
+      <div class="contactgrid">
+        <div class="contact"><span class="contact__ic">💬</span><h3>Live chat</h3><p>Chat with a support agent any time, day or night.</p><button class="btn btn--primary btn--sm" onclick="alert('Demo only — live chat would open here.')">Start chat</button></div>
+        <div class="contact"><span class="contact__ic">📞</span><h3>Call us</h3><p>24/7 multilingual phone support for urgent issues.</p><a class="btn btn--outline btn--sm" href="tel:+10000000000">+1 000 000 0000</a></div>
+        <div class="contact"><span class="contact__ic">✉️</span><h3>Email</h3><p>Send us the details and we'll reply within 24 hours.</p><a class="btn btn--outline btn--sm" href="mailto:support@tripgo.example">support@tripgo.example</a></div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== Footer ===== -->
+  <footer class="footer container">
+    <div class="footer__cols">
+      <div class="footer__col">
+        <h4>Contact us</h4>
+        <a href="support.html">Customer support</a><a href="support.html">Service Guarantee</a><a href="support.html">More service info</a>
+      </div>
+      <div class="footer__col">
+        <h4>About</h4>
+        <a href="#">About TripGo</a><a href="#">News</a><a href="#">Careers</a><a href="#">Terms &amp; Conditions</a><a href="#">Privacy Statement</a>
+      </div>
+      <div class="footer__col">
+        <h4>Other services</h4>
+        <a href="#">TripGo Rewards</a><a href="#">Affiliate program</a><a href="index.html">Back to home</a>
+      </div>
+      <div class="footer__col">
+        <h4>Get the app</h4>
+        <div class="paychips"><span>iOS</span><span>Android</span><span>Huawei</span></div>
+      </div>
+    </div>
+    <div class="footer__bottom">© <span id="year"></span> TripGo Travel. &nbsp;·&nbsp; 🌐 English (XX) · USD</div>
+  </footer>
+
+  <script src="i18n.js"></script>
+  <script src="region.js"></script>
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+    var lc = document.getElementById("currLabel");
+    try { var c = localStorage.getItem("tg_curr"); if (c && lc) lc.textContent = c; } catch (e) {}
+  </script>
+</body>
+</html>
