@@ -1,4 +1,4 @@
-/* Vercel Cron — refresh Trip.com inspired cache every 6 hours */
+/* Vercel Cron — daily Trip.com inspired refresh (Hobby: once per day) */
 const { fetchInspiredFromTrip, contentHash } = require("../lib/trip-inspired");
 
 module.exports = async function handler(req, res) {
