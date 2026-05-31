@@ -55,11 +55,11 @@ function paxLabel() {
    SEARCH FORMS (per tab)
    =========================================================== */
 function cellDestination(label, value, ph) {
-  return `<div class="cell cell--grow"><span class="cell__label">${label}</span>
+  return `<div class="cell cell--grow cell--input"><span class="cell__label">${label}</span>
     <input class="cell__value js-text" value="${value}" placeholder="${ph}" /></div>`;
 }
 function cellPlace(label, cls, value, ph) {
-  return `<div class="cell"><span class="cell__label">${label}</span>
+  return `<div class="cell cell--input"><span class="cell__label">${label}</span>
     <input class="cell__value ${cls}" value="${value}" placeholder="${ph}" /></div>`;
 }
 const swapCell = `<div class="swapcell"><button type="button" class="swapbtn" id="swapBtn" title="Swap" aria-label="Swap">⇄</button></div>`;

@@ -116,6 +116,8 @@ button { font-family: inherit; cursor: pointer; }
 /* field cells */
 .cell { flex: 1 1 0; min-width: 150px; padding: 10px 14px; border-right: 1px solid var(--line); display: flex; flex-direction: column; gap: 3px; position: relative; cursor: pointer; }
 .cell:hover { background: #f8fafd; }
+.cell--input { cursor: text; }
+.cell--input:hover { background: #fff; }
 .cell--grow { flex: 2 1 0; }
 .cell:last-of-type { border-right: 0; }
 .cell__label { font-size: 11.5px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: .3px; }
@@ -144,6 +146,15 @@ button { font-family: inherit; cursor: pointer; }
 .dest-dropdown__empty {
   padding: 16px; font-size: 13px; color: var(--muted); text-align: center;
 }
+.dest-dropdown__loading {
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+  padding: 18px 16px; font-size: 13px; color: var(--muted);
+}
+.dest-spinner {
+  width: 16px; height: 16px; border: 2px solid #dbe3ef; border-top-color: var(--blue);
+  border-radius: 50%; animation: dest-spin .7s linear infinite;
+}
+@keyframes dest-spin { to { transform: rotate(360deg); } }
 .dest-item {
   display: flex; align-items: center; gap: 10px; width: 100%; border: 0; background: transparent;
   padding: 10px 16px; text-align: left; cursor: pointer; font: inherit;

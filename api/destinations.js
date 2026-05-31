@@ -15,6 +15,10 @@ try {
   hotFallback = null;
 }
 
+if (hotFallback && !hotCache.data) {
+  hotCache = { data: hotFallback, fetchedAt: Date.now() };
+}
+
 module.exports = async function handler(req, res) {
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader("Access-Control-Allow-Methods", "GET, OPTIONS");

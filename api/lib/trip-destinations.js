@@ -50,6 +50,9 @@ function cookieHeader(jar) {
   return Object.entries(jar).map(([k, v]) => k + "=" + v).join("; ");
 }
 
+var tripSession = null;
+var SESSION_TTL_MS = 30 * 60 * 1000;
+
 async function bootstrapSession() {
   const res = await fetch(TRIP_HOME, {
     headers: { "User-Agent": UA, Accept: "text/html,application/xhtml+xml" },
@@ -58,6 +61,14 @@ async function bootstrapSession() {
   const jar = parseCookies(res.headers.getSetCookie ? res.headers.getSetCookie() : []);
   const vid = jar.UBT_VID || jar.GUID || "09034104117166574508";
   return { jar, vid };
+}
+
+async function getSession() {
+  var now = Date.now();
+  if (tripSession && now - tripSession.at < SESSION_TTL_MS) return tripSession;
+  var boot = await bootstrapSession();
+  tripSession = { jar: boot.jar, vid: boot.vid, at: now };
+  return tripSession;
 }
 
 function makeHead(vid) {
@@ -157,7 +168,7 @@ async function searchDestinations(keyWord) {
   var q = (keyWord || "").trim();
   if (!q || q.length < 1) return { items: [], source: "trip.com" };
 
-  var session = await bootstrapSession();
+  var session = await getSession();
   var res = await tripPost(session.jar, "https://www.trip.com/htls/getKeywordSearch", keywordBody(q, session.vid));
 
   if (!ok(res)) return { items: [], source: "trip.com", error: true };
@@ -167,7 +178,7 @@ async function searchDestinations(keyWord) {
 }
 
 async function fetchHotDestinations() {
-  var session = await bootstrapSession();
+  var session = await getSession();
   var res = await tripPost(session.jar, "https://www.trip.com/htls/getHotDestination", {
     head: { locale: "en-XX", currency: "USD", group: "trip", site: "EN", source: "Online" },
   });
