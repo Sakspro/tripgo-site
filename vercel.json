@@ -16,7 +16,7 @@
       ]
     },
     {
-      "source": "/(styles.css|script.js|inspired.js|sidebar.js)",
+      "source": "/(styles.css|script.js|dest-search.js|inspired.js|sidebar.js)",
       "headers": [
         { "key": "Cache-Control", "value": "no-cache" }
       ]
@@ -31,6 +31,12 @@
       "source": "/api/sidebar",
       "headers": [
         { "key": "Cache-Control", "value": "public, s-maxage=3600, stale-while-revalidate=7200" }
+      ]
+    },
+    {
+      "source": "/api/destinations",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, s-maxage=600, stale-while-revalidate=1800" }
       ]
     }
   ]

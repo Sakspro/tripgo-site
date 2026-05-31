@@ -1,0 +1,29 @@
+{
+  "title": "Places you may like",
+  "groups": [
+    {
+      "name": "Popular Destinations",
+      "items": [
+        { "code": "2", "type": "CT", "typeLabel": "City", "label": "Shanghai", "subtitle": "China", "value": "Shanghai, China", "city": "Shanghai", "country": "China" },
+        { "code": "338", "type": "CT", "typeLabel": "City", "label": "London", "subtitle": "United Kingdom", "value": "London, United Kingdom", "city": "London", "country": "United Kingdom" },
+        { "code": "192", "type": "CT", "typeLabel": "City", "label": "Paris", "subtitle": "France", "value": "Paris, France", "city": "Paris", "country": "France" },
+        { "code": "633", "type": "CT", "typeLabel": "City", "label": "New York", "subtitle": "United States", "value": "New York, United States", "city": "New York", "country": "United States" },
+        { "code": "347", "type": "CT", "typeLabel": "City", "label": "Los Angeles", "subtitle": "United States", "value": "Los Angeles, United States", "city": "Los Angeles", "country": "United States" },
+        { "code": "359", "type": "CT", "typeLabel": "City", "label": "Bangkok", "subtitle": "Thailand", "value": "Bangkok, Thailand", "city": "Bangkok", "country": "Thailand" },
+        { "code": "228", "type": "CT", "typeLabel": "City", "label": "Tokyo", "subtitle": "Japan", "value": "Tokyo, Japan", "city": "Tokyo", "country": "Japan" },
+        { "code": "274", "type": "CT", "typeLabel": "City", "label": "Singapore", "subtitle": "Singapore", "value": "Singapore, Singapore", "city": "Singapore", "country": "Singapore" }
+      ]
+    }
+  ],
+  "items": [
+    { "code": "2", "type": "CT", "typeLabel": "City", "label": "Shanghai", "subtitle": "China", "value": "Shanghai, China", "city": "Shanghai", "country": "China" },
+    { "code": "338", "type": "CT", "typeLabel": "City", "label": "London", "subtitle": "United Kingdom", "value": "London, United Kingdom", "city": "London", "country": "United Kingdom" },
+    { "code": "192", "type": "CT", "typeLabel": "City", "label": "Paris", "subtitle": "France", "value": "Paris, France", "city": "Paris", "country": "France" },
+    { "code": "633", "type": "CT", "typeLabel": "City", "label": "New York", "subtitle": "United States", "value": "New York, United States", "city": "New York", "country": "United States" },
+    { "code": "347", "type": "CT", "typeLabel": "City", "label": "Los Angeles", "subtitle": "United States", "value": "Los Angeles, United States", "city": "Los Angeles", "country": "United States" },
+    { "code": "359", "type": "CT", "typeLabel": "City", "label": "Bangkok", "subtitle": "Thailand", "value": "Bangkok, Thailand", "city": "Bangkok", "country": "Thailand" },
+    { "code": "228", "type": "CT", "typeLabel": "City", "label": "Tokyo", "subtitle": "Japan", "value": "Tokyo, Japan", "city": "Tokyo", "country": "Japan" },
+    { "code": "274", "type": "CT", "typeLabel": "City", "label": "Singapore", "subtitle": "Singapore", "value": "Singapore, Singapore", "city": "Singapore", "country": "Singapore" }
+  ],
+  "source": "fallback"
+}

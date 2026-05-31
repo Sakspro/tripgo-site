@@ -135,6 +135,11 @@ function renderForm() {
   var extra = $("#formExtra");
   if (extra) extra.innerHTML = def.extra || "";
   updateDateLabels();
+  if (window.TGinitDestSearch) {
+    window.TGinitDestSearch($("#formFields"));
+    var extra = $("#formExtra");
+    if (extra) window.TGinitDestSearch(extra);
+  }
 }
 
 function setActiveTab(tab) {
