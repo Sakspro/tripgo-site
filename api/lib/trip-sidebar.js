@@ -29,6 +29,14 @@ function tabForItem(item) {
   return "cars";
 }
 
+function cloneHref(path, tab) {
+  var p = path || "";
+  if (/airport-transfers|chauffeur/i.test(p)) return "transfers.html";
+  if (/carhire|car-rental/i.test(p)) return "cars.html";
+  if (tab === "transfers") return "transfers.html";
+  return "cars.html";
+}
+
 function tripUrl(path) {
   if (!path) return TRIP_HOME + "#search";
   if (path.indexOf("http") === 0) return path;
@@ -59,21 +67,26 @@ async function fetchSidebarFromTrip() {
     ];
   }
 
+  var childItems = children.map(function (c) {
+    var tab = tabForItem(c);
+    return {
+      label: c.displayName,
+      tab: tab,
+      icon: emojiFor(c.icon),
+      path: c.path || "",
+      href: cloneHref(c.path, tab),
+      tripUrl: tripUrl(c.path),
+      sharkKey: c.displayNameSharkKey || "",
+    };
+  });
+
   return {
     cars: {
       title: parent.displayName || "Cars",
       icon: emojiFor(parent.icon),
       tab: "cars",
-      items: children.map(function (c) {
-        return {
-          label: c.displayName,
-          tab: tabForItem(c),
-          icon: emojiFor(c.icon),
-          path: c.path || "",
-          tripUrl: tripUrl(c.path),
-          sharkKey: c.displayNameSharkKey || "",
-        };
-      }),
+      href: childItems.length ? childItems[0].href : "cars.html",
+      items: childItems,
     },
     syncedAt: new Date().toISOString(),
     source: "trip.com",

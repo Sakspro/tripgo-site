@@ -3,12 +3,14 @@
     "title": "Cars",
     "icon": "🚗",
     "tab": "cars",
+    "href": "cars.html",
     "items": [
       {
         "label": "Car Rentals",
         "tab": "cars",
         "icon": "🚗",
         "path": "/carhire/?channelid=14409",
+        "href": "cars.html",
         "tripUrl": "https://www.trip.com/carhire/?channelid=14409",
         "sharkKey": "ButtonText_Carhire"
       },
@@ -17,11 +19,12 @@
         "tab": "transfers",
         "icon": "🚐",
         "path": "/airport-transfers/",
+        "href": "transfers.html",
         "tripUrl": "https://www.trip.com/airport-transfers/",
         "sharkKey": "ButtonText_AirportTransfers"
       }
     ]
   },
-  "syncedAt": "2026-05-31T12:32:21.363Z",
+  "syncedAt": "2026-05-31T12:38:06.677Z",
   "source": "trip.com"
 }

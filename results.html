@@ -57,7 +57,11 @@
     document.getElementById("resTitle").textContent = (LABELS[tab] || "Results") + " · " + q;
     document.getElementById("resSub").textContent = tab === "flights" ? from + " → " + q : "Showing the best options for your dates";
     document.getElementById("resCrumb").textContent = LABELS[tab] || "Results";
-    document.getElementById("resEdit").href = "index.html?tab=" + tab + "&dest=" + encodeURIComponent(q) + "#search";
+    document.getElementById("resEdit").href = tab === "cars"
+      ? "cars.html"
+      : tab === "transfers"
+      ? "transfers.html"
+      : "index.html?tab=" + tab + "&dest=" + encodeURIComponent(q) + "#search";
     document.getElementById("gs").value = q;
 
     function genResults() {
@@ -80,6 +84,20 @@
           return { t: q + " Attraction Pass " + (i + 1), m: "Skip-the-line · Mobile voucher", p: 35 + i * 12, r: 4.7 + (i % 3) * 0.1, img: b.img, tour: true };
         });
       }
+      if (tab === "cars") {
+        return [
+          { t: "Economy · " + q, m: "Automatic · Unlimited mileage", p: 42, r: 4.6, img: "photo-1449965408869-eaa3f722e40f", car: true },
+          { t: "Compact SUV · " + q, m: "Automatic · Free cancellation", p: 58, r: 4.7, img: "photo-1492144534655-ae79c964c9d7", car: true },
+          { t: "Full-size · " + q, m: "Automatic · Airport counter", p: 71, r: 4.5, img: "photo-1503376780353-7e6692767b70", car: true }
+        ];
+      }
+      if (tab === "transfers") {
+        return [
+          { t: from + " → " + q, m: "Private sedan · Meet & greet", p: 65, r: 4.8, img: "photo-1449965408869-eaa3f722e40f", car: true },
+          { t: from + " → " + q, m: "Shared shuttle · 24/7", p: 28, r: 4.5, img: "photo-1544629907-db4fefa4c465", car: true },
+          { t: from + " → " + q, m: "Premium van · Flight tracking", p: 95, r: 4.9, img: "photo-1503376780353-7e6692767b70", car: true }
+        ];
+      }
       return base;
     }
 
@@ -93,6 +111,8 @@
       document.getElementById("resList").innerHTML = list.map(function (r) {
         var href = r.flight
           ? "booking.html?cat=flight&title=" + encodeURIComponent(r.t) + "&price=" + r.p + "&city=" + encodeURIComponent(q)
+          : r.car
+          ? "booking.html?cat=car&title=" + encodeURIComponent(r.t) + "&price=" + r.p + "&city=" + encodeURIComponent(q)
           : r.tour
           ? "booking.html?cat=attraction&title=" + encodeURIComponent(r.t) + "&price=" + r.p + "&city=" + encodeURIComponent(q) + "&rating=" + r.r
           : "booking.html?cat=hotel&title=" + encodeURIComponent(r.t) + "&price=" + r.p + "&city=" + encodeURIComponent(q) + "&rating=" + r.r;

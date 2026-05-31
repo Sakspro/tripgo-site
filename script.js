@@ -406,13 +406,15 @@ function applySidebarCars(data) {
   var navLink = document.getElementById("carsNavLink");
   if (iconEl && cars.icon) iconEl.textContent = cars.icon;
   if (labelEl && cars.title) labelEl.textContent = cars.title;
-  if (navLink && cars.tab) navLink.dataset.tab = cars.tab;
+  if (navLink) {
+    navLink.href = cars.href || "cars.html";
+    navLink.removeAttribute("data-tab");
+  }
   TAB_LABEL.cars = cars.title || TAB_LABEL.cars;
-  var tabBtn = document.querySelector('.tab[data-tab="cars"]');
-  if (tabBtn && cars.title) tabBtn.innerHTML = (cars.icon || "🚗") + " " + cars.title;
   if (flyout && cars.items && cars.items.length) {
     flyout.innerHTML = cars.items.map(function (item) {
-      return '<a href="#search" data-tab="' + item.tab + '">' + item.label + '</a>';
+      var href = item.href || (item.tab === "transfers" ? "transfers.html" : "cars.html");
+      return '<a href="' + href + '">' + item.label + '</a>';
     }).join("");
   }
 }
@@ -597,8 +599,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
   /* Tab clicks (search pills + sidebar items share data-tab) */
   document.addEventListener("click", (e) => {
+    /* Mobile: tap sidebar row with flyout to expand submenu */
+    var flyoutRow = e.target.closest(".has-flyout > .sidenav__item");
+    if (flyoutRow && !e.target.closest(".flyout") && window.matchMedia("(max-width: 960px)").matches) {
+      var parent = flyoutRow.closest(".has-flyout");
+      if (parent) {
+        e.preventDefault();
+        parent.classList.toggle("is-open");
+        $$(".has-flyout").forEach(function (li) { if (li !== parent) li.classList.remove("is-open"); });
+        return;
+      }
+    }
+
     const tabEl = e.target.closest("[data-tab]");
     if (tabEl) {
+      e.preventDefault();
       setActiveTab(tabEl.dataset.tab);
       if (tabEl.closest(".sidenav")) {
         closeSidebar();
