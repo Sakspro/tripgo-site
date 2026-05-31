@@ -373,6 +373,25 @@ button { font-family: inherit; cursor: pointer; }
   .ex-grid, .ex-steps, .ex-tiers { grid-template-columns: 1fr; }
 }
 
+/* Private tours (explore.html?cat=private-tours) */
+.pt-search { background: #fff; border-radius: 14px; box-shadow: var(--shadow-md); padding: 16px;
+  margin-top: -34px; position: relative; z-index: 2; display: flex; gap: 14px; align-items: flex-end; flex-wrap: wrap; }
+.pt-search__field { flex: 1; min-width: 240px; display: flex; flex-direction: column; gap: 6px; }
+.pt-search__field label { font-size: 13px; font-weight: 700; color: var(--ink); }
+.pt-search__field input { border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; font-size: 14px; }
+.pt-search__field input:focus { outline: none; border-color: var(--blue); }
+.pt-search__check { display: flex; align-items: center; gap: 8px; font-size: 13.5px; color: var(--muted); padding-bottom: 12px; }
+.pt-search .btn { padding: 12px 30px; }
+.dest-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; margin-top: 16px; }
+.dest-card { position: relative; height: 175px; border-radius: 14px; overflow: hidden; background-size: cover;
+  background-position: center; background-color: #dfe6ef; display: flex; align-items: flex-end;
+  text-decoration: none; box-shadow: var(--shadow-sm); transition: transform .16s, box-shadow .16s; }
+.dest-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+.dest-card::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,.6), transparent 60%); }
+.dest-card__name { position: relative; z-index: 1; color: #fff; font-weight: 700; font-size: 17px; padding: 14px; text-shadow: 0 1px 6px rgba(0,0,0,.4); }
+@media (max-width: 900px) { .dest-grid { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 560px) { .dest-grid { grid-template-columns: repeat(2, 1fr); } }
+
 /* ===========================================================
    Service chat (chat.html)
    =========================================================== */

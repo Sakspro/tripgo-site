@@ -102,16 +102,22 @@
         ]
       },
       "private-tours": {
-        crumb: "Private Tours", title: "Private Tours",
-        sub: "Your own guide, your own pace. Tailor-made private experiences in 100+ destinations.",
-        cta: { label: "Plan a private tour", href: "explore.html?cat=planner" },
-        cards: [
-          { ic: "🗼", tag: "Paris", title: "Private Paris highlights", desc: "Eiffel Tower, Louvre & Seine cruise with a local guide." },
-          { ic: "🏯", tag: "Kyoto", title: "Kyoto temples & geisha district", desc: "Full-day private cultural tour with transport." },
-          { ic: "🏝️", tag: "Bali", title: "Bali hidden gems", desc: "Waterfalls, rice terraces and temples, just for your group." },
-          { ic: "🕌", tag: "Istanbul", title: "Istanbul old city", desc: "Hagia Sophia, Blue Mosque & Grand Bazaar, privately guided." },
-          { ic: "🏛️", tag: "Rome", title: "Rome & Vatican private", desc: "Skip-the-line Colosseum and Vatican with your guide." },
-          { ic: "🐘", tag: "Bangkok", title: "Bangkok & beyond", desc: "Temples, markets and an ethical elephant sanctuary." }
+        crumb: "Private Tours", title: "Private tours",
+        sub: "Tailor-made private trips designed around you — your own guide, your own pace.",
+        privateTours: true,
+        recommended: [
+          { name: "Beijing", q: "beijing,forbidden-city" },
+          { name: "Shanghai", q: "shanghai,skyline" },
+          { name: "Yunnan", q: "yunnan,china" },
+          { name: "Chengdu", q: "chengdu,panda" },
+          { name: "Japan", q: "japan,tokyo" }
+        ],
+        more: [
+          { name: "Zhangjiajie", q: "zhangjiajie" },
+          { name: "Chongqing", q: "chongqing,china" },
+          { name: "Xi'an", q: "xian,terracotta" },
+          { name: "Guilin", q: "guilin,china" },
+          { name: "Guangzhou", q: "guangzhou,china" }
         ]
       },
       "group-tours": {
@@ -201,6 +207,8 @@
       var cta = document.getElementById("exCta");
       if (d.cta) { cta.textContent = d.cta.label; cta.href = d.cta.href; cta.style.display = "inline-flex"; }
 
+      if (d.privateTours) { renderPrivateTours(d); return; }
+
       var html = "";
       if (d.steps) {
         html += '<section class="ex-steps">' + d.steps.map(function (s) {
@@ -227,6 +235,28 @@
           '<div class="ex-grid">' + d.cards.map(cardHtml).join("") + "</div>";
       }
       document.getElementById("exContent").innerHTML = html;
+    }
+
+    function destCard(d) {
+      var img = "https://loremflickr.com/640/420/" + encodeURIComponent(d.q);
+      return '<a class="dest-card" href="index.html#search" style="background-image:url(\'' + img + '\')">' +
+        '<span class="dest-card__name">' + d.name + '</span></a>';
+    }
+    function renderPrivateTours(d) {
+      var html =
+        '<section class="pt-search">' +
+          '<div class="pt-search__field"><label>Where do you want to visit?</label>' +
+            '<input type="text" id="ptInput" placeholder="Enter a destination or country"></div>' +
+          '<label class="pt-search__check"><input type="checkbox"> Customize my trip</label>' +
+          '<button class="btn btn--primary" id="ptSearch" type="button">Search</button>' +
+        '</section>' +
+        '<h2 class="ex-sectitle">Recommended destinations</h2>' +
+        '<div class="dest-grid">' + d.recommended.map(destCard).join("") + '</div>' +
+        '<h2 class="ex-sectitle">More recommended destinations</h2>' +
+        '<div class="dest-grid">' + d.more.map(destCard).join("") + '</div>';
+      document.getElementById("exContent").innerHTML = html;
+      var btn = document.getElementById("ptSearch");
+      if (btn) btn.addEventListener("click", function () { location.href = "index.html#search"; });
     }
     render();
   </script>
