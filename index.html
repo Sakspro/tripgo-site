@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="TripGo — Book flights, hotels, trains, car rentals, attractions and tours. Travel deals and promotions all in one place." />
+  <title>TripGo Official Site | Travel Deals and Promotions</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- ============ TOP BAR ============ -->
+  <header class="topbar">
+    <div class="topbar__inner">
+      <button class="iconbtn topbar__menu" id="sidebarToggle" aria-label="Toggle menu">☰</button>
+      <a href="#" class="brand" aria-label="TripGo home"><span class="brand__mark">✈</span>Trip<span>Go</span>.com</a>
+
+      <div class="globalsearch">
+        <span class="globalsearch__icon">🔍</span>
+        <input type="text" placeholder="Destinations, attractions, hotels, and more" aria-label="Search the site" />
+      </div>
+
+      <nav class="topbar__links">
+        <a href="#" class="topbar__link"><span>📱</span> App</a>
+        <a href="#" class="topbar__link">List your property</a>
+
+        <button class="topbar__link dd-trigger" data-dd="ddLang" aria-haspopup="true" aria-expanded="false">
+          <span>🌐</span> USD <span class="caret">▾</span>
+        </button>
+
+        <a href="#" class="topbar__link">Customer support</a>
+        <a href="#" class="topbar__link">Find bookings</a>
+
+        <button class="btn btn--outline btn--sm dd-trigger" data-dd="ddSignin" aria-haspopup="true" aria-expanded="false">Sign in / register</button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ============ LAYOUT: SIDEBAR + MAIN ============ -->
+  <div class="layout">
+    <!-- ---- Sidebar nav ---- -->
+    <aside class="sidebar" id="sidebar" aria-label="Primary navigation">
+      <ul class="sidenav">
+        <li><a href="#search" class="sidenav__item" data-tab="hotels"><span class="sidenav__ic">🏨</span>Hotels &amp; Homes</a></li>
+        <li><a href="#search" class="sidenav__item" data-tab="flights"><span class="sidenav__ic">✈️</span>Flights</a></li>
+        <li><a href="#search" class="sidenav__item" data-tab="trains"><span class="sidenav__ic">🚄</span>Trains</a></li>
+        <li class="has-flyout">
+          <a href="#search" class="sidenav__item" data-tab="cars"><span class="sidenav__ic">🚗</span>Cars<span class="sidenav__caret">›</span></a>
+          <div class="flyout">
+            <a href="#search" data-tab="cars">Car Rentals</a>
+            <a href="#search" data-tab="transfers">Airport Transfers</a>
+            <a href="#">Chauffeur Service</a>
+          </div>
+        </li>
+        <li class="has-flyout">
+          <a href="#search" class="sidenav__item" data-tab="tours"><span class="sidenav__ic">🎟️</span>Attractions &amp; Tours<span class="sidenav__caret">›</span></a>
+          <div class="flyout">
+            <a href="#search" data-tab="tours">Attractions &amp; Tickets</a>
+            <a href="#">Tours &amp; Day Trips</a>
+            <a href="#">Food &amp; Dining</a>
+            <a href="#">Experiences</a>
+          </div>
+        </li>
+        <li><a href="#search" class="sidenav__item" data-tab="package"><span class="sidenav__ic">🧳</span>Flight + Hotel</a></li>
+        <li class="sidenav__sep"></li>
+        <li><a href="#" class="sidenav__item"><span class="sidenav__ic">🗺️</span>Private Tours</a></li>
+        <li><a href="#" class="sidenav__item"><span class="sidenav__ic">👥</span>Group Tours</a></li>
+        <li class="sidenav__sep"></li>
+        <li><a href="#" class="sidenav__item"><span class="sidenav__ic">🧭</span>Trip.Planner <span class="pill-new">New</span></a></li>
+        <li class="has-flyout">
+          <a href="#" class="sidenav__item"><span class="sidenav__ic">💡</span>Travel Inspiration<span class="sidenav__caret">›</span></a>
+          <div class="flyout">
+            <a href="#">Travel Guides</a>
+            <a href="#">Trip Moments</a>
+            <a href="#">Trip.Best</a>
+          </div>
+        </li>
+        <li><a href="#" class="sidenav__item"><span class="sidenav__ic">📍</span>Map</a></li>
+        <li><a href="#" class="sidenav__item"><span class="sidenav__ic">🏷️</span>Deals</a></li>
+        <li class="sidenav__sep"></li>
+        <li><a href="#" class="sidenav__item"><span class="sidenav__ic">🎁</span>TripGo Rewards</a></li>
+        <li><a href="#" class="sidenav__item"><span class="sidenav__ic">📲</span>App</a></li>
+      </ul>
+    </aside>
+
+    <!-- ---- Main content ---- -->
+    <main class="main">
+      <!-- Hero with search widget -->
+      <section class="hero" id="search">
+        <div class="hero__overlay"></div>
+        <div class="hero__content">
+          <h1 class="hero__title">Your Trip Starts Here</h1>
+          <p class="hero__trust">✓ Secure payment&nbsp;&nbsp;|&nbsp;&nbsp;✓ Support in approx. 30s</p>
+
+          <div class="searchwidget">
+            <div class="tabs" role="tablist">
+              <button class="tab is-active" data-tab="hotels" role="tab">🏨 Hotels &amp; Homes</button>
+              <button class="tab" data-tab="flights" role="tab">✈️ Flights</button>
+              <button class="tab" data-tab="trains" role="tab">🚄 Trains</button>
+              <button class="tab" data-tab="cars" role="tab">🚗 Cars</button>
+              <button class="tab" data-tab="tours" role="tab">🎟️ Attractions &amp; Tours</button>
+              <button class="tab" data-tab="package" role="tab">🧳 Flight + Hotel</button>
+            </div>
+
+            <form class="sform" id="searchForm">
+              <div class="sform__top" id="formTop"><!-- trip-type / options injected --></div>
+              <div class="sform__fields" id="formFields"><!-- fields injected --></div>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <!-- New user exclusive -->
+      <section class="block">
+        <h2 class="block__title">New user exclusive</h2>
+        <div class="claimrow" id="claimRow"></div>
+      </section>
+
+      <!-- Promo banners -->
+      <section class="block">
+        <div class="promos" id="promoRow"></div>
+      </section>
+
+      <!-- Get inspired: destination chips -->
+      <section class="block">
+        <h2 class="block__title">Get inspired for your next trip</h2>
+        <p class="block__sub">Explore one-way flights from your area</p>
+        <div class="chips" id="destChips"></div>
+      </section>
+
+      <!-- Popular attractions -->
+      <section class="block">
+        <div class="block__head">
+          <h2 class="block__title">Popular attractions</h2>
+          <a href="#" class="block__more">More →</a>
+        </div>
+        <div class="hscroll" id="attractionRow"></div>
+      </section>
+
+      <!-- Featured hotels -->
+      <section class="block">
+        <div class="block__head">
+          <h2 class="block__title">Featured hotels &amp; homes</h2>
+          <a href="#" class="block__more">More →</a>
+        </div>
+        <div class="hscroll" id="hotelRow"></div>
+      </section>
+
+      <!-- Travel inspiration -->
+      <section class="block">
+        <div class="block__head">
+          <h2 class="block__title">Travel inspiration</h2>
+          <a href="#" class="block__more">More →</a>
+        </div>
+        <div class="hscroll" id="inspoRow"></div>
+      </section>
+
+      <!-- Footer -->
+      <footer class="footer">
+        <div class="footer__cols">
+          <div class="footer__col">
+            <h4>Contact us</h4>
+            <a href="#">Customer support</a>
+            <a href="#">Service Guarantee</a>
+            <a href="#">More service info</a>
+          </div>
+          <div class="footer__col">
+            <h4>About</h4>
+            <a href="#">About TripGo</a>
+            <a href="#">News</a>
+            <a href="#">Careers</a>
+            <a href="#">Terms &amp; Conditions</a>
+            <a href="#">Privacy Statement</a>
+            <a href="#">Accessibility Statement</a>
+          </div>
+          <div class="footer__col">
+            <h4>Other services</h4>
+            <a href="#">Investor relations</a>
+            <a href="#">TripGo Rewards</a>
+            <a href="#">Affiliate program</a>
+            <a href="#">List your property</a>
+            <a href="#">All hotels</a>
+            <a href="#">Become a Supplier</a>
+            <a href="#">Security</a>
+          </div>
+          <div class="footer__col">
+            <h4>Payment methods</h4>
+            <div class="paychips"><span>VISA</span><span>MC</span><span>AMEX</span><span>JCB</span><span>PayPal</span><span>Apple Pay</span></div>
+            <h4 style="margin-top:20px;">Follow us</h4>
+            <div class="social"><a href="#">f</a><a href="#">𝕏</a><a href="#">◎</a><a href="#">▶</a></div>
+          </div>
+        </div>
+        <div class="footer__bottom">
+          © <span id="year"></span> TripGo Travel. Demo clone for educational purposes — not affiliated with Trip.com. &nbsp;·&nbsp; 🌐 English (XX) · USD
+        </div>
+      </footer>
+    </main>
+  </div>
+
+  <!-- ============ POPOVERS ============ -->
+  <!-- Language / currency -->
+  <div class="popover" id="ddLang" role="dialog" aria-label="Language and currency">
+    <div class="popover__section">
+      <h5>Language</h5>
+      <div class="optgrid" id="langGrid"></div>
+    </div>
+    <div class="popover__section">
+      <h5>Currency</h5>
+      <div class="optgrid" id="currGrid"></div>
+    </div>
+  </div>
+
+  <!-- Sign in / register -->
+  <div class="popover popover--signin" id="ddSignin" role="dialog" aria-label="Sign in">
+    <div class="signin">
+      <div class="signin__gift">🎁</div>
+      <p class="signin__lead">Sign in to access member rates &amp; rewards</p>
+      <input type="email" class="signin__input" placeholder="Email address" />
+      <button class="btn btn--primary btn--block" id="doSignin">Sign in or register</button>
+      <div class="signin__or">or continue with</div>
+      <div class="signin__socials">
+        <button class="socbtn">G</button><button class="socbtn">f</button><button class="socbtn"></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Rooms & guests (hotels / package) -->
+  <div class="popover popover--guests" id="ddGuests" role="dialog" aria-label="Rooms and guests">
+    <div class="stepper" data-key="rooms"><div><div class="stepper__label">Rooms</div></div><div class="stepper__ctrl"><button type="button" data-step="-1">−</button><span class="stepper__val">1</span><button type="button" data-step="1">+</button></div></div>
+    <div class="stepper" data-key="adults"><div><div class="stepper__label">Adults</div></div><div class="stepper__ctrl"><button type="button" data-step="-1">−</button><span class="stepper__val">2</span><button type="button" data-step="1">+</button></div></div>
+    <div class="stepper" data-key="children"><div><div class="stepper__label">Children</div><div class="stepper__hint">Ages 0–17</div></div><div class="stepper__ctrl"><button type="button" data-step="-1">−</button><span class="stepper__val">0</span><button type="button" data-step="1">+</button></div></div>
+    <button class="btn btn--primary btn--block popover__done" data-done="ddGuests">Done</button>
+  </div>
+
+  <!-- Passengers & cabin class (flights / trains) -->
+  <div class="popover popover--guests" id="ddPax" role="dialog" aria-label="Passengers and cabin class">
+    <div class="stepper" data-key="adults"><div><div class="stepper__label">Adults</div><div class="stepper__hint">Aged 12+</div></div><div class="stepper__ctrl"><button type="button" data-step="-1">−</button><span class="stepper__val">1</span><button type="button" data-step="1">+</button></div></div>
+    <div class="stepper" data-key="children"><div><div class="stepper__label">Children</div><div class="stepper__hint">Aged 2–11</div></div><div class="stepper__ctrl"><button type="button" data-step="-1">−</button><span class="stepper__val">0</span><button type="button" data-step="1">+</button></div></div>
+    <div class="stepper" data-key="infants"><div><div class="stepper__label">Infants</div><div class="stepper__hint">Under 2</div></div><div class="stepper__ctrl"><button type="button" data-step="-1">−</button><span class="stepper__val">0</span><button type="button" data-step="1">+</button></div></div>
+    <div class="popover__section">
+      <h5>Cabin class</h5>
+      <div class="optgrid" id="cabinGrid"></div>
+    </div>
+    <button class="btn btn--primary btn--block popover__done" data-done="ddPax">Done</button>
+  </div>
+
+  <!-- Calendar date-range picker -->
+  <div class="popover popover--cal" id="ddCal" role="dialog" aria-label="Select dates">
+    <div class="cal__head">
+      <button type="button" class="cal__nav" id="calPrev" aria-label="Previous month">‹</button>
+      <div class="cal__months" id="calMonths"></div>
+      <button type="button" class="cal__nav" id="calNext" aria-label="Next month">›</button>
+    </div>
+    <div class="cal__foot">
+      <span id="calSummary">Select dates</span>
+      <button class="btn btn--primary btn--sm popover__done" data-done="ddCal">Done</button>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
