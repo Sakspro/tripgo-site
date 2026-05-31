@@ -153,12 +153,28 @@
         crumb: "Travel Inspiration", title: "Travel Inspiration",
         sub: "Travel guides, Trip Moments and Trip.Best lists to spark your next journey.",
         cards: [
-          { ic: "📖", tag: "Guide", title: "48 hours in Singapore", desc: "What to eat, see and do on a short stay." },
-          { ic: "📸", tag: "Trip Moments", title: "Most photogenic spots 2026", desc: "Reader-submitted photos from around the world." },
-          { ic: "🏆", tag: "Trip.Best", title: "Top 10 beach escapes", desc: "The highest-rated beaches by TripGo travellers." },
-          { ic: "🍣", tag: "Food", title: "Street food capitals", desc: "Where to eat your way around the globe." },
-          { ic: "🌸", tag: "Seasonal", title: "Best places for spring", desc: "Cherry blossoms, tulips and more." },
-          { ic: "🎒", tag: "Budget", title: "Backpacking Southeast Asia", desc: "Routes, costs and must-sees." }
+          { ic: "📖", tag: "Guide", title: "48 hours in Singapore", desc: "What to eat, see and do on a short stay.", slug: "singapore-48h" },
+          { ic: "📸", tag: "Trip Moments", title: "Most photogenic spots 2026", desc: "Reader-submitted photos from around the world.", slug: "photogenic-2026" },
+          { ic: "🏆", tag: "Trip.Best", title: "Top 10 beach escapes", desc: "The highest-rated beaches by TripGo travellers.", slug: "beach-escapes" },
+          { ic: "🍣", tag: "Food", title: "Street food capitals", desc: "Where to eat your way around the globe.", slug: "street-food" },
+          { ic: "🌸", tag: "Seasonal", title: "Best places for spring", desc: "Cherry blossoms, tulips and more.", slug: "spring-travel" },
+          { ic: "🎒", tag: "Budget", title: "Backpacking Southeast Asia", desc: "Routes, costs and must-sees.", slug: "backpacking-sea" },
+          { ic: "♨️", tag: "Guide", title: "The best bathhouse in China right now!", desc: "Hot springs, culture and relaxation.", slug: "bathhouse-china" },
+          { ic: "🏙️", tag: "Trip Moments", title: "Sky City — more stunning than imagination", desc: "Mountain views that look unreal.", slug: "sky-city" }
+        ]
+      },
+      attractions: {
+        crumb: "Attractions", title: "Popular attractions",
+        sub: "Skip-the-line tickets, guided tours and must-see experiences — book instantly.",
+        bookCards: [
+          { title: "The Palace Museum (Forbidden City)", city: "Beijing", price: 12, rating: 4.8, img: "photo-1584646098378-0874589d76b1" },
+          { title: "Musée d'Orsay Skip-the-Line Ticket", city: "Paris", price: 18, rating: 4.8, img: "photo-1431274172761-fca41d930114" },
+          { title: "Universal Studios Hollywood", city: "Los Angeles", price: 109, rating: 4.8, img: "photo-1605723517503-3cadb5818a0c" },
+          { title: "Universal Studios Singapore", city: "Singapore", price: 60, rating: 4.7, img: "photo-1525625293386-3f8f99389edd" },
+          { title: "Sagrada Família Fast Track", city: "Barcelona", price: 39, rating: 4.7, img: "photo-1583779457094-ab6f9164a1c8" },
+          { title: "Colosseum Guided Tour", city: "Rome", price: 45, rating: 4.6, img: "photo-1552832230-c0197dd311b5" },
+          { title: "Louvre Museum Entry", city: "Paris", price: 22, rating: 4.7, img: "photo-1499856871958-5b9627625c0a" },
+          { title: "London Eye Fast Track", city: "London", price: 35, rating: 4.6, img: "photo-1513635269975-59663e0ac1ad" }
         ]
       },
       map: {
@@ -190,16 +206,32 @@
       }
     };
 
-    function cardHtml(c, i) {
-      return '<article class="ex-card">' +
+    function bookCardHtml(b) {
+      var img = "https://images.unsplash.com/" + b.img + "?auto=format&fit=crop&w=500&q=80";
+      var href = "booking.html?cat=attraction&title=" + encodeURIComponent(b.title) +
+        "&price=" + b.price + "&img=" + encodeURIComponent(img) + "&rating=" + b.rating + "&city=" + encodeURIComponent(b.city);
+      return '<a class="tour-card" href="' + href + '">' +
+        '<div class="tour-card__img" style="background-image:url(\'' + img + '\')"><span class="tour-card__badge">Ticket</span></div>' +
+        '<div class="tour-card__body"><h3>' + b.title + '</h3>' +
+        '<div class="tour-card__meta">📍 ' + b.city + ' &nbsp;·&nbsp; ⭐ ' + b.rating + '</div>' +
+        '<div class="tour-card__foot"><span class="tour-card__price">from $<b>' + b.price + '</b></span>' +
+        '<span class="btn btn--primary btn--sm">Book now</span></div></div></a>';
+    }
+
+    function cardHtml(c, i, post) {
+      var href = c.slug ? "explore.html?cat=inspiration&post=" + encodeURIComponent(c.slug) : "index.html#search";
+      var hl = post && c.slug === post ? " ex-card--hl" : "";
+      return '<article class="ex-card' + hl + '">' +
         '<div class="ex-card__top" style="background:' + GRADS[i % GRADS.length] + '"><span>' + c.ic + '</span>' +
         (c.tag ? '<em class="ex-card__tag">' + c.tag + '</em>' : "") + '</div>' +
         '<div class="ex-card__body"><h3>' + c.title + '</h3><p>' + c.desc + '</p>' +
-        '<a class="btn btn--outline btn--sm" href="index.html#search">View</a></div></article>';
+        '<a class="btn btn--outline btn--sm" href="' + href + '">Read more</a></div></article>';
     }
 
     function render() {
-      var cat = (new URLSearchParams(location.search).get("cat") || "deals").toLowerCase();
+      var params = new URLSearchParams(location.search);
+      var cat = (params.get("cat") || "deals").toLowerCase();
+      var post = params.get("post");
       var d = DATA[cat] || DATA.deals;
       document.getElementById("exCrumb").textContent = d.crumb;
       document.getElementById("exTitle").textContent = d.title;
@@ -209,13 +241,25 @@
       if (d.cta) { cta.textContent = d.cta.label; cta.href = d.cta.href; cta.style.display = "inline-flex"; }
 
       if (d.privateTours) {
-        var dest = new URLSearchParams(location.search).get("dest");
+        var dest = params.get("dest");
         if (dest) renderPrivateToursDest(dest);
         else renderPrivateTours(d);
         return;
       }
+      if (d.bookCards) {
+        document.getElementById("exContent").innerHTML =
+          '<div class="ex-grid">' + d.bookCards.map(bookCardHtml).join("") + '</div>';
+        return;
+      }
 
       var html = "";
+      if (post && d.cards) {
+        var hit = d.cards.find(function (c) { return c.slug === post; });
+        if (hit) {
+          html += '<article class="ex-feature"><span class="ex-feature__tag">' + hit.tag + '</span><h2>' + hit.title + '</h2><p>' + hit.desc + '</p>' +
+            '<a class="btn btn--primary" href="index.html#search">Plan this trip</a></article>';
+        }
+      }
       if (d.steps) {
         html += '<section class="ex-steps">' + d.steps.map(function (s) {
           return '<div class="ex-step"><span class="ex-step__n">' + s.n + '</span><div><h4>' + s.title + '</h4><p>' + s.desc + '</p></div></div>';
@@ -238,7 +282,7 @@
       }
       if (d.cards) {
         html += '<h2 class="ex-sectitle">' + (d.planner ? "Popular itineraries" : d.tiers ? "How it works" : "Featured") + '</h2>' +
-          '<div class="ex-grid">' + d.cards.map(cardHtml).join("") + "</div>";
+          '<div class="ex-grid">' + d.cards.map(function (c, i) { return cardHtml(c, i, post); }).join("") + "</div>";
       }
       document.getElementById("exContent").innerHTML = html;
     }

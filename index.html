@@ -123,18 +123,27 @@
         <div class="promos" id="promoRow"></div>
       </section>
 
-      <!-- Get inspired: destination chips -->
-      <section class="block">
-        <h2 class="block__title">Get inspired for your next trip</h2>
-        <p class="block__sub">Explore one-way flights from your area</p>
-        <div class="chips" id="destChips"></div>
+      <!-- Get inspired: destination chips + flight deals -->
+      <section class="block" id="inspired">
+        <div class="block__head">
+          <div>
+            <h2 class="block__title">Get inspired for your next trip</h2>
+            <p class="block__sub">Explore one-way flights from your area</p>
+          </div>
+          <a href="flights.html" class="block__more">More →</a>
+        </div>
+        <div class="chips-wrap">
+          <div class="chips" id="destChips"></div>
+          <button type="button" class="chips-next" id="chipsNext" aria-label="Scroll destinations">›</button>
+        </div>
+        <div class="hscroll hscroll--flights" id="flightRow"></div>
       </section>
 
       <!-- Popular attractions -->
       <section class="block">
         <div class="block__head">
           <h2 class="block__title">Popular attractions</h2>
-          <a href="#" class="block__more">More →</a>
+          <a href="explore.html?cat=attractions" class="block__more">More →</a>
         </div>
         <div class="hscroll" id="attractionRow"></div>
       </section>
@@ -143,7 +152,7 @@
       <section class="block">
         <div class="block__head">
           <h2 class="block__title">Featured hotels &amp; homes</h2>
-          <a href="#" class="block__more">More →</a>
+          <a href="index.html?tab=hotels#search" class="block__more">More →</a>
         </div>
         <div class="hscroll" id="hotelRow"></div>
       </section>
@@ -152,7 +161,7 @@
       <section class="block">
         <div class="block__head">
           <h2 class="block__title">Travel inspiration</h2>
-          <a href="#" class="block__more">More →</a>
+          <a href="explore.html?cat=inspiration" class="block__more">More →</a>
         </div>
         <div class="hscroll" id="inspoRow"></div>
       </section>

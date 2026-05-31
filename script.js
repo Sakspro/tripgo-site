@@ -309,41 +309,96 @@ const PROMOS = [
   { img: "photo-1537996194471-e657df975ab4", t: "SOUTHEAST ASIA", s: "Up to 50% off hotels" },
 ];
 const CHIPS = ["Anywhere", "Tokyo", "Seoul", "Bangkok", "Singapore", "Istanbul", "Dubai", "Hanoi", "Doha", "Bali"];
+const FLIGHTS = [
+  { dest: "Tokyo", country: "Japan", price: 489, img: "photo-1540959733332-eab4deab993a", tag: "Tokyo" },
+  { dest: "Seoul", country: "South Korea", price: 412, img: "photo-1517154429929-933367bd8490", tag: "Seoul" },
+  { dest: "Bangkok", country: "Thailand", price: 378, img: "photo-1563492065593-0444c1d2e0a0", tag: "Bangkok" },
+  { dest: "Singapore", country: "Singapore", price: 445, img: "photo-1525625293386-3f8f99389edd", tag: "Singapore" },
+  { dest: "Istanbul", country: "Türkiye", price: 356, img: "photo-1527837756880-4a2081e79182", tag: "Istanbul" },
+  { dest: "Dubai", country: "UAE", price: 398, img: "photo-1512453979798-5ea266f8880c", tag: "Dubai" },
+  { dest: "Hanoi", country: "Vietnam", price: 289, img: "photo-1597003723278-d8a42a6e3661", tag: "Hanoi" },
+  { dest: "Doha", country: "Qatar", price: 421, img: "photo-1580844481067-5edc1a8e91c8", tag: "Doha" },
+  { dest: "Bali", country: "Indonesia", price: 334, img: "photo-1537996194471-e657df975ab4", tag: "Bali" },
+  { dest: "Hong Kong", country: "China", price: 401, img: "photo-1536599018102-cb9629e9bd30", tag: "Hong Kong" },
+];
+const PROMO_LINKS = {
+  "GO JAPAN": "explore.html?cat=private-tours&dest=Tokyo",
+  "GO CHINA": "explore.html?cat=private-tours&dest=Beijing",
+  "SOUTHEAST ASIA": "explore.html?cat=deals",
+};
 const ATTRACTIONS = [
-  { t: "The Palace Museum (Forbidden City)", m: "Beijing", p: 12, r: 4.8, img: "photo-1584646098378-0874589d76b1" },
-  { t: "Musée d'Orsay Skip-the-Line Ticket", m: "Paris", p: 18, r: 4.8, img: "photo-1431274172761-fca41d930114" },
-  { t: "Universal Studios Hollywood", m: "Los Angeles", p: 109, r: 4.8, img: "photo-1605723517503-3cadb5818a0c" },
-  { t: "Universal Studios Singapore", m: "Singapore", p: 60, r: 4.7, img: "photo-1525625293386-3f8f99389edd" },
-  { t: "Sagrada Família Fast Track", m: "Barcelona", p: 39, r: 4.7, img: "photo-1583779457094-ab6f9164a1c8" },
-  { t: "Colosseum Guided Tour", m: "Rome", p: 45, r: 4.6, img: "photo-1552832230-c0197dd311b5" },
+  { t: "The Palace Museum (Forbidden City)", m: "Beijing", p: 12, r: 4.8, img: "photo-1584646098378-0874589d76b1", city: "Beijing" },
+  { t: "Musée d'Orsay Skip-the-Line Ticket", m: "Paris", p: 18, r: 4.8, img: "photo-1431274172761-fca41d930114", city: "Paris" },
+  { t: "Universal Studios Hollywood", m: "Los Angeles", p: 109, r: 4.8, img: "photo-1605723517503-3cadb5818a0c", city: "Los Angeles" },
+  { t: "Universal Studios Singapore", m: "Singapore", p: 60, r: 4.7, img: "photo-1525625293386-3f8f99389edd", city: "Singapore" },
+  { t: "Sagrada Família Fast Track", m: "Barcelona", p: 39, r: 4.7, img: "photo-1583779457094-ab6f9164a1c8", city: "Barcelona" },
+  { t: "Colosseum Guided Tour", m: "Rome", p: 45, r: 4.6, img: "photo-1552832230-c0197dd311b5", city: "Rome" },
 ];
 const HOTELS = [
-  { t: "The Fullerton Bay Hotel", m: "Singapore", p: 420, r: 4.9, img: "photo-1566073771259-6a8506099945" },
-  { t: "Rosewood Hong Kong", m: "Hong Kong", p: 560, r: 4.9, img: "photo-1542314831-068cd1dbfeeb" },
-  { t: "The St. Regis New York", m: "New York", p: 690, r: 4.8, img: "photo-1551882547-ff40c63fe5fa" },
-  { t: "Bulgari Hotel Paris", m: "Paris", p: 1200, r: 4.9, img: "photo-1564501049412-61c2a3083791" },
-  { t: "Marina Bay Sands", m: "Singapore", p: 480, r: 4.7, img: "photo-1524230572899-a752b3835840" },
-  { t: "Capella Bangkok", m: "Bangkok", p: 510, r: 4.9, img: "photo-1551918120-9739cb430c6d" },
+  { t: "The Fullerton Bay Hotel", m: "Singapore", p: 420, r: 4.9, img: "photo-1566073771259-6a8506099945", city: "Singapore" },
+  { t: "Rosewood Hong Kong", m: "Hong Kong", p: 560, r: 4.9, img: "photo-1542314831-068cd1dbfeeb", city: "Hong Kong" },
+  { t: "The St. Regis New York", m: "New York", p: 690, r: 4.8, img: "photo-1551882547-ff40c63fe5fa", city: "New York" },
+  { t: "Bulgari Hotel Paris", m: "Paris", p: 1200, r: 4.9, img: "photo-1564501049412-61c2a3083791", city: "Paris" },
+  { t: "Marina Bay Sands", m: "Singapore", p: 480, r: 4.7, img: "photo-1524230572899-a752b3835840", city: "Singapore" },
+  { t: "Capella Bangkok", m: "Bangkok", p: 510, r: 4.9, img: "photo-1551918120-9739cb430c6d", city: "Bangkok" },
 ];
 const INSPO = [
-  { t: "The best bathhouse in China right now!", m: "Travel Guide", img: "photo-1545048702-79362596cdc9" },
-  { t: "“Sky City” — reality even more stunning than imagination", m: "Trip Moments", img: "photo-1506905925346-21bda4d32df4" },
-  { t: "Deep in the jungles of Phuket lies an amazing sanctuary", m: "Travel Guide", img: "photo-1537953773345-d172ccf13cf1" },
-  { t: "Visa-free island with the world's most beautiful glass sea", m: "Trip.Best", img: "photo-1505228395891-9a51e7e86bf6" },
-  { t: "A week in a stunning Maldives paradise", m: "Travel Guide", img: "photo-1514282401047-d79a71a590e8" },
+  { t: "The best bathhouse in China right now!", m: "Travel Guide", img: "photo-1545048702-79362596cdc9", slug: "bathhouse-china" },
+  { t: "“Sky City” — reality even more stunning than imagination", m: "Trip Moments", img: "photo-1506905925346-21bda4d32df4", slug: "sky-city" },
+  { t: "Deep in the jungles of Phuket lies an amazing sanctuary", m: "Travel Guide", img: "photo-1537953773345-d172ccf13cf1", slug: "phuket-sanctuary" },
+  { t: "Visa-free island with the world's most beautiful glass sea", m: "Trip.Best", img: "photo-1505228395891-9a51e7e86bf6", slug: "glass-sea-island" },
+  { t: "A week in a stunning Maldives paradise", m: "Travel Guide", img: "photo-1514282401047-d79a71a590e8", slug: "maldives-week" },
 ];
 
-function cardHTML(o, withPrice) {
-  return `<article class="card" data-search="${o.t}">
-    <div class="card__img"><img loading="lazy" src="${IMG(o.img)}" alt="${o.t}" />
-      <button class="card__save" title="Save" aria-label="Save to list">♡</button></div>
-    <div class="card__body">
-      <div class="card__title">${o.t}</div>
-      <div class="card__meta">${o.m}</div>
-      ${withPrice ? `<div class="card__foot">
-        <span class="card__price"><small>from</small> $${o.p}</span>
-        <span class="card__rating">★ ${o.r}</span></div>` : ""}
-    </div></article>`;
+let inspireChip = "Anywhere";
+
+function bookingHref(o, cat, city) {
+  return "booking.html?cat=" + cat +
+    "&title=" + encodeURIComponent(o.t) +
+    "&price=" + encodeURIComponent(o.p) +
+    "&img=" + encodeURIComponent(IMG(o.img)) +
+    "&rating=" + encodeURIComponent(o.r) +
+    "&city=" + encodeURIComponent(city || o.m || o.city || "");
+}
+function flightHref(dest) {
+  return "index.html?tab=flights&to=" + encodeURIComponent(dest) + "#search";
+}
+function hotelHref(city) {
+  return "index.html?tab=hotels&dest=" + encodeURIComponent(city) + "#search";
+}
+
+function flightCardHTML(f) {
+  return '<a class="flight-card" href="' + flightHref(f.dest) + '">' +
+    '<div class="flight-card__img"><img loading="lazy" src="' + IMG(f.img) + '" alt="' + f.dest + '" /></div>' +
+    '<div class="flight-card__body">' +
+      '<div class="flight-card__city">' + f.dest + '</div>' +
+      '<div class="flight-card__sub">' + f.country + ' · One-way</div>' +
+      '<div class="flight-card__price">from <b>US$' + f.price + '</b></div>' +
+    '</div></a>';
+}
+function flightsForChip(chip) {
+  if (chip === "Anywhere") return FLIGHTS;
+  return FLIGHTS.filter(function (f) { return f.tag === chip || f.dest === chip; });
+}
+function renderFlights() {
+  var row = $("#flightRow");
+  if (!row) return;
+  var list = flightsForChip(inspireChip);
+  row.innerHTML = list.length ? list.map(flightCardHTML).join("") : '<div class="flight-empty">No flights found for this destination yet.</div>';
+}
+
+function cardHTML(o, withPrice, href) {
+  var tag = href ? "a" : "article";
+  return "<" + tag + ' class="card"' + (href ? ' href="' + href + '"' : "") + ' data-search="' + o.t + '">' +
+    '<div class="card__img"><img loading="lazy" src="' + IMG(o.img) + '" alt="' + o.t + '" />' +
+      '<button class="card__save" title="Save" aria-label="Save to list">♡</button></div>' +
+    '<div class="card__body">' +
+      '<div class="card__title">' + o.t + '</div>' +
+      '<div class="card__meta">' + o.m + '</div>' +
+      (withPrice ? '<div class="card__foot">' +
+        '<span class="card__price"><small>from</small> $' + o.p + '</span>' +
+        '<span class="card__rating">★ ' + o.r + '</span></div>' : "") +
+    '</div></' + tag + '>';
 }
 
 function renderContent() {
@@ -354,16 +409,26 @@ function renderContent() {
       <button class="btn btn--primary btn--sm ${c.dd ? "dd-trigger" : "js-toast"}" ${c.dd ? `data-dd="${c.dd}"` : ""}>${c.cta}</button>
     </div>`).join("");
 
-  $("#promoRow").innerHTML = PROMOS.map(p => `
-    <div class="promo" data-search="${p.t}"><img loading="lazy" src="${IMG(p.img, 700)}" alt="${p.t}" />
-      <div class="promo__cap"><b>${p.t}</b><small>${p.s}</small></div></div>`).join("");
+  $("#promoRow").innerHTML = PROMOS.map(p => {
+    var href = PROMO_LINKS[p.t] || "explore.html?cat=deals";
+    return '<a class="promo" href="' + href + '"><img loading="lazy" src="' + IMG(p.img, 700) + '" alt="' + p.t + '" />' +
+      '<div class="promo__cap"><b>' + p.t + '</b><small>' + p.s + '</small></div></a>';
+  }).join("");
 
-  $("#destChips").innerHTML = CHIPS.map((c, i) =>
-    `<button class="chip ${i === 0 ? "is-active" : ""}" data-search="Flights to ${c}">${c}</button>`).join("");
+  $("#destChips").innerHTML = CHIPS.map(function (c, i) {
+    return '<button type="button" class="chip ' + (c === inspireChip ? "is-active" : "") + '" data-dest="' + c + '">' + c + '</button>';
+  }).join("");
+  renderFlights();
 
-  $("#attractionRow").innerHTML = ATTRACTIONS.map(a => cardHTML(a, true)).join("");
-  $("#hotelRow").innerHTML = HOTELS.map(h => cardHTML(h, true)).join("");
-  $("#inspoRow").innerHTML = INSPO.map(i => cardHTML(i, false)).join("");
+  $("#attractionRow").innerHTML = ATTRACTIONS.map(function (a) {
+    return cardHTML(a, true, bookingHref(a, "attraction", a.city));
+  }).join("");
+  $("#hotelRow").innerHTML = HOTELS.map(function (h) {
+    return cardHTML(h, true, hotelHref(h.city));
+  }).join("");
+  $("#inspoRow").innerHTML = INSPO.map(function (i) {
+    return cardHTML(i, false, "explore.html?cat=inspiration&post=" + encodeURIComponent(i.slug));
+  }).join("");
 }
 
 /* ===========================================================
@@ -381,10 +446,40 @@ function toast(msg) {
 /* ===========================================================
    INIT + EVENT WIRING
    =========================================================== */
+function applyDeepLink() {
+  var params = new URLSearchParams(location.search);
+  var tab = params.get("tab");
+  var to = params.get("to");
+  var dest = params.get("dest");
+  if (tab) setActiveTab(tab);
+  if (to) {
+    state.tripType = "oneway";
+    setActiveTab("flights");
+    setTimeout(function () {
+      var el = $(".js-to");
+      if (el) el.value = to.indexOf("(") > -1 ? to : to + " (City)";
+    }, 0);
+  }
+  if (dest) {
+    setActiveTab("hotels");
+    setTimeout(function () {
+      var el = $(".js-text");
+      if (el) el.value = dest;
+    }, 0);
+  }
+  if (location.hash === "#search" || tab || to || dest) {
+    setTimeout(function () {
+      var s = document.getElementById("search");
+      if (s) s.scrollIntoView({ behavior: "smooth", block: "start" });
+    }, 120);
+  }
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   $("#year").textContent = new Date().getFullYear();
   renderContent();
   setActiveTab("hotels");
+  applyDeepLink();
 
   if (window.TGcurrentLangLabel) state.language = window.TGcurrentLangLabel();
   buildOptGrid($("#langGrid"), LANGS, state.language, v => {
@@ -443,14 +538,27 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    /* Result cards / chips */
-    const item = e.target.closest("[data-search]");
+    /* Destination chips (Get inspired) */
+    const chip = e.target.closest(".chip[data-dest]");
+    if (chip) {
+      e.preventDefault();
+      inspireChip = chip.dataset.dest;
+      $$(".chip[data-dest]").forEach(function (c) { c.classList.toggle("is-active", c === chip); });
+      renderFlights();
+      return;
+    }
+
+    /* Save buttons on cards */
+    if (e.target.closest(".card__save")) {
+      e.preventDefault(); e.stopPropagation();
+      toast("Saved to your list ♥");
+      return;
+    }
+
+    /* Legacy demo items without real links */
+    const item = e.target.closest("[data-search]:not(a):not(.chip)");
     if (item) {
-      if (e.target.closest(".chip")) {
-        $$(".chip").forEach(c => c.classList.toggle("is-active", c === item));
-      }
-      if (e.target.closest(".card__save")) { toast("Saved to your list ♥"); return; }
-      toast(`Opening "${item.dataset.search}" — demo only`);
+      toast('Opening "' + item.dataset.search + '" — demo only');
       return;
     }
 
@@ -467,6 +575,13 @@ document.addEventListener("DOMContentLoaded", () => {
   $("#calNext").addEventListener("click", () => {
     calBase = new Date(calBase.getFullYear(), calBase.getMonth() + 1, 1);
     renderCalendar();
+  });
+
+  /* Chip scroll */
+  var chipsNext = document.getElementById("chipsNext");
+  if (chipsNext) chipsNext.addEventListener("click", function () {
+    var wrap = document.getElementById("destChips");
+    if (wrap) wrap.scrollBy({ left: 220, behavior: "smooth" });
   });
 
   /* Search submit */
