@@ -1,4 +1,5 @@
-/* Vercel Cron — daily Trip.com sync (inspired + sidebar) */
+/* Vercel Cron — daily Trip.com homepage sync */
+const { fetchHomepageFromTrip, contentHash } = require("../lib/trip-home");
 const { fetchInspiredFromTrip, contentHash: inspiredHash } = require("../lib/trip-inspired");
 const { fetchSidebarFromTrip, contentHash: sidebarHash } = require("../lib/trip-sidebar");
 
@@ -9,7 +10,25 @@ module.exports = async function handler(req, res) {
     if (hdr !== "Bearer " + auth) return res.status(401).json({ error: "Unauthorized" });
   }
 
-  var out = { ok: true, inspired: null, sidebar: null };
+  var out = { ok: true, homepage: null, inspired: null, sidebar: null };
+
+  try {
+    var homepage = await fetchHomepageFromTrip();
+    out.homepage = {
+      hash: contentHash(homepage),
+      syncedAt: homepage.syncedAt,
+      claims: homepage.claims.length,
+      promos: homepage.promos.length,
+      attractions: homepage.attractions.items.length,
+      hotels: homepage.hotels.items.length,
+      inspiration: homepage.inspiration.items.length,
+      chips: homepage.inspired.chips.length,
+      flights: homepage.inspired.flights.length,
+    };
+  } catch (err) {
+    out.homepage = { ok: false, error: String(err.message || err) };
+    out.ok = false;
+  }
 
   try {
     var inspired = await fetchInspiredFromTrip();
@@ -21,7 +40,6 @@ module.exports = async function handler(req, res) {
     };
   } catch (err) {
     out.inspired = { ok: false, error: String(err.message || err) };
-    out.ok = false;
   }
 
   try {
@@ -34,7 +52,6 @@ module.exports = async function handler(req, res) {
     };
   } catch (err) {
     out.sidebar = { ok: false, error: String(err.message || err) };
-    out.ok = false;
   }
 
   return res.status(out.ok ? 200 : 500).json(out);

@@ -1,0 +1,721 @@
+{
+  "heroTrust": "✓ Secure payment  |  ✓ Support in approx. 30s",
+  "claims": [
+    {
+      "id": "welcome",
+      "off": "Welcome",
+      "txt": "New users get more discounts on travel!",
+      "cta": "Sign in & claim",
+      "dd": "ddSignin"
+    },
+    {
+      "id": "1926881300",
+      "off": "10% off",
+      "txt": "New user promo code (1st booking)",
+      "cta": "Claim all",
+      "coupon": "10%OFF",
+      "type": "COUPON",
+      "href": "https://www.trip.com/hotels"
+    },
+    {
+      "id": "HOTEL_GRADE_EXPERIENCE-1",
+      "off": "Up to 20% off",
+      "txt": "Up to 20% off",
+      "cta": "Claim all",
+      "coupon": "",
+      "type": "HOTEL_GRADE_EXPERIENCE",
+      "href": "https://www.trip.com/hotels"
+    },
+    {
+      "id": "571349510",
+      "off": "5% off",
+      "txt": "Europe Train New User Promo Code",
+      "cta": "Claim all",
+      "coupon": "5%OFF",
+      "type": "COUPON",
+      "href": "https://www.trip.com/trains/europemainland"
+    },
+    {
+      "id": "280395411",
+      "off": "3% off",
+      "txt": "China Train New User Promo Code",
+      "cta": "Claim all",
+      "coupon": "3%OFF",
+      "type": "COUPON",
+      "href": "https://www.trip.com/trains"
+    },
+    {
+      "id": "773748003",
+      "off": "10% off",
+      "txt": "10% off airport transfers promo code for new users",
+      "cta": "Claim all",
+      "coupon": "10%OFF",
+      "type": "COUPON",
+      "href": "https://www.trip.com/airport-transfers/index?s=car_back&channelid=238729"
+    },
+    {
+      "id": "800722666",
+      "off": "12% off",
+      "txt": "12% off Airport Transfers promo code for new users",
+      "cta": "Claim all",
+      "coupon": "12%OFF",
+      "type": "COUPON",
+      "href": "https://www.trip.com/airport-transfers/index?s=car_back&channelid=238729"
+    }
+  ],
+  "promos": [
+    {
+      "t": "Go Japan",
+      "s": "Early Summer Escapes",
+      "img": "https://dimg04.tripcdn.com/images/0a12w12000smja1iqF639.png",
+      "href": "https://www.trip.com/sale/w/37676/gojapan.html?locale=en-xx&curr=usd&transparentBar=1&promo_referer=1721_37676_1",
+      "promoId": 37676
+    },
+    {
+      "t": "Go Thailand",
+      "s": "Exclusive flights, hotels and attractions deals up for grab!",
+      "img": "https://dimg04.tripcdn.com/images/0a15u12000s6f2pppEB25.jpg",
+      "href": "https://www.trip.com/sale/w/26497/go-thailand.html?locale=en-xx&curr=usd&promo_referer=1721_26497_2",
+      "promoId": 26497
+    },
+    {
+      "t": "May We Meet in SEA",
+      "s": "Up to 50% Off Hotels",
+      "img": "https://dimg04.tripcdn.com/images/0a14y12000sbcd4cz4886.png",
+      "href": "https://www.trip.com/sale/w/30550/may-super-destination-maywemeetinsea.html?locale=en-xx&curr=usd&promo_referer=1721_30550_3",
+      "promoId": 30550
+    },
+    {
+      "t": "GO CHINA",
+      "s": "Explore China with unbeatable discounts and save more with promo codes!",
+      "img": "https://dimg04.tripcdn.com/images/0a13212000rxwvhkzA69B.jpg",
+      "href": "https://www.trip.com/sale/w/19280/gochina.html?locale=en-xx&curr=usd&transparentBar=1&promo_referer=1721_19280_4",
+      "promoId": 19280
+    },
+    {
+      "t": "With stunningly unique scenery",
+      "s": "Guilin welcomes the world",
+      "img": "https://dimg04.tripcdn.com/images/0a15912000sk6q66y1D55.jpg",
+      "href": "https://www.trip.com/sale/w/41701/guilin.html?locale=en-xx&curr=usd&promo_referer=1721_41701_5",
+      "promoId": 41701
+    },
+    {
+      "t": "",
+      "s": "",
+      "img": "https://dimg04.tripcdn.com/images/1zp2q12000ez02rk19D95.jpg",
+      "href": "https://trip.com/customer/loyalty/?locale=en-xx&promo_referer=1721_null_6",
+      "promoId": ""
+    }
+  ],
+  "inspired": {
+    "title": "Get inspired for your next trip",
+    "subtitle": "Explore one-way flights from your area",
+    "moreUrl": "",
+    "chips": [
+      "Anywhere",
+      "Kisumu",
+      "Mumbai",
+      "Ho Chi Minh City",
+      "Eldoret",
+      "Cairo",
+      "Bangkok",
+      "Kigali",
+      "Johannesburg",
+      "Beijing"
+    ],
+    "chipData": [
+      {
+        "title": "Anywhere",
+        "anywhere": true,
+        "districtId": "",
+        "districtName": "Anywhere",
+        "districtEnName": "Anywhere",
+        "cityId": 0,
+        "imageUrl": "https://dimg04.tripcdn.com/images/1nn3t12000nv2hwho743F_D_600_400_R5.png?proc=source/trip&proc=namelogo/d_5",
+        "tagList": []
+      },
+      {
+        "title": "Kisumu",
+        "anywhere": false,
+        "districtId": "22125",
+        "districtName": "Kisumu",
+        "districtEnName": "Kisumu",
+        "cityId": 7174,
+        "imageUrl": "https://ak-d.tripcdn.com/images/100s0i0000009hrk196D2_D_600_400_R5.jpg?proc=source/trip&proc=namelogo/d_5",
+        "tagList": [
+          "Short haul"
+        ]
+      },
+      {
+        "title": "Mumbai",
+        "anywhere": false,
+        "districtId": "584",
+        "districtName": "Mumbai",
+        "districtEnName": "Mumbai",
+        "cityId": 724,
+        "imageUrl": "https://ak-d.tripcdn.com/images/0105512000lqjdpesF017_D_600_400_R5.jpg?proc=source/trip&proc=namelogo/d_5",
+        "tagList": [
+          "Medium haul"
+        ]
+      },
+      {
+        "title": "Ho Chi Minh City",
+        "anywhere": false,
+        "districtId": "434",
+        "districtName": "Ho Chi Minh City",
+        "districtEnName": "Ho Chi Minh City",
+        "cityId": 301,
+        "imageUrl": "https://ak-d.tripcdn.com/images/100v0x000000lra8w0D50_D_600_400_R5.jpg?proc=source/trip&proc=namelogo/d_5",
+        "tagList": [
+          "Long haul"
+        ]
+      },
+      {
+        "title": "Eldoret",
+        "anywhere": false,
+        "districtId": "22128",
+        "districtName": "Eldoret",
+        "districtEnName": "Eldoret",
+        "cityId": 4207,
+        "imageUrl": "https://ak-d.tripcdn.com/images/0105d12000848s6pr3CA8_D_600_400_R5.jpg?proc=source/trip&proc=namelogo/d_5",
+        "tagList": [
+          "Short haul"
+        ]
+      },
+      {
+        "title": "Cairo",
+        "anywhere": false,
+        "districtId": "326",
+        "districtName": "Cairo",
+        "districtEnName": "Cairo",
+        "cityId": 332,
+        "imageUrl": "https://ak-d.tripcdn.com/images/01050120008axf3n63276_D_600_400_R5.jpg?proc=source/trip&proc=namelogo/d_5",
+        "tagList": [
+          "Medium haul"
+        ]
+      },
+      {
+        "title": "Bangkok",
+        "anywhere": false,
+        "districtId": "191",
+        "districtName": "Bangkok",
+        "districtEnName": "Bangkok",
+        "cityId": 359,
+        "imageUrl": "https://ak-d.tripcdn.com/images/0104c120005ww2m2yF324_D_600_400_R5.jpg?proc=source/trip&proc=namelogo/d_5",
+        "tagList": [
+          "Long haul"
+        ]
+      },
+      {
+        "title": "Kigali",
+        "anywhere": false,
+        "districtId": "22081",
+        "districtName": "Kigali",
+        "districtEnName": "Kigali",
+        "cityId": 1277,
+        "imageUrl": "https://ak-d.tripcdn.com/images/0104i12000bonwvz7185B_D_600_400_R5.jpg?proc=source/trip&proc=namelogo/d_5",
+        "tagList": [
+          "Short haul"
+        ]
+      },
+      {
+        "title": "Johannesburg",
+        "anywhere": false,
+        "districtId": "328",
+        "districtName": "Johannesburg",
+        "districtEnName": "Johannesburg",
+        "cityId": 684,
+        "imageUrl": "https://ak-d.tripcdn.com/images/100r10000000oyrjm43D0_D_600_400_R5.jpg?proc=source/trip&proc=namelogo/d_5",
+        "tagList": [
+          "Medium haul"
+        ]
+      },
+      {
+        "title": "Beijing",
+        "anywhere": false,
+        "districtId": "1",
+        "districtName": "Beijing",
+        "districtEnName": "Beijing",
+        "cityId": 1,
+        "imageUrl": "https://ak-d.tripcdn.com/images/0101o12000kzeat2rBDCF_D_600_400_R5.jpg?proc=source/trip&proc=namelogo/d_5",
+        "tagList": [
+          "Long haul"
+        ]
+      }
+    ],
+    "flights": [
+      {
+        "dest": "Chongqing",
+        "country": "Beijing → Chongqing",
+        "price": 33,
+        "img": "https://ak-d.tripcdn.com/images/100u1c000001dbc8s0A2E_D_600_400_R5.jpg?proc=source/trip&proc=namelogo/d_5",
+        "tag": "Beijing",
+        "tripType": "Train",
+        "depart": "Beijing",
+        "dates": "Mon, Jun 1",
+        "deeplink": "https://www.trip.com/trains/china/list?departureStationCode=CN110000&arrivalStationCode=CN500000&departureStationName=Beijing&arrivalStationName=Chongqing&departureCountryCode=CN&arrivalCountryCode=CN&departDate=2026-06-01&hour=08&min=00",
+        "trafficType": "TRAIN"
+      },
+      {
+        "dest": "Shanghai",
+        "country": "Beijing → Shanghai",
+        "price": 24,
+        "img": "https://ak-d.tripcdn.com/images/100e0h0000008rp39A12F_D_600_400_R5.jpg?proc=source/trip&proc=namelogo/d_5",
+        "tag": "Beijing",
+        "tripType": "Train",
+        "depart": "Beijing",
+        "dates": "Mon, Jun 1",
+        "deeplink": "https://www.trip.com/trains/china/list?departureStationCode=CN001VNP&arrivalStationCode=CN001AOH&departureStationName=Beijingnan(Beijing South)&arrivalStationName=Shanghai Hongqiao&departureCountryCode=CN&arrivalCountryCode=CN&departDate=2026-06-01&hour=08&min=00",
+        "trafficType": "TRAIN"
+      },
+      {
+        "dest": "Xi'an",
+        "country": "Beijing → Xi'an",
+        "price": 23,
+        "img": "https://ak-d.tripcdn.com/images/0106m120004eks4oyF624_D_600_400_R5.jpg?proc=source/trip&proc=namelogo/d_5",
+        "tag": "Beijing",
+        "tripType": "Train",
+        "depart": "Beijing",
+        "dates": "Mon, Jun 1",
+        "deeplink": "https://www.trip.com/trains/china/list?departureStationCode=CN001BXP&arrivalStationCode=CN001EAY&departureStationName=Beijingxi(Beijing West)&arrivalStationName=Xi'anbei(Xi'an North)&departureCountryCode=CN&arrivalCountryCode=CN&departDate=2026-06-01&hour=08&min=00",
+        "trafficType": "TRAIN"
+      },
+      {
+        "dest": "Guangzhou",
+        "country": "Beijing → Guangzhou",
+        "price": 39,
+        "img": "https://ak-d.tripcdn.com/images/100c180000014rkpq4C68_D_600_400_R5.jpg?proc=source/trip&proc=namelogo/d_5",
+        "tag": "Beijing",
+        "tripType": "Train",
+        "depart": "Beijing",
+        "dates": "Mon, Jun 1",
+        "deeplink": "https://www.trip.com/trains/china/list?departureStationCode=CN110000&arrivalStationCode=CN440100&departureStationName=Beijing&arrivalStationName=Guangzhou&departureCountryCode=CN&arrivalCountryCode=CN&departDate=2026-06-01&hour=08&min=00",
+        "trafficType": "TRAIN"
+      },
+      {
+        "dest": "Tianjin",
+        "country": "Beijing → Tianjin",
+        "price": 3,
+        "img": "https://ak-d.tripcdn.com/images/100n1c000001d5zaf9BCE_D_600_400_R5.jpg?proc=source/trip&proc=namelogo/d_5",
+        "tag": "Beijing",
+        "tripType": "Train",
+        "depart": "Beijing",
+        "dates": "Mon, Jun 1",
+        "deeplink": "https://www.trip.com/trains/china/list?departureStationCode=CN110000&arrivalStationCode=CN120000&departureStationName=Beijing&arrivalStationName=Tianjin&departureCountryCode=CN&arrivalCountryCode=CN&departDate=2026-06-01&hour=08&min=00",
+        "trafficType": "TRAIN"
+      },
+      {
+        "dest": "Zhangjiajie",
+        "country": "Beijing → Zhangjiajie",
+        "price": 33,
+        "img": "https://ak-d.tripcdn.com/images/100p0y000000m0n4d5A06_D_600_400_R5.jpg?proc=source/trip&proc=namelogo/d_5",
+        "tag": "Beijing",
+        "tripType": "Train",
+        "depart": "Beijing",
+        "dates": "Mon, Jun 1",
+        "deeplink": "https://www.trip.com/trains/china/list?departureStationCode=CN110000&arrivalStationCode=CN430800&departureStationName=Beijing&arrivalStationName=Zhangjiajie&departureCountryCode=CN&arrivalCountryCode=CN&departDate=2026-06-01&hour=08&min=00",
+        "trafficType": "TRAIN"
+      }
+    ]
+  },
+  "attractions": {
+    "title": "Top sights you can't miss in 内罗毕",
+    "moreUrl": "https://www.trip.com/travel-guide/attraction/内罗毕-825/tourist-attractions/?locale=en-XX&curr=USD",
+    "items": [
+      {
+        "t": "Jiuhua Mountain",
+        "m": "Qingyang",
+        "p": 0,
+        "r": 4.8,
+        "img": "https://ak-d.tripcdn.com/images/0105f1200087dvhgu60B0_D_800_1200_R5.jpg?proc=source/trip&proc=namelogo/d_5",
+        "city": "Qingyang",
+        "deeplink": "https://www.trip.com/travel-guide/attraction/qingyang/jiuhua-mountain-10542350?curr=USD&locale=en-XX&poiType=3",
+        "votes": 26261,
+        "hotScore": "8.3",
+        "tags": [
+          "Mountain climbing",
+          "Night view"
+        ]
+      },
+      {
+        "t": "Guniujiang Nature Reserve",
+        "m": "Shitai",
+        "p": 0,
+        "r": 4.5,
+        "img": "https://ak-d.tripcdn.com/images/1lo2m12000d2hzpii2961_D_800_1200_R5.jpg?proc=source/trip&proc=namelogo/d_5",
+        "city": "Shitai",
+        "deeplink": "https://www.trip.com/travel-guide/attraction/shitai/guniujiang-nature-reserve-10765020?curr=USD&locale=en-XX&poiType=3",
+        "votes": 3582,
+        "hotScore": "7.4",
+        "tags": [
+          "Mountain climbing",
+          "Boat tour"
+        ]
+      },
+      {
+        "t": "Jiu Hua Shan Dayuan Buddhist Culture Park",
+        "m": "Qingyang",
+        "p": 0,
+        "r": 4.7,
+        "img": "https://ak-d.tripcdn.com/images/1A0c12000000ryio74B57_D_800_1200_R5.jpg?proc=source/trip&proc=namelogo/d_5",
+        "city": "Qingyang",
+        "deeplink": "https://www.trip.com/travel-guide/attraction/qingyang/jiu-hua-shan-dayuan-buddhist-culture-park-10547911?curr=USD&locale=en-XX&poiType=3",
+        "votes": 1598,
+        "hotScore": "5.9",
+        "tags": [
+          "Boat tour"
+        ]
+      },
+      {
+        "t": "Peng Lai Xian Dong",
+        "m": "Shitai",
+        "p": 0,
+        "r": 4.4,
+        "img": "https://ak-d.tripcdn.com/images/1lo5k12000b1ca6s3DA83_D_800_1200_R5.png?proc=source/trip&proc=namelogo/d_5",
+        "city": "Shitai",
+        "deeplink": "https://www.trip.com/travel-guide/attraction/shitai/peng-lai-xian-dong-101106?curr=USD&locale=en-XX&poiType=3",
+        "votes": 825,
+        "hotScore": "5.8",
+        "tags": [
+          "Natural scenery",
+          "Boat tour"
+        ]
+      },
+      {
+        "t": "Xianyu Mountain Scenic Area",
+        "m": "Shitai",
+        "p": 0,
+        "r": 4.3,
+        "img": "https://ak-d.tripcdn.com/images/1A0m190000017hlclF373_D_800_1200_R5.jpg?proc=source/trip&proc=namelogo/d_5",
+        "city": "Shitai",
+        "deeplink": "https://www.trip.com/travel-guide/attraction/shitai/xianyu-mountain-scenic-area-90289?curr=USD&locale=en-XX&poiType=3",
+        "votes": 280,
+        "hotScore": "5.6",
+        "tags": [
+          "Historic landmark",
+          "Mountain climbing"
+        ]
+      },
+      {
+        "t": "Jiuziyan Scenic Area",
+        "m": "Qingyang",
+        "p": 0,
+        "r": 4.5,
+        "img": "https://ak-d.tripcdn.com/images/1lo5b12000iwsv6riD055_D_800_1200_R5.jpg?proc=source/trip&proc=namelogo/d_5",
+        "city": "Qingyang",
+        "deeplink": "https://www.trip.com/travel-guide/attraction/qingyang/jiuziyan-scenic-area-93354?curr=USD&locale=en-XX&poiType=3",
+        "votes": 305,
+        "hotScore": "5.6",
+        "tags": [
+          "Mountain climbing"
+        ]
+      },
+      {
+        "t": "The Qishan Pingtian Lake Scenic Area",
+        "m": "Chizhou",
+        "p": 0,
+        "r": 4.5,
+        "img": "https://ak-d.tripcdn.com/images/0100m12000ns396z67D83_D_800_1200_R5.jpg?proc=source/trip&proc=namelogo/d_5",
+        "city": "Chizhou",
+        "deeplink": "https://www.trip.com/travel-guide/attraction/chizhou/the-qishan-pingtian-lake-scenic-area-90290?curr=USD&locale=en-XX&poiType=3",
+        "votes": 125,
+        "hotScore": "5.4",
+        "tags": [
+          "Natural scenery",
+          "Mountain climbing"
+        ]
+      },
+      {
+        "t": "Xinghua Village Scenic Area",
+        "m": "Chizhou",
+        "p": 0,
+        "r": 3.4,
+        "img": "https://ak-d.tripcdn.com/images/01A3z120008n3oivz04A5_D_800_1200_R5.jpg?proc=source/trip&proc=namelogo/d_5",
+        "city": "Chizhou",
+        "deeplink": "https://www.trip.com/travel-guide/attraction/chizhou/xinghua-village-scenic-area-101104?curr=USD&locale=en-XX&poiType=3",
+        "votes": 552,
+        "hotScore": "5.2",
+        "tags": []
+      },
+      {
+        "t": "Jiuhua Tianchi Scenic Resort",
+        "m": "Chizhou",
+        "p": 0,
+        "r": 4,
+        "img": "https://ak-d.tripcdn.com/images/0105y120008majktd44DF_D_800_1200_R5.jpg?proc=source/trip&proc=namelogo/d_5",
+        "city": "Chizhou",
+        "deeplink": "https://www.trip.com/travel-guide/attraction/chizhou/jiuhua-tianchi-scenic-resort-98177?curr=USD&locale=en-XX&poiType=3",
+        "votes": 570,
+        "hotScore": "4.9",
+        "tags": [
+          "Natural scenery",
+          "Mountain climbing"
+        ]
+      },
+      {
+        "t": "Jiuhua Street",
+        "m": "Qingyang",
+        "p": 0,
+        "r": 4.7,
+        "img": "https://ak-d.tripcdn.com/images/0100t12000inqx00f50E2_D_800_1200_R5.jpg?proc=source/trip&proc=namelogo/d_5",
+        "city": "Qingyang",
+        "deeplink": "https://www.trip.com/travel-guide/attraction/qingyang/jiuhua-street-98170?curr=USD&locale=en-XX&poiType=3",
+        "votes": 113,
+        "hotScore": "4.8",
+        "tags": [
+          "Night view"
+        ]
+      }
+    ]
+  },
+  "hotels": {
+    "title": "Unwind in our selected hotels in 内罗毕",
+    "moreUrl": "https://www.trip.com/hotels/list?city=825",
+    "items": [
+      {
+        "t": "Swiss Lenana Mount Hotel",
+        "m": "Nairobi",
+        "p": 77,
+        "r": 4.5,
+        "img": "http://dimg04.c-ctrip.com/images/0585312000oasefb00BC5_C_400_600_R5_Q70.jpg",
+        "city": "Nairobi",
+        "deeplink": "https://www.trip.com/hotels/detail/?hotelId=9270992&checkIn=2026-05-31&checkOut=2026-06-01",
+        "stars": 4,
+        "marketing": ""
+      },
+      {
+        "t": "Fairmont the Norfolk",
+        "m": "Nairobi",
+        "p": 191,
+        "r": 4.6,
+        "img": "http://dimg04.c-ctrip.com/images/0220r12000b825oz480D4_C_400_600_R5_Q70.jpg",
+        "city": "Nairobi",
+        "deeplink": "https://www.trip.com/hotels/detail/?hotelId=754787&checkIn=2026-05-31&checkOut=2026-06-01",
+        "stars": 5,
+        "marketing": ""
+      },
+      {
+        "t": "Roma Court Serviced Apartments",
+        "m": "Nairobi",
+        "p": 57,
+        "r": 4.9,
+        "img": "http://dimg04.c-ctrip.com/images/0226q12000lbwbgsb7ADC_C_400_600_R5_Q70.jpg",
+        "city": "Nairobi",
+        "deeplink": "https://www.trip.com/hotels/detail/?hotelId=112160560&checkIn=2026-05-31&checkOut=2026-06-01",
+        "stars": 4,
+        "marketing": ""
+      },
+      {
+        "t": "Palacina the Residence & the Suites",
+        "m": "Nairobi",
+        "p": 194,
+        "r": 4.7,
+        "img": "http://dimg04.c-ctrip.com/images/0226b12000si2vybjAF1C_C_400_600_R5_Q70.jpg",
+        "city": "Nairobi",
+        "deeplink": "https://www.trip.com/hotels/detail/?hotelId=3037760&checkIn=2026-05-31&checkOut=2026-06-01",
+        "stars": 5,
+        "marketing": ""
+      },
+      {
+        "t": "Gem Forest Hotel Nairobi - MGallery Collection",
+        "m": "Nairobi",
+        "p": 197,
+        "r": 4.5,
+        "img": "http://dimg04.c-ctrip.com/images/1mc2j12000hyvlr7z1A3D_C_400_600_R5_Q70.jpg",
+        "city": "Nairobi",
+        "deeplink": "https://www.trip.com/hotels/detail/?hotelId=117607855&checkIn=2026-05-31&checkOut=2026-06-01",
+        "stars": 5,
+        "marketing": ""
+      },
+      {
+        "t": "Kwetu Nairobi, Curio Collection by Hilton",
+        "m": "Nairobi",
+        "p": 203,
+        "r": 4.7,
+        "img": "http://dimg04.c-ctrip.com/images/1mc6o12000kgtwv3v15A0_C_400_600_R5_Q70.jpg",
+        "city": "Nairobi",
+        "deeplink": "https://www.trip.com/hotels/detail/?hotelId=105289123&checkIn=2026-05-31&checkOut=2026-06-01",
+        "stars": 5,
+        "marketing": ""
+      },
+      {
+        "t": "Somerset Westview Nairobi",
+        "m": "Nairobi",
+        "p": 126,
+        "r": 4.7,
+        "img": "http://dimg04.c-ctrip.com/images/0583n12000pa426cg9A80_C_400_600_R5_Q70.jpg",
+        "city": "Nairobi",
+        "deeplink": "https://www.trip.com/hotels/detail/?hotelId=89012106&checkIn=2026-05-31&checkOut=2026-06-01",
+        "stars": 4,
+        "marketing": ""
+      },
+      {
+        "t": "Lux Suites Riara One Residency Angama",
+        "m": "Nairobi",
+        "p": 50,
+        "r": 4.4,
+        "img": "http://dimg04.c-ctrip.com/images/1mc0u12000o1emyd017BA_C_400_600_R5_Q70.jpg",
+        "city": "Nairobi",
+        "deeplink": "https://www.trip.com/hotels/detail/?hotelId=131778535&checkIn=2026-05-31&checkOut=2026-06-01",
+        "stars": 4,
+        "marketing": ""
+      },
+      {
+        "t": "Pullman Nairobi Upper Hill",
+        "m": "Nairobi",
+        "p": 172,
+        "r": 4.8,
+        "img": "http://dimg04.c-ctrip.com/images/1mc5a12000j19auis0A40_C_400_600_R5_Q70.jpg",
+        "city": "Nairobi",
+        "deeplink": "https://www.trip.com/hotels/detail/?hotelId=117627628&checkIn=2026-05-31&checkOut=2026-06-01",
+        "stars": 4,
+        "marketing": ""
+      },
+      {
+        "t": "Novotel Nairobi Westlands",
+        "m": "Nairobi",
+        "p": 184,
+        "r": 4.5,
+        "img": "http://dimg04.c-ctrip.com/images/1mc6q12000f1hjvzeAF28_C_400_600_R5_Q70.jpg",
+        "city": "Nairobi",
+        "deeplink": "https://www.trip.com/hotels/detail/?hotelId=121096607&checkIn=2026-05-31&checkOut=2026-06-01",
+        "stars": 5,
+        "marketing": ""
+      }
+    ]
+  },
+  "inspiration": {
+    "title": "Unforgettable trip moments in 内罗毕",
+    "moreUrl": "https://www.trip.com/moments/内罗毕-825/",
+    "items": [
+      {
+        "t": "﻿Stay at Zen-inspired homestays in Jiuhua Mountain, a peaceful blessing trip with kids",
+        "m": "Trip Moments · JessicaRoberts234=",
+        "img": "https://ak-d.tripcdn.com/images/1mi5712000seywaxq3C18_D_800_1200_R5.jpg?proc=source/trip&proc=source/trip&proc=namelogo/d_5",
+        "slug": "145263042",
+        "href": "https://www.trip.com/moments/detail/qingyang-2613-145263042/"
+      },
+      {
+        "t": "Anhui's \"Little Jiuzhaigou\"｜2 Days 1 Night Healing Guide in Chizhou",
+        "m": "Trip Moments · iu_nacy_twice",
+        "img": "https://ak-d.tripcdn.com/images/1mi5y12000sgziiu9A9F3_D_800_1200_R5.jpg?proc=source/trip&proc=source/trip&proc=namelogo/d_5",
+        "slug": "145514461",
+        "href": "https://www.trip.com/moments/detail/chizhou-825-145514461/"
+      },
+      {
+        "t": "Chizhou Family Travel Guide: Stay at These Four Super Comfortable Hotels",
+        "m": "Trip Moments · Nelson Zachary Zach",
+        "img": "https://ak-d.tripcdn.com/images/1mi5i12000sddrkl70F5B_D_800_1200_R5.jpg?proc=source/trip&proc=source/trip&proc=namelogo/d_5",
+        "slug": "145109126",
+        "href": "https://www.trip.com/moments/detail/qingyang-2613-145109126/"
+      },
+      {
+        "t": "Chizhou! The underrated fairyland of Anhui, once you come, you won’t want to leave",
+        "m": "Trip Moments · WhisperingNomad42",
+        "img": "https://ak-d.tripcdn.com/images/1mi5112000sdf53ig8540_D_800_1200_R5.jpg?proc=source/trip&proc=source/trip&proc=namelogo/d_5",
+        "slug": "145111996",
+        "href": "https://www.trip.com/moments/detail/chizhou-825-145111996/"
+      },
+      {
+        "t": "Staying at Baishiling in Shitai is super healing, the top choice for family outings in Jiangsu, Zhejiang, and Shanghai",
+        "m": "Trip Moments · AinoK?rkk?inen",
+        "img": "https://ak-d.tripcdn.com/images/1mi2u12000s7vp9wt5F1B_D_800_1200_R5.jpg?proc=source/trip&proc=source/trip&proc=namelogo/d_5",
+        "slug": "144610621",
+        "href": "https://www.trip.com/moments/detail/shitai-2624-144610621/"
+      },
+      {
+        "t": "﻿Chizhou Family Vacation: Stay in a Hidden Gem Homestay Next to Jiuhua Mountain",
+        "m": "Trip Moments · MillaRinne",
+        "img": "https://ak-d.tripcdn.com/images/1mi6a12000s8h7x8d1E56_D_800_1200_R5.jpg?proc=source/trip&proc=source/trip&proc=namelogo/d_5",
+        "slug": "144677646",
+        "href": "https://www.trip.com/moments/detail/qingyang-2613-144677646/"
+      },
+      {
+        "t": "Winter Jiuhua | A Heartwarming Pilgrimage with Kids, Where All Wishes Come True!",
+        "m": "Trip Moments · Radiant_234_Thompson",
+        "img": "https://ak-d.tripcdn.com/images/1mi1b12000qzxk1ytF99B_D_800_1200_R5.jpg?proc=source/trip&proc=source/trip&proc=namelogo/d_5",
+        "slug": "140237861",
+        "href": "https://www.trip.com/moments/detail/qingyang-2613-140237861/"
+      },
+      {
+        "t": "Nanjing Departure! Escape the Crowds This May Day, Discover 3 Hidden Gems in Southern Anhui",
+        "m": "Trip Moments · RasmusLaine",
+        "img": "https://ak-d.tripcdn.com/images/1mi2912000sh69ft8234E_D_800_1200_R5.jpg?proc=source/trip&proc=source/trip&proc=namelogo/d_5",
+        "slug": "145539626",
+        "href": "https://www.trip.com/moments/detail/shitai-2624-145539626/"
+      },
+      {
+        "t": "﻿Stay here for a family vacation in Chizhou, enjoy mountain and water activities with kids at a relaxed pace",
+        "m": "Trip Moments · Maya345_Foster",
+        "img": "https://ak-d.tripcdn.com/images/1mi3i12000s9ziqyv14C0_D_800_1200_R5.jpg?proc=source/trip&proc=source/trip&proc=namelogo/d_5",
+        "slug": "144829763",
+        "href": "https://www.trip.com/moments/detail/qingyang-2613-144829763/"
+      },
+      {
+        "t": "﻿Stay here for a family trip in Chizhou, stress-free fun for kids at scenic mountains, waters, and ancient temples",
+        "m": "Trip Moments · BEATRICE GILMORE",
+        "img": "https://ak-d.tripcdn.com/images/1mi6m12000s9uolx3D51E_D_800_1200_R5.jpg?proc=source/trip&proc=source/trip&proc=namelogo/d_5",
+        "slug": "144816113",
+        "href": "https://www.trip.com/moments/detail/chizhou-825-144816113/"
+      }
+    ]
+  },
+  "sidebar": {
+    "cars": {
+      "title": "Cars",
+      "icon": "🚗",
+      "tab": "cars",
+      "href": "cars.html",
+      "items": [
+        {
+          "label": "Car Rentals",
+          "tab": "cars",
+          "icon": "🚗",
+          "path": "/carhire/?channelid=14409",
+          "href": "cars.html",
+          "tripUrl": "https://www.trip.com/carhire/?channelid=14409",
+          "sharkKey": "ButtonText_Carhire"
+        },
+        {
+          "label": "Airport Transfers",
+          "tab": "transfers",
+          "icon": "🚐",
+          "path": "/airport-transfers/",
+          "href": "cars.html?sub=transfers",
+          "tripUrl": "https://www.trip.com/airport-transfers/",
+          "sharkKey": "ButtonText_AirportTransfers"
+        }
+      ]
+    },
+    "syncedAt": "2026-05-31T14:11:13.162Z",
+    "source": "trip.com"
+  },
+  "flyouts": {
+    "ttd": [
+      {
+        "label": "tnt",
+        "href": "https://www.trip.com/things-to-do/",
+        "path": "/things-to-do/"
+      },
+      {
+        "label": "eSIM",
+        "href": "https://www.trip.com/sale/w/10229/esim.html",
+        "path": "/sale/w/10229/esim.html"
+      }
+    ],
+    "travelinspiration": [
+      {
+        "label": "Attractions",
+        "href": "https://www.trip.com/travel-guide/",
+        "path": "/travel-guide/"
+      },
+      {
+        "label": "TripBest",
+        "href": "https://www.trip.com/toplist/tripbest/home",
+        "path": "/toplist/tripbest/home"
+      }
+    ]
+  },
+  "syncedAt": "2026-05-31T14:11:13.164Z",
+  "source": "trip.com"
+}

@@ -380,17 +380,19 @@ function buildOptGrid(container, items, activeVal, onPick) {
    =========================================================== */
 const IMG = (id, w = 500) => `https://images.unsplash.com/${id}?auto=format&fit=crop&w=${w}&q=80`;
 
-const CLAIMS = [
+const CLAIMS_FALLBACK = [
   { id: "welcome", off: "Welcome", txt: "New users get more discounts on travel!", cta: "Sign in & claim", dd: "ddSignin" },
   { id: "hotel10", off: "10% off", txt: "Hotels & Homes for first-time bookings", cta: "Claim all", coupon: "TG-HOTEL10" },
   { id: "train5", off: "5% off", txt: "EU train tickets, limited time only", cta: "Claim all", coupon: "TG-TRAIN5" },
   { id: "xfer10", off: "10% off", txt: "Airport Transfers worldwide", cta: "Claim all", coupon: "TG-XFER10" },
 ];
-const PROMOS = [
+let CLAIMS = CLAIMS_FALLBACK.slice();
+const PROMOS_FALLBACK = [
   { img: "photo-1542051841857-5f90071e7989", t: "GO JAPAN", s: "Hotels up to 20% off" },
   { img: "photo-1528181304800-259b08848526", t: "GO CHINA", s: "Spring gems & must-visit cities" },
   { img: "photo-1537996194471-e657df975ab4", t: "SOUTHEAST ASIA", s: "Up to 50% off hotels" },
 ];
+let PROMOS = PROMOS_FALLBACK.slice();
 const CHIPS_FALLBACK = ["Anywhere", "Tokyo", "Seoul", "Bangkok", "Singapore", "Istanbul", "Dubai", "Hanoi", "Doha", "Bali"];
 let CHIPS = CHIPS_FALLBACK.slice();
 const FLIGHTS_FALLBACK = [
@@ -411,7 +413,7 @@ const PROMO_LINKS = {
   "GO CHINA": "explore.html?cat=private-tours&dest=Beijing",
   "SOUTHEAST ASIA": "explore.html?cat=deals",
 };
-const ATTRACTIONS = [
+const ATTRACTIONS_FALLBACK = [
   { t: "The Palace Museum (Forbidden City)", m: "Beijing", p: 12, r: 4.8, img: "photo-1584646098378-0874589d76b1", city: "Beijing" },
   { t: "Musée d'Orsay Skip-the-Line Ticket", m: "Paris", p: 18, r: 4.8, img: "photo-1431274172761-fca41d930114", city: "Paris" },
   { t: "Universal Studios Hollywood", m: "Los Angeles", p: 109, r: 4.8, img: "photo-1605723517503-3cadb5818a0c", city: "Los Angeles" },
@@ -419,7 +421,8 @@ const ATTRACTIONS = [
   { t: "Sagrada Família Fast Track", m: "Barcelona", p: 39, r: 4.7, img: "photo-1583779457094-ab6f9164a1c8", city: "Barcelona" },
   { t: "Colosseum Guided Tour", m: "Rome", p: 45, r: 4.6, img: "photo-1552832230-c0197dd311b5", city: "Rome" },
 ];
-const HOTELS = [
+let ATTRACTIONS = ATTRACTIONS_FALLBACK.slice();
+const HOTELS_FALLBACK = [
   { t: "The Fullerton Bay Hotel", m: "Singapore", p: 420, r: 4.9, img: "photo-1566073771259-6a8506099945", city: "Singapore" },
   { t: "Rosewood Hong Kong", m: "Hong Kong", p: 560, r: 4.9, img: "photo-1542314831-068cd1dbfeeb", city: "Hong Kong" },
   { t: "The St. Regis New York", m: "New York", p: 690, r: 4.8, img: "photo-1551882547-ff40c63fe5fa", city: "New York" },
@@ -427,13 +430,18 @@ const HOTELS = [
   { t: "Marina Bay Sands", m: "Singapore", p: 480, r: 4.7, img: "photo-1524230572899-a752b3835840", city: "Singapore" },
   { t: "Capella Bangkok", m: "Bangkok", p: 510, r: 4.9, img: "photo-1551918120-9739cb430c6d", city: "Bangkok" },
 ];
-const INSPO = [
+let HOTELS = HOTELS_FALLBACK.slice();
+const INSPO_FALLBACK = [
   { t: "The best bathhouse in China right now!", m: "Travel Guide", img: "photo-1545048702-79362596cdc9", slug: "bathhouse-china" },
   { t: "“Sky City” — reality even more stunning than imagination", m: "Trip Moments", img: "photo-1506905925346-21bda4d32df4", slug: "sky-city" },
   { t: "Deep in the jungles of Phuket lies an amazing sanctuary", m: "Travel Guide", img: "photo-1537953773345-d172ccf13cf1", slug: "phuket-sanctuary" },
   { t: "Visa-free island with the world's most beautiful glass sea", m: "Trip.Best", img: "photo-1505228395891-9a51e7e86bf6", slug: "glass-sea-island" },
   { t: "A week in a stunning Maldives paradise", m: "Travel Guide", img: "photo-1514282401047-d79a71a590e8", slug: "maldives-week" },
 ];
+let INSPO = INSPO_FALLBACK.slice();
+let ATTRACTIONS_TITLE = "Popular attractions";
+let HOTELS_TITLE = "Featured hotels & homes";
+let INSPO_TITLE = "Travel inspiration";
 
 let inspireChip = "Anywhere";
 
@@ -501,6 +509,55 @@ function applySidebarCars(data) {
     }).join("");
   }
 }
+function applyFlyouts(flyouts) {
+  if (!flyouts) return;
+  var tours = document.getElementById("toursFlyout");
+  if (tours && flyouts.ttd && flyouts.ttd.length) {
+    tours.innerHTML = flyouts.ttd.map(function (item) {
+      var href = item.href && item.href.indexOf("trip.com") > -1
+        ? item.href : ("#search");
+      var ext = href.indexOf("trip.com") > -1 ? ' target="_blank" rel="noopener"' : "";
+      var tab = href.indexOf("trip.com") > -1 ? "" : ' data-tab="tours"';
+      return '<a href="' + href + '"' + tab + ext + '>' + item.label + '</a>';
+    }).join("");
+  }
+  var inspoNav = document.getElementById("inspoFlyout");
+  if (inspoNav && flyouts.travelinspiration && flyouts.travelinspiration.length) {
+    inspoNav.innerHTML = flyouts.travelinspiration.map(function (item) {
+      var href = item.href && item.href.indexOf("trip.com") > -1
+        ? item.href : "explore.html?cat=inspiration";
+      var ext = href.indexOf("trip.com") > -1 ? ' target="_blank" rel="noopener"' : "";
+      return '<a href="' + href + '"' + ext + '>' + item.label + '</a>';
+    }).join("");
+  }
+}
+
+function applyHomepageData(data) {
+  if (!data) return;
+  if (data.heroTrust) {
+    var trust = document.querySelector(".hero__trust");
+    if (trust) trust.textContent = data.heroTrust;
+  }
+  if (data.claims && data.claims.length) CLAIMS = data.claims;
+  if (data.promos && data.promos.length) PROMOS = data.promos;
+  if (data.attractions && data.attractions.items && data.attractions.items.length) {
+    ATTRACTIONS = data.attractions.items;
+    ATTRACTIONS_TITLE = data.attractions.title || ATTRACTIONS_TITLE;
+  }
+  if (data.hotels && data.hotels.items && data.hotels.items.length) {
+    HOTELS = data.hotels.items;
+    HOTELS_TITLE = data.hotels.title || HOTELS_TITLE;
+  }
+  if (data.inspiration && data.inspiration.items && data.inspiration.items.length) {
+    INSPO = data.inspiration.items;
+    INSPO_TITLE = data.inspiration.title || INSPO_TITLE;
+  }
+  if (data.inspired) applyInspiredData(data.inspired);
+  if (data.sidebar) applySidebarCars(data.sidebar);
+  applyFlyouts(data.flyouts);
+  renderContent();
+}
+
 function applyInspiredData(data) {
   if (!data) return;
   if (data.chips && data.chips.length) CHIPS = data.chips;
@@ -527,17 +584,31 @@ function renderFlights() {
   row.innerHTML = list.length ? list.map(flightCardHTML).join("") : '<div class="flight-empty">No flights found for this destination yet.</div>';
 }
 
-function cardHTML(o, withPrice, href) {
+function cardImg(o, w) {
+  if (o.img && (o.img.indexOf("http") === 0 || o.img.indexOf("//") === 0)) {
+    return o.img.indexOf("//") === 0 ? "https:" + o.img : o.img;
+  }
+  return IMG(o.img, w || 500);
+}
+
+function cardHTML(o, withPrice, href, external) {
   var tag = href ? "a" : "article";
-  return "<" + tag + ' class="card"' + (href ? ' href="' + href + '"' : "") + ' data-search="' + o.t + '">' +
-    '<div class="card__img"><img loading="lazy" src="' + IMG(o.img) + '" alt="' + o.t + '" />' +
+  var ext = external ? ' target="_blank" rel="noopener"' : "";
+  var priceFoot = "";
+  if (withPrice) {
+    var pricePart = o.p
+      ? '<span class="card__price"><small>from</small> $' + o.p + '</span>'
+      : (o.hotScore ? '<span class="card__price">Hot ' + o.hotScore + '</span>' : "");
+    priceFoot = '<div class="card__foot">' + pricePart +
+      '<span class="card__rating">★ ' + o.r + '</span></div>';
+  }
+  return "<" + tag + ' class="card"' + (href ? ' href="' + href + '"' + ext : "") + ' data-search="' + o.t + '">' +
+    '<div class="card__img"><img loading="lazy" src="' + cardImg(o) + '" alt="' + o.t + '" />' +
       '<button class="card__save" title="Save" aria-label="Save to list">♡</button></div>' +
     '<div class="card__body">' +
       '<div class="card__title">' + o.t + '</div>' +
       '<div class="card__meta">' + o.m + '</div>' +
-      (withPrice ? '<div class="card__foot">' +
-        '<span class="card__price"><small>from</small> $' + o.p + '</span>' +
-        '<span class="card__rating">★ ' + o.r + '</span></div>' : "") +
+      priceFoot +
     '</div></' + tag + '>';
 }
 
@@ -582,11 +653,20 @@ function renderContent() {
     return '<div class="claim"><div class="claim__off">' + c.off + '</div><div class="claim__txt">' + c.txt + '</div>' + btn + '</div>';
   }).join("");
 
-  $("#promoRow").innerHTML = PROMOS.map(p => {
-    var href = PROMO_LINKS[p.t] || "explore.html?cat=deals";
-    return '<a class="promo" href="' + href + '"><img loading="lazy" src="' + IMG(p.img, 700) + '" alt="' + p.t + '" />' +
+  $("#promoRow").innerHTML = PROMOS.map(function (p) {
+    var href = p.href || PROMO_LINKS[p.t] || "explore.html?cat=deals";
+    var imgSrc = (p.img && p.img.indexOf("http") === 0) ? p.img : IMG(p.img, 700);
+    var ext = href.indexOf("trip.com") > -1 ? ' target="_blank" rel="noopener"' : "";
+    return '<a class="promo" href="' + href + '"' + ext + '><img loading="lazy" src="' + imgSrc + '" alt="' + p.t + '" />' +
       '<div class="promo__cap"><b>' + p.t + '</b><small>' + p.s + '</small></div></a>';
   }).join("");
+
+  var attTitle = document.getElementById("attractionsTitle");
+  if (attTitle) attTitle.textContent = ATTRACTIONS_TITLE;
+  var hotTitle = document.getElementById("hotelsTitle");
+  if (hotTitle) hotTitle.textContent = HOTELS_TITLE;
+  var inspoTitle = document.getElementById("inspoTitle");
+  if (inspoTitle) inspoTitle.textContent = INSPO_TITLE;
 
   $("#destChips").innerHTML = CHIPS.map(function (c, i) {
     return '<button type="button" class="chip ' + (c === inspireChip ? "is-active" : "") + '" data-dest="' + c + '">' + c + '</button>';
@@ -594,13 +674,16 @@ function renderContent() {
   renderFlights();
 
   $("#attractionRow").innerHTML = ATTRACTIONS.map(function (a) {
-    return cardHTML(a, true, bookingHref(a, "attraction", a.city));
+    var href = a.deeplink || bookingHref(a, "attraction", a.city);
+    return cardHTML(a, true, href, !!a.deeplink);
   }).join("");
   $("#hotelRow").innerHTML = HOTELS.map(function (h) {
-    return cardHTML(h, true, hotelHref(h.city));
+    var href = h.deeplink || hotelHref(h.city);
+    return cardHTML(h, true, href, !!h.deeplink);
   }).join("");
   $("#inspoRow").innerHTML = INSPO.map(function (i) {
-    return cardHTML(i, false, "explore.html?cat=inspiration&post=" + encodeURIComponent(i.slug));
+    var href = i.href || ("explore.html?cat=inspiration&post=" + encodeURIComponent(i.slug));
+    return cardHTML(i, false, href, !!i.href);
   }).join("");
 }
 
@@ -668,6 +751,11 @@ document.addEventListener("DOMContentLoaded", () => {
   setActiveTab(isCarPage ? "cars" : "hotels");
   applyDeepLink();
 
+  if (window.TGhomepageReady) {
+    window.TGhomepageReady.then(applyHomepageData);
+  }
+  document.addEventListener("tg-homepage", function (e) { applyHomepageData(e.detail); });
+
   if (window.TGinspiredReady) {
     window.TGinspiredReady.then(applyInspiredData);
   }
@@ -678,10 +766,15 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   document.addEventListener("tg-sidebar", function (e) { applySidebarCars(e.detail); });
 
-  /* Re-sync when user returns to tab (picks up Trip.com changes within cache TTL) */
+  /* Re-sync when user returns to tab */
   document.addEventListener("visibilitychange", function () {
     if (document.visibilityState !== "visible") return;
-    if (window.TGinspiredReady) {
+    if (window.TGhomepageReady) {
+      fetch("/api/homepage", { credentials: "same-origin" })
+        .then(function (r) { return r.ok ? r.json() : null; })
+        .then(applyHomepageData)
+        .catch(function () {});
+    } else if (window.TGinspiredReady) {
       fetch("/api/inspired", { credentials: "same-origin" })
         .then(function (r) { return r.ok ? r.json() : null; })
         .then(applyInspiredData)

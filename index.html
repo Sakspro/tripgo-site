@@ -55,7 +55,7 @@
         </li>
         <li class="has-flyout">
           <a href="#search" class="sidenav__item" data-tab="tours"><span class="sidenav__ic">🎟️</span>Attractions &amp; Tours<span class="sidenav__caret">›</span></a>
-          <div class="flyout">
+          <div class="flyout" id="toursFlyout">
             <a href="#search" data-tab="tours">Attractions &amp; Tickets</a>
             <a href="#search" data-tab="tours">Tours &amp; Day Trips</a>
             <a href="#search" data-tab="tours">Food &amp; Dining</a>
@@ -70,7 +70,7 @@
         <li><a href="explore.html?cat=planner" class="sidenav__item"><span class="sidenav__ic">🧭</span>Trip.Planner <span class="pill-new">New</span></a></li>
         <li class="has-flyout">
           <a href="explore.html?cat=inspiration" class="sidenav__item"><span class="sidenav__ic">💡</span>Travel Inspiration<span class="sidenav__caret">›</span></a>
-          <div class="flyout">
+          <div class="flyout" id="inspoFlyout">
             <a href="explore.html?cat=inspiration">Travel Guides</a>
             <a href="explore.html?cat=inspiration">Trip Moments</a>
             <a href="explore.html?cat=inspiration">Trip.Best</a>
@@ -142,7 +142,7 @@
       <!-- Popular attractions -->
       <section class="block">
         <div class="block__head">
-          <h2 class="block__title">Popular attractions</h2>
+          <h2 class="block__title" id="attractionsTitle">Popular attractions</h2>
           <a href="explore.html?cat=attractions" class="block__more">More →</a>
         </div>
         <div class="hscroll" id="attractionRow"></div>
@@ -151,7 +151,7 @@
       <!-- Featured hotels -->
       <section class="block">
         <div class="block__head">
-          <h2 class="block__title">Featured hotels &amp; homes</h2>
+          <h2 class="block__title" id="hotelsTitle">Featured hotels &amp; homes</h2>
           <a href="results.html?tab=hotels" class="block__more">More →</a>
         </div>
         <div class="hscroll" id="hotelRow"></div>
@@ -160,7 +160,7 @@
       <!-- Travel inspiration -->
       <section class="block">
         <div class="block__head">
-          <h2 class="block__title">Travel inspiration</h2>
+          <h2 class="block__title" id="inspoTitle">Travel inspiration</h2>
           <a href="explore.html?cat=inspiration" class="block__more">More →</a>
         </div>
         <div class="hscroll" id="inspoRow"></div>
@@ -276,8 +276,7 @@
   <script src="signin.js"></script>
   <script src="dest-search.js"></script>
   <script src="common.js"></script>
-  <script src="inspired.js"></script>
-  <script src="sidebar.js"></script>
+  <script src="homepage.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
