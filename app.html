@@ -22,7 +22,9 @@
       <nav class="topbar__links">
         <a href="app.html" class="topbar__link" style="color:var(--blue);font-weight:700;"><span>📱</span> App</a>
         <a href="index.html" class="topbar__link">List your property</a>
-        <span class="topbar__link"><span>🌐</span> USD</span>
+        <button class="topbar__link dd-trigger" id="currTrigger" aria-haspopup="true" aria-expanded="false">
+          <span>🌐</span> <span id="currLabel">USD</span> <span class="caret">▾</span>
+        </button>
         <a href="index.html" class="topbar__link">Customer support</a>
         <a href="index.html" class="topbar__link">Find bookings</a>
         <a href="index.html" class="btn btn--outline btn--sm">Sign in / register</a>
@@ -128,6 +130,96 @@
     <div class="footer__bottom">© <span id="year"></span> TripGo Travel. &nbsp;·&nbsp; 🌐 English (XX) · USD</div>
   </footer>
 
-  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+  <!-- Language / currency selector -->
+  <div class="backdrop" id="backdrop"></div>
+  <div class="popover" id="ddLang" role="dialog" aria-label="Language and currency">
+    <div class="popover__section">
+      <h5>Language</h5>
+      <div class="optgrid" id="langGrid"></div>
+    </div>
+    <div class="popover__section">
+      <h5>Currency</h5>
+      <div class="optgrid" id="currGrid"></div>
+    </div>
+    <button class="btn btn--primary btn--block popover__done" id="ddLangSave">Save</button>
+  </div>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    (function () {
+      var LANGS = ["English (XX)", "English (UK)", "中文 (简体)", "中文 (繁體)", "日本語", "한국어", "Français", "Deutsch", "Español", "ภาษาไทย"];
+      var LOCALES = { "English (XX)": "en-XX", "English (UK)": "en-GB", "中文 (简体)": "zh-CN", "中文 (繁體)": "zh-HK", "日本語": "ja-JP", "한국어": "ko-KR", "Français": "fr-FR", "Deutsch": "de-DE", "Español": "es-ES", "ภาษาไทย": "th-TH" };
+      var CURRS = ["USD", "EUR", "GBP", "JPY", "CNY", "KRW", "HKD", "SGD", "AUD", "THB"];
+
+      var params = new URLSearchParams(location.search);
+      var state = {
+        language: localStorage.getItem("tg_lang") || labelForLocale(params.get("locale")) || "English (XX)",
+        currency: localStorage.getItem("tg_curr") || params.get("curr") || "USD"
+      };
+
+      function labelForLocale(loc) {
+        if (!loc) return null;
+        for (var k in LOCALES) { if (LOCALES[k] === loc) return k; }
+        return null;
+      }
+
+      var trigger = document.getElementById("currTrigger");
+      var pop = document.getElementById("ddLang");
+      var backdrop = document.getElementById("backdrop");
+      var label = document.getElementById("currLabel");
+      label.textContent = state.currency;
+
+      function grid(container, items, getActive, onPick) {
+        container.innerHTML = items.map(function (i) {
+          return '<button type="button" data-val="' + i + '" class="' + (i === getActive() ? "is-active" : "") + '">' + i + '</button>';
+        }).join("");
+        container.querySelectorAll("button").forEach(function (b) {
+          b.addEventListener("click", function () {
+            onPick(b.dataset.val);
+            container.querySelectorAll("button").forEach(function (x) { x.classList.toggle("is-active", x === b); });
+          });
+        });
+      }
+      grid(document.getElementById("langGrid"), LANGS, function () { return state.language; }, function (v) { state.language = v; });
+      grid(document.getElementById("currGrid"), CURRS, function () { return state.currency; }, function (v) { state.currency = v; });
+
+      function openPop() {
+        var r = trigger.getBoundingClientRect();
+        pop.classList.add("is-open");
+        backdrop.classList.add("is-open");
+        trigger.setAttribute("aria-expanded", "true");
+        var left = r.right + window.scrollX - pop.offsetWidth;
+        if (left < 12) left = 12;
+        pop.style.left = left + "px";
+        pop.style.top = (r.bottom + window.scrollY + 8) + "px";
+      }
+      function closePop() {
+        pop.classList.remove("is-open");
+        backdrop.classList.remove("is-open");
+        trigger.setAttribute("aria-expanded", "false");
+      }
+
+      trigger.addEventListener("click", function (e) {
+        e.preventDefault();
+        pop.classList.contains("is-open") ? closePop() : openPop();
+      });
+      backdrop.addEventListener("click", closePop);
+      document.addEventListener("keydown", function (e) { if (e.key === "Escape") closePop(); });
+
+      document.getElementById("ddLangSave").addEventListener("click", function () {
+        label.textContent = state.currency;
+        localStorage.setItem("tg_lang", state.language);
+        localStorage.setItem("tg_curr", state.currency);
+        var p = new URLSearchParams(location.search);
+        p.set("locale", LOCALES[state.language] || "en-XX");
+        p.set("curr", state.currency);
+        history.replaceState(null, "", location.pathname + "?" + p.toString());
+        document.querySelector(".footer__bottom").innerHTML =
+          "© " + new Date().getFullYear() + " TripGo Travel. &nbsp;·&nbsp; 🌐 " + state.language + " · " + state.currency;
+        closePop();
+      });
+    })();
+  </script>
 </body>
 </html>
