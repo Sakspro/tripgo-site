@@ -1,5 +1,5 @@
 /* GET /api/sidebar — live-synced Trip.com sidebar (Cars section) */
-const { fetchSidebarFromTrip, contentHash } = require("./lib/trip-sidebar");
+const { fetchSidebarFromTrip, contentHash } = require("../server/lib/trip-sidebar");
 
 let cache = { data: null, hash: "", fetchedAt: 0 };
 const TTL_MS = 60 * 60 * 1000;

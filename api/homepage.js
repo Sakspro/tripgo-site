@@ -1,5 +1,5 @@
 /* GET /api/homepage — full Trip.com homepage content sync */
-const { fetchHomepageFromTrip, contentHash } = require("./lib/trip-home");
+const { fetchHomepageFromTrip, contentHash } = require("../server/lib/trip-home");
 
 let cache = { data: null, hash: "", fetchedAt: 0 };
 const TTL_MS = 60 * 60 * 1000;

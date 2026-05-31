@@ -1,7 +1,7 @@
 /* CLI — sync Trip.com homepage data to data/homepage-cache.json */
 const fs = require("fs");
 const path = require("path");
-const { fetchHomepageFromTrip, contentHash } = require("../api/lib/trip-home");
+const { fetchHomepageFromTrip, contentHash } = require("../server/lib/trip-home");
 
 async function main() {
   console.log("Syncing homepage from Trip.com...");

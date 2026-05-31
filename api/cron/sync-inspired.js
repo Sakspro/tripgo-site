@@ -1,7 +1,7 @@
 /* Vercel Cron — daily Trip.com homepage sync */
-const { fetchHomepageFromTrip, contentHash } = require("../lib/trip-home");
-const { fetchInspiredFromTrip, contentHash: inspiredHash } = require("../lib/trip-inspired");
-const { fetchSidebarFromTrip, contentHash: sidebarHash } = require("../lib/trip-sidebar");
+const { fetchHomepageFromTrip, contentHash } = require("../../server/lib/trip-home");
+const { fetchInspiredFromTrip, contentHash: inspiredHash } = require("../../server/lib/trip-inspired");
+const { fetchSidebarFromTrip, contentHash: sidebarHash } = require("../../server/lib/trip-sidebar");
 
 module.exports = async function handler(req, res) {
   var auth = process.env.CRON_SECRET;

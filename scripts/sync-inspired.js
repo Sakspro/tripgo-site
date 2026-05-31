@@ -1,7 +1,7 @@
 /* CLI: sync Trip.com inspired data and write data/inspired-cache.json */
 const fs = require("fs");
 const path = require("path");
-const { fetchInspiredFromTrip, contentHash } = require("../api/lib/trip-inspired");
+const { fetchInspiredFromTrip, contentHash } = require("../server/lib/trip-inspired");
 
 async function main() {
   console.log("Syncing from Trip.com…");

@@ -1,5 +1,5 @@
 /* GET /api/destinations?q=Paris  |  GET /api/destinations?hot=1 */
-const { searchDestinations, fetchHotDestinations } = require("./lib/trip-destinations");
+const { searchDestinations, fetchHotDestinations } = require("../server/lib/trip-destinations");
 
 let hotCache = { data: null, fetchedAt: 0 };
 const HOT_TTL_MS = 6 * 60 * 60 * 1000;

@@ -1,7 +1,7 @@
 /* CLI: sync Trip.com sidebar Cars nav and write data/sidebar-cache.json */
 const fs = require("fs");
 const path = require("path");
-const { fetchSidebarFromTrip, contentHash } = require("../api/lib/trip-sidebar");
+const { fetchSidebarFromTrip, contentHash } = require("../server/lib/trip-sidebar");
 
 fetchSidebarFromTrip()
   .then(function (data) {

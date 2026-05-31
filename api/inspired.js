@@ -1,5 +1,5 @@
 /* GET /api/inspired — live-synced Trip.com "Get inspired" section */
-const { fetchInspiredFromTrip, contentHash } = require("./lib/trip-inspired");
+const { fetchInspiredFromTrip, contentHash } = require("../server/lib/trip-inspired");
 
 let cache = { data: null, hash: "", fetchedAt: 0 };
 const TTL_MS = 60 * 60 * 1000; // 1 hour

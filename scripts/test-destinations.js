@@ -1,5 +1,5 @@
 /* Quick test for trip-destinations lib */
-const { searchDestinations, fetchHotDestinations } = require("../api/lib/trip-destinations");
+const { searchDestinations, fetchHotDestinations } = require("../server/lib/trip-destinations");
 
 (async function () {
   var hot = await fetchHotDestinations();
