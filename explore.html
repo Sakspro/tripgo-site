@@ -207,7 +207,12 @@
       var cta = document.getElementById("exCta");
       if (d.cta) { cta.textContent = d.cta.label; cta.href = d.cta.href; cta.style.display = "inline-flex"; }
 
-      if (d.privateTours) { renderPrivateTours(d); return; }
+      if (d.privateTours) {
+        var dest = new URLSearchParams(location.search).get("dest");
+        if (dest) renderPrivateToursDest(dest);
+        else renderPrivateTours(d);
+        return;
+      }
 
       var html = "";
       if (d.steps) {
@@ -239,8 +244,49 @@
 
     function destCard(d) {
       var img = "https://loremflickr.com/640/420/" + encodeURIComponent(d.q);
-      return '<a class="dest-card" href="index.html#search" style="background-image:url(\'' + img + '\')">' +
+      var href = "explore.html?cat=private-tours&dest=" + encodeURIComponent(d.name);
+      return '<a class="dest-card" href="' + href + '" style="background-image:url(\'' + img + '\')">' +
         '<span class="dest-card__name">' + d.name + '</span></a>';
+    }
+
+    function tourPackages(city) {
+      var themes = [
+        { t: "City Highlights — Private Full-Day Tour", q: "landmark", d: "8 hours", p: 129, r: "4.9" },
+        { t: "Old Town & Culture Private Walking Tour", q: "old-town", d: "4 hours", p: 69, r: "4.8" },
+        { t: "Food Tour with a Local Guide", q: "food", d: "3.5 hours", p: 79, r: "4.9" },
+        { t: "Private Day Trip to Nearby Wonders", q: "nature", d: "10 hours", p: 189, r: "4.7" },
+        { t: "Night Lights Private Tour", q: "night,city", d: "3 hours", p: 59, r: "4.8" },
+        { t: "Private Airport Transfer & City Intro", q: "street", d: "2 hours", p: 45, r: "4.7" }
+      ];
+      return themes.map(function (x) {
+        return {
+          title: city + " " + x.t,
+          img: "https://loremflickr.com/640/420/" + encodeURIComponent(city + "," + x.q),
+          dur: x.d, price: x.p, rating: x.r
+        };
+      });
+    }
+    function tourCard(t) {
+      return '<article class="tour-card">' +
+        '<div class="tour-card__img" style="background-image:url(\'' + t.img + '\')"><span class="tour-card__badge">Private</span></div>' +
+        '<div class="tour-card__body"><h3>' + t.title + '</h3>' +
+        '<div class="tour-card__meta">⏱ ' + t.dur + ' &nbsp;·&nbsp; ⭐ ' + t.rating + '</div>' +
+        '<div class="tour-card__foot"><span class="tour-card__price">from $<b>' + t.price + '</b> /group</span>' +
+        '<a class="btn btn--primary btn--sm" href="index.html#search">Book now</a></div></div></article>';
+    }
+    function renderPrivateToursDest(name) {
+      document.getElementById("exCrumb").innerHTML =
+        '<a href="explore.html?cat=private-tours">Private Tours</a> <span>›</span> ' + name;
+      document.getElementById("exTitle").textContent = "Private Tours in " + name;
+      document.getElementById("exSub").textContent =
+        "Browse private, guide-led tours in " + name + " — book instantly and customise anytime.";
+      document.title = "Private Tours in " + name + " | TripGo";
+      var cta = document.getElementById("exCta");
+      cta.textContent = "‹ All destinations"; cta.href = "explore.html?cat=private-tours"; cta.style.display = "inline-flex";
+
+      var html = '<h2 class="ex-sectitle">' + tourPackages(name).length + ' private tours in ' + name + '</h2>' +
+        '<div class="ex-grid">' + tourPackages(name).map(tourCard).join("") + '</div>';
+      document.getElementById("exContent").innerHTML = html;
     }
     function renderPrivateTours(d) {
       var html =

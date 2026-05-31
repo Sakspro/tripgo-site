@@ -392,6 +392,20 @@ button { font-family: inherit; cursor: pointer; }
 @media (max-width: 900px) { .dest-grid { grid-template-columns: repeat(3, 1fr); } }
 @media (max-width: 560px) { .dest-grid { grid-template-columns: repeat(2, 1fr); } }
 
+/* Private tour package cards (destination view) */
+.tour-card { background: #fff; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow-sm);
+  transition: transform .16s, box-shadow .16s; display: flex; flex-direction: column; }
+.tour-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+.tour-card__img { height: 150px; background-size: cover; background-position: center; background-color: #dfe6ef; position: relative; }
+.tour-card__badge { position: absolute; top: 10px; left: 10px; background: rgba(10,61,145,.92); color: #fff;
+  font-size: 11.5px; font-weight: 700; padding: 4px 10px; border-radius: 20px; }
+.tour-card__body { padding: 14px 16px 16px; display: flex; flex-direction: column; flex: 1; }
+.tour-card__body h3 { font-size: 15.5px; line-height: 1.35; }
+.tour-card__meta { font-size: 13px; color: var(--muted); margin: 8px 0 12px; }
+.tour-card__foot { margin-top: auto; display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.tour-card__price { font-size: 13px; color: var(--muted); }
+.tour-card__price b { font-size: 18px; color: var(--ink); }
+
 /* ===========================================================
    Service chat (chat.html)
    =========================================================== */
