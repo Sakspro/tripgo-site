@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Search Results | TripGo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar__inner">
+      <a href="index.html" class="brand notranslate" translate="no"><span class="brand__mark">✈</span>Trip<span>Go</span>.com</a>
+      <div class="globalsearch"><span class="globalsearch__icon">🔍</span><input type="text" placeholder="Destinations, attractions, hotels, and more" id="gs" /></div>
+      <nav class="topbar__links">
+        <a href="app.html" class="topbar__link"><span>📱</span> App</a>
+        <a href="list-property.html" class="topbar__link">List your property</a>
+        <button class="topbar__link dd-trigger" id="currTrigger"><span>🌐</span> <span id="currLabel">USD</span> <span class="caret">▾</span></button>
+        <a href="support.html" class="topbar__link">Customer support</a>
+        <a href="bookings.html" class="topbar__link">Find bookings</a>
+        <a href="index.html" class="btn btn--outline btn--sm" data-signin>Sign in / register</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="respage container">
+    <nav class="bk-crumbs"><a href="index.html">Home</a> <span>›</span> <span id="resCrumb">Results</span></nav>
+    <div class="res-head">
+      <div><h1 id="resTitle">Search results</h1><p class="res-sub" id="resSub"></p></div>
+      <a class="btn btn--outline btn--sm" href="index.html#search" id="resEdit">Edit search</a>
+    </div>
+    <div class="res-toolbar">
+      <select id="resSort" class="ord-range"><option value="rec">Recommended</option><option value="price">Price: low to high</option><option value="rating">Top rated</option></select>
+      <span class="res-count" id="resCount"></span>
+    </div>
+    <div class="res-list" id="resList"></div>
+  </main>
+
+  <footer class="footer container"><div class="footer__bottom">© <span id="year"></span> TripGo Travel.</div></footer>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="i18n.js"></script>
+  <script src="region.js"></script>
+  <script src="signin.js"></script>
+  <script src="common.js"></script>
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+    var p = new URLSearchParams(location.search);
+    var tab = p.get("tab") || (p.get("q") ? "hotels" : "hotels");
+    var q = p.get("q") || p.get("dest") || p.get("to") || "Paris";
+    var from = p.get("from") || "Your area";
+    var IMG = function (id) { return "https://images.unsplash.com/" + id + "?auto=format&fit=crop&w=600&q=80"; };
+
+    var LABELS = { hotels: "Hotels & Homes", flights: "Flights", trains: "Trains", cars: "Car rentals", tours: "Attractions & Tours", package: "Flight + Hotel", transfers: "Airport transfers" };
+    document.getElementById("resTitle").textContent = (LABELS[tab] || "Results") + " · " + q;
+    document.getElementById("resSub").textContent = tab === "flights" ? from + " → " + q : "Showing the best options for your dates";
+    document.getElementById("resCrumb").textContent = LABELS[tab] || "Results";
+    document.getElementById("resEdit").href = "index.html?tab=" + tab + "&dest=" + encodeURIComponent(q) + "#search";
+    document.getElementById("gs").value = q;
+
+    function genResults() {
+      var base = [
+        { t: q + " Grand Hotel", m: q, p: 189, r: 4.8, img: "photo-1566073771259-6a8506099945" },
+        { t: q + " City Center Suites", m: q, p: 142, r: 4.7, img: "photo-1551882547-ff40c63fe5fa" },
+        { t: q + " Riverside Inn", m: q, p: 98, r: 4.6, img: "photo-1524230572899-a752b3835840" },
+        { t: q + " Boutique Stay", m: q, p: 76, r: 4.5, img: "photo-1542314831-068cd1dbfeeb" },
+        { t: q + " Airport Express Hotel", m: q, p: 64, r: 4.4, img: "photo-1551918120-9739cb430c6d" }
+      ];
+      if (tab === "flights") {
+        return [
+          { t: from + " → " + q, m: "Non-stop · 11h 20m", p: 489, r: 4.7, img: "photo-1436454507800-179274b0752d", flight: true },
+          { t: from + " → " + q, m: "1 stop · 14h 05m", p: 412, r: 4.5, img: "photo-1540962351504-03099e0a784b", flight: true },
+          { t: from + " → " + q, m: "Non-stop · 11h 45m", p: 538, r: 4.8, img: "photo-1476514525535-07fb3f4fb446", flight: true }
+        ];
+      }
+      if (tab === "tours") {
+        return base.map(function (b, i) {
+          return { t: q + " Attraction Pass " + (i + 1), m: "Skip-the-line · Mobile voucher", p: 35 + i * 12, r: 4.7 + (i % 3) * 0.1, img: b.img, tour: true };
+        });
+      }
+      return base;
+    }
+
+    var rows = genResults();
+    function render() {
+      var sort = document.getElementById("resSort").value;
+      var list = rows.slice();
+      if (sort === "price") list.sort(function (a, b) { return a.p - b.p; });
+      if (sort === "rating") list.sort(function (a, b) { return b.r - a.r; });
+      document.getElementById("resCount").textContent = list.length + " results";
+      document.getElementById("resList").innerHTML = list.map(function (r) {
+        var href = r.flight
+          ? "booking.html?cat=flight&title=" + encodeURIComponent(r.t) + "&price=" + r.p + "&city=" + encodeURIComponent(q)
+          : r.tour
+          ? "booking.html?cat=attraction&title=" + encodeURIComponent(r.t) + "&price=" + r.p + "&city=" + encodeURIComponent(q) + "&rating=" + r.r
+          : "booking.html?cat=hotel&title=" + encodeURIComponent(r.t) + "&price=" + r.p + "&city=" + encodeURIComponent(q) + "&rating=" + r.r;
+        return '<a class="res-card" href="' + href + '">' +
+          '<div class="res-card__img"><img src="' + IMG(r.img) + '" alt="" loading="lazy" /></div>' +
+          '<div class="res-card__body"><h3>' + r.t + '</h3><p>' + r.m + '</p>' +
+          '<div class="res-card__foot"><span class="res-card__price">from <b>US$' + r.p + '</b></span>' +
+          '<span class="card__rating">★ ' + r.r.toFixed(1) + '</span></div></div></a>';
+      }).join("");
+    }
+    render();
+    document.getElementById("resSort").addEventListener("change", render);
+  </script>
+</body>
+</html>

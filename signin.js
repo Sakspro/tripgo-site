@@ -58,7 +58,7 @@
         '<button type="button" class="socbtn2" data-soc="Facebook"><b style="color:#1877F2">f</b> Facebook</button>' +
         '<button type="button" class="socbtn2" data-soc="Apple"><b></b> Apple</button>' +
       '</div>' +
-      '<p class="authm__terms">By continuing, you agree to TripGo\'s <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>.</p>';
+      '<p class="authm__terms">By continuing, you agree to TripGo\'s <a href="info.html?p=terms">Terms of Service</a> and <a href="info.html?p=privacy">Privacy Policy</a>.</p>';
     setTimeout(function () { var i = document.getElementById("authId"); if (i) i.focus(); }, 60);
   }
 
@@ -91,7 +91,7 @@
       '<h2 class="authm__title">Hi, <span class="notranslate" translate="no">' + shortName(u) + '</span></h2>' +
       '<p class="authm__lead">Signed in as <strong class="notranslate" translate="no">' + u + '</strong></p>' +
       '<div class="authm__acct">' +
-        '<a class="authm__acctlink" href="index.html#search">🧳 My Trips</a>' +
+        '<a class="authm__acctlink" href="bookings.html">🧳 My Trips</a>' +
         '<a class="authm__acctlink" href="explore.html?cat=rewards">🎁 TripGo Rewards</a>' +
         '<a class="authm__acctlink" href="support.html">💬 Help &amp; support</a>' +
       '</div>' +
@@ -215,11 +215,11 @@
       '</div>' +
       '<div class="acctdd__list">' +
         '<a class="acctdd__item" href="bookings.html"><span>🗓️</span> My bookings</a>' +
-        '<a class="acctdd__item" href="#"><span>👤</span> Manage my account</a>' +
+        '<a class="acctdd__item" href="info.html?p=about"><span>👤</span> Manage my account</a>' +
       '</div>' +
       '<div class="acctdd__list">' +
         '<a class="acctdd__item acctdd__item--plain" href="explore.html?cat=deals">Promo codes</a>' +
-        '<a class="acctdd__item acctdd__item--plain" href="index.html">Saved</a>' +
+        '<a class="acctdd__item acctdd__item--plain" href="saved.html">Saved</a>' +
         '<a class="acctdd__item acctdd__item--plain" href="explore.html?cat=inspiration">My posts</a>' +
         '<a class="acctdd__item acctdd__item--plain" href="explore.html?cat=deals">Flight price alerts</a>' +
       '</div>' +
@@ -237,7 +237,6 @@
       var a = e.target.closest("a");
       if (!a) return;
       if (a.id === "acctSignout") { e.preventDefault(); setUser(""); updateTriggers(); closeAccount(); flash2("You've been signed out."); return; }
-      if (a.getAttribute("href") === "#") e.preventDefault();
       closeAccount();
     });
   }

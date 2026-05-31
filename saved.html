@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Saved | TripGo</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar"><div class="topbar__inner">
+    <a href="index.html" class="brand notranslate" translate="no"><span class="brand__mark">✈</span>Trip<span>Go</span>.com</a>
+    <nav class="topbar__links" style="margin-left:auto"><a href="index.html" class="topbar__link">Back to home</a><a href="index.html" class="btn btn--outline btn--sm" data-signin>Sign in / register</a></nav>
+  </div></header>
+  <main class="fltpage container">
+    <h1 class="flt-title">Saved</h1>
+    <p class="flt-sub">Hotels, attractions and inspiration you've saved.</p>
+    <div class="res-list" id="savedList"></div>
+    <div class="ord-empty" id="savedEmpty" hidden><div class="ord-empty__ic">♡</div><h3>Nothing saved yet</h3><p>Tap ♡ on any hotel or attraction to save it here.</p><a class="btn btn--primary" href="index.html">Browse deals</a></div>
+  </main>
+  <script src="signin.js"></script>
+  <script src="common.js"></script>
+  <script>
+    var list = window.TGgetSaved();
+    var el = document.getElementById("savedList"), empty = document.getElementById("savedEmpty");
+    if (!list.length) { el.innerHTML = ""; empty.hidden = false; }
+    else {
+      empty.hidden = true;
+      el.innerHTML = list.map(function (s) {
+        return '<a class="res-card" href="' + (s.href || "index.html") + '"><div class="res-card__img">' +
+          (s.img ? '<img src="' + s.img + '" alt="" />' : '<div style="height:100%;background:#eef2f7"></div>') +
+          '</div><div class="res-card__body"><h3>' + s.title + '</h3><p>' + s.meta + '</p>' +
+          (s.price ? '<div class="res-card__foot"><span class="res-card__price">' + s.price + '</span></div>' : '') +
+          '</div></a>';
+      }).join("");
+    }
+  </script>
+</body>
+</html>

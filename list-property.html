@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>List Your Property | TripGo</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar"><div class="topbar__inner">
+    <a href="index.html" class="brand notranslate" translate="no"><span class="brand__mark">✈</span>Trip<span>Go</span>.com</a>
+    <nav class="topbar__links" style="margin-left:auto"><a href="support.html" class="topbar__link">Partner support</a></nav>
+  </div></header>
+  <main class="bkpage container">
+    <h1 class="bk-title">List your property on TripGo</h1>
+    <p class="bk-crumbs">Reach millions of travellers worldwide. Join hotels, homes and experience providers on TripGo.</p>
+    <div class="bk-layout">
+      <section class="bk-main">
+        <div class="bk-step"><h3><span class="bk-step__n">1</span> Property details</h3>
+          <div class="bk-form bk-field">
+            <label>Property name<input type="text" id="pName" placeholder="e.g. Sunset Beach Resort" /></label>
+            <label>Property type<select id="pType"><option>Hotel</option><option>Apartment / Home</option><option>Guesthouse</option><option>Experience / Tour</option></select></label>
+            <label>City / region<input type="text" id="pCity" placeholder="City, country" /></label>
+          </div>
+        </div>
+        <div class="bk-step"><h3><span class="bk-step__n">2</span> Contact</h3>
+          <div class="bk-form bk-row--2">
+            <label>Your name<input type="text" id="pContact" /></label>
+            <label>Email<input type="email" id="pEmail" placeholder="you@hotel.com" /></label>
+          </div>
+        </div>
+        <button class="btn btn--primary" id="pSubmit">Submit application</button>
+      </section>
+      <aside class="bk-summary">
+        <h3>Why TripGo?</h3>
+        <ul class="bk-trust"><li>🌍 Global reach — 200+ countries</li><li>📈 Smart pricing tools</li><li>💬 24/7 partner support</li><li>💳 Secure payments</li></ul>
+      </aside>
+    </div>
+  </main>
+  <div class="bk-done" id="pDone" hidden><div class="bk-done__card"><div class="bk-done__ic">✅</div><h2>Application received!</h2><p>Our partner team will contact you within 2 business days.</p><a class="btn btn--primary" href="index.html">Back to home</a></div></div>
+  <script>
+    document.getElementById("pSubmit").addEventListener("click", function () {
+      if (!document.getElementById("pName").value.trim() || !document.getElementById("pEmail").value.trim()) { alert("Please fill in property name and email."); return; }
+      document.getElementById("pDone").hidden = false; document.body.style.overflow = "hidden";
+    });
+  </script>
+</body>
+</html>

@@ -21,12 +21,12 @@
       </div>
       <nav class="topbar__links">
         <a href="app.html" class="topbar__link"><span>📱</span> App</a>
-        <a href="index.html" class="topbar__link">List your property</a>
+        <a href="list-property.html" class="topbar__link">List your property</a>
         <button class="topbar__link dd-trigger" id="currTrigger" aria-haspopup="true" aria-expanded="false">
           <span>🌐</span> <span id="currLabel">USD</span> <span class="caret">▾</span>
         </button>
         <a href="support.html" class="topbar__link">Customer support</a>
-        <a href="index.html" class="topbar__link">Find bookings</a>
+        <a href="bookings.html" class="topbar__link">Find bookings</a>
         <a href="index.html" class="btn btn--outline btn--sm" data-signin>Sign in / register</a>
       </nav>
     </div>
@@ -56,7 +56,7 @@
       </div>
       <div class="footer__col">
         <h4>About</h4>
-        <a href="#">About TripGo</a><a href="#">News</a><a href="#">Careers</a><a href="#">Terms &amp; Conditions</a><a href="#">Privacy Statement</a>
+        <a href="info.html?p=about">About TripGo</a><a href="info.html?p=news">News</a><a href="info.html?p=careers">Careers</a><a href="info.html?p=terms">Terms &amp; Conditions</a><a href="info.html?p=privacy">Privacy Statement</a>
       </div>
       <div class="footer__col">
         <h4>Explore</h4>
@@ -73,6 +73,7 @@
   <script src="i18n.js"></script>
   <script src="region.js"></script>
   <script src="signin.js"></script>
+  <script src="common.js"></script>
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
     try { var c = localStorage.getItem("tg_curr"); var lc = document.getElementById("currLabel"); if (c && lc) lc.textContent = c; } catch (e) {}
@@ -253,6 +254,14 @@
       }
 
       var html = "";
+      var planDest = params.get("dest");
+      var planDays = params.get("days") || "3";
+      if (d.planner && planDest) {
+        html += '<section class="ex-feature"><span class="ex-feature__tag">' + planDays + '-day plan</span><h2>Your ' + planDest + ' itinerary</h2>' +
+          '<p>Day 1 — Arrive, check in &amp; explore the old town. Day 2 — Top sights &amp; local food tour. Day 3 — Day trip &amp; sunset views.</p>' +
+          '<a class="btn btn--primary" href="results.html?tab=hotels&dest=' + encodeURIComponent(planDest) + '">Book hotels</a> ' +
+          '<a class="btn btn--outline" href="results.html?tab=tours&dest=' + encodeURIComponent(planDest) + '">Book activities</a></section>';
+      }
       if (post && d.cards) {
         var hit = d.cards.find(function (c) { return c.slug === post; });
         if (hit) {
@@ -267,9 +276,9 @@
       }
       if (d.planner) {
         html += '<section class="ex-planner"><h3>Build your trip</h3>' +
-          '<form class="ex-planner__form" onsubmit="return false;">' +
-          '<input type="text" placeholder="Where to? e.g. Tokyo" aria-label="Destination">' +
-          '<input type="text" placeholder="How many days? e.g. 3" aria-label="Days">' +
+          '<form class="ex-planner__form" id="plannerForm">' +
+          '<input type="text" id="plannerDest" placeholder="Where to? e.g. Tokyo" aria-label="Destination" value="' + (planDest || "").replace(/"/g, "&quot;") + '">' +
+          '<input type="text" id="plannerDays" placeholder="How many days? e.g. 3" aria-label="Days" value="' + planDays.replace(/"/g, "&quot;") + '">' +
           '<button class="btn btn--primary" type="submit">Generate itinerary</button></form>' +
           '<p class="ex-planner__note">Popular AI itineraries:</p></section>';
       }
@@ -285,6 +294,13 @@
           '<div class="ex-grid">' + d.cards.map(function (c, i) { return cardHtml(c, i, post); }).join("") + "</div>";
       }
       document.getElementById("exContent").innerHTML = html;
+      var pf = document.getElementById("plannerForm");
+      if (pf) pf.addEventListener("submit", function (e) {
+        e.preventDefault();
+        var dest = (document.getElementById("plannerDest").value || "").trim() || "Tokyo";
+        var days = (document.getElementById("plannerDays").value || "").trim() || "3";
+        location.href = "explore.html?cat=planner&dest=" + encodeURIComponent(dest) + "&days=" + encodeURIComponent(days);
+      });
     }
 
     function destCard(d) {
@@ -354,7 +370,12 @@
         '<div class="dest-grid">' + d.more.map(destCard).join("") + '</div>';
       document.getElementById("exContent").innerHTML = html;
       var btn = document.getElementById("ptSearch");
-      if (btn) btn.addEventListener("click", function () { location.href = "index.html#search"; });
+      if (btn) btn.addEventListener("click", function () {
+        var dest = (document.getElementById("ptInput").value || "").trim();
+        location.href = dest
+          ? "explore.html?cat=private-tours&dest=" + encodeURIComponent(dest)
+          : "explore.html?cat=private-tours";
+      });
     }
     render();
   </script>

@@ -20,7 +20,7 @@
       </div>
       <nav class="topbar__links">
         <a href="app.html" class="topbar__link"><span>📱</span> App</a>
-        <a href="index.html" class="topbar__link">List your property</a>
+        <a href="list-property.html" class="topbar__link">List your property</a>
         <button class="topbar__link dd-trigger" id="currTrigger" aria-haspopup="true" aria-expanded="false">
           <span>🌐</span> <span id="currLabel">USD</span> <span class="caret">▾</span>
         </button>
@@ -51,6 +51,7 @@
   <script src="i18n.js"></script>
   <script src="region.js"></script>
   <script src="signin.js"></script>
+  <script src="common.js"></script>
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
     try { var c = localStorage.getItem("tg_curr"); var lc = document.getElementById("currLabel"); if (c && lc) lc.textContent = c; } catch (e) {}

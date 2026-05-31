@@ -15,7 +15,7 @@
   <header class="topbar">
     <div class="topbar__inner">
       <button class="iconbtn topbar__menu" id="sidebarToggle" aria-label="Toggle menu">☰</button>
-      <a href="#" class="brand notranslate" translate="no" aria-label="TripGo home"><span class="brand__mark">✈</span>Trip<span>Go</span>.com</a>
+      <a href="index.html" class="brand notranslate" translate="no" aria-label="TripGo home"><span class="brand__mark">✈</span>Trip<span>Go</span>.com</a>
 
       <div class="globalsearch">
         <span class="globalsearch__icon">🔍</span>
@@ -24,14 +24,14 @@
 
       <nav class="topbar__links">
         <a href="app.html" class="topbar__link"><span>📱</span> App</a>
-        <a href="#" class="topbar__link">List your property</a>
+        <a href="list-property.html" class="topbar__link">List your property</a>
 
         <button class="topbar__link dd-trigger" data-dd="ddLang" aria-haspopup="true" aria-expanded="false">
           <span>🌐</span> USD <span class="caret">▾</span>
         </button>
 
         <a href="support.html" class="topbar__link">Customer support</a>
-        <a href="#" class="topbar__link">Find bookings</a>
+        <a href="bookings.html" class="topbar__link">Find bookings</a>
 
         <button class="btn btn--outline btn--sm dd-trigger" data-dd="ddSignin" aria-haspopup="true" aria-expanded="false">Sign in / register</button>
       </nav>
@@ -152,7 +152,7 @@
       <section class="block">
         <div class="block__head">
           <h2 class="block__title">Featured hotels &amp; homes</h2>
-          <a href="index.html?tab=hotels#search" class="block__more">More →</a>
+          <a href="results.html?tab=hotels" class="block__more">More →</a>
         </div>
         <div class="hscroll" id="hotelRow"></div>
       </section>
@@ -177,28 +177,28 @@
           </div>
           <div class="footer__col">
             <h4>About</h4>
-            <a href="#">About TripGo</a>
-            <a href="#">News</a>
-            <a href="#">Careers</a>
-            <a href="#">Terms &amp; Conditions</a>
-            <a href="#">Privacy Statement</a>
-            <a href="#">Accessibility Statement</a>
+            <a href="info.html?p=about">About TripGo</a>
+            <a href="info.html?p=news">News</a>
+            <a href="info.html?p=careers">Careers</a>
+            <a href="info.html?p=terms">Terms &amp; Conditions</a>
+            <a href="info.html?p=privacy">Privacy Statement</a>
+            <a href="info.html?p=accessibility">Accessibility Statement</a>
           </div>
           <div class="footer__col">
             <h4>Other services</h4>
-            <a href="#">Investor relations</a>
-            <a href="#">TripGo Rewards</a>
-            <a href="#">Affiliate program</a>
-            <a href="#">List your property</a>
-            <a href="#">All hotels</a>
-            <a href="#">Become a Supplier</a>
-            <a href="#">Security</a>
+            <a href="info.html?p=investors">Investor relations</a>
+            <a href="explore.html?cat=rewards">TripGo Rewards</a>
+            <a href="info.html?p=affiliate">Affiliate program</a>
+            <a href="list-property.html">List your property</a>
+            <a href="results.html?tab=hotels">All hotels</a>
+            <a href="list-property.html">Become a Supplier</a>
+            <a href="info.html?p=security">Security</a>
           </div>
           <div class="footer__col">
             <h4>Payment methods</h4>
             <div class="paychips"><span>VISA</span><span>MC</span><span>AMEX</span><span>JCB</span><span>PayPal</span><span>Apple Pay</span></div>
             <h4 style="margin-top:20px;">Follow us</h4>
-            <div class="social"><a href="#">f</a><a href="#">𝕏</a><a href="#">◎</a><a href="#">▶</a></div>
+            <div class="social"><a href="https://www.facebook.com/tripcom" target="_blank" rel="noopener">f</a><a href="https://twitter.com/tripcom" target="_blank" rel="noopener">𝕏</a><a href="https://www.instagram.com/tripcom" target="_blank" rel="noopener">◎</a><a href="https://www.youtube.com/tripcom" target="_blank" rel="noopener">▶</a></div>
           </div>
         </div>
         <div class="footer__bottom">
@@ -274,6 +274,7 @@
   <script src="i18n.js"></script>
   <script src="region.js"></script>
   <script src="signin.js"></script>
+  <script src="common.js"></script>
   <script src="script.js"></script>
 </body>
 </html>

@@ -21,7 +21,7 @@
       </div>
       <nav class="topbar__links">
         <a href="app.html" class="topbar__link"><span>📱</span> App</a>
-        <a href="index.html" class="topbar__link">List your property</a>
+        <a href="list-property.html" class="topbar__link">List your property</a>
         <button class="topbar__link dd-trigger" id="currTrigger" aria-haspopup="true" aria-expanded="false">
           <span>🌐</span> <span id="currLabel">USD</span> <span class="caret">▾</span>
         </button>
@@ -58,9 +58,9 @@
         </div>
         <nav class="ord-side__nav">
           <a class="ord-side__link is-active" href="bookings.html"><span>🗓️</span> My Bookings</a>
-          <a class="ord-side__link" href="#"><span>👤</span> Manage my account</a>
+          <a class="ord-side__link" href="info.html?p=about"><span>👤</span> Manage my account</a>
           <a class="ord-side__link" href="explore.html?cat=deals"><span>🏷️</span> Promo codes</a>
-          <a class="ord-side__link" href="index.html"><span>❤️</span> Saved</a>
+          <a class="ord-side__link" href="saved.html"><span>❤️</span> Saved</a>
           <a class="ord-side__link" href="explore.html?cat=inspiration"><span>📝</span> My posts</a>
           <a class="ord-side__link" href="explore.html?cat=deals"><span>🔔</span> Flight price alerts</a>
         </nav>
@@ -126,11 +126,11 @@
       </div>
       <div class="footer__col">
         <h4>About</h4>
-        <a href="#">About TripGo</a><a href="#">News</a><a href="#">Careers</a><a href="#">Terms &amp; Conditions</a><a href="#">Privacy Statement</a>
+        <a href="info.html?p=about">About TripGo</a><a href="info.html?p=news">News</a><a href="info.html?p=careers">Careers</a><a href="info.html?p=terms">Terms &amp; Conditions</a><a href="info.html?p=privacy">Privacy Statement</a>
       </div>
       <div class="footer__col">
         <h4>Other services</h4>
-        <a href="#">TripGo Rewards</a><a href="#">Affiliate program</a><a href="index.html">Back to home</a>
+        <a href="explore.html?cat=rewards">TripGo Rewards</a><a href="info.html?p=affiliate">Affiliate program</a><a href="index.html">Back to home</a>
       </div>
       <div class="footer__col">
         <h4>Get the app</h4>
@@ -143,6 +143,7 @@
   <script src="i18n.js"></script>
   <script src="region.js"></script>
   <script src="signin.js"></script>
+  <script src="common.js"></script>
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
     var lc = document.getElementById("currLabel");
@@ -172,11 +173,18 @@
 
     function fmtDate(d){ return d.toLocaleDateString("en-GB",{ day:"2-digit", month:"short", year:"numeric" }); }
 
+    function tabForCat(cat) {
+      return { hotel: "hotels", flight: "flights", train: "trains", bundle: "package", tour: "tours", attraction: "tours", car: "cars" }[cat] || "hotels";
+    }
+    function payHref(o) {
+      return "booking.html?cat=" + encodeURIComponent(o.cat) + "&title=" + encodeURIComponent(o.title) + "&price=" + o.price;
+    }
     function actionsFor(o){
-      if (o.status === "topay") return '<button class="btn btn--primary btn--sm">Pay now</button><a class="btn btn--outline btn--sm" href="#">View details</a>';
-      if (o.status === "completed") return '<a class="btn btn--outline btn--sm" href="#">Book again</a><a class="btn btn--outline btn--sm" href="#">View details</a>';
-      if (o.status === "processing") return '<a class="btn btn--outline btn--sm" href="support.html">Contact support</a><a class="btn btn--outline btn--sm" href="#">View details</a>';
-      return '<a class="btn btn--outline btn--sm" href="#">View details</a>';
+      var detail = "order.html?id=" + encodeURIComponent(o.id);
+      if (o.status === "topay") return '<a class="btn btn--primary btn--sm" href="' + payHref(o) + '">Pay now</a><a class="btn btn--outline btn--sm" href="' + detail + '">View details</a>';
+      if (o.status === "completed") return '<a class="btn btn--outline btn--sm" href="results.html?tab=' + tabForCat(o.cat) + '&dest=' + encodeURIComponent(o.title) + '">Book again</a><a class="btn btn--outline btn--sm" href="' + detail + '">View details</a>';
+      if (o.status === "processing") return '<a class="btn btn--outline btn--sm" href="support.html">Contact support</a><a class="btn btn--outline btn--sm" href="' + detail + '">View details</a>';
+      return '<a class="btn btn--outline btn--sm" href="' + detail + '">View details</a>';
     }
 
     function render(){

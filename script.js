@@ -298,10 +298,10 @@ function buildOptGrid(container, items, activeVal, onPick) {
 const IMG = (id, w = 500) => `https://images.unsplash.com/${id}?auto=format&fit=crop&w=${w}&q=80`;
 
 const CLAIMS = [
-  { off: "Welcome", txt: "New users get more discounts on travel!", cta: "Sign in & claim", dd: "ddSignin" },
-  { off: "10% off", txt: "Hotels & Homes for first-time bookings", cta: "Claim all" },
-  { off: "5% off", txt: "EU train tickets, limited time only", cta: "Claim all" },
-  { off: "10% off", txt: "Airport Transfers worldwide", cta: "Claim all" },
+  { id: "welcome", off: "Welcome", txt: "New users get more discounts on travel!", cta: "Sign in & claim", dd: "ddSignin" },
+  { id: "hotel10", off: "10% off", txt: "Hotels & Homes for first-time bookings", cta: "Claim all", coupon: "TG-HOTEL10" },
+  { id: "train5", off: "5% off", txt: "EU train tickets, limited time only", cta: "Claim all", coupon: "TG-TRAIN5" },
+  { id: "xfer10", off: "10% off", txt: "Airport Transfers worldwide", cta: "Claim all", coupon: "TG-XFER10" },
 ];
 const PROMOS = [
   { img: "photo-1542051841857-5f90071e7989", t: "GO JAPAN", s: "Hotels up to 20% off" },
@@ -361,10 +361,10 @@ function bookingHref(o, cat, city) {
     "&city=" + encodeURIComponent(city || o.m || o.city || "");
 }
 function flightHref(dest) {
-  return "index.html?tab=flights&to=" + encodeURIComponent(dest) + "#search";
+  return "results.html?tab=flights&to=" + encodeURIComponent(dest);
 }
 function hotelHref(city) {
-  return "index.html?tab=hotels&dest=" + encodeURIComponent(city) + "#search";
+  return "results.html?tab=hotels&dest=" + encodeURIComponent(city);
 }
 
 function flightCardHTML(f) {
@@ -401,13 +401,33 @@ function cardHTML(o, withPrice, href) {
     '</div></' + tag + '>';
 }
 
+function buildSearchUrl() {
+  var p = new URLSearchParams();
+  p.set("tab", state.tab);
+  var dest = $(".js-text");
+  var from = $(".js-from");
+  var to = $(".js-to");
+  if (dest && dest.value.trim()) p.set("dest", dest.value.trim());
+  if (from && from.value.trim()) p.set("from", from.value.trim());
+  if (to && to.value.trim()) p.set("to", to.value.trim());
+  if (state.dates.in) p.set("in", state.dates.in.toISOString().split("T")[0]);
+  if (state.dates.out) p.set("out", state.dates.out.toISOString().split("T")[0]);
+  p.set("trip", state.tripType);
+  p.set("rooms", state.guests.rooms);
+  p.set("adults", state.guests.adults);
+  p.set("cabin", state.cabin);
+  return "results.html?" + p.toString();
+}
+
 function renderContent() {
-  $("#claimRow").innerHTML = CLAIMS.map(c => `
-    <div class="claim">
-      <div class="claim__off">${c.off}</div>
-      <div class="claim__txt">${c.txt}</div>
-      <button class="btn btn--primary btn--sm ${c.dd ? "dd-trigger" : "js-toast"}" ${c.dd ? `data-dd="${c.dd}"` : ""}>${c.cta}</button>
-    </div>`).join("");
+  var claimed = window.TGgetClaimed ? window.TGgetClaimed() : [];
+  $("#claimRow").innerHTML = CLAIMS.map(function (c) {
+    var isClaimed = claimed.indexOf(c.id) >= 0;
+    var btn = c.dd
+      ? '<button class="btn btn--primary btn--sm dd-trigger" data-dd="' + c.dd + '">' + c.cta + '</button>'
+      : '<button class="btn btn--primary btn--sm js-claim" data-claim="' + c.id + '" data-coupon="' + (c.coupon || "") + '"' + (isClaimed ? ' disabled' : '') + '>' + (isClaimed ? "Claimed ✓" : c.cta) + '</button>';
+    return '<div class="claim"><div class="claim__off">' + c.off + '</div><div class="claim__txt">' + c.txt + '</div>' + btn + '</div>';
+  }).join("");
 
   $("#promoRow").innerHTML = PROMOS.map(p => {
     var href = PROMO_LINKS[p.t] || "explore.html?cat=deals";
@@ -436,6 +456,7 @@ function renderContent() {
    =========================================================== */
 let toastTimer;
 function toast(msg) {
+  if (window.TGtoast) { window.TGtoast(msg); return; }
   const el = $("#toast");
   el.textContent = msg;
   el.classList.add("is-show");
@@ -548,22 +569,18 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    /* Save buttons on cards */
-    if (e.target.closest(".card__save")) {
-      e.preventDefault(); e.stopPropagation();
-      toast("Saved to your list ♥");
+    /* Coupon claims */
+    const claimBtn = e.target.closest(".js-claim");
+    if (claimBtn && !claimBtn.disabled) {
+      var cid = claimBtn.dataset.claim, code = claimBtn.dataset.coupon;
+      if (window.TGclaimCoupon) window.TGclaimCoupon(cid, code);
+      claimBtn.textContent = "Claimed ✓";
+      claimBtn.disabled = true;
+      toast("Coupon " + (code || cid) + " added to your account — use at checkout.");
       return;
     }
 
-    /* Legacy demo items without real links */
-    const item = e.target.closest("[data-search]:not(a):not(.chip)");
-    if (item) {
-      toast('Opening "' + item.dataset.search + '" — demo only');
-      return;
-    }
-
-    /* generic demo buttons */
-    if (e.target.closest(".js-toast")) toast("Demo only — coupon claimed!");
+    /* Save handled by common.js */
   });
 
   /* Calendar month navigation */
@@ -587,11 +604,8 @@ document.addEventListener("DOMContentLoaded", () => {
   /* Search submit */
   $("#searchForm").addEventListener("submit", (e) => {
     e.preventDefault();
-    toast(`Searching ${TAB_LABEL[state.tab]}… (demo — results would load here)`);
+    location.href = buildSearchUrl();
   });
-
-  /* Sign in action */
-  $("#doSignin").addEventListener("click", () => { closePop(); toast("Welcome! (demo sign-in)"); });
 
   /* Sidebar (mobile) */
   $("#sidebarToggle").addEventListener("click", () => $("#sidebar").classList.toggle("is-open"));

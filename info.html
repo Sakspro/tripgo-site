@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Information | TripGo</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar"><div class="topbar__inner">
+    <a href="index.html" class="brand notranslate" translate="no"><span class="brand__mark">✈</span>Trip<span>Go</span>.com</a>
+    <nav class="topbar__links" style="margin-left:auto"><a href="index.html" class="topbar__link">Home</a></nav>
+  </div></header>
+  <main class="fltpage container">
+    <h1 class="flt-title" id="infoTitle">Information</h1>
+    <article class="info-body" id="infoBody"></article>
+  </main>
+  <script>
+    var PAGES = {
+      about: { title: "About TripGo", html: "<p>TripGo is a global travel platform helping millions book flights, hotels, trains, cars, attractions and tours. We operate in 200+ countries with 24/7 customer support and a Service Guarantee on every booking.</p>" },
+      news: { title: "News", html: "<p>Stay tuned for TripGo product updates, destination guides and travel industry news.</p><ul><li><b>May 2026</b> — TripGo Map launches with live destination prices.</li><li><b>Apr 2026</b> — New user welcome coupons expanded worldwide.</li></ul>" },
+      careers: { title: "Careers", html: "<p>Join TripGo and help shape the future of travel. We're hiring engineers, designers, and customer support specialists globally.</p><a class='btn btn--primary' href='mailto:careers@tripgo.example'>careers@tripgo.example</a>" },
+      terms: { title: "Terms & Conditions", html: "<p>By using TripGo you agree to our booking terms, cancellation policies per supplier, and applicable local laws. Prices and availability may change until payment is confirmed.</p>" },
+      privacy: { title: "Privacy Statement", html: "<p>We collect information necessary to process bookings and improve our services. We do not sell your personal data. See our full privacy practices for data retention, cookies and your rights.</p>" },
+      accessibility: { title: "Accessibility Statement", html: "<p>TripGo is committed to making our website accessible to all users. Contact support if you encounter barriers — we will assist with booking by phone or chat.</p>" },
+      investors: { title: "Investor Relations", html: "<p>For investor enquiries contact <a href='mailto:ir@tripgo.example'>ir@tripgo.example</a>.</p>" },
+      affiliate: { title: "Affiliate Program", html: "<p>Earn commission by promoting TripGo. Apply at <a href='mailto:affiliate@tripgo.example'>affiliate@tripgo.example</a>.</p>" },
+      security: { title: "Security", html: "<p>All payments are encrypted. We never store full card numbers. Report security issues to <a href='mailto:security@tripgo.example'>security@tripgo.example</a>.</p>" }
+    };
+    var p = (new URLSearchParams(location.search).get("p") || "about").toLowerCase();
+    var page = PAGES[p] || PAGES.about;
+    document.getElementById("infoTitle").textContent = page.title;
+    document.getElementById("infoBody").innerHTML = page.html;
+    document.title = page.title + " | TripGo";
+  </script>
+</body>
+</html>

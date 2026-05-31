@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Order Details | TripGo</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar"><div class="topbar__inner">
+    <a href="index.html" class="brand notranslate" translate="no"><span class="brand__mark">✈</span>Trip<span>Go</span>.com</a>
+    <nav class="topbar__links" style="margin-left:auto"><a href="bookings.html" class="topbar__link">← My Bookings</a></nav>
+  </div></header>
+  <main class="bkpage container">
+    <h1 class="bk-title">Order details</h1>
+    <div class="bk-layout">
+      <section class="bk-main" id="orderMain"></section>
+      <aside class="bk-summary" id="orderSide"></aside>
+    </div>
+  </main>
+  <script>
+    var ORDERS = {
+      "TG2480017742": { title: "The Peninsula Tokyo", sub: "Tokyo, Japan · Deluxe Room", date: "25 May 2026", info: "2 nights · 2 guests", price: 642, status: "Completed", cat: "hotel" },
+      "TG2480013355": { title: "Singapore → Bangkok", sub: "Singapore Airlines · SQ712 · Economy", date: "29 May 2026", info: "1 adult · One-way", price: 189, status: "Processing", cat: "flight" },
+      "TG2480012001": { title: "Universal Studios Singapore", sub: "1-Day Pass · Mobile voucher", date: "30 May 2026", info: "2 adults", price: 118, status: "To be paid", cat: "attraction" },
+      "TG2479998820": { title: "Paris → Amsterdam", sub: "Eurostar · Standard Premier", date: "21 Apr 2026", info: "1 adult", price: 96, status: "Completed", cat: "train" },
+      "TG2479990110": { title: "Bali Private Day Tour", sub: "Ubud · Waterfalls & Rice Terraces", date: "31 Jan 2026", info: "4 travellers", price: 240, status: "Cancelled", cat: "tour" },
+      "TG2479980004": { title: "Compact Car Rental", sub: "Dubai Intl Airport (DXB) · Toyota Corolla", date: "16 May 2026", info: "3 days", price: 135, status: "Refunded", cat: "car" },
+      "TG2479970077": { title: "Seoul Flight + Hotel", sub: "ICN return · Myeongdong 4★ · 3 nights", date: "16 Mar 2026", info: "2 adults", price: 820, status: "Completed", cat: "bundle" }
+    };
+    var id = new URLSearchParams(location.search).get("id") || "";
+    var o = ORDERS[id];
+    if (!o) {
+      document.getElementById("orderMain").innerHTML = '<p class="flight-empty">Order not found. <a href="bookings.html">Back to My Bookings</a></p>';
+    } else {
+      document.title = "Order " + id + " | TripGo";
+      document.getElementById("orderMain").innerHTML =
+        '<div class="bk-product"><div class="bk-product__info"><h2>' + o.title + '</h2><p>' + o.sub + '</p>' +
+        '<p class="bk-hint">' + o.date + ' · ' + o.info + '</p><span class="order__status is-done">' + o.status + '</span></div></div>' +
+        '<div class="bk-step"><h3>Booking reference</h3><p><strong class="notranslate">' + id + '</strong></p></div>' +
+        '<div class="bk-step"><h3>Traveller</h3><p>Signed-in TripGo member</p></div>';
+      var pay = o.status === "To be paid"
+        ? '<a class="btn btn--primary btn--block" href="booking.html?cat=' + o.cat + '&title=' + encodeURIComponent(o.title) + '&price=' + o.price + '">Pay now</a>'
+        : '';
+      document.getElementById("orderSide").innerHTML =
+        '<h3>Summary</h3><div class="bk-sum__total"><span>Total</span><b>US$' + o.price + '</b></div>' + pay +
+        '<a class="btn btn--outline btn--block" href="support.html" style="margin-top:10px">Need help?</a>';
+    }
+  </script>
+</body>
+</html>

@@ -21,12 +21,12 @@
       </div>
       <nav class="topbar__links">
         <a href="app.html" class="topbar__link"><span>📱</span> App</a>
-        <a href="index.html" class="topbar__link">List your property</a>
+        <a href="list-property.html" class="topbar__link">List your property</a>
         <button class="topbar__link dd-trigger" id="currTrigger" aria-haspopup="true" aria-expanded="false">
           <span>🌐</span> <span id="currLabel">USD</span> <span class="caret">▾</span>
         </button>
         <a href="support.html" class="topbar__link" style="color:var(--blue);font-weight:700;">Customer support</a>
-        <a href="index.html" class="topbar__link">Find bookings</a>
+        <a href="bookings.html" class="topbar__link">Find bookings</a>
         <a href="index.html" class="btn btn--outline btn--sm" data-signin>Sign in / register</a>
       </nav>
     </div>
@@ -102,7 +102,7 @@
             <li>🔔 Real-time travel updates</li>
           </ul>
           <div class="storebtns">
-            <a href="#" class="store-btn"><span class="store-btn__ic"></span><span class="store-btn__txt"><small>Download on the</small>App Store</span></a>
+            <a href="https://apps.apple.com/app/trip-com-travel-deals/id681752345" target="_blank" rel="noopener" class="store-btn"><span class="store-btn__ic"></span><span class="store-btn__txt"><small>Download on the</small>App Store</span></a>
             <a href="https://github.com/Sakspro/tripgo-app/releases/latest/download/app-release.apk" class="store-btn" download="TripGo.apk" rel="noopener"><span class="store-btn__ic">▶</span><span class="store-btn__txt"><small>GET IT ON</small>Google Play</span></a>
           </div>
         </div>
@@ -133,11 +133,11 @@
       </div>
       <div class="footer__col">
         <h4>About</h4>
-        <a href="#">About TripGo</a><a href="#">News</a><a href="#">Careers</a><a href="#">Terms &amp; Conditions</a><a href="#">Privacy Statement</a>
+        <a href="info.html?p=about">About TripGo</a><a href="info.html?p=news">News</a><a href="info.html?p=careers">Careers</a><a href="info.html?p=terms">Terms &amp; Conditions</a><a href="info.html?p=privacy">Privacy Statement</a>
       </div>
       <div class="footer__col">
         <h4>Other services</h4>
-        <a href="#">TripGo Rewards</a><a href="#">Affiliate program</a><a href="index.html">Back to home</a>
+        <a href="explore.html?cat=rewards">TripGo Rewards</a><a href="info.html?p=affiliate">Affiliate program</a><a href="index.html">Back to home</a>
       </div>
       <div class="footer__col">
         <h4>Get the app</h4>
@@ -150,6 +150,7 @@
   <script src="i18n.js"></script>
   <script src="region.js"></script>
   <script src="signin.js"></script>
+  <script src="common.js"></script>
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
     var lc = document.getElementById("currLabel");
