@@ -1,16 +1,7 @@
 /* Fetch & normalize all Trip.com homepage content in one session */
 const { bootstrapSession, tripPost, ok, absUrl, HEAD } = require("./trip-session");
-const { fetchSidebarFromTrip } = require("./trip-sidebar");
-
-function parseChannelValues(html) {
-  var items = [];
-  var re = /"value":"(\{[^"]*(?:\\"[^"]*)*\})"/g;
-  var m;
-  while ((m = re.exec(html))) {
-    try { items.push(JSON.parse(m[1].replace(/\\"/g, '"'))); } catch (e) {}
-  }
-  return items;
-}
+const { parseNavFromHtml } = require("./trip-nav");
+const { toCloneUrl } = require("../../clone-routes");
 
 function parseSsrPromos(html) {
   var m = html.match(/__SUSPEND_DATA__\s*=\s*(\{[\s\S]*?\});/);
@@ -43,7 +34,7 @@ function normalizePromo(p) {
     t: p.title || "",
     s: p.introduction || p.subTitle || p.description || "",
     img: absUrl(p.coverImageUrl || p.coverImage || ""),
-    href: absUrl(p.pageLink || p.deeplink || ""),
+    href: toCloneUrl(p.pageLink || p.deeplink || "", { label: p.title }),
     promoId: p.promoId || "",
   };
 }
@@ -56,7 +47,7 @@ function normalizeClaim(p, index) {
     cta: "Claim all",
     coupon: p.type === "COUPON" ? (p.title || "").replace(/\s+/g, "").toUpperCase().slice(0, 12) : "",
     type: p.type || "",
-    href: absUrl(p.jumpLink || ""),
+    href: toCloneUrl(p.jumpLink || "", { label: p.subTitle || p.title }),
   };
 }
 
@@ -88,7 +79,7 @@ function normalizeFlight(p, chipTag) {
     tripType: p.trafficType === "FLIGHT" ? "One-way" : "Train",
     depart: p.departureCity || "",
     dates: [p.departureDate, p.arrivalDate].filter(Boolean).join(" – "),
-    deeplink: absUrl(p.deeplink || p.deepLink || ""),
+    deeplink: toCloneUrl(p.deeplink || p.deepLink || "", { dest: dest }),
     trafficType: p.trafficType || "FLIGHT",
   };
 }
@@ -109,7 +100,7 @@ function normalizeAttraction(p) {
     r: normalizeRating(p.rating, p.fullRating),
     img: absUrl(p.coverImage || ""),
     city: p.district || "",
-    deeplink: absUrl(p.deeplink || ""),
+    deeplink: toCloneUrl(p.deeplink || "", { city: p.district || "", label: p.title }),
     votes: p.votes || 0,
     hotScore: p.hotScore || "",
     tags: p.tagList || [],
@@ -125,7 +116,7 @@ function normalizeHotel(p) {
     r: normalizeRating(p.rating, p.fullRating),
     img: absUrl(p.coverImage || ""),
     city: p.city || "",
-    deeplink: absUrl(p.deeplink || ""),
+    deeplink: toCloneUrl(p.deeplink || "", { city: p.city || "", label: p.title }),
     stars: p.starCount || 0,
     marketing: p.marketingText || "",
   };
@@ -137,7 +128,7 @@ function normalizeInspo(p) {
     m: p.authorName ? ("Trip Moments · " + p.authorName) : "Trip Moments",
     img: absUrl(p.coverImage || ""),
     slug: String(p.productId || ""),
-    href: absUrl(p.deepLink || p.deeplink || ""),
+    href: toCloneUrl(p.deepLink || p.deeplink || "", { label: p.title }),
   };
 }
 
@@ -211,7 +202,7 @@ async function fetchHomepageFromTrip() {
   var attRes = batch[2];
   var attractions = {
     title: (ok(attRes) && attRes.title) || "Popular attractions",
-    moreUrl: absUrl(attRes && attRes.moreUrl),
+    moreUrl: toCloneUrl(attRes && attRes.moreUrl, { fallback: "explore.html?cat=attractions" }),
     items: ok(attRes) ? (attRes.productsList || []).map(normalizeAttraction) : [],
   };
 
@@ -219,7 +210,7 @@ async function fetchHomepageFromTrip() {
   var hotRes = batch[3];
   var hotels = {
     title: (ok(hotRes) && hotRes.title) || "Featured hotels & homes",
-    moreUrl: absUrl(hotRes && hotRes.moreUrl),
+    moreUrl: toCloneUrl(hotRes && hotRes.moreUrl, { fallback: "results.html?tab=hotels" }),
     items: ok(hotRes) ? (hotRes.productsList || []).map(normalizeHotel) : [],
   };
 
@@ -227,7 +218,7 @@ async function fetchHomepageFromTrip() {
   var momRes = batch[4];
   var inspiration = {
     title: (ok(momRes) && momRes.title) || "Travel inspiration",
-    moreUrl: absUrl(momRes && momRes.moreUrl),
+    moreUrl: toCloneUrl(momRes && momRes.moreUrl, { fallback: "explore.html?cat=inspiration" }),
     items: ok(momRes) ? (momRes.productsList || []).map(normalizeInspo) : [],
   };
 
@@ -261,7 +252,7 @@ async function fetchHomepageFromTrip() {
   var inspired = {
     title: (ok(destRes) && destRes.title) || "Get inspired for your next trip",
     subtitle: "Explore one-way flights from your area",
-    moreUrl: absUrl(destRes && destRes.moreUrl),
+    moreUrl: toCloneUrl(destRes && destRes.moreUrl, { fallback: "flights.html" }),
     chips: ["Anywhere"].concat(chips.filter(function (c) { return !c.anywhere; }).map(function (c) {
       return c.districtEnName || c.title;
     })),
@@ -269,25 +260,8 @@ async function fetchHomepageFromTrip() {
     flights: flights,
   };
 
-  /* Sidebar cars — reuse existing lib (extra fetch; acceptable for cron) */
-  var sidebar = null;
-  try {
-    sidebar = await fetchSidebarFromTrip();
-  } catch (e) {
-    sidebar = null;
-  }
-
-  /* Flyout nav from channel config */
-  var channels = parseChannelValues(html);
-  var flyouts = {};
-  ["ttd", "travelinspiration"].forEach(function (parent) {
-    var children = channels.filter(function (v) { return v.parent === parent; });
-    if (children.length) {
-      flyouts[parent] = children.map(function (c) {
-        return { label: c.displayName, href: absUrl(c.path), path: c.path || "" };
-      });
-    }
-  });
+  /* Full nav: sidebar, flyouts, search tabs, footer */
+  var nav = parseNavFromHtml(html);
 
   return {
     heroTrust: parseHeroTrust(html),
@@ -297,8 +271,16 @@ async function fetchHomepageFromTrip() {
     attractions: attractions,
     hotels: hotels,
     inspiration: inspiration,
-    sidebar: sidebar,
-    flyouts: flyouts,
+    sidebar: nav.sidebarCars,
+    nav: {
+      sidebar: nav.sidebar,
+      flyouts: nav.flyouts,
+      searchTabs: nav.searchTabs,
+      footer: nav.footer,
+    },
+    flyouts: nav.flyouts,
+    searchTabs: nav.searchTabs,
+    footer: nav.footer,
     syncedAt: new Date().toISOString(),
     source: "trip.com",
   };

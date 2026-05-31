@@ -15,7 +15,7 @@
       "cta": "Claim all",
       "coupon": "10%OFF",
       "type": "COUPON",
-      "href": "https://www.trip.com/hotels"
+      "href": "results.html?tab=hotels"
     },
     {
       "id": "HOTEL_GRADE_EXPERIENCE-1",
@@ -24,7 +24,7 @@
       "cta": "Claim all",
       "coupon": "",
       "type": "HOTEL_GRADE_EXPERIENCE",
-      "href": "https://www.trip.com/hotels"
+      "href": "results.html?tab=hotels"
     },
     {
       "id": "571349510",
@@ -33,7 +33,7 @@
       "cta": "Claim all",
       "coupon": "5%OFF",
       "type": "COUPON",
-      "href": "https://www.trip.com/trains/europemainland"
+      "href": "index.html?tab=trains#search"
     },
     {
       "id": "280395411",
@@ -42,7 +42,7 @@
       "cta": "Claim all",
       "coupon": "3%OFF",
       "type": "COUPON",
-      "href": "https://www.trip.com/trains"
+      "href": "index.html?tab=trains#search"
     },
     {
       "id": "773748003",
@@ -51,7 +51,7 @@
       "cta": "Claim all",
       "coupon": "10%OFF",
       "type": "COUPON",
-      "href": "https://www.trip.com/airport-transfers/index?s=car_back&channelid=238729"
+      "href": "cars.html?sub=transfers"
     },
     {
       "id": "800722666",
@@ -60,7 +60,7 @@
       "cta": "Claim all",
       "coupon": "12%OFF",
       "type": "COUPON",
-      "href": "https://www.trip.com/airport-transfers/index?s=car_back&channelid=238729"
+      "href": "cars.html?sub=transfers"
     }
   ],
   "promos": [
@@ -68,60 +68,60 @@
       "t": "Go Japan",
       "s": "Early Summer Escapes",
       "img": "https://dimg04.tripcdn.com/images/0a12w12000smja1iqF639.png",
-      "href": "https://www.trip.com/sale/w/37676/gojapan.html?locale=en-xx&curr=usd&transparentBar=1&promo_referer=1721_37676_1",
+      "href": "explore.html?cat=deals",
       "promoId": 37676
     },
     {
       "t": "Go Thailand",
       "s": "Exclusive flights, hotels and attractions deals up for grab!",
       "img": "https://dimg04.tripcdn.com/images/0a15u12000s6f2pppEB25.jpg",
-      "href": "https://www.trip.com/sale/w/26497/go-thailand.html?locale=en-xx&curr=usd&promo_referer=1721_26497_2",
+      "href": "explore.html?cat=deals",
       "promoId": 26497
     },
     {
       "t": "May We Meet in SEA",
       "s": "Up to 50% Off Hotels",
       "img": "https://dimg04.tripcdn.com/images/0a14y12000sbcd4cz4886.png",
-      "href": "https://www.trip.com/sale/w/30550/may-super-destination-maywemeetinsea.html?locale=en-xx&curr=usd&promo_referer=1721_30550_3",
+      "href": "explore.html?cat=deals",
       "promoId": 30550
     },
     {
       "t": "GO CHINA",
       "s": "Explore China with unbeatable discounts and save more with promo codes!",
       "img": "https://dimg04.tripcdn.com/images/0a13212000rxwvhkzA69B.jpg",
-      "href": "https://www.trip.com/sale/w/19280/gochina.html?locale=en-xx&curr=usd&transparentBar=1&promo_referer=1721_19280_4",
+      "href": "explore.html?cat=deals",
       "promoId": 19280
     },
     {
       "t": "With stunningly unique scenery",
       "s": "Guilin welcomes the world",
       "img": "https://dimg04.tripcdn.com/images/0a15912000sk6q66y1D55.jpg",
-      "href": "https://www.trip.com/sale/w/41701/guilin.html?locale=en-xx&curr=usd&promo_referer=1721_41701_5",
+      "href": "explore.html?cat=deals",
       "promoId": 41701
     },
     {
       "t": "",
       "s": "",
       "img": "https://dimg04.tripcdn.com/images/1zp2q12000ez02rk19D95.jpg",
-      "href": "https://trip.com/customer/loyalty/?locale=en-xx&promo_referer=1721_null_6",
+      "href": "explore.html?cat=rewards",
       "promoId": ""
     }
   ],
   "inspired": {
     "title": "Get inspired for your next trip",
     "subtitle": "Explore one-way flights from your area",
-    "moreUrl": "",
+    "moreUrl": "flights.html",
     "chips": [
       "Anywhere",
-      "Kisumu",
+      "Mombasa",
       "Mumbai",
-      "Ho Chi Minh City",
-      "Eldoret",
-      "Cairo",
-      "Bangkok",
-      "Kigali",
-      "Johannesburg",
-      "Beijing"
+      "City of Manila",
+      "Addis Ababa",
+      "Lagos",
+      "Seoul",
+      "Malindi",
+      "Istanbul",
+      "Hong Kong"
     ],
     "chipData": [
       {
@@ -135,13 +135,13 @@
         "tagList": []
       },
       {
-        "title": "Kisumu",
+        "title": "Mombasa",
         "anywhere": false,
-        "districtId": "22125",
-        "districtName": "Kisumu",
-        "districtEnName": "Kisumu",
-        "cityId": 7174,
-        "imageUrl": "https://ak-d.tripcdn.com/images/100s0i0000009hrk196D2_D_600_400_R5.jpg?proc=source/trip&proc=namelogo/d_5",
+        "districtId": "796",
+        "districtName": "Mombasa",
+        "districtEnName": "Mombasa",
+        "cityId": 818,
+        "imageUrl": "https://ak-d.tripcdn.com/images/0104f120008x0znpb55E5_D_600_400_R5.jpg?proc=source/trip&proc=namelogo/d_5",
         "tagList": [
           "Short haul"
         ]
@@ -159,85 +159,85 @@
         ]
       },
       {
-        "title": "Ho Chi Minh City",
+        "title": "City of Manila",
         "anywhere": false,
-        "districtId": "434",
-        "districtName": "Ho Chi Minh City",
-        "districtEnName": "Ho Chi Minh City",
-        "cityId": 301,
-        "imageUrl": "https://ak-d.tripcdn.com/images/100v0x000000lra8w0D50_D_600_400_R5.jpg?proc=source/trip&proc=namelogo/d_5",
+        "districtId": "367",
+        "districtName": "City of Manila",
+        "districtEnName": "City of Manila",
+        "cityId": 364,
+        "imageUrl": "https://ak-d.tripcdn.com/images/0103z120009bxso9xF824_D_600_400_R5.jpg?proc=source/trip&proc=namelogo/d_5",
         "tagList": [
           "Long haul"
         ]
       },
       {
-        "title": "Eldoret",
+        "title": "Addis Ababa",
         "anywhere": false,
-        "districtId": "22128",
-        "districtName": "Eldoret",
-        "districtEnName": "Eldoret",
-        "cityId": 4207,
-        "imageUrl": "https://ak-d.tripcdn.com/images/0105d12000848s6pr3CA8_D_600_400_R5.jpg?proc=source/trip&proc=namelogo/d_5",
+        "districtId": "936",
+        "districtName": "Addis Ababa",
+        "districtEnName": "Addis Ababa",
+        "cityId": 635,
+        "imageUrl": "https://ak-d.tripcdn.com/images/100u1e000001evfgp8740_D_600_400_R5.jpg?proc=source/trip&proc=namelogo/d_5",
         "tagList": [
           "Short haul"
         ]
       },
       {
-        "title": "Cairo",
+        "title": "Lagos",
         "anywhere": false,
-        "districtId": "326",
-        "districtName": "Cairo",
-        "districtEnName": "Cairo",
-        "cityId": 332,
-        "imageUrl": "https://ak-d.tripcdn.com/images/01050120008axf3n63276_D_600_400_R5.jpg?proc=source/trip&proc=namelogo/d_5",
+        "districtId": "30527",
+        "districtName": "Lagos",
+        "districtEnName": "Lagos",
+        "cityId": 783,
+        "imageUrl": "https://ak-d.tripcdn.com/images/0104p12000eohk3so6125_D_600_400_R5.jpg?proc=source/trip&proc=namelogo/d_5",
         "tagList": [
           "Medium haul"
         ]
       },
       {
-        "title": "Bangkok",
+        "title": "Seoul",
         "anywhere": false,
-        "districtId": "191",
-        "districtName": "Bangkok",
-        "districtEnName": "Bangkok",
-        "cityId": 359,
-        "imageUrl": "https://ak-d.tripcdn.com/images/0104c120005ww2m2yF324_D_600_400_R5.jpg?proc=source/trip&proc=namelogo/d_5",
+        "districtId": "234",
+        "districtName": "Seoul",
+        "districtEnName": "Seoul",
+        "cityId": 274,
+        "imageUrl": "https://ak-d.tripcdn.com/images/10030g0000008nvti1077_D_600_400_R5.jpg?proc=source/trip&proc=namelogo/d_5",
         "tagList": [
           "Long haul"
         ]
       },
       {
-        "title": "Kigali",
+        "title": "Malindi",
         "anywhere": false,
-        "districtId": "22081",
-        "districtName": "Kigali",
-        "districtEnName": "Kigali",
-        "cityId": 1277,
-        "imageUrl": "https://ak-d.tripcdn.com/images/0104i12000bonwvz7185B_D_600_400_R5.jpg?proc=source/trip&proc=namelogo/d_5",
+        "districtId": "22169",
+        "districtName": "Malindi",
+        "districtEnName": "Malindi",
+        "cityId": 5374,
+        "imageUrl": "https://ak-d.tripcdn.com/images/0HJ2412000h0g09k2827A_D_600_400_R5.jpg?proc=source/trip&proc=namelogo/d_5",
         "tagList": [
           "Short haul"
         ]
       },
       {
-        "title": "Johannesburg",
+        "title": "Istanbul",
         "anywhere": false,
-        "districtId": "328",
-        "districtName": "Johannesburg",
-        "districtEnName": "Johannesburg",
-        "cityId": 684,
-        "imageUrl": "https://ak-d.tripcdn.com/images/100r10000000oyrjm43D0_D_600_400_R5.jpg?proc=source/trip&proc=namelogo/d_5",
+        "districtId": "258",
+        "districtName": "Istanbul",
+        "districtEnName": "Istanbul",
+        "cityId": 532,
+        "imageUrl": "https://ak-d.tripcdn.com/images/10060g0000007qh9aB677_D_600_400_R5.jpg?proc=source/trip&proc=namelogo/d_5",
         "tagList": [
           "Medium haul"
         ]
       },
       {
-        "title": "Beijing",
+        "title": "Hong Kong",
         "anywhere": false,
-        "districtId": "1",
-        "districtName": "Beijing",
-        "districtEnName": "Beijing",
-        "cityId": 1,
-        "imageUrl": "https://ak-d.tripcdn.com/images/0101o12000kzeat2rBDCF_D_600_400_R5.jpg?proc=source/trip&proc=namelogo/d_5",
+        "districtId": "38",
+        "districtName": "Hong Kong",
+        "districtEnName": "Hong Kong",
+        "cityId": 58,
+        "imageUrl": "https://ak-d.tripcdn.com/images/0101k12000admkld4652D_D_600_400_R5.jpg?proc=source/trip&proc=namelogo/d_5",
         "tagList": [
           "Long haul"
         ]
@@ -245,82 +245,166 @@
     ],
     "flights": [
       {
-        "dest": "Chongqing",
-        "country": "Beijing → Chongqing",
-        "price": 33,
-        "img": "https://ak-d.tripcdn.com/images/100u1c000001dbc8s0A2E_D_600_400_R5.jpg?proc=source/trip&proc=namelogo/d_5",
-        "tag": "Beijing",
+        "dest": "Ulsan",
+        "country": "Seoul → Ulsan",
+        "price": 30,
+        "img": "https://ak-d.tripcdn.com/images/100r1f000001gonnk44CD_D_600_400_R5.jpg?proc=source/trip&proc=namelogo/d_5",
+        "tag": "Seoul",
         "tripType": "Train",
-        "depart": "Beijing",
-        "dates": "Mon, Jun 1",
-        "deeplink": "https://www.trip.com/trains/china/list?departureStationCode=CN110000&arrivalStationCode=CN500000&departureStationName=Beijing&arrivalStationName=Chongqing&departureCountryCode=CN&arrivalCountryCode=CN&departDate=2026-06-01&hour=08&min=00",
+        "depart": "Seoul",
+        "dates": "Sun, Jun 7",
+        "deeplink": "index.html?tab=trains#search",
         "trafficType": "TRAIN"
       },
       {
-        "dest": "Shanghai",
-        "country": "Beijing → Shanghai",
-        "price": 24,
-        "img": "https://ak-d.tripcdn.com/images/100e0h0000008rp39A12F_D_600_400_R5.jpg?proc=source/trip&proc=namelogo/d_5",
-        "tag": "Beijing",
+        "dest": "Busan",
+        "country": "Seoul → Busan",
+        "price": 21,
+        "img": "https://ak-d.tripcdn.com/images/0100212000jnbq7m2CF82_D_600_400_R5.jpg?proc=source/trip&proc=namelogo/d_5",
+        "tag": "Seoul",
         "tripType": "Train",
-        "depart": "Beijing",
+        "depart": "Seoul",
         "dates": "Mon, Jun 1",
-        "deeplink": "https://www.trip.com/trains/china/list?departureStationCode=CN001VNP&arrivalStationCode=CN001AOH&departureStationName=Beijingnan(Beijing South)&arrivalStationName=Shanghai Hongqiao&departureCountryCode=CN&arrivalCountryCode=CN&departDate=2026-06-01&hour=08&min=00",
+        "deeplink": "index.html?tab=trains#search",
         "trafficType": "TRAIN"
       },
       {
-        "dest": "Xi'an",
-        "country": "Beijing → Xi'an",
-        "price": 23,
-        "img": "https://ak-d.tripcdn.com/images/0106m120004eks4oyF624_D_600_400_R5.jpg?proc=source/trip&proc=namelogo/d_5",
-        "tag": "Beijing",
+        "dest": "Gyeongju",
+        "country": "Seoul → Gyeongju",
+        "price": 29,
+        "img": "https://ak-d.tripcdn.com/images/0106j1200093s90ih82FB_D_600_400_R5.jpg?proc=source/trip&proc=namelogo/d_5",
+        "tag": "Seoul",
         "tripType": "Train",
-        "depart": "Beijing",
+        "depart": "Seoul",
         "dates": "Mon, Jun 1",
-        "deeplink": "https://www.trip.com/trains/china/list?departureStationCode=CN001BXP&arrivalStationCode=CN001EAY&departureStationName=Beijingxi(Beijing West)&arrivalStationName=Xi'anbei(Xi'an North)&departureCountryCode=CN&arrivalCountryCode=CN&departDate=2026-06-01&hour=08&min=00",
+        "deeplink": "index.html?tab=trains#search",
+        "trafficType": "TRAIN"
+      },
+      {
+        "dest": "Daegu",
+        "country": "Seoul → Daegu",
+        "price": 15,
+        "img": "https://ak-d.tripcdn.com/images/350q16000001074utE976_D_600_400_R5.png?proc=source/trip&proc=namelogo/d_5",
+        "tag": "Seoul",
+        "tripType": "Train",
+        "depart": "Seoul",
+        "dates": "Wed, Jun 3",
+        "deeplink": "index.html?tab=trains#search",
+        "trafficType": "TRAIN"
+      },
+      {
+        "dest": "Jeongeup-si",
+        "country": "Seoul → Jeongeup-si",
+        "price": 26,
+        "img": "https://ak-d.tripcdn.com/images/100i1f000001gp43810C2_D_600_400_R5.jpg?proc=source/trip&proc=namelogo/d_5",
+        "tag": "Seoul",
+        "tripType": "Train",
+        "depart": "Seoul",
+        "dates": "Sun, Jun 7",
+        "deeplink": "index.html?tab=trains#search",
+        "trafficType": "TRAIN"
+      },
+      {
+        "dest": "Gangneung-si",
+        "country": "Seoul → Gangneung-si",
+        "price": 15,
+        "img": "https://ak-d.tripcdn.com/images/0105x1200093s9j1g59DF_D_600_400_R5.jpg?proc=source/trip&proc=namelogo/d_5",
+        "tag": "Seoul",
+        "tripType": "Train",
+        "depart": "Seoul",
+        "dates": "Tue, Jun 2",
+        "deeplink": "index.html?tab=trains#search",
+        "trafficType": "TRAIN"
+      },
+      {
+        "dest": "Jeonju",
+        "country": "Seoul → Jeonju",
+        "price": 19,
+        "img": "https://ak-d.tripcdn.com/images/100o0z000000nhgj2053B_D_600_400_R5.jpg?proc=source/trip&proc=namelogo/d_5",
+        "tag": "Seoul",
+        "tripType": "Train",
+        "depart": "Seoul",
+        "dates": "Mon, Jun 1",
+        "deeplink": "index.html?tab=trains#search",
+        "trafficType": "TRAIN"
+      },
+      {
+        "dest": "Daejeon",
+        "country": "Seoul → Daejeon",
+        "price": 8,
+        "img": "https://ak-d.tripcdn.com/images/0104j1200093s964u101D_D_600_400_R5.jpg?proc=source/trip&proc=namelogo/d_5",
+        "tag": "Seoul",
+        "tripType": "Train",
+        "depart": "Seoul",
+        "dates": "Tue, Jun 2",
+        "deeplink": "index.html?tab=trains#search",
+        "trafficType": "TRAIN"
+      },
+      {
+        "dest": "Pyeongtaek-si",
+        "country": "Seoul → Pyeongtaek-si",
+        "price": 4,
+        "img": "https://ak-d.tripcdn.com/images/0104v120008x0ytw62E7E_D_600_400_R5.jpg?proc=source/trip&proc=namelogo/d_5",
+        "tag": "Seoul",
+        "tripType": "Train",
+        "depart": "Seoul",
+        "dates": "Mon, Jun 1",
+        "deeplink": "index.html?tab=trains#search",
         "trafficType": "TRAIN"
       },
       {
         "dest": "Guangzhou",
-        "country": "Beijing → Guangzhou",
-        "price": 39,
+        "country": "Hong Kong → Guangzhou",
+        "price": 28,
         "img": "https://ak-d.tripcdn.com/images/100c180000014rkpq4C68_D_600_400_R5.jpg?proc=source/trip&proc=namelogo/d_5",
-        "tag": "Beijing",
+        "tag": "Hong Kong",
         "tripType": "Train",
-        "depart": "Beijing",
+        "depart": "Hong Kong",
         "dates": "Mon, Jun 1",
-        "deeplink": "https://www.trip.com/trains/china/list?departureStationCode=CN110000&arrivalStationCode=CN440100&departureStationName=Beijing&arrivalStationName=Guangzhou&departureCountryCode=CN&arrivalCountryCode=CN&departDate=2026-06-01&hour=08&min=00",
+        "deeplink": "index.html?tab=trains#search",
         "trafficType": "TRAIN"
       },
       {
-        "dest": "Tianjin",
-        "country": "Beijing → Tianjin",
-        "price": 3,
-        "img": "https://ak-d.tripcdn.com/images/100n1c000001d5zaf9BCE_D_600_400_R5.jpg?proc=source/trip&proc=namelogo/d_5",
-        "tag": "Beijing",
+        "dest": "Shenzhen",
+        "country": "Hong Kong → Shenzhen",
+        "price": 10,
+        "img": "https://ak-d.tripcdn.com/images/10051f000001gsu9xBA0E_D_600_400_R5.jpg?proc=source/trip&proc=namelogo/d_5",
+        "tag": "Hong Kong",
         "tripType": "Train",
-        "depart": "Beijing",
+        "depart": "Hong Kong",
         "dates": "Mon, Jun 1",
-        "deeplink": "https://www.trip.com/trains/china/list?departureStationCode=CN110000&arrivalStationCode=CN120000&departureStationName=Beijing&arrivalStationName=Tianjin&departureCountryCode=CN&arrivalCountryCode=CN&departDate=2026-06-01&hour=08&min=00",
+        "deeplink": "index.html?tab=trains#search",
         "trafficType": "TRAIN"
       },
       {
-        "dest": "Zhangjiajie",
-        "country": "Beijing → Zhangjiajie",
-        "price": 33,
-        "img": "https://ak-d.tripcdn.com/images/100p0y000000m0n4d5A06_D_600_400_R5.jpg?proc=source/trip&proc=namelogo/d_5",
-        "tag": "Beijing",
+        "dest": "Shanwei",
+        "country": "Hong Kong → Shanwei",
+        "price": 20,
+        "img": "https://ak-d.tripcdn.com/images/01048120009ehcujbDD9D_D_600_400_R5.jpg?proc=source/trip&proc=namelogo/d_5",
+        "tag": "Hong Kong",
         "tripType": "Train",
-        "depart": "Beijing",
+        "depart": "Hong Kong",
         "dates": "Mon, Jun 1",
-        "deeplink": "https://www.trip.com/trains/china/list?departureStationCode=CN110000&arrivalStationCode=CN430800&departureStationName=Beijing&arrivalStationName=Zhangjiajie&departureCountryCode=CN&arrivalCountryCode=CN&departDate=2026-06-01&hour=08&min=00",
+        "deeplink": "index.html?tab=trains#search",
+        "trafficType": "TRAIN"
+      },
+      {
+        "dest": "Chaozhou",
+        "country": "Hong Kong → Chaozhou",
+        "price": 27,
+        "img": "https://ak-d.tripcdn.com/images/100c0h0000008wjvm1C9F_D_600_400_R5.jpg?proc=source/trip&proc=namelogo/d_5",
+        "tag": "Hong Kong",
+        "tripType": "Train",
+        "depart": "Hong Kong",
+        "dates": "Mon, Jun 1",
+        "deeplink": "index.html?tab=trains#search",
         "trafficType": "TRAIN"
       }
     ]
   },
   "attractions": {
     "title": "Top sights you can't miss in 内罗毕",
-    "moreUrl": "https://www.trip.com/travel-guide/attraction/内罗毕-825/tourist-attractions/?locale=en-XX&curr=USD",
+    "moreUrl": "explore.html?cat=inspiration",
     "items": [
       {
         "t": "Jiuhua Mountain",
@@ -329,7 +413,7 @@
         "r": 4.8,
         "img": "https://ak-d.tripcdn.com/images/0105f1200087dvhgu60B0_D_800_1200_R5.jpg?proc=source/trip&proc=namelogo/d_5",
         "city": "Qingyang",
-        "deeplink": "https://www.trip.com/travel-guide/attraction/qingyang/jiuhua-mountain-10542350?curr=USD&locale=en-XX&poiType=3",
+        "deeplink": "explore.html?cat=inspiration",
         "votes": 26261,
         "hotScore": "8.3",
         "tags": [
@@ -344,7 +428,7 @@
         "r": 4.5,
         "img": "https://ak-d.tripcdn.com/images/1lo2m12000d2hzpii2961_D_800_1200_R5.jpg?proc=source/trip&proc=namelogo/d_5",
         "city": "Shitai",
-        "deeplink": "https://www.trip.com/travel-guide/attraction/shitai/guniujiang-nature-reserve-10765020?curr=USD&locale=en-XX&poiType=3",
+        "deeplink": "explore.html?cat=inspiration",
         "votes": 3582,
         "hotScore": "7.4",
         "tags": [
@@ -359,7 +443,7 @@
         "r": 4.7,
         "img": "https://ak-d.tripcdn.com/images/1A0c12000000ryio74B57_D_800_1200_R5.jpg?proc=source/trip&proc=namelogo/d_5",
         "city": "Qingyang",
-        "deeplink": "https://www.trip.com/travel-guide/attraction/qingyang/jiu-hua-shan-dayuan-buddhist-culture-park-10547911?curr=USD&locale=en-XX&poiType=3",
+        "deeplink": "explore.html?cat=inspiration",
         "votes": 1598,
         "hotScore": "5.9",
         "tags": [
@@ -373,7 +457,7 @@
         "r": 4.4,
         "img": "https://ak-d.tripcdn.com/images/1lo5k12000b1ca6s3DA83_D_800_1200_R5.png?proc=source/trip&proc=namelogo/d_5",
         "city": "Shitai",
-        "deeplink": "https://www.trip.com/travel-guide/attraction/shitai/peng-lai-xian-dong-101106?curr=USD&locale=en-XX&poiType=3",
+        "deeplink": "explore.html?cat=inspiration",
         "votes": 825,
         "hotScore": "5.8",
         "tags": [
@@ -388,7 +472,7 @@
         "r": 4.3,
         "img": "https://ak-d.tripcdn.com/images/1A0m190000017hlclF373_D_800_1200_R5.jpg?proc=source/trip&proc=namelogo/d_5",
         "city": "Shitai",
-        "deeplink": "https://www.trip.com/travel-guide/attraction/shitai/xianyu-mountain-scenic-area-90289?curr=USD&locale=en-XX&poiType=3",
+        "deeplink": "explore.html?cat=inspiration",
         "votes": 280,
         "hotScore": "5.6",
         "tags": [
@@ -403,7 +487,7 @@
         "r": 4.5,
         "img": "https://ak-d.tripcdn.com/images/1lo5b12000iwsv6riD055_D_800_1200_R5.jpg?proc=source/trip&proc=namelogo/d_5",
         "city": "Qingyang",
-        "deeplink": "https://www.trip.com/travel-guide/attraction/qingyang/jiuziyan-scenic-area-93354?curr=USD&locale=en-XX&poiType=3",
+        "deeplink": "explore.html?cat=inspiration",
         "votes": 305,
         "hotScore": "5.6",
         "tags": [
@@ -417,7 +501,7 @@
         "r": 4.5,
         "img": "https://ak-d.tripcdn.com/images/0100m12000ns396z67D83_D_800_1200_R5.jpg?proc=source/trip&proc=namelogo/d_5",
         "city": "Chizhou",
-        "deeplink": "https://www.trip.com/travel-guide/attraction/chizhou/the-qishan-pingtian-lake-scenic-area-90290?curr=USD&locale=en-XX&poiType=3",
+        "deeplink": "explore.html?cat=inspiration",
         "votes": 125,
         "hotScore": "5.4",
         "tags": [
@@ -432,7 +516,7 @@
         "r": 3.4,
         "img": "https://ak-d.tripcdn.com/images/01A3z120008n3oivz04A5_D_800_1200_R5.jpg?proc=source/trip&proc=namelogo/d_5",
         "city": "Chizhou",
-        "deeplink": "https://www.trip.com/travel-guide/attraction/chizhou/xinghua-village-scenic-area-101104?curr=USD&locale=en-XX&poiType=3",
+        "deeplink": "explore.html?cat=inspiration",
         "votes": 552,
         "hotScore": "5.2",
         "tags": []
@@ -444,7 +528,7 @@
         "r": 4,
         "img": "https://ak-d.tripcdn.com/images/0105y120008majktd44DF_D_800_1200_R5.jpg?proc=source/trip&proc=namelogo/d_5",
         "city": "Chizhou",
-        "deeplink": "https://www.trip.com/travel-guide/attraction/chizhou/jiuhua-tianchi-scenic-resort-98177?curr=USD&locale=en-XX&poiType=3",
+        "deeplink": "explore.html?cat=inspiration",
         "votes": 570,
         "hotScore": "4.9",
         "tags": [
@@ -459,7 +543,7 @@
         "r": 4.7,
         "img": "https://ak-d.tripcdn.com/images/0100t12000inqx00f50E2_D_800_1200_R5.jpg?proc=source/trip&proc=namelogo/d_5",
         "city": "Qingyang",
-        "deeplink": "https://www.trip.com/travel-guide/attraction/qingyang/jiuhua-street-98170?curr=USD&locale=en-XX&poiType=3",
+        "deeplink": "explore.html?cat=inspiration",
         "votes": 113,
         "hotScore": "4.8",
         "tags": [
@@ -470,7 +554,7 @@
   },
   "hotels": {
     "title": "Unwind in our selected hotels in 内罗毕",
-    "moreUrl": "https://www.trip.com/hotels/list?city=825",
+    "moreUrl": "results.html?tab=hotels",
     "items": [
       {
         "t": "Swiss Lenana Mount Hotel",
@@ -479,7 +563,7 @@
         "r": 4.5,
         "img": "http://dimg04.c-ctrip.com/images/0585312000oasefb00BC5_C_400_600_R5_Q70.jpg",
         "city": "Nairobi",
-        "deeplink": "https://www.trip.com/hotels/detail/?hotelId=9270992&checkIn=2026-05-31&checkOut=2026-06-01",
+        "deeplink": "results.html?tab=hotels&dest=Nairobi",
         "stars": 4,
         "marketing": ""
       },
@@ -490,7 +574,7 @@
         "r": 4.6,
         "img": "http://dimg04.c-ctrip.com/images/0220r12000b825oz480D4_C_400_600_R5_Q70.jpg",
         "city": "Nairobi",
-        "deeplink": "https://www.trip.com/hotels/detail/?hotelId=754787&checkIn=2026-05-31&checkOut=2026-06-01",
+        "deeplink": "results.html?tab=hotels&dest=Nairobi",
         "stars": 5,
         "marketing": ""
       },
@@ -501,7 +585,7 @@
         "r": 4.9,
         "img": "http://dimg04.c-ctrip.com/images/0226q12000lbwbgsb7ADC_C_400_600_R5_Q70.jpg",
         "city": "Nairobi",
-        "deeplink": "https://www.trip.com/hotels/detail/?hotelId=112160560&checkIn=2026-05-31&checkOut=2026-06-01",
+        "deeplink": "results.html?tab=hotels&dest=Nairobi",
         "stars": 4,
         "marketing": ""
       },
@@ -512,7 +596,7 @@
         "r": 4.7,
         "img": "http://dimg04.c-ctrip.com/images/0226b12000si2vybjAF1C_C_400_600_R5_Q70.jpg",
         "city": "Nairobi",
-        "deeplink": "https://www.trip.com/hotels/detail/?hotelId=3037760&checkIn=2026-05-31&checkOut=2026-06-01",
+        "deeplink": "results.html?tab=hotels&dest=Nairobi",
         "stars": 5,
         "marketing": ""
       },
@@ -523,7 +607,7 @@
         "r": 4.5,
         "img": "http://dimg04.c-ctrip.com/images/1mc2j12000hyvlr7z1A3D_C_400_600_R5_Q70.jpg",
         "city": "Nairobi",
-        "deeplink": "https://www.trip.com/hotels/detail/?hotelId=117607855&checkIn=2026-05-31&checkOut=2026-06-01",
+        "deeplink": "results.html?tab=hotels&dest=Nairobi",
         "stars": 5,
         "marketing": ""
       },
@@ -534,7 +618,7 @@
         "r": 4.7,
         "img": "http://dimg04.c-ctrip.com/images/1mc6o12000kgtwv3v15A0_C_400_600_R5_Q70.jpg",
         "city": "Nairobi",
-        "deeplink": "https://www.trip.com/hotels/detail/?hotelId=105289123&checkIn=2026-05-31&checkOut=2026-06-01",
+        "deeplink": "results.html?tab=hotels&dest=Nairobi",
         "stars": 5,
         "marketing": ""
       },
@@ -545,7 +629,7 @@
         "r": 4.7,
         "img": "http://dimg04.c-ctrip.com/images/0583n12000pa426cg9A80_C_400_600_R5_Q70.jpg",
         "city": "Nairobi",
-        "deeplink": "https://www.trip.com/hotels/detail/?hotelId=89012106&checkIn=2026-05-31&checkOut=2026-06-01",
+        "deeplink": "results.html?tab=hotels&dest=Nairobi",
         "stars": 4,
         "marketing": ""
       },
@@ -556,7 +640,7 @@
         "r": 4.4,
         "img": "http://dimg04.c-ctrip.com/images/1mc0u12000o1emyd017BA_C_400_600_R5_Q70.jpg",
         "city": "Nairobi",
-        "deeplink": "https://www.trip.com/hotels/detail/?hotelId=131778535&checkIn=2026-05-31&checkOut=2026-06-01",
+        "deeplink": "results.html?tab=hotels&dest=Nairobi",
         "stars": 4,
         "marketing": ""
       },
@@ -567,7 +651,7 @@
         "r": 4.8,
         "img": "http://dimg04.c-ctrip.com/images/1mc5a12000j19auis0A40_C_400_600_R5_Q70.jpg",
         "city": "Nairobi",
-        "deeplink": "https://www.trip.com/hotels/detail/?hotelId=117627628&checkIn=2026-05-31&checkOut=2026-06-01",
+        "deeplink": "results.html?tab=hotels&dest=Nairobi",
         "stars": 4,
         "marketing": ""
       },
@@ -578,7 +662,7 @@
         "r": 4.5,
         "img": "http://dimg04.c-ctrip.com/images/1mc6q12000f1hjvzeAF28_C_400_600_R5_Q70.jpg",
         "city": "Nairobi",
-        "deeplink": "https://www.trip.com/hotels/detail/?hotelId=121096607&checkIn=2026-05-31&checkOut=2026-06-01",
+        "deeplink": "results.html?tab=hotels&dest=Nairobi",
         "stars": 5,
         "marketing": ""
       }
@@ -586,77 +670,77 @@
   },
   "inspiration": {
     "title": "Unforgettable trip moments in 内罗毕",
-    "moreUrl": "https://www.trip.com/moments/内罗毕-825/",
+    "moreUrl": "explore.html?cat=inspiration",
     "items": [
       {
         "t": "﻿Stay at Zen-inspired homestays in Jiuhua Mountain, a peaceful blessing trip with kids",
         "m": "Trip Moments · JessicaRoberts234=",
         "img": "https://ak-d.tripcdn.com/images/1mi5712000seywaxq3C18_D_800_1200_R5.jpg?proc=source/trip&proc=source/trip&proc=namelogo/d_5",
         "slug": "145263042",
-        "href": "https://www.trip.com/moments/detail/qingyang-2613-145263042/"
+        "href": "explore.html?cat=inspiration"
       },
       {
         "t": "Anhui's \"Little Jiuzhaigou\"｜2 Days 1 Night Healing Guide in Chizhou",
         "m": "Trip Moments · iu_nacy_twice",
         "img": "https://ak-d.tripcdn.com/images/1mi5y12000sgziiu9A9F3_D_800_1200_R5.jpg?proc=source/trip&proc=source/trip&proc=namelogo/d_5",
         "slug": "145514461",
-        "href": "https://www.trip.com/moments/detail/chizhou-825-145514461/"
+        "href": "explore.html?cat=inspiration"
       },
       {
         "t": "Chizhou Family Travel Guide: Stay at These Four Super Comfortable Hotels",
         "m": "Trip Moments · Nelson Zachary Zach",
         "img": "https://ak-d.tripcdn.com/images/1mi5i12000sddrkl70F5B_D_800_1200_R5.jpg?proc=source/trip&proc=source/trip&proc=namelogo/d_5",
         "slug": "145109126",
-        "href": "https://www.trip.com/moments/detail/qingyang-2613-145109126/"
+        "href": "explore.html?cat=inspiration"
       },
       {
         "t": "Chizhou! The underrated fairyland of Anhui, once you come, you won’t want to leave",
         "m": "Trip Moments · WhisperingNomad42",
         "img": "https://ak-d.tripcdn.com/images/1mi5112000sdf53ig8540_D_800_1200_R5.jpg?proc=source/trip&proc=source/trip&proc=namelogo/d_5",
         "slug": "145111996",
-        "href": "https://www.trip.com/moments/detail/chizhou-825-145111996/"
+        "href": "explore.html?cat=inspiration"
       },
       {
         "t": "Staying at Baishiling in Shitai is super healing, the top choice for family outings in Jiangsu, Zhejiang, and Shanghai",
         "m": "Trip Moments · AinoK?rkk?inen",
         "img": "https://ak-d.tripcdn.com/images/1mi2u12000s7vp9wt5F1B_D_800_1200_R5.jpg?proc=source/trip&proc=source/trip&proc=namelogo/d_5",
         "slug": "144610621",
-        "href": "https://www.trip.com/moments/detail/shitai-2624-144610621/"
+        "href": "explore.html?cat=inspiration"
       },
       {
         "t": "﻿Chizhou Family Vacation: Stay in a Hidden Gem Homestay Next to Jiuhua Mountain",
         "m": "Trip Moments · MillaRinne",
         "img": "https://ak-d.tripcdn.com/images/1mi6a12000s8h7x8d1E56_D_800_1200_R5.jpg?proc=source/trip&proc=source/trip&proc=namelogo/d_5",
         "slug": "144677646",
-        "href": "https://www.trip.com/moments/detail/qingyang-2613-144677646/"
+        "href": "explore.html?cat=inspiration"
       },
       {
         "t": "Winter Jiuhua | A Heartwarming Pilgrimage with Kids, Where All Wishes Come True!",
         "m": "Trip Moments · Radiant_234_Thompson",
         "img": "https://ak-d.tripcdn.com/images/1mi1b12000qzxk1ytF99B_D_800_1200_R5.jpg?proc=source/trip&proc=source/trip&proc=namelogo/d_5",
         "slug": "140237861",
-        "href": "https://www.trip.com/moments/detail/qingyang-2613-140237861/"
+        "href": "explore.html?cat=inspiration"
       },
       {
         "t": "Nanjing Departure! Escape the Crowds This May Day, Discover 3 Hidden Gems in Southern Anhui",
         "m": "Trip Moments · RasmusLaine",
         "img": "https://ak-d.tripcdn.com/images/1mi2912000sh69ft8234E_D_800_1200_R5.jpg?proc=source/trip&proc=source/trip&proc=namelogo/d_5",
         "slug": "145539626",
-        "href": "https://www.trip.com/moments/detail/shitai-2624-145539626/"
+        "href": "explore.html?cat=inspiration"
       },
       {
         "t": "﻿Stay here for a family vacation in Chizhou, enjoy mountain and water activities with kids at a relaxed pace",
         "m": "Trip Moments · Maya345_Foster",
         "img": "https://ak-d.tripcdn.com/images/1mi3i12000s9ziqyv14C0_D_800_1200_R5.jpg?proc=source/trip&proc=source/trip&proc=namelogo/d_5",
         "slug": "144829763",
-        "href": "https://www.trip.com/moments/detail/qingyang-2613-144829763/"
+        "href": "explore.html?cat=inspiration"
       },
       {
         "t": "﻿Stay here for a family trip in Chizhou, stress-free fun for kids at scenic mountains, waters, and ancient temples",
         "m": "Trip Moments · BEATRICE GILMORE",
         "img": "https://ak-d.tripcdn.com/images/1mi6m12000s9uolx3D51E_D_800_1200_R5.jpg?proc=source/trip&proc=source/trip&proc=namelogo/d_5",
         "slug": "144816113",
-        "href": "https://www.trip.com/moments/detail/chizhou-825-144816113/"
+        "href": "explore.html?cat=inspiration"
       }
     ]
   },
@@ -670,52 +754,2074 @@
         {
           "label": "Car Rentals",
           "tab": "cars",
-          "icon": "🚗",
+          "icon": "•",
           "path": "/carhire/?channelid=14409",
           "href": "cars.html",
-          "tripUrl": "https://www.trip.com/carhire/?channelid=14409",
-          "sharkKey": "ButtonText_Carhire"
+          "tripUrl": "https://www.trip.com/carhire/?channelid=14409"
         },
         {
           "label": "Airport Transfers",
           "tab": "transfers",
-          "icon": "🚐",
+          "icon": "•",
           "path": "/airport-transfers/",
           "href": "cars.html?sub=transfers",
-          "tripUrl": "https://www.trip.com/airport-transfers/",
-          "sharkKey": "ButtonText_AirportTransfers"
+          "tripUrl": "https://www.trip.com/airport-transfers/"
         }
       ]
     },
-    "syncedAt": "2026-05-31T14:11:13.162Z",
+    "syncedAt": "2026-05-31T14:32:55.292Z",
     "source": "trip.com"
   },
+  "nav": {
+    "sidebar": [
+      {
+        "type": "item",
+        "label": "Hotels",
+        "icon": "🏨",
+        "href": "#search",
+        "tab": "hotels",
+        "internal": true,
+        "flyout": "",
+        "badge": "",
+        "tripUrl": "https://www.trip.com/hotels/",
+        "groupId": 1
+      },
+      {
+        "type": "item",
+        "label": "Flights",
+        "icon": "✈️",
+        "href": "#search",
+        "tab": "flights",
+        "internal": true,
+        "flyout": "",
+        "badge": "",
+        "tripUrl": "https://www.trip.com/flights/",
+        "groupId": 1
+      },
+      {
+        "type": "item",
+        "label": "Trains",
+        "icon": "🚄",
+        "href": "#search",
+        "tab": "trains",
+        "internal": true,
+        "flyout": "",
+        "badge": "",
+        "tripUrl": "https://www.trip.com/trains/",
+        "groupId": 1
+      },
+      {
+        "type": "item",
+        "label": "Attractions & Tours",
+        "icon": "🎟️",
+        "href": "#search",
+        "tab": "tours",
+        "internal": true,
+        "flyout": "ttd",
+        "badge": "",
+        "tripUrl": "https://www.trip.com/things-to-do/",
+        "groupId": 1
+      },
+      {
+        "type": "item",
+        "label": "Cars",
+        "icon": "🚗",
+        "href": "cars.html",
+        "tab": "cars",
+        "internal": true,
+        "flyout": "cars",
+        "badge": "",
+        "tripUrl": "",
+        "groupId": 1
+      },
+      {
+        "type": "item",
+        "label": "Flight + Hotel",
+        "icon": "🧳",
+        "href": "#search",
+        "tab": "package",
+        "internal": true,
+        "flyout": "",
+        "badge": "",
+        "tripUrl": "https://www.trip.com/packages/?sourceFrom=IBUBundle_home",
+        "groupId": 1
+      },
+      {
+        "type": "sep"
+      },
+      {
+        "type": "item",
+        "label": "Private Tours",
+        "icon": "•",
+        "href": "explore.html?cat=private-tours",
+        "tab": "",
+        "internal": true,
+        "flyout": "",
+        "badge": "",
+        "tripUrl": "https://www.trip.com/package-tours/private-tours",
+        "groupId": 2
+      },
+      {
+        "type": "item",
+        "label": "Group Tours",
+        "icon": "•",
+        "href": "explore.html?cat=group-tours",
+        "tab": "",
+        "internal": true,
+        "flyout": "",
+        "badge": "",
+        "tripUrl": "https://www.trip.com/package-tours/group-tours",
+        "groupId": 2
+      },
+      {
+        "type": "item",
+        "label": "Custom Trips",
+        "icon": "✨",
+        "href": "explore.html?cat=custom-trips",
+        "tab": "",
+        "internal": true,
+        "flyout": "",
+        "badge": "",
+        "tripUrl": "https://www.trip.com/custom-trips/index",
+        "groupId": 2
+      },
+      {
+        "type": "sep"
+      },
+      {
+        "type": "item",
+        "label": "Trip.Planner",
+        "icon": "•",
+        "href": "explore.html?cat=planner",
+        "tab": "",
+        "internal": true,
+        "flyout": "",
+        "badge": "New",
+        "tripUrl": "https://www.trip.com/webapp/tripmap/tripplanner?source=t_online_homepage",
+        "groupId": 3
+      },
+      {
+        "type": "item",
+        "label": "Travel Inspiration",
+        "icon": "•",
+        "href": "explore.html?cat=inspiration",
+        "tab": "",
+        "internal": true,
+        "flyout": "travelinspiration",
+        "badge": "",
+        "tripUrl": "",
+        "groupId": 3
+      },
+      {
+        "type": "item",
+        "label": "Map",
+        "icon": "•",
+        "href": "map.html",
+        "tab": "",
+        "internal": true,
+        "flyout": "",
+        "badge": "",
+        "tripUrl": "https://www.trip.com/webapp/tripmap/travel?entranceId=Triponlinehomeside",
+        "groupId": 3
+      },
+      {
+        "type": "item",
+        "label": "Deals",
+        "icon": "🏷️",
+        "href": "explore.html?cat=deals",
+        "tab": "",
+        "internal": true,
+        "flyout": "",
+        "badge": "",
+        "tripUrl": "https://www.trip.com/sale/deals/",
+        "groupId": 3
+      },
+      {
+        "type": "sep"
+      },
+      {
+        "type": "item",
+        "label": "TripGo Rewards",
+        "icon": "🎁",
+        "href": "explore.html?cat=rewards",
+        "tab": "",
+        "internal": true,
+        "flyout": "",
+        "badge": "",
+        "tripUrl": "https://www.trip.com/customer/loyalty/",
+        "groupId": 4
+      },
+      {
+        "type": "sep"
+      },
+      {
+        "type": "item",
+        "label": "GiftCard",
+        "icon": "🎁",
+        "href": "explore.html?cat=giftcard",
+        "tab": "",
+        "internal": true,
+        "flyout": "",
+        "badge": "",
+        "tripUrl": "https://www.trip.com/giftcard",
+        "groupId": 2
+      },
+      {
+        "type": "item",
+        "label": "Cruises",
+        "icon": "🛳️",
+        "href": "explore.html?cat=cruises",
+        "tab": "",
+        "internal": true,
+        "flyout": "",
+        "badge": "",
+        "tripUrl": "https://www.trip.com/cruises",
+        "groupId": 2
+      },
+      {
+        "type": "item",
+        "label": "Insurance",
+        "icon": "🛡️",
+        "href": "explore.html?cat=insurance",
+        "tab": "",
+        "internal": true,
+        "flyout": "",
+        "badge": "",
+        "tripUrl": "https://www.trip.com/insurance?bid=1&cid=2&pid=1",
+        "groupId": 2
+      },
+      {
+        "type": "sep"
+      },
+      {
+        "type": "item",
+        "label": "App",
+        "icon": "📲",
+        "href": "app.html",
+        "internal": true
+      }
+    ],
+    "flyouts": {
+      "cars": [
+        {
+          "label": "Car Rentals",
+          "href": "cars.html",
+          "tab": "cars",
+          "internal": true,
+          "path": "/carhire/?channelid=14409",
+          "tripUrl": "https://www.trip.com/carhire/?channelid=14409"
+        },
+        {
+          "label": "Airport Transfers",
+          "href": "cars.html?sub=transfers",
+          "tab": "transfers",
+          "internal": true,
+          "path": "/airport-transfers/",
+          "tripUrl": "https://www.trip.com/airport-transfers/"
+        }
+      ],
+      "ttd": [
+        {
+          "label": "Attractions & Tickets",
+          "href": "#search",
+          "tab": "tours",
+          "internal": true,
+          "path": "/things-to-do/",
+          "tripUrl": "https://www.trip.com/things-to-do/"
+        },
+        {
+          "label": "eSIM",
+          "href": "explore.html?cat=deals",
+          "tab": "",
+          "internal": true,
+          "path": "/sale/w/10229/esim.html",
+          "tripUrl": "https://www.trip.com/sale/w/10229/esim.html"
+        }
+      ],
+      "travelinspiration": [
+        {
+          "label": "Travel Guides",
+          "href": "explore.html?cat=inspiration",
+          "tab": "",
+          "internal": true,
+          "path": "/travel-guide/",
+          "tripUrl": "https://www.trip.com/travel-guide/"
+        },
+        {
+          "label": "TripBest",
+          "href": "explore.html?cat=inspiration",
+          "tab": "",
+          "internal": true,
+          "path": "/toplist/tripbest/home",
+          "tripUrl": "https://www.trip.com/toplist/tripbest/home"
+        }
+      ]
+    },
+    "searchTabs": [
+      {
+        "id": "hotels",
+        "tab": "hotels",
+        "label": "Hotels & Homes",
+        "icon": "🏨"
+      },
+      {
+        "id": "flights",
+        "tab": "flights",
+        "label": "Flights",
+        "icon": "✈️"
+      },
+      {
+        "id": "trains",
+        "tab": "trains",
+        "label": "Trains",
+        "icon": "🚄"
+      },
+      {
+        "id": "cars",
+        "tab": "cars",
+        "label": "Cars",
+        "icon": "🚗"
+      },
+      {
+        "id": "ttd",
+        "tab": "tours",
+        "label": "Attractions & Tours",
+        "icon": "🎟️"
+      },
+      {
+        "id": "bundle",
+        "tab": "package",
+        "label": "Flight + Hotel",
+        "icon": "🧳"
+      }
+    ],
+    "footer": {
+      "cols": [
+        {
+          "title": "Contact us",
+          "links": [
+            {
+              "label": "Customer Support",
+              "href": "support.html",
+              "internal": true
+            },
+            {
+              "label": "Customer Service",
+              "href": "explore.html?cat=deals",
+              "internal": true
+            },
+            {
+              "label": "Travel Safety Guide",
+              "href": "https://www.anzen.mofa.go.jp/",
+              "internal": true
+            },
+            {
+              "label": "ServiceUSP",
+              "href": "explore.html?cat=deals",
+              "internal": true
+            }
+          ]
+        },
+        {
+          "title": "About",
+          "links": [
+            {
+              "label": "About TripGo",
+              "href": "info.html?p=about",
+              "internal": true
+            },
+            {
+              "label": "NewsRoom",
+              "href": "info.html?p=news",
+              "internal": true
+            },
+            {
+              "label": "Newsroom",
+              "href": "info.html?p=news",
+              "internal": true
+            },
+            {
+              "label": "Careers",
+              "href": "info.html?p=careers",
+              "internal": true
+            },
+            {
+              "label": "Terms of Use",
+              "href": "info.html?p=terms",
+              "internal": true
+            },
+            {
+              "label": "Privacy Statement",
+              "href": "info.html?p=privacy",
+              "internal": true
+            },
+            {
+              "label": "Accessibility Statement",
+              "href": "info.html?p=accessibility",
+              "internal": true
+            },
+            {
+              "label": "MSA Statement",
+              "href": "info.html?p=about",
+              "internal": true
+            },
+            {
+              "label": "Impressum",
+              "href": "explore.html?cat=deals",
+              "internal": true
+            },
+            {
+              "label": "Do not sale my personal information",
+              "href": "explore.html?cat=deals",
+              "internal": true
+            },
+            {
+              "label": "TripGo Group",
+              "href": "explore.html?cat=deals",
+              "internal": true
+            },
+            {
+              "label": "TripGo Group",
+              "href": "explore.html?cat=deals",
+              "internal": true
+            },
+            {
+              "label": "위치기반서비스 이용약관",
+              "href": "info.html?p=about",
+              "internal": true
+            }
+          ]
+        },
+        {
+          "title": "Other services",
+          "links": [
+            {
+              "label": "Investor Relations",
+              "href": "info.html?p=investors",
+              "internal": true
+            },
+            {
+              "label": "TripPLUS",
+              "href": "explore.html?cat=rewards",
+              "internal": true
+            },
+            {
+              "label": "Partners",
+              "href": "explore.html?cat=deals",
+              "internal": true
+            },
+            {
+              "label": "Partners",
+              "href": "explore.html?cat=deals",
+              "internal": true
+            },
+            {
+              "label": "List My Hotel",
+              "href": "list-property.html",
+              "internal": true
+            },
+            {
+              "label": "List My Hotel",
+              "href": "list-property.html",
+              "internal": true
+            },
+            {
+              "label": "Hotel Cities",
+              "href": "results.html?tab=hotels",
+              "internal": true
+            },
+            {
+              "label": "VBooking",
+              "href": "list-property.html",
+              "internal": true
+            },
+            {
+              "label": "Security",
+              "href": "info.html?p=security",
+              "internal": true
+            }
+          ]
+        }
+      ],
+      "seo": {
+        "title": "TripGo recommendations",
+        "tabs": [
+          {
+            "text": "Featured hotel destinations",
+            "links": [
+              {
+                "text": "Hotels in Shanghai",
+                "href": "results.html?tab=hotels&dest=Shanghai"
+              },
+              {
+                "text": "Hotels in Hong Kong",
+                "href": "results.html?tab=hotels&dest=Hong%20Kong"
+              },
+              {
+                "text": "Hotels in Macau",
+                "href": "results.html?tab=hotels&dest=Macau"
+              },
+              {
+                "text": "Hotels in Bangkok",
+                "href": "results.html?tab=hotels&dest=Bangkok"
+              },
+              {
+                "text": "Hotels in Singapore",
+                "href": "results.html?tab=hotels&dest=Singapore"
+              },
+              {
+                "text": "Hotels in Dubai",
+                "href": "results.html?tab=hotels&dest=Dubai"
+              },
+              {
+                "text": "Hotels in Las Vegas",
+                "href": "results.html?tab=hotels&dest=Las%20Vegas"
+              },
+              {
+                "text": "Hotels in Beijing",
+                "href": "results.html?tab=hotels&dest=Beijing"
+              },
+              {
+                "text": "Hotels in Guangzhou",
+                "href": "results.html?tab=hotels&dest=Guangzhou"
+              },
+              {
+                "text": "Hotels in Shenzhen",
+                "href": "results.html?tab=hotels&dest=Shenzhen"
+              },
+              {
+                "text": "Hotels in Orlando",
+                "href": "results.html?tab=hotels&dest=Orlando"
+              },
+              {
+                "text": "Hotels in London",
+                "href": "results.html?tab=hotels&dest=London"
+              },
+              {
+                "text": "Hotels in San Diego",
+                "href": "results.html?tab=hotels&dest=San%20Diego"
+              },
+              {
+                "text": "Hotels in Chicago",
+                "href": "results.html?tab=hotels&dest=Chicago"
+              },
+              {
+                "text": "Hotels in New York",
+                "href": "results.html?tab=hotels&dest=New%20York"
+              },
+              {
+                "text": "Hotels in Paris",
+                "href": "results.html?tab=hotels&dest=Paris"
+              },
+              {
+                "text": "Hotels in Rome",
+                "href": "results.html?tab=hotels&dest=Rome"
+              },
+              {
+                "text": "Hotels in Edinburgh",
+                "href": "results.html?tab=hotels&dest=Edinburgh"
+              },
+              {
+                "text": "Hotels in Boston",
+                "href": "results.html?tab=hotels&dest=Boston"
+              },
+              {
+                "text": "Hotels in Nashville",
+                "href": "results.html?tab=hotels&dest=Nashville"
+              }
+            ]
+          },
+          {
+            "text": "Featured flight destinations",
+            "links": [
+              {
+                "text": "Return flights from Chicago to London",
+                "href": "index.html?tab=flights#search"
+              },
+              {
+                "text": "Direct flights from Indianapolis to Orlando",
+                "href": "index.html?tab=flights#search"
+              },
+              {
+                "text": "Direct flights from Chicago to Nashville",
+                "href": "index.html?tab=flights#search"
+              },
+              {
+                "text": "Direct flights from London to Paris",
+                "href": "index.html?tab=flights#search"
+              },
+              {
+                "text": "Cheap flights from Boston to Chicago",
+                "href": "index.html?tab=flights#search"
+              }
+            ]
+          },
+          {
+            "text": "Featured guides",
+            "links": [
+              {
+                "text": "When are flights cheapest",
+                "href": "explore.html?cat=deals"
+              },
+              {
+                "text": "China eSIM",
+                "href": "explore.html?cat=esim"
+              },
+              {
+                "text": "eSIM guide",
+                "href": "explore.html?cat=esim"
+              },
+              {
+                "text": "Thailand eSIMs",
+                "href": "explore.html?cat=esim"
+              },
+              {
+                "text": "Japan eSIMs",
+                "href": "explore.html?cat=esim"
+              },
+              {
+                "text": "Guide to china payment apps",
+                "href": "explore.html?cat=deals"
+              },
+              {
+                "text": "China tour guide",
+                "href": "explore.html?cat=deals"
+              },
+              {
+                "text": "Beijing tour guide",
+                "href": "explore.html?cat=deals"
+              },
+              {
+                "text": "China taxi apps",
+                "href": "explore.html?cat=deals"
+              },
+              {
+                "text": "Beijing layover tour",
+                "href": "explore.html?cat=deals"
+              },
+              {
+                "text": "China SIM card",
+                "href": "explore.html?cat=deals"
+              },
+              {
+                "text": "China high-speed train",
+                "href": "explore.html?cat=deals"
+              },
+              {
+                "text": "Shanghai metro",
+                "href": "explore.html?cat=deals"
+              },
+              {
+                "text": "How to get cheap flights",
+                "href": "explore.html?cat=deals"
+              },
+              {
+                "text": "Asia eSIM",
+                "href": "explore.html?cat=esim"
+              },
+              {
+                "text": "China entry requirements",
+                "href": "explore.html?cat=deals"
+              },
+              {
+                "text": "Trip.com guides",
+                "href": "explore.html?cat=deals"
+              }
+            ]
+          },
+          {
+            "text": "Trip.Best awards",
+            "links": [
+              {
+                "text": "Best nighttime attractions in Macau",
+                "href": "explore.html?cat=inspiration"
+              },
+              {
+                "text": "Best attractions in Beijing",
+                "href": "explore.html?cat=inspiration"
+              },
+              {
+                "text": "Best attractions in Guangzhou",
+                "href": "explore.html?cat=inspiration"
+              },
+              {
+                "text": "Best attractions in Shanghai",
+                "href": "explore.html?cat=inspiration"
+              },
+              {
+                "text": "Best clubs in Taipei",
+                "href": "explore.html?cat=inspiration"
+              },
+              {
+                "text": "Best attractions in Shenzhen",
+                "href": "explore.html?cat=inspiration"
+              },
+              {
+                "text": "Best bars in Chongqing",
+                "href": "explore.html?cat=inspiration"
+              },
+              {
+                "text": "Best things to do in George Town",
+                "href": "index.html?tab=tours#search"
+              },
+              {
+                "text": "Best clubs in Shanghai",
+                "href": "explore.html?cat=inspiration"
+              },
+              {
+                "text": "Best things to do In Frankfurt",
+                "href": "index.html?tab=tours#search"
+              }
+            ]
+          },
+          {
+            "text": "Popular activities",
+            "links": [
+              {
+                "text": "Suzhou day tours",
+                "href": "index.html?tab=tours#search"
+              },
+              {
+                "text": "Koh Samui day tours",
+                "href": "index.html?tab=tours#search"
+              },
+              {
+                "text": "Armenia day tours",
+                "href": "index.html?tab=tours#search"
+              },
+              {
+                "text": "Rio de Janeiro day tours",
+                "href": "index.html?tab=tours#search"
+              },
+              {
+                "text": "Nagoya day tours",
+                "href": "index.html?tab=tours#search"
+              },
+              {
+                "text": "Nha Trang classes",
+                "href": "index.html?tab=tours#search"
+              },
+              {
+                "text": "Koh Larn Sports & Adventure",
+                "href": "index.html?tab=tours#search"
+              },
+              {
+                "text": "Italy boat experiences",
+                "href": "index.html?tab=tours#search"
+              },
+              {
+                "text": "Kyoto activites",
+                "href": "index.html?tab=tours#search"
+              },
+              {
+                "text": "Cambridge sports & adventure",
+                "href": "index.html?tab=tours#search"
+              },
+              {
+                "text": "Forbidden City tickets",
+                "href": "explore.html?cat=deals"
+              },
+              {
+                "text": "Shanghai Disneyland tickets",
+                "href": "explore.html?cat=deals"
+              },
+              {
+                "text": "Universal Studios Beijing tickets",
+                "href": "explore.html?cat=deals"
+              },
+              {
+                "text": "Shanghai Tower tickets",
+                "href": "explore.html?cat=deals"
+              },
+              {
+                "text": "Shanghai Wild Animal Park tickets",
+                "href": "explore.html?cat=deals"
+              }
+            ]
+          },
+          {
+            "text": "Trip.com links",
+            "links": [
+              {
+                "text": "Trip.com Android app",
+                "href": "https://play.google.com/store/apps/details?id=ctrip.english&amp;hl=en_US"
+              },
+              {
+                "text": "Trip.com iOS app",
+                "href": "https://itunes.apple.com/us/app/trip-com-flights-hotels/id681752345?mt=8"
+              },
+              {
+                "text": "Trip.com on X",
+                "href": "https://twitter.com/trip"
+              },
+              {
+                "text": "Trip.com on Facebook",
+                "href": "https://www.facebook.com/Trip/"
+              },
+              {
+                "text": "TripGenie",
+                "href": "explore.html?cat=deals"
+              },
+              {
+                "text": "Trip.Best Global",
+                "href": "explore.html?cat=inspiration"
+              },
+              {
+                "text": "List my property on Trip.com",
+                "href": "list-property.html"
+              },
+              {
+                "text": "Trip.com contact",
+                "href": "explore.html?cat=deals"
+              },
+              {
+                "text": "Trip.com customer support",
+                "href": "explore.html?cat=deals"
+              },
+              {
+                "text": "Trip.com payment methods",
+                "href": "explore.html?cat=deals"
+              },
+              {
+                "text": "Trip.com promo codes",
+                "href": "explore.html?cat=deals"
+              }
+            ]
+          },
+          {
+            "text": "Train information",
+            "links": [
+              {
+                "text": "China high speed train seat map",
+                "href": "explore.html?cat=deals"
+              },
+              {
+                "text": "China sleeper train",
+                "href": "explore.html?cat=deals"
+              },
+              {
+                "text": "China train luggage",
+                "href": "explore.html?cat=deals"
+              },
+              {
+                "text": "Shenzhen to Hong Kong",
+                "href": "explore.html?cat=deals"
+              },
+              {
+                "text": "China train apps",
+                "href": "explore.html?cat=deals"
+              },
+              {
+                "text": "KTX booking",
+                "href": "explore.html?cat=deals"
+              },
+              {
+                "text": "Switzerland train",
+                "href": "explore.html?cat=deals"
+              },
+              {
+                "text": "China train booking",
+                "href": "explore.html?cat=deals"
+              },
+              {
+                "text": "Cheap train tickets China",
+                "href": "explore.html?cat=deals"
+              },
+              {
+                "text": "China train classes",
+                "href": "explore.html?cat=deals"
+              },
+              {
+                "text": "China train tickets",
+                "href": "explore.html?cat=deals"
+              },
+              {
+                "text": "Shanghai Hongqiao railway station",
+                "href": "explore.html?cat=deals"
+              },
+              {
+                "text": "Shanghai train stations",
+                "href": "explore.html?cat=deals"
+              },
+              {
+                "text": "Nanjing train station",
+                "href": "explore.html?cat=deals"
+              }
+            ]
+          },
+          {
+            "text": "Car rentals in top cities",
+            "links": [
+              {
+                "text": "Car rentals in Jeju City",
+                "href": "cars.html"
+              },
+              {
+                "text": "Car rentals in Shanghai",
+                "href": "cars.html"
+              },
+              {
+                "text": "Car rentals in Guangzhou",
+                "href": "cars.html"
+              },
+              {
+                "text": "Car rentals in Beijing",
+                "href": "cars.html"
+              },
+              {
+                "text": "Car rentals in Langkawi",
+                "href": "cars.html"
+              },
+              {
+                "text": "Car rentals in Almaty",
+                "href": "cars.html"
+              },
+              {
+                "text": "Car rentals in Bishkek",
+                "href": "cars.html"
+              },
+              {
+                "text": "Car rentals in Seoul",
+                "href": "cars.html"
+              },
+              {
+                "text": "Car rentals in Phuket",
+                "href": "cars.html"
+              },
+              {
+                "text": "Car rentals in Cebu",
+                "href": "cars.html"
+              },
+              {
+                "text": "Car rentals in Phu Quoc Island",
+                "href": "cars.html"
+              },
+              {
+                "text": "Car rentals in City of Manila",
+                "href": "cars.html"
+              },
+              {
+                "text": "Car rentals in Tashkent",
+                "href": "cars.html"
+              },
+              {
+                "text": "Car rentals in Ho Chi Minh City",
+                "href": "cars.html"
+              },
+              {
+                "text": "Car rentals in Jeddah",
+                "href": "cars.html"
+              },
+              {
+                "text": "Car rentals in Bali",
+                "href": "cars.html"
+              },
+              {
+                "text": "Car rentals in Davao City",
+                "href": "cars.html"
+              },
+              {
+                "text": "Car rentals in Melbourne",
+                "href": "cars.html"
+              },
+              {
+                "text": "Car rentals in Tokyo",
+                "href": "cars.html"
+              },
+              {
+                "text": "Car rentals in Busan",
+                "href": "cars.html"
+              }
+            ]
+          },
+          {
+            "text": "Popular concerts & events",
+            "links": [
+              {
+                "text": "Concerts 2026",
+                "href": "explore.html?cat=deals"
+              },
+              {
+                "text": "Events 2026",
+                "href": "explore.html?cat=deals"
+              },
+              {
+                "text": "Concerts in China 2026",
+                "href": "explore.html?cat=deals"
+              },
+              {
+                "text": "Lady Gaga concerts",
+                "href": "explore.html?cat=deals"
+              },
+              {
+                "text": "SEVENTEEN concerts",
+                "href": "explore.html?cat=deals"
+              },
+              {
+                "text": "Events in United States 2026",
+                "href": "explore.html?cat=deals"
+              },
+              {
+                "text": "TWICE concerts",
+                "href": "explore.html?cat=deals"
+              },
+              {
+                "text": "BLACKPINK concerts",
+                "href": "explore.html?cat=deals"
+              },
+              {
+                "text": "Concerts in Orlando",
+                "href": "explore.html?cat=deals"
+              },
+              {
+                "text": "Events in Las Vegas",
+                "href": "explore.html?cat=deals"
+              },
+              {
+                "text": "Concerts in Japan 2026",
+                "href": "explore.html?cat=deals"
+              },
+              {
+                "text": "Concerts in Thailand 2026",
+                "href": "explore.html?cat=deals"
+              },
+              {
+                "text": "aespa Concerts",
+                "href": "explore.html?cat=deals"
+              },
+              {
+                "text": "Concerts in Florida",
+                "href": "explore.html?cat=deals"
+              },
+              {
+                "text": "Events in San Francisco",
+                "href": "explore.html?cat=deals"
+              },
+              {
+                "text": "Concerts in Singapore",
+                "href": "explore.html?cat=deals"
+              },
+              {
+                "text": "Formula 1 2026",
+                "href": "explore.html?cat=deals"
+              },
+              {
+                "text": "Concerts in Canada",
+                "href": "explore.html?cat=deals"
+              },
+              {
+                "text": "Events in Shanghai",
+                "href": "explore.html?cat=deals"
+              },
+              {
+                "text": "Concerts in Australia",
+                "href": "explore.html?cat=deals"
+              },
+              {
+                "text": "EDM festivals 2026",
+                "href": "explore.html?cat=deals"
+              }
+            ]
+          },
+          {
+            "text": "Popular trips",
+            "links": [
+              {
+                "text": "London to Aberdeen",
+                "href": "explore.html?cat=deals"
+              },
+              {
+                "text": "Tokyo to Osaka",
+                "href": "explore.html?cat=deals"
+              },
+              {
+                "text": "London to Amsterdam",
+                "href": "explore.html?cat=deals"
+              },
+              {
+                "text": "Osaka to Tokyo",
+                "href": "explore.html?cat=deals"
+              },
+              {
+                "text": "London to Manchester",
+                "href": "explore.html?cat=deals"
+              },
+              {
+                "text": "Birmingham to London",
+                "href": "explore.html?cat=deals"
+              },
+              {
+                "text": "Manchester to London",
+                "href": "explore.html?cat=deals"
+              },
+              {
+                "text": "Rome to Florence",
+                "href": "explore.html?cat=deals"
+              },
+              {
+                "text": "Seoul to Busan",
+                "href": "explore.html?cat=deals"
+              },
+              {
+                "text": "London to Birmingham",
+                "href": "explore.html?cat=deals"
+              },
+              {
+                "text": "Tokyo Station to Shibuya Station",
+                "href": "explore.html?cat=deals"
+              },
+              {
+                "text": "Shibuya Station to Tokyo Station",
+                "href": "explore.html?cat=deals"
+              },
+              {
+                "text": "Yokohama Station to Tokyo Station",
+                "href": "explore.html?cat=deals"
+              },
+              {
+                "text": "Asakusa Station to Ueno Station",
+                "href": "explore.html?cat=deals"
+              },
+              {
+                "text": "Tokyo Station to Yokohama Station",
+                "href": "explore.html?cat=deals"
+              },
+              {
+                "text": "Tokyo Station to Sanrio Puroland",
+                "href": "explore.html?cat=deals"
+              },
+              {
+                "text": "Nagoya Station to Nagoya Castle",
+                "href": "explore.html?cat=deals"
+              },
+              {
+                "text": "Akihabara Station to Ikebukuro Station",
+                "href": "explore.html?cat=deals"
+              },
+              {
+                "text": "Tokyo Station to Kusatsu Onsen",
+                "href": "explore.html?cat=deals"
+              },
+              {
+                "text": "Seoul Station to Gyeongbokgung Palace",
+                "href": "explore.html?cat=deals"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
   "flyouts": {
+    "cars": [
+      {
+        "label": "Car Rentals",
+        "href": "cars.html",
+        "tab": "cars",
+        "internal": true,
+        "path": "/carhire/?channelid=14409",
+        "tripUrl": "https://www.trip.com/carhire/?channelid=14409"
+      },
+      {
+        "label": "Airport Transfers",
+        "href": "cars.html?sub=transfers",
+        "tab": "transfers",
+        "internal": true,
+        "path": "/airport-transfers/",
+        "tripUrl": "https://www.trip.com/airport-transfers/"
+      }
+    ],
     "ttd": [
       {
-        "label": "tnt",
-        "href": "https://www.trip.com/things-to-do/",
-        "path": "/things-to-do/"
+        "label": "Attractions & Tickets",
+        "href": "#search",
+        "tab": "tours",
+        "internal": true,
+        "path": "/things-to-do/",
+        "tripUrl": "https://www.trip.com/things-to-do/"
       },
       {
         "label": "eSIM",
-        "href": "https://www.trip.com/sale/w/10229/esim.html",
-        "path": "/sale/w/10229/esim.html"
+        "href": "explore.html?cat=deals",
+        "tab": "",
+        "internal": true,
+        "path": "/sale/w/10229/esim.html",
+        "tripUrl": "https://www.trip.com/sale/w/10229/esim.html"
       }
     ],
     "travelinspiration": [
       {
-        "label": "Attractions",
-        "href": "https://www.trip.com/travel-guide/",
-        "path": "/travel-guide/"
+        "label": "Travel Guides",
+        "href": "explore.html?cat=inspiration",
+        "tab": "",
+        "internal": true,
+        "path": "/travel-guide/",
+        "tripUrl": "https://www.trip.com/travel-guide/"
       },
       {
         "label": "TripBest",
-        "href": "https://www.trip.com/toplist/tripbest/home",
-        "path": "/toplist/tripbest/home"
+        "href": "explore.html?cat=inspiration",
+        "tab": "",
+        "internal": true,
+        "path": "/toplist/tripbest/home",
+        "tripUrl": "https://www.trip.com/toplist/tripbest/home"
       }
     ]
   },
-  "syncedAt": "2026-05-31T14:11:13.164Z",
+  "searchTabs": [
+    {
+      "id": "hotels",
+      "tab": "hotels",
+      "label": "Hotels & Homes",
+      "icon": "🏨"
+    },
+    {
+      "id": "flights",
+      "tab": "flights",
+      "label": "Flights",
+      "icon": "✈️"
+    },
+    {
+      "id": "trains",
+      "tab": "trains",
+      "label": "Trains",
+      "icon": "🚄"
+    },
+    {
+      "id": "cars",
+      "tab": "cars",
+      "label": "Cars",
+      "icon": "🚗"
+    },
+    {
+      "id": "ttd",
+      "tab": "tours",
+      "label": "Attractions & Tours",
+      "icon": "🎟️"
+    },
+    {
+      "id": "bundle",
+      "tab": "package",
+      "label": "Flight + Hotel",
+      "icon": "🧳"
+    }
+  ],
+  "footer": {
+    "cols": [
+      {
+        "title": "Contact us",
+        "links": [
+          {
+            "label": "Customer Support",
+            "href": "support.html",
+            "internal": true
+          },
+          {
+            "label": "Customer Service",
+            "href": "explore.html?cat=deals",
+            "internal": true
+          },
+          {
+            "label": "Travel Safety Guide",
+            "href": "https://www.anzen.mofa.go.jp/",
+            "internal": true
+          },
+          {
+            "label": "ServiceUSP",
+            "href": "explore.html?cat=deals",
+            "internal": true
+          }
+        ]
+      },
+      {
+        "title": "About",
+        "links": [
+          {
+            "label": "About TripGo",
+            "href": "info.html?p=about",
+            "internal": true
+          },
+          {
+            "label": "NewsRoom",
+            "href": "info.html?p=news",
+            "internal": true
+          },
+          {
+            "label": "Newsroom",
+            "href": "info.html?p=news",
+            "internal": true
+          },
+          {
+            "label": "Careers",
+            "href": "info.html?p=careers",
+            "internal": true
+          },
+          {
+            "label": "Terms of Use",
+            "href": "info.html?p=terms",
+            "internal": true
+          },
+          {
+            "label": "Privacy Statement",
+            "href": "info.html?p=privacy",
+            "internal": true
+          },
+          {
+            "label": "Accessibility Statement",
+            "href": "info.html?p=accessibility",
+            "internal": true
+          },
+          {
+            "label": "MSA Statement",
+            "href": "info.html?p=about",
+            "internal": true
+          },
+          {
+            "label": "Impressum",
+            "href": "explore.html?cat=deals",
+            "internal": true
+          },
+          {
+            "label": "Do not sale my personal information",
+            "href": "explore.html?cat=deals",
+            "internal": true
+          },
+          {
+            "label": "TripGo Group",
+            "href": "explore.html?cat=deals",
+            "internal": true
+          },
+          {
+            "label": "TripGo Group",
+            "href": "explore.html?cat=deals",
+            "internal": true
+          },
+          {
+            "label": "위치기반서비스 이용약관",
+            "href": "info.html?p=about",
+            "internal": true
+          }
+        ]
+      },
+      {
+        "title": "Other services",
+        "links": [
+          {
+            "label": "Investor Relations",
+            "href": "info.html?p=investors",
+            "internal": true
+          },
+          {
+            "label": "TripPLUS",
+            "href": "explore.html?cat=rewards",
+            "internal": true
+          },
+          {
+            "label": "Partners",
+            "href": "explore.html?cat=deals",
+            "internal": true
+          },
+          {
+            "label": "Partners",
+            "href": "explore.html?cat=deals",
+            "internal": true
+          },
+          {
+            "label": "List My Hotel",
+            "href": "list-property.html",
+            "internal": true
+          },
+          {
+            "label": "List My Hotel",
+            "href": "list-property.html",
+            "internal": true
+          },
+          {
+            "label": "Hotel Cities",
+            "href": "results.html?tab=hotels",
+            "internal": true
+          },
+          {
+            "label": "VBooking",
+            "href": "list-property.html",
+            "internal": true
+          },
+          {
+            "label": "Security",
+            "href": "info.html?p=security",
+            "internal": true
+          }
+        ]
+      }
+    ],
+    "seo": {
+      "title": "TripGo recommendations",
+      "tabs": [
+        {
+          "text": "Featured hotel destinations",
+          "links": [
+            {
+              "text": "Hotels in Shanghai",
+              "href": "results.html?tab=hotels&dest=Shanghai"
+            },
+            {
+              "text": "Hotels in Hong Kong",
+              "href": "results.html?tab=hotels&dest=Hong%20Kong"
+            },
+            {
+              "text": "Hotels in Macau",
+              "href": "results.html?tab=hotels&dest=Macau"
+            },
+            {
+              "text": "Hotels in Bangkok",
+              "href": "results.html?tab=hotels&dest=Bangkok"
+            },
+            {
+              "text": "Hotels in Singapore",
+              "href": "results.html?tab=hotels&dest=Singapore"
+            },
+            {
+              "text": "Hotels in Dubai",
+              "href": "results.html?tab=hotels&dest=Dubai"
+            },
+            {
+              "text": "Hotels in Las Vegas",
+              "href": "results.html?tab=hotels&dest=Las%20Vegas"
+            },
+            {
+              "text": "Hotels in Beijing",
+              "href": "results.html?tab=hotels&dest=Beijing"
+            },
+            {
+              "text": "Hotels in Guangzhou",
+              "href": "results.html?tab=hotels&dest=Guangzhou"
+            },
+            {
+              "text": "Hotels in Shenzhen",
+              "href": "results.html?tab=hotels&dest=Shenzhen"
+            },
+            {
+              "text": "Hotels in Orlando",
+              "href": "results.html?tab=hotels&dest=Orlando"
+            },
+            {
+              "text": "Hotels in London",
+              "href": "results.html?tab=hotels&dest=London"
+            },
+            {
+              "text": "Hotels in San Diego",
+              "href": "results.html?tab=hotels&dest=San%20Diego"
+            },
+            {
+              "text": "Hotels in Chicago",
+              "href": "results.html?tab=hotels&dest=Chicago"
+            },
+            {
+              "text": "Hotels in New York",
+              "href": "results.html?tab=hotels&dest=New%20York"
+            },
+            {
+              "text": "Hotels in Paris",
+              "href": "results.html?tab=hotels&dest=Paris"
+            },
+            {
+              "text": "Hotels in Rome",
+              "href": "results.html?tab=hotels&dest=Rome"
+            },
+            {
+              "text": "Hotels in Edinburgh",
+              "href": "results.html?tab=hotels&dest=Edinburgh"
+            },
+            {
+              "text": "Hotels in Boston",
+              "href": "results.html?tab=hotels&dest=Boston"
+            },
+            {
+              "text": "Hotels in Nashville",
+              "href": "results.html?tab=hotels&dest=Nashville"
+            }
+          ]
+        },
+        {
+          "text": "Featured flight destinations",
+          "links": [
+            {
+              "text": "Return flights from Chicago to London",
+              "href": "index.html?tab=flights#search"
+            },
+            {
+              "text": "Direct flights from Indianapolis to Orlando",
+              "href": "index.html?tab=flights#search"
+            },
+            {
+              "text": "Direct flights from Chicago to Nashville",
+              "href": "index.html?tab=flights#search"
+            },
+            {
+              "text": "Direct flights from London to Paris",
+              "href": "index.html?tab=flights#search"
+            },
+            {
+              "text": "Cheap flights from Boston to Chicago",
+              "href": "index.html?tab=flights#search"
+            }
+          ]
+        },
+        {
+          "text": "Featured guides",
+          "links": [
+            {
+              "text": "When are flights cheapest",
+              "href": "explore.html?cat=deals"
+            },
+            {
+              "text": "China eSIM",
+              "href": "explore.html?cat=esim"
+            },
+            {
+              "text": "eSIM guide",
+              "href": "explore.html?cat=esim"
+            },
+            {
+              "text": "Thailand eSIMs",
+              "href": "explore.html?cat=esim"
+            },
+            {
+              "text": "Japan eSIMs",
+              "href": "explore.html?cat=esim"
+            },
+            {
+              "text": "Guide to china payment apps",
+              "href": "explore.html?cat=deals"
+            },
+            {
+              "text": "China tour guide",
+              "href": "explore.html?cat=deals"
+            },
+            {
+              "text": "Beijing tour guide",
+              "href": "explore.html?cat=deals"
+            },
+            {
+              "text": "China taxi apps",
+              "href": "explore.html?cat=deals"
+            },
+            {
+              "text": "Beijing layover tour",
+              "href": "explore.html?cat=deals"
+            },
+            {
+              "text": "China SIM card",
+              "href": "explore.html?cat=deals"
+            },
+            {
+              "text": "China high-speed train",
+              "href": "explore.html?cat=deals"
+            },
+            {
+              "text": "Shanghai metro",
+              "href": "explore.html?cat=deals"
+            },
+            {
+              "text": "How to get cheap flights",
+              "href": "explore.html?cat=deals"
+            },
+            {
+              "text": "Asia eSIM",
+              "href": "explore.html?cat=esim"
+            },
+            {
+              "text": "China entry requirements",
+              "href": "explore.html?cat=deals"
+            },
+            {
+              "text": "Trip.com guides",
+              "href": "explore.html?cat=deals"
+            }
+          ]
+        },
+        {
+          "text": "Trip.Best awards",
+          "links": [
+            {
+              "text": "Best nighttime attractions in Macau",
+              "href": "explore.html?cat=inspiration"
+            },
+            {
+              "text": "Best attractions in Beijing",
+              "href": "explore.html?cat=inspiration"
+            },
+            {
+              "text": "Best attractions in Guangzhou",
+              "href": "explore.html?cat=inspiration"
+            },
+            {
+              "text": "Best attractions in Shanghai",
+              "href": "explore.html?cat=inspiration"
+            },
+            {
+              "text": "Best clubs in Taipei",
+              "href": "explore.html?cat=inspiration"
+            },
+            {
+              "text": "Best attractions in Shenzhen",
+              "href": "explore.html?cat=inspiration"
+            },
+            {
+              "text": "Best bars in Chongqing",
+              "href": "explore.html?cat=inspiration"
+            },
+            {
+              "text": "Best things to do in George Town",
+              "href": "index.html?tab=tours#search"
+            },
+            {
+              "text": "Best clubs in Shanghai",
+              "href": "explore.html?cat=inspiration"
+            },
+            {
+              "text": "Best things to do In Frankfurt",
+              "href": "index.html?tab=tours#search"
+            }
+          ]
+        },
+        {
+          "text": "Popular activities",
+          "links": [
+            {
+              "text": "Suzhou day tours",
+              "href": "index.html?tab=tours#search"
+            },
+            {
+              "text": "Koh Samui day tours",
+              "href": "index.html?tab=tours#search"
+            },
+            {
+              "text": "Armenia day tours",
+              "href": "index.html?tab=tours#search"
+            },
+            {
+              "text": "Rio de Janeiro day tours",
+              "href": "index.html?tab=tours#search"
+            },
+            {
+              "text": "Nagoya day tours",
+              "href": "index.html?tab=tours#search"
+            },
+            {
+              "text": "Nha Trang classes",
+              "href": "index.html?tab=tours#search"
+            },
+            {
+              "text": "Koh Larn Sports & Adventure",
+              "href": "index.html?tab=tours#search"
+            },
+            {
+              "text": "Italy boat experiences",
+              "href": "index.html?tab=tours#search"
+            },
+            {
+              "text": "Kyoto activites",
+              "href": "index.html?tab=tours#search"
+            },
+            {
+              "text": "Cambridge sports & adventure",
+              "href": "index.html?tab=tours#search"
+            },
+            {
+              "text": "Forbidden City tickets",
+              "href": "explore.html?cat=deals"
+            },
+            {
+              "text": "Shanghai Disneyland tickets",
+              "href": "explore.html?cat=deals"
+            },
+            {
+              "text": "Universal Studios Beijing tickets",
+              "href": "explore.html?cat=deals"
+            },
+            {
+              "text": "Shanghai Tower tickets",
+              "href": "explore.html?cat=deals"
+            },
+            {
+              "text": "Shanghai Wild Animal Park tickets",
+              "href": "explore.html?cat=deals"
+            }
+          ]
+        },
+        {
+          "text": "Trip.com links",
+          "links": [
+            {
+              "text": "Trip.com Android app",
+              "href": "https://play.google.com/store/apps/details?id=ctrip.english&amp;hl=en_US"
+            },
+            {
+              "text": "Trip.com iOS app",
+              "href": "https://itunes.apple.com/us/app/trip-com-flights-hotels/id681752345?mt=8"
+            },
+            {
+              "text": "Trip.com on X",
+              "href": "https://twitter.com/trip"
+            },
+            {
+              "text": "Trip.com on Facebook",
+              "href": "https://www.facebook.com/Trip/"
+            },
+            {
+              "text": "TripGenie",
+              "href": "explore.html?cat=deals"
+            },
+            {
+              "text": "Trip.Best Global",
+              "href": "explore.html?cat=inspiration"
+            },
+            {
+              "text": "List my property on Trip.com",
+              "href": "list-property.html"
+            },
+            {
+              "text": "Trip.com contact",
+              "href": "explore.html?cat=deals"
+            },
+            {
+              "text": "Trip.com customer support",
+              "href": "explore.html?cat=deals"
+            },
+            {
+              "text": "Trip.com payment methods",
+              "href": "explore.html?cat=deals"
+            },
+            {
+              "text": "Trip.com promo codes",
+              "href": "explore.html?cat=deals"
+            }
+          ]
+        },
+        {
+          "text": "Train information",
+          "links": [
+            {
+              "text": "China high speed train seat map",
+              "href": "explore.html?cat=deals"
+            },
+            {
+              "text": "China sleeper train",
+              "href": "explore.html?cat=deals"
+            },
+            {
+              "text": "China train luggage",
+              "href": "explore.html?cat=deals"
+            },
+            {
+              "text": "Shenzhen to Hong Kong",
+              "href": "explore.html?cat=deals"
+            },
+            {
+              "text": "China train apps",
+              "href": "explore.html?cat=deals"
+            },
+            {
+              "text": "KTX booking",
+              "href": "explore.html?cat=deals"
+            },
+            {
+              "text": "Switzerland train",
+              "href": "explore.html?cat=deals"
+            },
+            {
+              "text": "China train booking",
+              "href": "explore.html?cat=deals"
+            },
+            {
+              "text": "Cheap train tickets China",
+              "href": "explore.html?cat=deals"
+            },
+            {
+              "text": "China train classes",
+              "href": "explore.html?cat=deals"
+            },
+            {
+              "text": "China train tickets",
+              "href": "explore.html?cat=deals"
+            },
+            {
+              "text": "Shanghai Hongqiao railway station",
+              "href": "explore.html?cat=deals"
+            },
+            {
+              "text": "Shanghai train stations",
+              "href": "explore.html?cat=deals"
+            },
+            {
+              "text": "Nanjing train station",
+              "href": "explore.html?cat=deals"
+            }
+          ]
+        },
+        {
+          "text": "Car rentals in top cities",
+          "links": [
+            {
+              "text": "Car rentals in Jeju City",
+              "href": "cars.html"
+            },
+            {
+              "text": "Car rentals in Shanghai",
+              "href": "cars.html"
+            },
+            {
+              "text": "Car rentals in Guangzhou",
+              "href": "cars.html"
+            },
+            {
+              "text": "Car rentals in Beijing",
+              "href": "cars.html"
+            },
+            {
+              "text": "Car rentals in Langkawi",
+              "href": "cars.html"
+            },
+            {
+              "text": "Car rentals in Almaty",
+              "href": "cars.html"
+            },
+            {
+              "text": "Car rentals in Bishkek",
+              "href": "cars.html"
+            },
+            {
+              "text": "Car rentals in Seoul",
+              "href": "cars.html"
+            },
+            {
+              "text": "Car rentals in Phuket",
+              "href": "cars.html"
+            },
+            {
+              "text": "Car rentals in Cebu",
+              "href": "cars.html"
+            },
+            {
+              "text": "Car rentals in Phu Quoc Island",
+              "href": "cars.html"
+            },
+            {
+              "text": "Car rentals in City of Manila",
+              "href": "cars.html"
+            },
+            {
+              "text": "Car rentals in Tashkent",
+              "href": "cars.html"
+            },
+            {
+              "text": "Car rentals in Ho Chi Minh City",
+              "href": "cars.html"
+            },
+            {
+              "text": "Car rentals in Jeddah",
+              "href": "cars.html"
+            },
+            {
+              "text": "Car rentals in Bali",
+              "href": "cars.html"
+            },
+            {
+              "text": "Car rentals in Davao City",
+              "href": "cars.html"
+            },
+            {
+              "text": "Car rentals in Melbourne",
+              "href": "cars.html"
+            },
+            {
+              "text": "Car rentals in Tokyo",
+              "href": "cars.html"
+            },
+            {
+              "text": "Car rentals in Busan",
+              "href": "cars.html"
+            }
+          ]
+        },
+        {
+          "text": "Popular concerts & events",
+          "links": [
+            {
+              "text": "Concerts 2026",
+              "href": "explore.html?cat=deals"
+            },
+            {
+              "text": "Events 2026",
+              "href": "explore.html?cat=deals"
+            },
+            {
+              "text": "Concerts in China 2026",
+              "href": "explore.html?cat=deals"
+            },
+            {
+              "text": "Lady Gaga concerts",
+              "href": "explore.html?cat=deals"
+            },
+            {
+              "text": "SEVENTEEN concerts",
+              "href": "explore.html?cat=deals"
+            },
+            {
+              "text": "Events in United States 2026",
+              "href": "explore.html?cat=deals"
+            },
+            {
+              "text": "TWICE concerts",
+              "href": "explore.html?cat=deals"
+            },
+            {
+              "text": "BLACKPINK concerts",
+              "href": "explore.html?cat=deals"
+            },
+            {
+              "text": "Concerts in Orlando",
+              "href": "explore.html?cat=deals"
+            },
+            {
+              "text": "Events in Las Vegas",
+              "href": "explore.html?cat=deals"
+            },
+            {
+              "text": "Concerts in Japan 2026",
+              "href": "explore.html?cat=deals"
+            },
+            {
+              "text": "Concerts in Thailand 2026",
+              "href": "explore.html?cat=deals"
+            },
+            {
+              "text": "aespa Concerts",
+              "href": "explore.html?cat=deals"
+            },
+            {
+              "text": "Concerts in Florida",
+              "href": "explore.html?cat=deals"
+            },
+            {
+              "text": "Events in San Francisco",
+              "href": "explore.html?cat=deals"
+            },
+            {
+              "text": "Concerts in Singapore",
+              "href": "explore.html?cat=deals"
+            },
+            {
+              "text": "Formula 1 2026",
+              "href": "explore.html?cat=deals"
+            },
+            {
+              "text": "Concerts in Canada",
+              "href": "explore.html?cat=deals"
+            },
+            {
+              "text": "Events in Shanghai",
+              "href": "explore.html?cat=deals"
+            },
+            {
+              "text": "Concerts in Australia",
+              "href": "explore.html?cat=deals"
+            },
+            {
+              "text": "EDM festivals 2026",
+              "href": "explore.html?cat=deals"
+            }
+          ]
+        },
+        {
+          "text": "Popular trips",
+          "links": [
+            {
+              "text": "London to Aberdeen",
+              "href": "explore.html?cat=deals"
+            },
+            {
+              "text": "Tokyo to Osaka",
+              "href": "explore.html?cat=deals"
+            },
+            {
+              "text": "London to Amsterdam",
+              "href": "explore.html?cat=deals"
+            },
+            {
+              "text": "Osaka to Tokyo",
+              "href": "explore.html?cat=deals"
+            },
+            {
+              "text": "London to Manchester",
+              "href": "explore.html?cat=deals"
+            },
+            {
+              "text": "Birmingham to London",
+              "href": "explore.html?cat=deals"
+            },
+            {
+              "text": "Manchester to London",
+              "href": "explore.html?cat=deals"
+            },
+            {
+              "text": "Rome to Florence",
+              "href": "explore.html?cat=deals"
+            },
+            {
+              "text": "Seoul to Busan",
+              "href": "explore.html?cat=deals"
+            },
+            {
+              "text": "London to Birmingham",
+              "href": "explore.html?cat=deals"
+            },
+            {
+              "text": "Tokyo Station to Shibuya Station",
+              "href": "explore.html?cat=deals"
+            },
+            {
+              "text": "Shibuya Station to Tokyo Station",
+              "href": "explore.html?cat=deals"
+            },
+            {
+              "text": "Yokohama Station to Tokyo Station",
+              "href": "explore.html?cat=deals"
+            },
+            {
+              "text": "Asakusa Station to Ueno Station",
+              "href": "explore.html?cat=deals"
+            },
+            {
+              "text": "Tokyo Station to Yokohama Station",
+              "href": "explore.html?cat=deals"
+            },
+            {
+              "text": "Tokyo Station to Sanrio Puroland",
+              "href": "explore.html?cat=deals"
+            },
+            {
+              "text": "Nagoya Station to Nagoya Castle",
+              "href": "explore.html?cat=deals"
+            },
+            {
+              "text": "Akihabara Station to Ikebukuro Station",
+              "href": "explore.html?cat=deals"
+            },
+            {
+              "text": "Tokyo Station to Kusatsu Onsen",
+              "href": "explore.html?cat=deals"
+            },
+            {
+              "text": "Seoul Station to Gyeongbokgung Palace",
+              "href": "explore.html?cat=deals"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "syncedAt": "2026-05-31T14:32:55.294Z",
   "source": "trip.com"
 }

@@ -53,6 +53,7 @@
   <script src="region.js"></script>
   <script src="signin.js"></script>
   <script src="dest-search.js"></script>
+  <script src="clone-routes.js"></script>
   <script src="common.js"></script>
   <script src="inspired.js"></script>
   <script>
@@ -70,12 +71,13 @@
       return "https://images.unsplash.com/" + f.img + "?auto=format&fit=crop&w=500&q=80";
     }
     function card(f) {
-      var href = f.deeplink || ("results.html?tab=flights&to=" + encodeURIComponent(f.dest));
-      var ext = f.deeplink ? ' target="_blank" rel="noopener"' : "";
+      var href = window.TGtoCloneUrl
+        ? window.TGtoCloneUrl(f.deeplink, { dest: f.dest, fallback: "results.html?tab=flights&to=" + encodeURIComponent(f.dest) })
+        : (f.deeplink || ("results.html?tab=flights&to=" + encodeURIComponent(f.dest)));
       var price = (f.browseOnly || !f.price)
         ? '<div class="flight-card__price">Explore <b>flights</b></div>'
         : '<div class="flight-card__price">from <b>US$' + f.price + '</b></div>';
-      return '<a class="flight-card flight-card--lg" href="' + href + '"' + ext + '>' +
+      return '<a class="flight-card flight-card--lg" href="' + href + '">' +
         '<div class="flight-card__img"><img loading="lazy" src="' + flightImg(f) + '" alt="' + f.dest + '" /></div>' +
         '<div class="flight-card__body"><div class="flight-card__city">' + f.dest + '</div>' +
         '<div class="flight-card__sub">' + (f.country || "One-way") + '</div>' + price + '</div></a>';

@@ -42,7 +42,7 @@
   <div class="layout">
     <!-- ---- Sidebar nav ---- -->
     <aside class="sidebar" id="sidebar" aria-label="Primary navigation">
-      <ul class="sidenav">
+      <ul class="sidenav" id="sidenavList">
         <li><a href="#search" class="sidenav__item" data-tab="hotels"><span class="sidenav__ic">🏨</span>Hotels &amp; Homes</a></li>
         <li><a href="#search" class="sidenav__item" data-tab="flights"><span class="sidenav__ic">✈️</span>Flights</a></li>
         <li><a href="#search" class="sidenav__item" data-tab="trains"><span class="sidenav__ic">🚄</span>Trains</a></li>
@@ -94,7 +94,7 @@
           <p class="hero__trust">✓ Secure payment&nbsp;&nbsp;|&nbsp;&nbsp;✓ Support in approx. 30s</p>
 
           <div class="searchwidget">
-            <div class="tabs" role="tablist">
+            <div class="tabs" id="searchTabs" role="tablist">
               <button class="tab is-active" data-tab="hotels" role="tab">🏨 Hotels &amp; Homes</button>
               <button class="tab" data-tab="flights" role="tab">✈️ Flights</button>
               <button class="tab" data-tab="trains" role="tab">🚄 Trains</button>
@@ -168,7 +168,7 @@
 
       <!-- Footer -->
       <footer class="footer">
-        <div class="footer__cols">
+        <div class="footer__cols" id="footerCols">
           <div class="footer__col">
             <h4>Contact us</h4>
             <a href="support.html">Customer support</a>
@@ -201,6 +201,7 @@
             <div class="social"><a href="https://www.facebook.com/tripcom" target="_blank" rel="noopener">f</a><a href="https://twitter.com/tripcom" target="_blank" rel="noopener">𝕏</a><a href="https://www.instagram.com/tripcom" target="_blank" rel="noopener">◎</a><a href="https://www.youtube.com/tripcom" target="_blank" rel="noopener">▶</a></div>
           </div>
         </div>
+        <div class="footer__seo" id="footerSeo"></div>
         <div class="footer__bottom">
           © <span id="year"></span> TripGo Travel. &nbsp;·&nbsp; 🌐 English (XX) · USD
         </div>
@@ -276,6 +277,7 @@
   <script src="signin.js"></script>
   <script src="dest-search.js"></script>
   <script src="common.js"></script>
+  <script src="clone-routes.js"></script>
   <script src="homepage.js"></script>
   <script src="script.js"></script>
 </body>

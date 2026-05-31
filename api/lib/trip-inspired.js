@@ -1,5 +1,6 @@
 /* Fetch & normalize Trip.com "Get inspired for your next trip" data */
 const TRIP_HOME = "https://www.trip.com/?locale=en-XX&curr=USD";
+const { toCloneUrl } = require("../../clone-routes");
 const UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36";
 
 const HEAD = {
@@ -80,7 +81,7 @@ function normalizeFlight(p, chipTag) {
     tripType: isFlight ? (p.arrivalCity && p.departureDate ? "One-way" : "Round-trip") : "Train",
     depart: p.departureCity || "",
     dates: [p.departureDate, p.arrivalDate].filter(Boolean).join(" – "),
-    deeplink: p.deeplink || p.deepLink || "",
+    deeplink: toCloneUrl(p.deeplink || p.deepLink || "", { dest: dest }),
     trafficType: p.trafficType || "FLIGHT",
   };
 }
@@ -127,7 +128,7 @@ async function fetchInspiredFromTrip() {
 
   var chips = ok(destRes) ? (destRes.productsList || []).map(normalizeChip) : [];
   var title = (ok(destRes) && destRes.title) || "Get inspired for your next trip";
-  var moreUrl = destRes.moreUrl || "";
+  var moreUrl = toCloneUrl(destRes.moreUrl || "", { fallback: "flights.html" });
 
   var flights = [];
   var seen = {};

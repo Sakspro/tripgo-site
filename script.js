@@ -445,6 +445,12 @@ let INSPO_TITLE = "Travel inspiration";
 
 let inspireChip = "Anywhere";
 
+function localHref(url, opts) {
+  if (window.TGtoCloneUrl) return window.TGtoCloneUrl(url, opts || {});
+  if (!url || url.indexOf("trip.com") === -1) return url || (opts && opts.fallback) || "index.html";
+  return (opts && opts.fallback) || "explore.html?cat=deals";
+}
+
 function bookingHref(o, cat, city) {
   return "booking.html?cat=" + cat +
     "&title=" + encodeURIComponent(o.t) +
@@ -472,8 +478,8 @@ function flightCardHTML(f) {
   var priceHtml = (f.browseOnly || !f.price)
     ? '<div class="flight-card__price">Explore <b>flights</b></div>'
     : '<div class="flight-card__price">from <b>US$' + f.price + '</b></div>';
-  var href = f.deeplink || flightHref(f.dest);
-  return '<a class="flight-card" href="' + href + '"' + (f.deeplink ? ' target="_blank" rel="noopener"' : '') + '>' +
+  var href = localHref(f.deeplink, { dest: f.dest, fallback: flightHref(f.dest) });
+  return '<a class="flight-card" href="' + href + '">' +
     '<div class="flight-card__img"><img loading="lazy" src="' + flightImg(f) + '" alt="' + f.dest + '" /></div>' +
     '<div class="flight-card__body">' +
       '<div class="flight-card__city">' + f.dest + '</div>' +
@@ -511,25 +517,96 @@ function applySidebarCars(data) {
 }
 function applyFlyouts(flyouts) {
   if (!flyouts) return;
-  var tours = document.getElementById("toursFlyout");
-  if (tours && flyouts.ttd && flyouts.ttd.length) {
-    tours.innerHTML = flyouts.ttd.map(function (item) {
-      var href = item.href && item.href.indexOf("trip.com") > -1
-        ? item.href : ("#search");
-      var ext = href.indexOf("trip.com") > -1 ? ' target="_blank" rel="noopener"' : "";
-      var tab = href.indexOf("trip.com") > -1 ? "" : ' data-tab="tours"';
-      return '<a href="' + href + '"' + tab + ext + '>' + item.label + '</a>';
+  var map = { ttd: "toursFlyout", travelinspiration: "inspoFlyout", cars: "carsFlyout" };
+  Object.keys(map).forEach(function (key) {
+    var el = document.getElementById(map[key]);
+    var items = flyouts[key];
+    if (!el || !items || !items.length) return;
+    el.innerHTML = items.map(function (item) {
+      var href = localHref(item.href, { label: item.label, fallback: "#search" });
+      var tab = item.tab ? ' data-tab="' + item.tab + '"' : "";
+      return '<a href="' + href + '"' + tab + '>' + item.label + '</a>';
     }).join("");
+  });
+}
+
+function sidenavItemHTML(item, flyouts) {
+  var badge = item.badge ? ' <span class="pill-new">' + item.badge + '</span>' : "";
+  var tabAttr = item.tab ? ' data-tab="' + item.tab + '"' : "";
+  var href = localHref(item.href, { label: item.label, fallback: item.href || "#" });
+  if (item.flyout && flyouts && flyouts[item.flyout] && flyouts[item.flyout].length) {
+    var flyoutId = item.flyout === "cars" ? "carsFlyout"
+      : item.flyout === "ttd" ? "toursFlyout" : "inspoFlyout";
+    return '<li class="has-flyout" data-sidebar="' + item.flyout + '">' +
+      '<a href="' + href + '" class="sidenav__item"' + tabAttr + '>' +
+      '<span class="sidenav__ic">' + (item.icon || "•") + '</span>' + item.label + badge +
+      '<span class="sidenav__caret">›</span></a>' +
+      '<div class="flyout" id="' + flyoutId + '"></div></li>';
   }
-  var inspoNav = document.getElementById("inspoFlyout");
-  if (inspoNav && flyouts.travelinspiration && flyouts.travelinspiration.length) {
-    inspoNav.innerHTML = flyouts.travelinspiration.map(function (item) {
-      var href = item.href && item.href.indexOf("trip.com") > -1
-        ? item.href : "explore.html?cat=inspiration";
-      var ext = href.indexOf("trip.com") > -1 ? ' target="_blank" rel="noopener"' : "";
-      return '<a href="' + href + '"' + ext + '>' + item.label + '</a>';
-    }).join("");
+  return '<li><a href="' + href + '" class="sidenav__item"' + tabAttr + '>' +
+    '<span class="sidenav__ic">' + (item.icon || "•") + '</span>' + item.label + badge + '</a></li>';
+}
+
+function applySidebarNav(sidebar, flyouts) {
+  var list = document.getElementById("sidenavList");
+  if (!list || !sidebar || !sidebar.length) return;
+  list.innerHTML = sidebar.map(function (item) {
+    if (item.type === "sep") return '<li class="sidenav__sep"></li>';
+    return sidenavItemHTML(item, flyouts);
+  }).join("");
+  applyFlyouts(flyouts);
+}
+
+function applySearchTabs(tabs) {
+  var wrap = document.getElementById("searchTabs");
+  if (!wrap || !tabs || !tabs.length) return;
+  wrap.innerHTML = tabs.map(function (t, i) {
+    return '<button class="tab' + (i === 0 ? " is-active" : "") + '" data-tab="' + t.tab + '" role="tab">' +
+      (t.icon ? t.icon + " " : "") + t.label + '</button>';
+  }).join("");
+  tabs.forEach(function (t) { TAB_LABEL[t.tab] = t.label; });
+  setActiveTab(state.tab);
+}
+
+function applyFooterData(footer) {
+  if (!footer) return;
+  var cols = document.getElementById("footerCols");
+  if (cols && footer.cols && footer.cols.length) {
+    var payCol = '<div class="footer__col">' +
+      '<h4>Payment methods</h4>' +
+      '<div class="paychips"><span>VISA</span><span>MC</span><span>AMEX</span><span>JCB</span><span>PayPal</span><span>Apple Pay</span></div>' +
+      '<h4 style="margin-top:20px;">Follow us</h4>' +
+      '<div class="social"><a href="https://www.facebook.com/tripcom" target="_blank" rel="noopener">f</a>' +
+      '<a href="https://twitter.com/tripcom" target="_blank" rel="noopener">𝕏</a>' +
+      '<a href="https://www.instagram.com/tripcom" target="_blank" rel="noopener">◎</a>' +
+      '<a href="https://www.youtube.com/tripcom" target="_blank" rel="noopener">▶</a></div></div>';
+    cols.innerHTML = footer.cols.map(function (col) {
+      return '<div class="footer__col"><h4>' + col.title + '</h4>' +
+        col.links.map(function (l) {
+          var href = localHref(l.href, { label: l.label, fallback: l.href || "#" });
+          return '<a href="' + href + '">' + l.label + '</a>';
+        }).join("") + '</div>';
+    }).join("") + payCol;
   }
+  var seoEl = document.getElementById("footerSeo");
+  if (seoEl && footer.seo && footer.seo.tabs && footer.seo.tabs.length) {
+    seoEl.innerHTML = '<h4 class="footer__seo-title">' + (footer.seo.title || "Recommendations") + '</h4>' +
+      footer.seo.tabs.map(function (tab) {
+        return '<div class="footer__seo-tab"><strong>' + tab.text + '</strong><div class="footer__seo-links">' +
+          tab.links.slice(0, 12).map(function (l) {
+            var href = localHref(l.href, { text: l.text, fallback: l.href || "#" });
+            return '<a href="' + href + '">' + l.text + '</a>';
+          }).join("") + '</div></div>';
+      }).join("");
+  }
+}
+
+function applyNavData(data) {
+  if (!data) return;
+  if (data.sidebar) applySidebarNav(data.sidebar, data.flyouts);
+  else if (data.flyouts) applyFlyouts(data.flyouts);
+  if (data.searchTabs) applySearchTabs(data.searchTabs);
+  if (data.footer) applyFooterData(data.footer);
 }
 
 function applyHomepageData(data) {
@@ -553,8 +630,14 @@ function applyHomepageData(data) {
     INSPO_TITLE = data.inspiration.title || INSPO_TITLE;
   }
   if (data.inspired) applyInspiredData(data.inspired);
-  if (data.sidebar) applySidebarCars(data.sidebar);
-  applyFlyouts(data.flyouts);
+  if (data.nav) {
+    applyNavData(data.nav);
+  } else {
+    if (data.sidebar) applySidebarCars(data.sidebar);
+    applyFlyouts(data.flyouts);
+    if (data.searchTabs) applySearchTabs(data.searchTabs);
+    if (data.footer) applyFooterData(data.footer);
+  }
   renderContent();
 }
 
@@ -591,9 +674,8 @@ function cardImg(o, w) {
   return IMG(o.img, w || 500);
 }
 
-function cardHTML(o, withPrice, href, external) {
+function cardHTML(o, withPrice, href) {
   var tag = href ? "a" : "article";
-  var ext = external ? ' target="_blank" rel="noopener"' : "";
   var priceFoot = "";
   if (withPrice) {
     var pricePart = o.p
@@ -602,7 +684,7 @@ function cardHTML(o, withPrice, href, external) {
     priceFoot = '<div class="card__foot">' + pricePart +
       '<span class="card__rating">★ ' + o.r + '</span></div>';
   }
-  return "<" + tag + ' class="card"' + (href ? ' href="' + href + '"' + ext : "") + ' data-search="' + o.t + '">' +
+  return "<" + tag + ' class="card"' + (href ? ' href="' + href + '"' : "") + ' data-search="' + o.t + '">' +
     '<div class="card__img"><img loading="lazy" src="' + cardImg(o) + '" alt="' + o.t + '" />' +
       '<button class="card__save" title="Save" aria-label="Save to list">♡</button></div>' +
     '<div class="card__body">' +
@@ -654,10 +736,9 @@ function renderContent() {
   }).join("");
 
   $("#promoRow").innerHTML = PROMOS.map(function (p) {
-    var href = p.href || PROMO_LINKS[p.t] || "explore.html?cat=deals";
+    var href = localHref(p.href, { label: p.t, fallback: PROMO_LINKS[p.t] || "explore.html?cat=deals" });
     var imgSrc = (p.img && p.img.indexOf("http") === 0) ? p.img : IMG(p.img, 700);
-    var ext = href.indexOf("trip.com") > -1 ? ' target="_blank" rel="noopener"' : "";
-    return '<a class="promo" href="' + href + '"' + ext + '><img loading="lazy" src="' + imgSrc + '" alt="' + p.t + '" />' +
+    return '<a class="promo" href="' + href + '"><img loading="lazy" src="' + imgSrc + '" alt="' + p.t + '" />' +
       '<div class="promo__cap"><b>' + p.t + '</b><small>' + p.s + '</small></div></a>';
   }).join("");
 
@@ -674,16 +755,16 @@ function renderContent() {
   renderFlights();
 
   $("#attractionRow").innerHTML = ATTRACTIONS.map(function (a) {
-    var href = a.deeplink || bookingHref(a, "attraction", a.city);
-    return cardHTML(a, true, href, !!a.deeplink);
+    var href = localHref(a.deeplink, { city: a.city, label: a.t, fallback: bookingHref(a, "attraction", a.city) });
+    return cardHTML(a, true, href);
   }).join("");
   $("#hotelRow").innerHTML = HOTELS.map(function (h) {
-    var href = h.deeplink || hotelHref(h.city);
-    return cardHTML(h, true, href, !!h.deeplink);
+    var href = localHref(h.deeplink, { city: h.city, label: h.t, fallback: hotelHref(h.city) });
+    return cardHTML(h, true, href);
   }).join("");
   $("#inspoRow").innerHTML = INSPO.map(function (i) {
-    var href = i.href || ("explore.html?cat=inspiration&post=" + encodeURIComponent(i.slug));
-    return cardHTML(i, false, href, !!i.href);
+    var href = localHref(i.href, { label: i.t, fallback: "explore.html?cat=inspiration&post=" + encodeURIComponent(i.slug) });
+    return cardHTML(i, false, href);
   }).join("");
 }
 
