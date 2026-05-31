@@ -318,6 +318,12 @@ button { font-family: inherit; cursor: pointer; }
   .appstats { gap: 22px; }
 }
 
+/* ===== Topbar language flag ===== */
+.tb-flag { width: 18px; height: 18px; border-radius: 50%; object-fit: cover;
+  vertical-align: middle; display: inline-block; background: #eef2f7; }
+.tb-flag--globe { width: auto; height: auto; border-radius: 0; background: none; }
+.cur-code { vertical-align: middle; }
+
 /* ===== Region modal (languages / currency) ===== */
 .regm-overlay { position: fixed; inset: 0; z-index: 1000; background: rgba(15, 23, 42, .5);
   display: none; align-items: flex-start; justify-content: center; padding: 48px 16px; overflow: auto; }

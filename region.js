@@ -293,6 +293,30 @@
   function currentLangCode() {
     return window.TGcurrentLangCode ? window.TGcurrentLangCode() : "en";
   }
+  function currentLang() {
+    var code = currentLangCode();
+    for (var i = 0; i < LANGS.length; i++) { if (LANGS[i].code === code) return LANGS[i]; }
+    return LANGS[0];
+  }
+
+  /* Render the current language flag + currency code into the
+     topbar trigger(s) on whichever page is showing. */
+  function triggerInner(curCode, withId) {
+    var l = currentLang();
+    var flag = l.flag === "globe"
+      ? '<span class="tb-flag tb-flag--globe">🌐</span>'
+      : '<img class="tb-flag" alt="" src="https://flagcdn.com/w40/' + l.flag + '.png">';
+    var codeSpan = '<span ' + (withId ? 'id="currLabel" ' : "") +
+      'class="cur-code notranslate" translate="no">' + curCode + "</span>";
+    return flag + " " + codeSpan + ' <span class="caret">▾</span>';
+  }
+  function renderTriggers() {
+    var cur = currentCurrency();
+    var home = document.querySelector(".dd-trigger[data-dd='ddLang']");
+    if (home) home.innerHTML = triggerInner(cur, false);
+    var app = document.getElementById("currTrigger");
+    if (app) app.innerHTML = triggerInner(cur, true);
+  }
 
   var overlay, searchEl, gridEl, titleEl, tab = "lang";
 
@@ -379,16 +403,13 @@
   }
 
   function applyCurrency(code) {
-    var appLabel = document.getElementById("currLabel");
-    if (appLabel) appLabel.textContent = code;
-    var homeTrig = document.querySelector(".dd-trigger[data-dd='ddLang']");
-    if (homeTrig) homeTrig.innerHTML = '<span>🌐</span> ' + code + ' <span class="caret">▾</span>';
     try { localStorage.setItem("tg_curr", code); } catch (e) {}
     try {
       var p = new URLSearchParams(location.search);
       p.set("curr", code);
       history.replaceState(null, "", location.pathname + "?" + p.toString());
     } catch (e) {}
+    renderTriggers();
     document.dispatchEvent(new CustomEvent("tg:currency", { detail: code }));
   }
 
@@ -412,6 +433,7 @@
 
   function init() {
     build();
+    renderTriggers();
     /* Intercept the existing topbar triggers (home + app) in the
        capture phase so the old popovers never open. */
     document.addEventListener("click", function (e) {
