@@ -31,9 +31,9 @@ function tabForItem(item) {
 
 function cloneHref(path, tab) {
   var p = path || "";
-  if (/airport-transfers|chauffeur/i.test(p)) return "transfers.html";
+  if (/airport-transfers|chauffeur/i.test(p)) return "cars.html?sub=transfers";
   if (/carhire|car-rental/i.test(p)) return "cars.html";
-  if (tab === "transfers") return "transfers.html";
+  if (tab === "transfers") return "cars.html?sub=transfers";
   return "cars.html";
 }
 

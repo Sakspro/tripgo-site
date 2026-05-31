@@ -8,7 +8,7 @@
       href: "cars.html",
       items: [
         { label: "Car Rentals", tab: "cars", icon: "🚗", href: "cars.html", path: "/carhire/?channelid=14409" },
-        { label: "Airport Transfers", tab: "transfers", icon: "🚐", href: "transfers.html", path: "/airport-transfers/" },
+        { label: "Airport Transfers", tab: "transfers", icon: "🚐", href: "cars.html?sub=transfers", path: "/airport-transfers/" },
       ],
     },
   };

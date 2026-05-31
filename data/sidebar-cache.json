@@ -19,12 +19,12 @@
         "tab": "transfers",
         "icon": "🚐",
         "path": "/airport-transfers/",
-        "href": "transfers.html",
+        "href": "cars.html?sub=transfers",
         "tripUrl": "https://www.trip.com/airport-transfers/",
         "sharkKey": "ButtonText_AirportTransfers"
       }
     ]
   },
-  "syncedAt": "2026-05-31T12:38:06.677Z",
+  "syncedAt": "2026-05-31T13:35:16.931Z",
   "source": "trip.com"
 }

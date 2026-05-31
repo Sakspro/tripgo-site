@@ -100,6 +100,18 @@ button { font-family: inherit; cursor: pointer; }
 .triptype button { background: #f2f4f7; border: 0; border-radius: 16px; padding: 6px 14px; font-size: 13px; font-weight: 600; color: #46506; color: var(--muted); }
 .triptype button.is-active { background: #e4efff; color: var(--blue-dark); }
 .sform__top .selnote { color: var(--muted); font-size: 13px; }
+.sform__extra { margin-top: 12px; }
+.sform__extra:empty { display: none; }
+.sform__top .carcheck { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--ink); cursor: pointer; user-select: none; }
+.sform__top .carcheck input { width: 16px; height: 16px; accent-color: var(--blue); }
+.triptype.carsub { width: 100%; margin-bottom: 4px; }
+.cell__dt { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.cell__time { border: 1px solid var(--line); border-radius: 6px; padding: 4px 8px; font-size: 13px; font-weight: 600; color: var(--ink); background: #fff; cursor: pointer; }
+.car-meta { display: flex; flex-wrap: wrap; gap: 20px; align-items: flex-end; }
+.car-meta__field { display: flex; flex-direction: column; gap: 6px; min-width: 200px; }
+.car-meta__label { font-size: 12px; font-weight: 600; color: var(--muted); }
+.car-meta__select { border: 1px solid var(--line); border-radius: 8px; padding: 9px 12px; font-size: 14px; min-width: 220px; background: #fff; }
+.searchwidget--cars-only .tabs { display: none; }
 
 /* field cells */
 .cell { flex: 1 1 0; min-width: 150px; padding: 10px 14px; border-right: 1px solid var(--line); display: flex; flex-direction: column; gap: 3px; position: relative; cursor: pointer; }
@@ -216,16 +228,7 @@ a.card, a.promo { text-decoration: none; color: inherit; display: block; }
 .flt-sub { color: var(--muted); margin-bottom: 8px; }
 .flt-sync { color: var(--muted); font-size: 12px; margin-top: 16px; }
 
-/* Car / transfer search pages */
-.cars-form { background: #fff; border-radius: var(--radius); padding: 20px; box-shadow: var(--shadow-sm); margin-top: 16px; }
-.cars-form__row { display: flex; flex-wrap: wrap; gap: 12px; align-items: flex-end; }
-.cars-form__field { display: flex; flex-direction: column; gap: 6px; min-width: 140px; }
-.cars-form__field--grow { flex: 1 1 220px; }
-.cars-form__field--btn { flex: 0 0 auto; }
-.cars-form__label { font-size: 12px; font-weight: 600; color: var(--muted); }
-.cars-form__field input { border: 1px solid var(--line); border-radius: 8px; padding: 10px 12px; font-size: 14px; }
-.cars-form__note { margin-top: 12px; font-size: 13px; color: var(--muted); }
-a.chip { text-decoration: none; color: inherit; }
+.carpage { padding: 16px 22px 40px; max-width: 1100px; margin: 0 auto; }
 .flt-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 14px; margin-top: 18px; }
 .flight-card--lg .flight-card__city { font-size: 16px; }
 

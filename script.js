@@ -19,6 +19,13 @@ const state = {
   language: "English (XX)",
   dates: { in: new Date(today), out: new Date(tomorrow) },
   calMode: "range",
+  carsSub: "rentals",       // rentals | transfers
+  transferDir: "pickup",    // pickup | dropoff
+  carDiffDrop: false,
+  carLicense: "United States",
+  carAge: "30–60",
+  carPickTime: "10:00",
+  carDropTime: "10:00",
 };
 
 const MIN = { rooms: 1, adults: 1, children: 0, infants: 0 };
@@ -104,18 +111,8 @@ const FORMS = {
       + cellPlace("To", "js-to", "Beijing", "Arrival station")
       + cellDate("Departure date", "in", "single") + cellPax() + searchBtnCell,
   }),
-  cars: () => ({
-    top: `<span class="selnote">✓ Return car to same location</span>`,
-    fields: cellDestination("Pick-up location", "Los Angeles Airport (LAX)", "Airport or city")
-      + cellDate("Pick-up", "in", "range") + cellDate("Drop-off", "out", "range")
-      + searchBtnCell,
-  }),
-  transfers: () => ({
-    top: "",
-    fields: cellPlace("From", "js-from", "JFK Airport", "Airport / hotel") + swapCell
-      + cellPlace("To", "js-to", "Manhattan Hotel", "Airport / hotel")
-      + cellDate("Date", "in", "single") + cellPax() + searchBtnCell,
-  }),
+  cars: () => state.carsSub === "transfers" ? carTransfersForm() : carRentalsForm(),
+  transfers: () => { state.carsSub = "transfers"; state.tab = "cars"; return carTransfersForm(); },
   tours: () => ({
     top: "",
     fields: cellDestination("Destination", "Bali, Indonesia", "City, attraction or activity")
@@ -135,11 +132,15 @@ function renderForm() {
   const def = (FORMS[tab] || FORMS.hotels)();
   $("#formTop").innerHTML = def.top;
   $("#formFields").innerHTML = def.fields;
+  var extra = $("#formExtra");
+  if (extra) extra.innerHTML = def.extra || "";
   updateDateLabels();
 }
 
 function setActiveTab(tab) {
+  if (tab === "transfers") { state.carsSub = "transfers"; tab = "cars"; }
   if (!FORMS[tab]) tab = "hotels";
+  if (tab === "cars" && state.carsSub !== "transfers") state.carsSub = state.carsSub || "rentals";
   state.tab = tab;
   $$(".tab").forEach(b => b.classList.toggle("is-active", b.dataset.tab === tab));
   $$(".sidenav__item[data-tab]").forEach(b => b.classList.toggle("is-active", b.dataset.tab === tab));
@@ -281,6 +282,83 @@ function pickDate(y, m, day) {
 const LANGS = ["English (XX)", "English (UK)", "中文 (简体)", "中文 (繁體)", "日本語", "한국어", "Français", "Deutsch", "Español", "ภาษาไทย"];
 const CURRS = ["USD", "EUR", "GBP", "JPY", "CNY", "KRW", "HKD", "SGD", "AUD", "THB"];
 const CABINS = ["Economy", "Premium Economy", "Business", "First"];
+const CAR_TIMES = ["00:00", "00:30", "06:00", "08:00", "10:00", "12:00", "14:00", "16:00", "18:00", "20:00"];
+const CAR_LICENSES = ["United States", "United Kingdom", "Canada", "Australia", "Germany", "France", "Japan", "China", "Kenya", "Singapore", "United Arab Emirates"];
+const CAR_AGES = ["18–29", "30–60", "61+"];
+
+function carSubTabs() {
+  var s = state.carsSub;
+  return '<div class="triptype carsub">' +
+    '<button type="button" data-carsub="rentals" class="' + (s === "rentals" ? "is-active" : "") + '">Car Rentals</button>' +
+    '<button type="button" data-carsub="transfers" class="' + (s === "transfers" ? "is-active" : "") + '">Airport Transfers</button>' +
+    '</div>';
+}
+
+function transferDirTabs() {
+  var t = state.transferDir;
+  return '<div class="triptype">' +
+    '<button type="button" data-xferdir="pickup" class="' + (t === "pickup" ? "is-active" : "") + '">Airport Pick-up</button>' +
+    '<button type="button" data-xferdir="dropoff" class="' + (t === "dropoff" ? "is-active" : "") + '">Airport Drop-off</button>' +
+    '</div>';
+}
+
+function cellDateTime(label, which) {
+  var id = which === "in" ? "dateInVal" : "dateOutVal";
+  var val = which === "in" ? fmtDate(state.dates.in) : fmtDate(state.dates.out);
+  var timeKey = which === "in" ? "carPickTime" : "carDropTime";
+  var opts = CAR_TIMES.map(function (t) {
+    return '<option value="' + t + '"' + (state[timeKey] === t ? " selected" : "") + '>' + t + '</option>';
+  }).join("");
+  return '<div class="cell" data-dd="ddCal" data-calmode="range"><span class="cell__label">' + label + '</span>' +
+    '<div class="cell__dt"><span class="cell__value" id="' + id + '">' + val + '</span>' +
+    '<select class="cell__time" data-cartime="' + which + '">' + opts + '</select></div></div>';
+}
+
+function carMetaExtra() {
+  var lic = CAR_LICENSES.map(function (l) {
+    return '<option' + (state.carLicense === l ? " selected" : "") + '>' + l + '</option>';
+  }).join("");
+  var ages = CAR_AGES.map(function (a) {
+    return '<option' + (state.carAge === a ? " selected" : "") + '>' + a + '</option>';
+  }).join("");
+  return '<div class="car-meta">' +
+    '<label class="car-meta__field"><span class="car-meta__label">Driver\'s license issuing country/region</span>' +
+    '<select class="car-meta__select" id="carLicense">' + lic + '</select></label>' +
+    '<label class="car-meta__field"><span class="car-meta__label">Age</span>' +
+    '<select class="car-meta__select" id="carAge">' + ages + '</select></label>' +
+    '</div>';
+}
+
+function carRentalsForm() {
+  var diff = state.carDiffDrop
+    ? cellDestination("Drop-off location", "", "Airport, city, station, region, district...")
+    : "";
+  return {
+    top: carSubTabs() +
+      '<label class="carcheck"><input type="checkbox" id="carDiffDrop"' + (state.carDiffDrop ? " checked" : "") + '> Drop off at a different location</label>',
+    fields: cellDestination("Pick-up location", "Los Angeles Airport (LAX)", "Airport, city, station, region, district...")
+      + diff
+      + cellDateTime("Pick-up date", "in")
+      + cellDateTime("Drop-off date", "out")
+      + searchBtnCell,
+    extra: carMetaExtra(),
+  };
+}
+
+function carTransfersForm() {
+  var pickup = state.transferDir === "pickup";
+  var fromLabel = pickup ? "Arrival airport" : "From";
+  var toLabel = pickup ? "Destination" : "Airport";
+  var fromPh = pickup ? "Arrival airport" : "Hotel, address or area";
+  var toPh = pickup ? "Enter a destination" : "Departure airport";
+  return {
+    top: carSubTabs() + transferDirTabs(),
+    fields: cellPlace(fromLabel, "js-from", "", fromPh) + swapCell
+      + cellPlace(toLabel, "js-to", "", toPh)
+      + cellPax() + searchBtnCell,
+    extra: "",
+  };
+}
 
 function buildOptGrid(container, items, activeVal, onPick) {
   container.innerHTML = items.map(i =>
@@ -413,7 +491,7 @@ function applySidebarCars(data) {
   TAB_LABEL.cars = cars.title || TAB_LABEL.cars;
   if (flyout && cars.items && cars.items.length) {
     flyout.innerHTML = cars.items.map(function (item) {
-      var href = item.href || (item.tab === "transfers" ? "transfers.html" : "cars.html");
+      var href = item.href || (item.tab === "transfers" ? "cars.html?sub=transfers" : "cars.html");
       return '<a href="' + href + '">' + item.label + '</a>';
     }).join("");
   }
@@ -460,7 +538,9 @@ function cardHTML(o, withPrice, href) {
 
 function buildSearchUrl() {
   var p = new URLSearchParams();
-  p.set("tab", state.tab);
+  var tab = state.tab;
+  if (tab === "cars" && state.carsSub === "transfers") tab = "transfers";
+  p.set("tab", tab);
   var dest = $(".js-text");
   var from = $(".js-from");
   var to = $(".js-to");
@@ -473,6 +553,17 @@ function buildSearchUrl() {
   p.set("rooms", state.guests.rooms);
   p.set("adults", state.guests.adults);
   p.set("cabin", state.cabin);
+  if (state.tab === "cars") {
+    p.set("carsSub", state.carsSub);
+    if (state.carsSub === "rentals") {
+      p.set("license", state.carLicense);
+      p.set("age", state.carAge);
+      p.set("pickTime", state.carPickTime);
+      p.set("dropTime", state.carDropTime);
+    } else {
+      p.set("xferdir", state.transferDir);
+    }
+  }
   return "results.html?" + p.toString();
 }
 
@@ -529,7 +620,12 @@ function applyDeepLink() {
   var tab = params.get("tab");
   var to = params.get("to");
   var dest = params.get("dest");
+  var carsSub = params.get("carsSub") || params.get("sub");
+  if (carsSub === "transfers" || carsSub === "rentals") state.carsSub = carsSub;
+  var xferDir = params.get("xferdir");
+  if (xferDir === "pickup" || xferDir === "dropoff") state.transferDir = xferDir;
   if (tab) setActiveTab(tab);
+  if (carsSub && !tab) setActiveTab("cars");
   if (to) {
     state.tripType = "oneway";
     setActiveTab("flights");
@@ -554,9 +650,17 @@ function applyDeepLink() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  $("#year").textContent = new Date().getFullYear();
-  renderContent();
-  setActiveTab("hotels");
+  var yearEl = $("#year");
+  if (yearEl) yearEl.textContent = new Date().getFullYear();
+  var isCarPage = document.body.dataset.carPage !== undefined;
+  if (isCarPage) {
+    var pickOut = new Date(today);
+    pickOut.setDate(pickOut.getDate() + 3);
+    state.dates.in = new Date(today);
+    state.dates.out = pickOut;
+  }
+  if (!isCarPage) renderContent();
+  setActiveTab(isCarPage ? "cars" : "hotels");
   applyDeepLink();
 
   if (window.TGinspiredReady) {
@@ -649,6 +753,14 @@ document.addEventListener("DOMContentLoaded", () => {
     const tt = e.target.closest("[data-trip]");
     if (tt) { state.tripType = tt.dataset.trip; renderForm(); return; }
 
+    /* Cars sub-tab: Car Rentals | Airport Transfers */
+    const cs = e.target.closest("[data-carsub]");
+    if (cs) { state.carsSub = cs.dataset.carsub; renderForm(); return; }
+
+    /* Airport transfer direction */
+    const xd = e.target.closest("[data-xferdir]");
+    if (xd) { state.transferDir = xd.dataset.xferdir; renderForm(); return; }
+
     /* Swap from/to */
     if (e.target.closest("#swapBtn")) {
       const f = $(".js-from"), t = $(".js-to");
@@ -702,6 +814,16 @@ document.addEventListener("DOMContentLoaded", () => {
   $("#searchForm").addEventListener("submit", (e) => {
     e.preventDefault();
     location.href = buildSearchUrl();
+  });
+
+  document.addEventListener("change", function (e) {
+    if (e.target.id === "carDiffDrop") { state.carDiffDrop = e.target.checked; renderForm(); return; }
+    if (e.target.id === "carLicense") { state.carLicense = e.target.value; return; }
+    if (e.target.id === "carAge") { state.carAge = e.target.value; return; }
+    var ct = e.target.closest("[data-cartime]");
+    if (ct) {
+      state[ct.dataset.cartime === "in" ? "carPickTime" : "carDropTime"] = e.target.value;
+    }
   });
 
   /* Sidebar (mobile) */

@@ -60,7 +60,7 @@
     document.getElementById("resEdit").href = tab === "cars"
       ? "cars.html"
       : tab === "transfers"
-      ? "transfers.html"
+      ? "cars.html?sub=transfers"
       : "index.html?tab=" + tab + "&dest=" + encodeURIComponent(q) + "#search";
     document.getElementById("gs").value = q;
 

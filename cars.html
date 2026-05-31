@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Compare car rental deals worldwide — search pick-up location and dates on TripGo." />
-  <title>Car Rentals | TripGo</title>
+  <meta name="description" content="Compare car rental deals and book airport transfers worldwide on TripGo." />
+  <title>Car Rentals &amp; Airport Transfers | TripGo</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
 </head>
-<body>
+<body data-car-page>
   <header class="topbar">
     <div class="topbar__inner">
       <a href="index.html" class="brand notranslate" translate="no" aria-label="TripGo home"><span class="brand__mark">✈</span>Trip<span>Go</span>.com</a>
@@ -21,44 +21,31 @@
       <nav class="topbar__links">
         <a href="app.html" class="topbar__link"><span>📱</span> App</a>
         <a href="list-property.html" class="topbar__link">List your property</a>
-        <button class="topbar__link dd-trigger" id="currTrigger"><span>🌐</span> <span id="currLabel">USD</span> <span class="caret">▾</span></button>
+        <button class="topbar__link dd-trigger" data-dd="ddLang" aria-haspopup="true" aria-expanded="false">
+          <span>🌐</span> USD <span class="caret">▾</span>
+        </button>
         <a href="support.html" class="topbar__link">Customer support</a>
         <a href="bookings.html" class="topbar__link">Find bookings</a>
-        <a href="index.html" class="btn btn--outline btn--sm" data-signin>Sign in / register</a>
+        <button class="btn btn--outline btn--sm dd-trigger" data-dd="ddSignin" aria-haspopup="true" aria-expanded="false">Sign in / register</button>
       </nav>
     </div>
   </header>
 
-  <main class="fltpage container">
-    <nav class="bk-crumbs"><a href="index.html">Home</a> <span>›</span> Car Rentals</nav>
-    <h1 class="flt-title">Car Rentals</h1>
-    <p class="flt-sub">Search rental cars at airports and city locations worldwide</p>
+  <main class="main carpage">
+    <section class="hero" id="search">
+      <div class="hero__overlay"></div>
+      <div class="hero__content">
+        <h1 class="hero__title">Your Trip Starts Here</h1>
+        <p class="hero__trust">✓ Secure payment&nbsp;&nbsp;|&nbsp;&nbsp;✓ Support in approx. 30s</p>
 
-    <form class="cars-form" id="carsForm" action="results.html" method="get">
-      <input type="hidden" name="tab" value="cars" />
-      <div class="cars-form__row">
-        <label class="cars-form__field cars-form__field--grow">
-          <span class="cars-form__label">Pick-up location</span>
-          <input type="text" name="dest" required placeholder="Airport or city" value="Los Angeles Airport (LAX)" />
-        </label>
-        <label class="cars-form__field">
-          <span class="cars-form__label">Pick-up date</span>
-          <input type="date" name="in" id="pickIn" required />
-        </label>
-        <label class="cars-form__field">
-          <span class="cars-form__label">Drop-off date</span>
-          <input type="date" name="out" id="pickOut" required />
-        </label>
-        <div class="cars-form__field cars-form__field--btn">
-          <button type="submit" class="btn btn--primary">🔍 Search</button>
+        <div class="searchwidget searchwidget--cars-only">
+          <form class="sform" id="searchForm">
+            <div class="sform__top" id="formTop"></div>
+            <div class="sform__fields" id="formFields"></div>
+            <div class="sform__extra" id="formExtra"></div>
+          </form>
         </div>
       </div>
-      <p class="cars-form__note">✓ Return car to same location</p>
-    </form>
-
-    <section class="block" style="margin-top:28px">
-      <h2 class="block__title">Popular pick-up locations</h2>
-      <div class="chips" id="carChips"></div>
     </section>
   </main>
 
@@ -66,24 +53,53 @@
     <div class="footer__bottom">© <span id="year"></span> TripGo Travel. &nbsp;·&nbsp; 🌐 English (XX) · USD</div>
   </footer>
 
+  <div class="popover" id="ddLang" role="dialog" aria-label="Language and currency">
+    <div class="popover__section"><h5>Language</h5><div class="optgrid" id="langGrid"></div></div>
+    <div class="popover__section"><h5>Currency</h5><div class="optgrid" id="currGrid"></div></div>
+  </div>
+
+  <div class="popover popover--signin" id="ddSignin" role="dialog" aria-label="Sign in">
+    <div class="signin">
+      <div class="signin__gift">🎁</div>
+      <p class="signin__lead">Sign in to access member rates &amp; rewards</p>
+      <input type="email" class="signin__input" placeholder="Email address" />
+      <button class="btn btn--primary btn--block" id="doSignin">Sign in or register</button>
+    </div>
+  </div>
+
+  <div class="popover popover--guests" id="ddGuests" role="dialog" aria-label="Rooms and guests">
+    <div class="stepper" data-key="rooms"><div><div class="stepper__label">Rooms</div></div><div class="stepper__ctrl"><button type="button" data-step="-1">−</button><span class="stepper__val">1</span><button type="button" data-step="1">+</button></div></div>
+    <div class="stepper" data-key="adults"><div><div class="stepper__label">Adults</div></div><div class="stepper__ctrl"><button type="button" data-step="-1">−</button><span class="stepper__val">2</span><button type="button" data-step="1">+</button></div></div>
+    <div class="stepper" data-key="children"><div><div class="stepper__label">Children</div></div><div class="stepper__ctrl"><button type="button" data-step="-1">−</button><span class="stepper__val">0</span><button type="button" data-step="1">+</button></div></div>
+    <button class="btn btn--primary btn--block popover__done" data-done="ddGuests">Done</button>
+  </div>
+
+  <div class="popover popover--guests" id="ddPax" role="dialog" aria-label="Passengers and cabin class">
+    <div class="stepper" data-key="adults"><div><div class="stepper__label">Adults</div></div><div class="stepper__ctrl"><button type="button" data-step="-1">−</button><span class="stepper__val">1</span><button type="button" data-step="1">+</button></div></div>
+    <div class="stepper" data-key="children"><div><div class="stepper__label">Children</div></div><div class="stepper__ctrl"><button type="button" data-step="-1">−</button><span class="stepper__val">0</span><button type="button" data-step="1">+</button></div></div>
+    <div class="stepper" data-key="infants"><div><div class="stepper__label">Infants</div></div><div class="stepper__ctrl"><button type="button" data-step="-1">−</button><span class="stepper__val">0</span><button type="button" data-step="1">+</button></div></div>
+    <div class="popover__section"><h5>Cabin class</h5><div class="optgrid" id="cabinGrid"></div></div>
+    <button class="btn btn--primary btn--block popover__done" data-done="ddPax">Done</button>
+  </div>
+
+  <div class="popover popover--cal" id="ddCal" role="dialog" aria-label="Select dates">
+    <div class="cal__head">
+      <button type="button" class="cal__nav" id="calPrev" aria-label="Previous month">‹</button>
+      <div class="cal__months" id="calMonths"></div>
+      <button type="button" class="cal__nav" id="calNext" aria-label="Next month">›</button>
+    </div>
+    <div class="cal__foot">
+      <span id="calSummary">Select dates</span>
+      <button class="btn btn--primary btn--sm popover__done" data-done="ddCal">Done</button>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
   <script src="i18n.js"></script>
   <script src="region.js"></script>
   <script src="signin.js"></script>
   <script src="common.js"></script>
-  <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
-    try { var c = localStorage.getItem("tg_curr"); var lc = document.getElementById("currLabel"); if (c && lc) lc.textContent = c; } catch (e) {}
-
-    var today = new Date();
-    var out = new Date(today); out.setDate(out.getDate() + 3);
-    var fmt = function (d) { return d.toISOString().slice(0, 10); };
-    document.getElementById("pickIn").value = fmt(today);
-    document.getElementById("pickOut").value = fmt(out);
-
-    var LOCS = ["Los Angeles (LAX)", "New York (JFK)", "London (LHR)", "Paris (CDG)", "Dubai (DXB)", "Tokyo (NRT)", "Singapore (SIN)", "Sydney (SYD)"];
-    document.getElementById("carChips").innerHTML = LOCS.map(function (loc) {
-      return '<a class="chip" href="results.html?tab=cars&dest=' + encodeURIComponent(loc) + '">' + loc + '</a>';
-    }).join("");
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>

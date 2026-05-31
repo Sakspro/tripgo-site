@@ -2,72 +2,11 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Book airport transfers — private cars, shuttles and rides to and from the airport on TripGo." />
+  <meta http-equiv="refresh" content="0; url=cars.html?sub=transfers" />
   <title>Airport Transfers | TripGo</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css" />
+  <script>location.replace("cars.html?sub=transfers");</script>
 </head>
 <body>
-  <header class="topbar">
-    <div class="topbar__inner">
-      <a href="index.html" class="brand notranslate" translate="no" aria-label="TripGo home"><span class="brand__mark">✈</span>Trip<span>Go</span>.com</a>
-      <div class="globalsearch">
-        <span class="globalsearch__icon">🔍</span>
-        <input type="text" placeholder="Destinations, attractions, hotels, and more" aria-label="Search the site" />
-      </div>
-      <nav class="topbar__links">
-        <a href="app.html" class="topbar__link"><span>📱</span> App</a>
-        <a href="list-property.html" class="topbar__link">List your property</a>
-        <button class="topbar__link dd-trigger" id="currTrigger"><span>🌐</span> <span id="currLabel">USD</span> <span class="caret">▾</span></button>
-        <a href="support.html" class="topbar__link">Customer support</a>
-        <a href="bookings.html" class="topbar__link">Find bookings</a>
-        <a href="index.html" class="btn btn--outline btn--sm" data-signin>Sign in / register</a>
-      </nav>
-    </div>
-  </header>
-
-  <main class="fltpage container">
-    <nav class="bk-crumbs"><a href="index.html">Home</a> <span>›</span> <a href="cars.html">Cars</a> <span>›</span> Airport Transfers</nav>
-    <h1 class="flt-title">Airport Transfers</h1>
-    <p class="flt-sub">Private cars and shuttles between airports and hotels</p>
-
-    <form class="cars-form" id="xferForm" action="results.html" method="get">
-      <input type="hidden" name="tab" value="transfers" />
-      <div class="cars-form__row">
-        <label class="cars-form__field cars-form__field--grow">
-          <span class="cars-form__label">From</span>
-          <input type="text" name="from" required placeholder="Airport / hotel" value="JFK Airport" />
-        </label>
-        <label class="cars-form__field cars-form__field--grow">
-          <span class="cars-form__label">To</span>
-          <input type="text" name="dest" required placeholder="Airport / hotel" value="Manhattan Hotel" />
-        </label>
-        <label class="cars-form__field">
-          <span class="cars-form__label">Date</span>
-          <input type="date" name="in" id="xferDate" required />
-        </label>
-        <div class="cars-form__field cars-form__field--btn">
-          <button type="submit" class="btn btn--primary">🔍 Search</button>
-        </div>
-      </div>
-    </form>
-  </main>
-
-  <footer class="footer container">
-    <div class="footer__bottom">© <span id="year"></span> TripGo Travel. &nbsp;·&nbsp; 🌐 English (XX) · USD</div>
-  </footer>
-
-  <script src="i18n.js"></script>
-  <script src="region.js"></script>
-  <script src="signin.js"></script>
-  <script src="common.js"></script>
-  <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
-    try { var c = localStorage.getItem("tg_curr"); var lc = document.getElementById("currLabel"); if (c && lc) lc.textContent = c; } catch (e) {}
-    document.getElementById("xferDate").value = new Date().toISOString().slice(0, 10);
-  </script>
+  <p><a href="cars.html?sub=transfers">Airport Transfers</a></p>
 </body>
 </html>
