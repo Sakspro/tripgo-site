@@ -213,6 +213,7 @@ a.card, a.promo { text-decoration: none; color: inherit; display: block; }
 .fltpage { padding: 18px 16px 60px; }
 .flt-title { font-size: 26px; font-weight: 800; margin: 8px 0 4px; }
 .flt-sub { color: var(--muted); margin-bottom: 8px; }
+.flt-sync { color: var(--muted); font-size: 12px; margin-top: 16px; }
 .flt-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 14px; margin-top: 18px; }
 .flight-card--lg .flight-card__city { font-size: 16px; }
 

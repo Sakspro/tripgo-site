@@ -1,0 +1,322 @@
+{
+  "title": "Get inspired for your next trip",
+  "subtitle": "Explore one-way flights from your area",
+  "moreUrl": "",
+  "chips": [
+    "Anywhere",
+    "Kigali",
+    "Jeddah",
+    "Tokyo",
+    "Mogadishu",
+    "Doha",
+    "Ho Chi Minh City",
+    "Eldoret",
+    "Johannesburg",
+    "Paris"
+  ],
+  "chipData": [
+    {
+      "title": "Anywhere",
+      "anywhere": true,
+      "districtId": "",
+      "districtName": "Anywhere",
+      "districtEnName": "Anywhere",
+      "cityId": 0,
+      "imageUrl": "https://dimg04.tripcdn.com/images/1nn3t12000nv2hwho743F_D_600_400_R5.png?proc=source/trip&proc=namelogo/d_5",
+      "tagList": []
+    },
+    {
+      "title": "Kigali",
+      "anywhere": false,
+      "districtId": "22081",
+      "districtName": "Kigali",
+      "districtEnName": "Kigali",
+      "cityId": 1277,
+      "imageUrl": "https://ak-d.tripcdn.com/images/0104i12000bonwvz7185B_D_600_400_R5.jpg?proc=source/trip&proc=namelogo/d_5",
+      "tagList": [
+        "Short haul"
+      ]
+    },
+    {
+      "title": "Jeddah",
+      "anywhere": false,
+      "districtId": "1674",
+      "districtName": "Jeddah",
+      "districtEnName": "Jeddah",
+      "cityId": 801,
+      "imageUrl": "https://ak-d.tripcdn.com/images/0106z120008b2lfr9270B_D_600_400_R5.jpg?proc=source/trip&proc=namelogo/d_5",
+      "tagList": [
+        "Medium haul"
+      ]
+    },
+    {
+      "title": "Tokyo",
+      "anywhere": false,
+      "districtId": "294",
+      "districtName": "Tokyo",
+      "districtEnName": "Tokyo",
+      "cityId": 228,
+      "imageUrl": "https://ak-d.tripcdn.com/images/100r1c000001d5cue3196_D_600_400_R5.jpg?proc=source/trip&proc=namelogo/d_5",
+      "tagList": [
+        "Long haul"
+      ]
+    },
+    {
+      "title": "Mogadishu",
+      "anywhere": false,
+      "districtId": "4552",
+      "districtName": "Mogadishu",
+      "districtEnName": "Mogadishu",
+      "cityId": 4211,
+      "imageUrl": "https://ak-d.tripcdn.com/images/0HJ2b12000hcj5dti9AB2_D_600_400_R5.jpg?proc=source/trip&proc=namelogo/d_5",
+      "tagList": [
+        "Short haul"
+      ]
+    },
+    {
+      "title": "Doha",
+      "anywhere": false,
+      "districtId": "1733",
+      "districtName": "Doha",
+      "districtEnName": "Doha",
+      "cityId": 1401,
+      "imageUrl": "https://ak-d.tripcdn.com/images/100a10000000oz3otD873_D_600_400_R5.jpg?proc=source/trip&proc=namelogo/d_5",
+      "tagList": [
+        "Medium haul"
+      ]
+    },
+    {
+      "title": "Ho Chi Minh City",
+      "anywhere": false,
+      "districtId": "434",
+      "districtName": "Ho Chi Minh City",
+      "districtEnName": "Ho Chi Minh City",
+      "cityId": 301,
+      "imageUrl": "https://ak-d.tripcdn.com/images/100v0x000000lra8w0D50_D_600_400_R5.jpg?proc=source/trip&proc=namelogo/d_5",
+      "tagList": [
+        "Long haul"
+      ]
+    },
+    {
+      "title": "Eldoret",
+      "anywhere": false,
+      "districtId": "22128",
+      "districtName": "Eldoret",
+      "districtEnName": "Eldoret",
+      "cityId": 4207,
+      "imageUrl": "https://ak-d.tripcdn.com/images/0105d12000848s6pr3CA8_D_600_400_R5.jpg?proc=source/trip&proc=namelogo/d_5",
+      "tagList": [
+        "Short haul"
+      ]
+    },
+    {
+      "title": "Johannesburg",
+      "anywhere": false,
+      "districtId": "328",
+      "districtName": "Johannesburg",
+      "districtEnName": "Johannesburg",
+      "cityId": 684,
+      "imageUrl": "https://ak-d.tripcdn.com/images/100r10000000oyrjm43D0_D_600_400_R5.jpg?proc=source/trip&proc=namelogo/d_5",
+      "tagList": [
+        "Medium haul"
+      ]
+    },
+    {
+      "title": "Paris",
+      "anywhere": false,
+      "districtId": "308",
+      "districtName": "Paris",
+      "districtEnName": "Paris",
+      "cityId": 192,
+      "imageUrl": "https://ak-d.tripcdn.com/images/0104112000aq7b2v07E42_D_600_400_R5.jpg?proc=source/trip&proc=namelogo/d_5",
+      "tagList": [
+        "Long haul"
+      ]
+    }
+  ],
+  "flights": [
+    {
+      "dest": "Osaka",
+      "country": "Tokyo → Osaka",
+      "price": 94,
+      "img": "https://ak-d.tripcdn.com/images/0104z12000ikwg5jd9422_D_600_400_R5.jpg?proc=source/trip&proc=namelogo/d_5",
+      "tag": "Tokyo",
+      "tripType": "Train",
+      "depart": "Tokyo",
+      "dates": "Mon, Jun 1",
+      "deeplink": "/trains/list?departurecitycode=JP04454&arrivalcitycode=JP03509&departurecity=Tokyo&arrivalcity=Shin-Osaka&scheduleType=single&departdate=2026-06-01&departhouript=19&departminuteipt=37",
+      "trafficType": "TRAIN"
+    },
+    {
+      "dest": "Kyoto",
+      "country": "Tokyo → Kyoto",
+      "price": 94,
+      "img": "https://ak-d.tripcdn.com/images/100912000000rzo1jE158_D_600_400_R5.jpg?proc=source/trip&proc=namelogo/d_5",
+      "tag": "Tokyo",
+      "tripType": "Train",
+      "depart": "Tokyo",
+      "dates": "Tue, Jun 2",
+      "deeplink": "/trains/list?departurecitycode=JP03271&arrivalcitycode=JP04465&departurecity=Tokyo&arrivalcity=Kyoto&scheduleType=single&departdate=2026-06-02&departhouript=06&departminuteipt=00",
+      "trafficType": "TRAIN"
+    },
+    {
+      "dest": "Sendai",
+      "country": "Tokyo → Sendai",
+      "price": 65,
+      "img": "https://ak-d.tripcdn.com/images/100l0s000000hi8wpD836_D_600_400_R5.jpg?proc=source/trip&proc=namelogo/d_5",
+      "tag": "Tokyo",
+      "tripType": "Train",
+      "depart": "Tokyo",
+      "dates": "Wed, Jun 3",
+      "deeplink": "/trains/list?departurecitycode=JP03271&arrivalcitycode=JP01079&departurecity=Tokyo&arrivalcity=Sendai(Miyagi)&scheduleType=single&departdate=2026-06-03&departhouript=12&departminuteipt=53",
+      "trafficType": "TRAIN"
+    },
+    {
+      "dest": "Nagoya",
+      "country": "Tokyo → Nagoya",
+      "price": 72,
+      "img": "https://ak-d.tripcdn.com/images/0104k12000imsvlqtF7FE_D_600_400_R5.jpg?proc=source/trip&proc=namelogo/d_5",
+      "tag": "Tokyo",
+      "tripType": "Train",
+      "depart": "Tokyo",
+      "dates": "Fri, Jun 5",
+      "deeplink": "/trains/list?departurecitycode=JP03271&arrivalcitycode=JP01593&departurecity=Tokyo&arrivalcity=Nagoya&scheduleType=single&departdate=2026-06-05&departhouript=06&departminuteipt=00",
+      "trafficType": "TRAIN"
+    },
+    {
+      "dest": "Kanazawa",
+      "country": "Tokyo → Kanazawa",
+      "price": 96,
+      "img": "https://ak-d.tripcdn.com/images/010011200083th0ij042D_D_600_400_R5.jpg?proc=source/trip&proc=namelogo/d_5",
+      "tag": "Tokyo",
+      "tripType": "Train",
+      "depart": "Tokyo",
+      "dates": "Sat, Jun 6",
+      "deeplink": "/trains/list?departurecitycode=JP03271&arrivalcitycode=JP01564&departurecity=Tokyo&arrivalcity=Kanazawa&scheduleType=single&departdate=2026-06-06&departhouript=06&departminuteipt=28",
+      "trafficType": "TRAIN"
+    },
+    {
+      "dest": "Nice",
+      "country": "Paris → Nice",
+      "price": 99,
+      "img": "https://ak-d.tripcdn.com/images/10060g00000087nqeEA7F_D_600_400_R5.jpg?proc=source/trip&proc=namelogo/d_5",
+      "tag": "Paris",
+      "tripType": "Train",
+      "depart": "Paris",
+      "dates": "Tue, Jun 2",
+      "deeplink": "/trains/list?departurecitycode=FR000059699&arrivalcitycode=FR000061751&departurecity=Paris&arrivalcity=Nice&scheduleType=single&departdate=2026-06-02&departhouript=16&departminuteipt=10",
+      "trafficType": "TRAIN"
+    },
+    {
+      "dest": "Barcelona",
+      "country": "Paris → Barcelona",
+      "price": 78,
+      "img": "https://ak-d.tripcdn.com/images/0104t12000af10dq681E8_D_600_400_R5.jpg?proc=source/trip&proc=namelogo/d_5",
+      "tag": "Paris",
+      "tripType": "Train",
+      "depart": "Paris",
+      "dates": "Sat, Jun 6",
+      "deeplink": "/trains/list?departurecitycode=FR000059699&arrivalcitycode=ES0217&departurecity=Paris&arrivalcity=Barcelona&scheduleType=single&departdate=2026-06-06&departhouript=06&departminuteipt=42",
+      "trafficType": "TRAIN"
+    },
+    {
+      "dest": "Amsterdam",
+      "country": "Paris → Amsterdam",
+      "price": 142,
+      "img": "https://ak-d.tripcdn.com/images/100o0u000000j7xs93C78_D_600_400_R5.jpg?proc=source/trip&proc=namelogo/d_5",
+      "tag": "Paris",
+      "tripType": "Train",
+      "depart": "Paris",
+      "dates": "Wed, Jun 3",
+      "deeplink": "/trains/list?departurecitycode=FR000059699&arrivalcitycode=NL000059384&departurecity=Paris&arrivalcity=Amsterdam&scheduleType=single&departdate=2026-06-03&departhouript=14&departminuteipt=57",
+      "trafficType": "TRAIN"
+    },
+    {
+      "dest": "Milan",
+      "country": "Paris → Milan",
+      "price": 144,
+      "img": "https://ak-d.tripcdn.com/images/0105t12000aq7c06oD470_D_600_400_R5.jpg?proc=source/trip&proc=namelogo/d_5",
+      "tag": "Paris",
+      "tripType": "Train",
+      "depart": "Paris",
+      "dates": "Mon, Jun 1",
+      "deeplink": "/trains/list?departurecitycode=FR000059699&arrivalcitycode=IT3892&departurecity=Paris&arrivalcity=Milan&scheduleType=single&departdate=2026-06-01&departhouript=20&departminuteipt=57",
+      "trafficType": "TRAIN"
+    },
+    {
+      "dest": "Geneva",
+      "country": "Paris → Geneva",
+      "price": 92,
+      "img": "https://ak-d.tripcdn.com/images/0100j120008k52loy41C7_D_600_400_R5.jpg?proc=source/trip&proc=namelogo/d_5",
+      "tag": "Paris",
+      "tripType": "Train",
+      "depart": "Paris",
+      "dates": "Thu, Jun 4",
+      "deeplink": "/trains/list?departurecitycode=FR000059699&arrivalcitycode=CH000102355&departurecity=Paris&arrivalcity=Geneva&scheduleType=single&departdate=2026-06-04&departhouript=06&departminuteipt=16",
+      "trafficType": "TRAIN"
+    },
+    {
+      "dest": "Marseille",
+      "country": "Paris → Marseille",
+      "price": 37,
+      "img": "https://ak-d.tripcdn.com/images/100m050000000s2av5FBB_D_600_400_R5.jpg?proc=source/trip&proc=namelogo/d_5",
+      "tag": "Paris",
+      "tripType": "Train",
+      "depart": "Paris",
+      "dates": "Tue, Jun 2",
+      "deeplink": "/trains/list?departurecitycode=FR000059699&arrivalcitycode=FR000059875&departurecity=Paris&arrivalcity=Marseille&scheduleType=single&departdate=2026-06-02&departhouript=06&departminuteipt=03",
+      "trafficType": "TRAIN"
+    },
+    {
+      "dest": "Brussels",
+      "country": "Paris → Brussels",
+      "price": 17,
+      "img": "https://ak-d.tripcdn.com/images/10040g0000007q71p6824_D_600_400_R5.jpg?proc=source/trip&proc=namelogo/d_5",
+      "tag": "Paris",
+      "tripType": "Train",
+      "depart": "Paris",
+      "dates": "Sat, Jun 6",
+      "deeplink": "/trains/list?departurecitycode=FR000059699&arrivalcitycode=BE000058887&departurecity=Paris&arrivalcity=Brussels&scheduleType=single&departdate=2026-06-06&departhouript=18&departminuteipt=15",
+      "trafficType": "TRAIN"
+    },
+    {
+      "dest": "Le Mans",
+      "country": "Paris → Le Mans",
+      "price": 13,
+      "img": "https://ak-d.tripcdn.com/images/0104e120008x14m879A6A_D_600_400_R5.jpg?proc=source/trip&proc=namelogo/d_5",
+      "tag": "Paris",
+      "tripType": "Train",
+      "depart": "Paris",
+      "dates": "Tue, Jun 2",
+      "deeplink": "/trains/list?departurecitycode=IT10757&arrivalcitycode=FR001061319&departurecity=Paris Montparnasse&arrivalcity=Le Mans&scheduleType=single&departdate=2026-06-02&departhouript=07&departminuteipt=52",
+      "trafficType": "TRAIN"
+    },
+    {
+      "dest": "Lyon",
+      "country": "Paris → Lyon",
+      "price": 38,
+      "img": "https://ak-d.tripcdn.com/images/100i050000000mcqg5396_D_600_400_R5.jpg?proc=source/trip&proc=namelogo/d_5",
+      "tag": "Paris",
+      "tripType": "Train",
+      "depart": "Paris",
+      "dates": "Tue, Jun 2",
+      "deeplink": "/trains/list?departurecitycode=FR000059699&arrivalcitycode=FR000059664&departurecity=Paris&arrivalcity=Lyon&scheduleType=single&departdate=2026-06-02&departhouript=12&departminuteipt=26",
+      "trafficType": "TRAIN"
+    },
+    {
+      "dest": "London",
+      "country": "Paris → London",
+      "price": 153,
+      "img": "https://ak-d.tripcdn.com/images/fd/tg/g3/M03/D7/26/CggYG1bGymyAYcDvAA2KNxQbifw151_D_600_400_R5.jpg?proc=source/trip&proc=namelogo/d_5",
+      "tag": "Paris",
+      "tripType": "Train",
+      "depart": "Paris",
+      "dates": "Thu, Jun 4",
+      "deeplink": "/trains/list?departurecitycode=FR3466&arrivalcitycode=GB3467&departurecity=Paris Gare du Nord&arrivalcity=London St. Pancras International&scheduleType=single&departdate=2026-06-04&departhouript=07&departminuteipt=09",
+      "trafficType": "TRAIN"
+    }
+  ],
+  "syncedAt": "2026-05-31T12:08:55.731Z",
+  "source": "trip.com",
+  "hash": "f336172c6ac90e3f"
+}

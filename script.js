@@ -308,8 +308,9 @@ const PROMOS = [
   { img: "photo-1528181304800-259b08848526", t: "GO CHINA", s: "Spring gems & must-visit cities" },
   { img: "photo-1537996194471-e657df975ab4", t: "SOUTHEAST ASIA", s: "Up to 50% off hotels" },
 ];
-const CHIPS = ["Anywhere", "Tokyo", "Seoul", "Bangkok", "Singapore", "Istanbul", "Dubai", "Hanoi", "Doha", "Bali"];
-const FLIGHTS = [
+const CHIPS_FALLBACK = ["Anywhere", "Tokyo", "Seoul", "Bangkok", "Singapore", "Istanbul", "Dubai", "Hanoi", "Doha", "Bali"];
+let CHIPS = CHIPS_FALLBACK.slice();
+const FLIGHTS_FALLBACK = [
   { dest: "Tokyo", country: "Japan", price: 489, img: "photo-1540959733332-eab4deab993a", tag: "Tokyo" },
   { dest: "Seoul", country: "South Korea", price: 412, img: "photo-1517154429929-933367bd8490", tag: "Seoul" },
   { dest: "Bangkok", country: "Thailand", price: 378, img: "photo-1563492065593-0444c1d2e0a0", tag: "Bangkok" },
@@ -321,6 +322,7 @@ const FLIGHTS = [
   { dest: "Bali", country: "Indonesia", price: 334, img: "photo-1537996194471-e657df975ab4", tag: "Bali" },
   { dest: "Hong Kong", country: "China", price: 401, img: "photo-1536599018102-cb9629e9bd30", tag: "Hong Kong" },
 ];
+let FLIGHTS = FLIGHTS_FALLBACK.slice();
 const PROMO_LINKS = {
   "GO JAPAN": "explore.html?cat=private-tours&dest=Tokyo",
   "GO CHINA": "explore.html?cat=private-tours&dest=Beijing",
@@ -367,14 +369,48 @@ function hotelHref(city) {
   return "results.html?tab=hotels&dest=" + encodeURIComponent(city);
 }
 
+function flightImg(f) {
+  if (f.img && (f.img.indexOf("http") === 0 || f.img.indexOf("//") === 0)) {
+    return f.img.indexOf("//") === 0 ? "https:" + f.img : f.img;
+  }
+  return IMG(f.img);
+}
 function flightCardHTML(f) {
-  return '<a class="flight-card" href="' + flightHref(f.dest) + '">' +
-    '<div class="flight-card__img"><img loading="lazy" src="' + IMG(f.img) + '" alt="' + f.dest + '" /></div>' +
+  var sub = f.country || "One-way";
+  if (f.tripType && sub.indexOf("One-way") === -1 && sub.indexOf("Round") === -1) sub += " · " + f.tripType;
+  var priceHtml = (f.browseOnly || !f.price)
+    ? '<div class="flight-card__price">Explore <b>flights</b></div>'
+    : '<div class="flight-card__price">from <b>US$' + f.price + '</b></div>';
+  var href = f.deeplink || flightHref(f.dest);
+  return '<a class="flight-card" href="' + href + '"' + (f.deeplink ? ' target="_blank" rel="noopener"' : '') + '>' +
+    '<div class="flight-card__img"><img loading="lazy" src="' + flightImg(f) + '" alt="' + f.dest + '" /></div>' +
     '<div class="flight-card__body">' +
       '<div class="flight-card__city">' + f.dest + '</div>' +
-      '<div class="flight-card__sub">' + f.country + ' · One-way</div>' +
-      '<div class="flight-card__price">from <b>US$' + f.price + '</b></div>' +
+      '<div class="flight-card__sub">' + sub + '</div>' +
+      priceHtml +
     '</div></a>';
+}
+function renderChips() {
+  var wrap = $("#destChips");
+  if (!wrap) return;
+  wrap.innerHTML = CHIPS.map(function (c) {
+    return '<button type="button" class="chip ' + (c === inspireChip ? "is-active" : "") + '" data-dest="' + c + '">' + c + '</button>';
+  }).join("");
+}
+function applyInspiredData(data) {
+  if (!data) return;
+  if (data.chips && data.chips.length) CHIPS = data.chips;
+  if (data.flights && data.flights.length) FLIGHTS = data.flights;
+  var inspired = document.getElementById("inspired");
+  if (inspired) {
+    var titleEl = inspired.querySelector(".block__title");
+    var subEl = inspired.querySelector(".block__sub");
+    if (data.title && titleEl) titleEl.textContent = data.title;
+    if (data.subtitle && subEl) subEl.textContent = data.subtitle;
+  }
+  if (CHIPS.indexOf(inspireChip) === -1) inspireChip = "Anywhere";
+  renderChips();
+  renderFlights();
 }
 function flightsForChip(chip) {
   if (chip === "Anywhere") return FLIGHTS;
@@ -501,6 +537,20 @@ document.addEventListener("DOMContentLoaded", () => {
   renderContent();
   setActiveTab("hotels");
   applyDeepLink();
+
+  if (window.TGinspiredReady) {
+    window.TGinspiredReady.then(applyInspiredData);
+  }
+  document.addEventListener("tg-inspired", function (e) { applyInspiredData(e.detail); });
+  /* Re-sync when user returns to tab (picks up Trip.com changes within cache TTL) */
+  document.addEventListener("visibilitychange", function () {
+    if (document.visibilityState === "visible" && window.TGinspiredReady) {
+      fetch("/api/inspired", { credentials: "same-origin" })
+        .then(function (r) { return r.ok ? r.json() : null; })
+        .then(applyInspiredData)
+        .catch(function () {});
+    }
+  });
 
   if (window.TGcurrentLangLabel) state.language = window.TGcurrentLangLabel();
   buildOptGrid($("#langGrid"), LANGS, state.language, v => {

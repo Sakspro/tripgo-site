@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Cheap flight deals from your area — one-way fares to Tokyo, Bangkok, Dubai and more on TripGo." />
+  <meta name="description" content="Cheap flight deals from your area — one-way fares synced from Trip.com on TripGo." />
   <title>Flight Deals | TripGo</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -33,8 +33,8 @@
 
   <main class="fltpage container">
     <nav class="bk-crumbs"><a href="index.html">Home</a> <span>›</span> Flight deals</nav>
-    <h1 class="flt-title">Get inspired for your next trip</h1>
-    <p class="flt-sub">Explore one-way flights from your area</p>
+    <h1 class="flt-title" id="fltTitle">Get inspired for your next trip</h1>
+    <p class="flt-sub" id="fltSub">Explore one-way flights from your area</p>
 
     <div class="chips-wrap">
       <div class="chips" id="fltChips"></div>
@@ -42,6 +42,7 @@
     </div>
 
     <div class="flt-grid" id="fltGrid"></div>
+    <p class="flt-sync" id="fltSync" hidden></p>
   </main>
 
   <footer class="footer container">
@@ -52,42 +53,59 @@
   <script src="region.js"></script>
   <script src="signin.js"></script>
   <script src="common.js"></script>
+  <script src="inspired.js"></script>
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
     try { var c = localStorage.getItem("tg_curr"); var lc = document.getElementById("currLabel"); if (c && lc) lc.textContent = c; } catch (e) {}
 
-    var CHIPS = ["Anywhere", "Tokyo", "Seoul", "Bangkok", "Singapore", "Istanbul", "Dubai", "Hanoi", "Doha", "Bali"];
-    var FLIGHTS = [
-      { dest: "Tokyo", country: "Japan", price: 489, img: "photo-1540959733332-eab4deab993a", tag: "Tokyo" },
-      { dest: "Seoul", country: "South Korea", price: 412, img: "photo-1517154429929-933367bd8490", tag: "Seoul" },
-      { dest: "Bangkok", country: "Thailand", price: 378, img: "photo-1563492065593-0444c1d2e0a0", tag: "Bangkok" },
-      { dest: "Singapore", country: "Singapore", price: 445, img: "photo-1525625293386-3f8f99389edd", tag: "Singapore" },
-      { dest: "Istanbul", country: "Türkiye", price: 356, img: "photo-1527837756880-4a2081e79182", tag: "Istanbul" },
-      { dest: "Dubai", country: "UAE", price: 398, img: "photo-1512453979798-5ea266f8880c", tag: "Dubai" },
-      { dest: "Hanoi", country: "Vietnam", price: 289, img: "photo-1597003723278-d8a42a6e3661", tag: "Hanoi" },
-      { dest: "Doha", country: "Qatar", price: 421, img: "photo-1580844481067-5edc1a8e91c8", tag: "Doha" },
-      { dest: "Bali", country: "Indonesia", price: 334, img: "photo-1537996194471-e657df975ab4", tag: "Bali" },
-      { dest: "Hong Kong", country: "China", price: 401, img: "photo-1536599018102-cb9629e9bd30", tag: "Hong Kong" }
-    ];
-    var IMG = function (id) { return "https://images.unsplash.com/" + id + "?auto=format&fit=crop&w=500&q=80"; };
+    var CHIPS = ["Anywhere"];
+    var FLIGHTS = [];
     var chip = new URLSearchParams(location.search).get("dest") || "Anywhere";
-    if (CHIPS.indexOf(chip) === -1) chip = "Anywhere";
 
+    function flightImg(f) {
+      if (f.img && (f.img.indexOf("http") === 0 || f.img.indexOf("//") === 0)) {
+        return f.img.indexOf("//") === 0 ? "https:" + f.img : f.img;
+      }
+      return "https://images.unsplash.com/" + f.img + "?auto=format&fit=crop&w=500&q=80";
+    }
     function card(f) {
-      return '<a class="flight-card flight-card--lg" href="index.html?tab=flights&to=' + encodeURIComponent(f.dest) + '#search">' +
-        '<div class="flight-card__img"><img loading="lazy" src="' + IMG(f.img) + '" alt="' + f.dest + '" /></div>' +
+      var href = f.deeplink || ("results.html?tab=flights&to=" + encodeURIComponent(f.dest));
+      var ext = f.deeplink ? ' target="_blank" rel="noopener"' : "";
+      var price = (f.browseOnly || !f.price)
+        ? '<div class="flight-card__price">Explore <b>flights</b></div>'
+        : '<div class="flight-card__price">from <b>US$' + f.price + '</b></div>';
+      return '<a class="flight-card flight-card--lg" href="' + href + '"' + ext + '>' +
+        '<div class="flight-card__img"><img loading="lazy" src="' + flightImg(f) + '" alt="' + f.dest + '" /></div>' +
         '<div class="flight-card__body"><div class="flight-card__city">' + f.dest + '</div>' +
-        '<div class="flight-card__sub">' + f.country + ' · One-way</div>' +
-        '<div class="flight-card__price">from <b>US$' + f.price + '</b></div></div></a>';
+        '<div class="flight-card__sub">' + (f.country || "One-way") + '</div>' + price + '</div></a>';
     }
     function render() {
-      var list = chip === "Anywhere" ? FLIGHTS : FLIGHTS.filter(function (f) { return f.tag === chip; });
-      document.getElementById("fltGrid").innerHTML = list.map(card).join("");
+      if (CHIPS.indexOf(chip) === -1) chip = "Anywhere";
+      var list = chip === "Anywhere" ? FLIGHTS : FLIGHTS.filter(function (f) { return f.tag === chip || f.dest === chip; });
+      document.getElementById("fltGrid").innerHTML = list.length
+        ? list.map(card).join("")
+        : '<div class="flight-empty">No flights found for this destination yet.</div>';
       document.getElementById("fltChips").innerHTML = CHIPS.map(function (c) {
         return '<button type="button" class="chip ' + (c === chip ? "is-active" : "") + '" data-dest="' + c + '">' + c + '</button>';
       }).join("");
     }
+    function apply(data) {
+      if (!data) return;
+      if (data.chips && data.chips.length) CHIPS = data.chips;
+      if (data.flights && data.flights.length) FLIGHTS = data.flights;
+      if (data.title) document.getElementById("fltTitle").textContent = data.title;
+      if (data.subtitle) document.getElementById("fltSub").textContent = data.subtitle;
+      if (data.syncedAt) {
+        var s = document.getElementById("fltSync");
+        s.hidden = false;
+        s.textContent = "Synced from Trip.com · " + new Date(data.syncedAt).toLocaleString();
+      }
+      render();
+    }
     render();
+    if (window.TGinspiredReady) window.TGinspiredReady.then(apply);
+    document.addEventListener("tg-inspired", function (e) { apply(e.detail); });
+
     document.getElementById("fltChips").addEventListener("click", function (e) {
       var b = e.target.closest("[data-dest]"); if (!b) return;
       chip = b.dataset.dest;
