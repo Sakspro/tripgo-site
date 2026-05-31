@@ -11,7 +11,7 @@
     return id.indexOf("@") > -1 ? id.split("@")[0] : id;
   }
 
-  var overlay, bodyEl, state = { step: "id", id: "" };
+  var overlay, bodyEl, state = { step: "id", id: "", token: "", devCode: "", busy: false };
 
   function build() {
     overlay = document.createElement("div");
@@ -47,9 +47,9 @@
   function renderId() {
     bodyEl.innerHTML =
       '<h2 class="authm__title">Sign in or Register</h2>' +
-      '<p class="authm__lead">Use your email or phone to continue. New here? We\'ll create your account automatically.</p>' +
+      '<p class="authm__lead">Enter your email and we\'ll send you a verification code. New here? We\'ll create your account automatically.</p>' +
       '<form class="authm__form"><div class="authm__field">' +
-      '<input id="authId" type="text" autocomplete="username" placeholder="Email address or phone number" value="' +
+      '<input id="authId" type="email" autocomplete="email" placeholder="Email address" value="' +
         state.id.replace(/"/g, "&quot;") + '"></div>' +
       '<button class="btn btn--primary btn--block" id="authContinue" type="submit">Continue</button></form>' +
       '<div class="authm__or"><span>or continue with</span></div>' +
@@ -67,6 +67,9 @@
       '<button class="authm__back" id="authBack" type="button">‹ Back</button>' +
       '<h2 class="authm__title">Enter verification code</h2>' +
       '<p class="authm__lead">We\'ve sent a 6-digit code to <strong class="notranslate" translate="no">' + state.id + '</strong>.</p>' +
+      (state.devCode
+        ? '<div class="authm__dev">Email isn\'t configured on the server yet, so here\'s your code for testing: <strong class="notranslate" translate="no">' + state.devCode + '</strong></div>'
+        : "") +
       '<form class="authm__form"><div class="authm__field">' +
       '<input id="authCode" type="text" inputmode="numeric" maxlength="6" placeholder="6-digit code"></div>' +
       '<button class="btn btn--primary btn--block" id="authVerify" type="submit">Verify &amp; continue</button></form>' +
@@ -98,19 +101,17 @@
   function onBodyClick(e) {
     if (e.target.closest("#authContinue")) {
       var v = (document.getElementById("authId").value || "").trim();
-      if (!/.+@.+\..+/.test(v) && !/^[+]?[\d\s-]{6,}$/.test(v)) {
-        flash("Enter a valid email address or phone number.");
+      if (!/.+@.+\..+/.test(v)) {
+        flash("Enter a valid email address to receive your code.");
         return;
       }
-      state.id = v; state.step = "code"; render();
+      state.id = v; sendCode();
     } else if (e.target.closest("#authBack")) {
-      state.step = "id"; render();
+      state.step = "id"; state.devCode = ""; render();
     } else if (e.target.closest("#authVerify")) {
-      var c = (document.getElementById("authCode").value || "").trim();
-      if (c.length < 4) { flash("Enter the 6-digit code we sent you."); return; }
-      setUser(state.id); state.step = "done"; render(); updateTriggers();
+      verifyCode();
     } else if (e.target.closest("#authResend")) {
-      e.preventDefault(); flash("A new code has been sent.");
+      e.preventDefault(); sendCode(true);
     } else if (e.target.closest("[data-soc]")) {
       var soc = e.target.closest("[data-soc]").dataset.soc;
       setUser("user@" + soc.toLowerCase() + ".com"); state.step = "done"; render(); updateTriggers();
@@ -119,6 +120,62 @@
     } else if (e.target.closest("#authSignout")) {
       setUser(""); state.step = "id"; updateTriggers(); flash("You've been signed out."); render();
     }
+  }
+
+  function setBtn(id, label, disabled) {
+    var b = document.getElementById(id);
+    if (b) { b.textContent = label; b.disabled = !!disabled; }
+  }
+
+  function sendCode(isResend) {
+    if (state.busy) return;
+    state.busy = true;
+    if (isResend) flash("Sending a new code…");
+    else setBtn("authContinue", "Sending…", true);
+    fetch("/api/send-code", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ id: state.id }),
+    })
+      .then(function (r) { return r.json().then(function (j) { return { ok: r.ok, j: j }; }); })
+      .then(function (res) {
+        state.busy = false;
+        if (!res.ok) { flash(res.j.error || "Could not send the code. Please try again."); setBtn("authContinue", "Continue", false); return; }
+        state.token = res.j.token;
+        state.devCode = res.j.sent === false ? (res.j.devCode || "") : "";
+        if (state.step === "code") { if (isResend) flash("A new code has been sent."); render(); }
+        else { state.step = "code"; render(); }
+      })
+      .catch(function () {
+        state.busy = false;
+        flash("Network error. Please check your connection and try again.");
+        setBtn("authContinue", "Continue", false);
+      });
+  }
+
+  function verifyCode() {
+    if (state.busy) return;
+    var c = (document.getElementById("authCode").value || "").trim();
+    if (c.length < 4) { flash("Enter the 6-digit code we sent you."); return; }
+    state.busy = true;
+    setBtn("authVerify", "Verifying…", true);
+    fetch("/api/verify-code", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ token: state.token, code: c }),
+    })
+      .then(function (r) { return r.json().then(function (j) { return { ok: r.ok, j: j }; }); })
+      .then(function (res) {
+        state.busy = false;
+        if (!res.ok || !res.j.ok) { flash(res.j.error || "Incorrect code. Please try again."); setBtn("authVerify", "Verify & continue", false); return; }
+        setUser(res.j.email || state.id);
+        state.devCode = ""; state.step = "done"; render(); updateTriggers();
+      })
+      .catch(function () {
+        state.busy = false;
+        flash("Network error. Please try again.");
+        setBtn("authVerify", "Verify & continue", false);
+      });
   }
 
   function flash(msg) {

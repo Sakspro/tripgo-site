@@ -561,6 +561,8 @@ button { font-family: inherit; cursor: pointer; }
 .authm__acctlink:hover { background: #eef5ff; }
 .authm__flash { background: #fff4e5; color: #8a5a00; border: 1px solid #ffd699; border-radius: 8px;
   padding: 9px 12px; font-size: 13px; margin-bottom: 12px; }
+.authm__dev { background: #eef5ff; color: #1763d6; border: 1px dashed #9cc4ff; border-radius: 8px;
+  padding: 9px 12px; font-size: 12.5px; margin: 8px 0 4px; line-height: 1.5; }
 
 /* ===== Topbar language flag ===== */
 .tb-flag { width: 18px; height: 18px; border-radius: 50%; object-fit: cover;

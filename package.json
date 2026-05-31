@@ -1,0 +1,9 @@
+{
+  "name": "tripgo-site",
+  "version": "1.0.0",
+  "private": true,
+  "description": "TripGo — Trip.com-style travel booking clone (static site + email OTP serverless functions).",
+  "dependencies": {
+    "nodemailer": "^6.9.14"
+  }
+}

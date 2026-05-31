@@ -60,6 +60,34 @@ trip-clone/
 └── README.md
 ```
 
+## Sign-in with real email codes
+
+The sign-in/register modal (`signin.js`) sends a **real 6-digit verification
+code** by email through two Vercel serverless functions:
+
+- `api/send-code.js` — generates a code, emails it via SMTP, and returns a
+  stateless HMAC token (no database is used).
+- `api/verify-code.js` — recomputes the HMAC over the entered code and the
+  token, validating it server-side.
+
+### Configure email (Vercel → Project → Settings → Environment Variables)
+
+| Variable     | Example                          | Notes                                  |
+| ------------ | -------------------------------- | -------------------------------------- |
+| `SMTP_HOST`  | `smtp.gmail.com`                 | Your SMTP server                       |
+| `SMTP_PORT`  | `465`                            | `465` (SSL) or `587` (STARTTLS)        |
+| `SMTP_USER`  | `you@gmail.com`                  | SMTP username                          |
+| `SMTP_PASS`  | `abcd efgh ijkl mnop`            | SMTP password / app password           |
+| `MAIL_FROM`  | `TripGo <you@gmail.com>`         | Optional; defaults to `SMTP_USER`      |
+| `OTP_SECRET` | `<long random string>`           | Recommended; signs the OTP tokens      |
+
+**Gmail:** enable 2-Step Verification, then create an **App Password**
+(Google Account → Security → App passwords) and use it as `SMTP_PASS`.
+
+Until SMTP vars are set, the flow still works in **demo mode**: the code is
+shown on screen instead of being emailed. Once the vars are configured and the
+project redeploys, codes are emailed for real.
+
 ## Notes
 
 - Destination/hotel/attraction images load from Unsplash via URL, so an
