@@ -64,6 +64,17 @@
     return true;
   };
 
+  /* Apply a language directly by Google language code. */
+  window.TGsetLanguageCode = function (code, label) {
+    var current = window.TGcurrentLangCode();
+    if (label) { try { localStorage.setItem("tg_lang", label); } catch (e) {} }
+    if (code === current) return false;
+    if (code === "en") clearCookie();
+    else setCookie("/en/" + code);
+    location.reload();
+    return true;
+  };
+
   /* Google Translate widget bootstrap */
   window.googleTranslateElementInit = function () {
     /* eslint-disable no-undef */
